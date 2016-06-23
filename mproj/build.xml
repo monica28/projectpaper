@@ -3,7 +3,6 @@
 <project basedir="." default="build" name="ghandi2016_financial_apps_analysis">
   
   <target name="clean">
-    <ant dir="floats" target="clean"/>
     
     <delete>      
       <fileset dir="." includes="**/*.*~" defaultexcludes="false"/>
@@ -29,12 +28,7 @@
   </target>
 
   
-  <target name="build.diagrams">
-    <ant dir="floats" target="build"/>
-  </target>
-
-  
-  <target name="build-file" depends="build.diagrams">
+  <target name="build-file">
 		
     <exec executable="pdflatex" dir=".">
       <arg value="${file.name}" />
