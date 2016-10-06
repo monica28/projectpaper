@@ -56,12 +56,41 @@ Please note your proposal need not follow the included section headings - this i
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Survey}\label{survey}
-
+\nocite{*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Case studies or Examples of Malware/Vulnerabilities/Exploits in Apps, particularly Financial Apps}
+There are two types of mobile applications - Mobile Web or Native. Mobile web apps are really websites accessed through the mobile's browser. Native apps are developed specific to the mobile platform and are installed through an application store. Mobile OS like iOS and Android provide APIs for encryption and expect the developers to implement the security features in their app. This results in security issues.
 
+OWASP Mobile Security Project listed the top ten risks in mobile applications [owasp.org].
+1. Weak server side controls - untrustworthy input to a backend API service due to lack of proper security controls such as patches and updates or secure configurations.
+
+2. Insecure data storage - sensitive data stored on the device with no protection may result in privacy violations and exposure of personal informtion leading to identity theft, fraud, reputation damage. (malware, malicious user)
+
+3. Insufficient Transport layer protection - .
+
+4. Unintended data leakage -  includes vulnerabilities from the OS, frameworks, compiler environment, new hardware, etc. without a developers knowledge (key presses, logging, cache data).
+
+5. Poor authorization and authentication - 
+
+6. Broken cryptography - results from hardcoding cryptographic keys within the application code itselfor using a custom instead of standard cryptographic algorithm.
+
+7. Client side injection - Mobile malware or other malicious apps may perform a binary attack against the presentation layer (HTML; JavaScript; Cascading Style Sheets CSS) or the actual binary of the mobile app's executable. These code injections are executed either by the mobile app's framework or the binary itself at run-time. [owasp.org]
+
+8. Untrusted inputs - applications making security decisions through user inputs are susceptible to malware and injection attacks.
+
+9. Improper session handling - developers might invalidate sessions on the mobile app and forget on the server side providing an opportunity for the attackers. Also lack of adequate timeout protection and failure to reset cookies properly may lead to this risk.
+
+10. Lack of Binary protections - hosting code in untrustworthy environment (expand)
 E.g. also medical apps privacy policies paper - example of comprehensive study of issue.
+
+Mobile health application (case study?):
+
+Cifuentes et al conducted a research and anlyzed the vulnerabilites in mobile health applications according to the standards of OWASP model [ref].  It is also concluded that the "vulnerabilites are triggered due to accepting data from different sources". The QWASP criteria helps in assessing the risk of attacks in mobile applications.
+
+\section{Case study: Security analysis of Chase mobile banking application:}
+
+Panja et al conducted an experiment to show how a mobile application can be easily tampered with to acquire user information. For their investigation, they chose Chase Mobile Banking application. The analysis includes only a few portions of the code like "Login Activity". First, a network sniffer was used to study the application's traffic. The whole process from logging in to checking account information  to logging out consisted of conversation over encrypted transmission. Next, the source code of the application was examined. The apk file was disassembled and the application\_config.properties file was modified so that the application connects to a different server than the Chase server. When the app was rebuilt and ran through the Android emulator, all login attempts were redirected to the new server. It was easier to obtain the username and password by running a perl script. The ayhtors claim that although there were no security issues in the code, there were problems with how the application was packaged.
 
 \section{Major Technology Risks in Financial Applications}
 
