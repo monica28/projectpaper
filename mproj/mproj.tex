@@ -102,6 +102,21 @@ E.g. DOS attacks, XSS. tampering with one-time passwords, non-standard encryptio
 
 How can we detect potential problems, what tools are available?
 
+Mobile application testing tools are of three types - static, dynamic or Forensic []. Static tools examine the application's binary code and check for vulnerabilities. For exapmle, DeDexer generated DEX assembly code from application binary , dex2jar to convert DEX files to JAR files. Then tools like FindBugs can be used to analyse the JARs. Dynamic tools examine the behaviour of the application while it is running. These tools allow testers to reverse engineer communication protocols and allow malicious messages from the testers to attack server side resources. Forensic tools explore file systems of the device to find hard coded passwords and other sensitive information stored in configuration files, application databases or browser caches. Eg: Android Debug Bridge.
+
+
+Open Android Security Assessment Methodology (OASAM)- reference framework on Android application vulnerability assessments.
+
+Other tools:
+
+1. QARK(Quick Android Review Kit) - " At its core, QARK is a static code analysis tool, designed to recognize potential security vulnerabilities and points of concern for Java-based Android applications. QARK also attempts to provide dynamically generated ADB (Android Debug Bridge) commands to aid in the validation of potential vulnerabilities it detects. It will even dynamically create a custom-built testing application, in the form of a ready to use APK, designed specifically to demonstrate the potential issues it discovers, whenever possible." 
+
+2. Drozer - Comprehensive security and attack framework for Android.
+
+3. AndroBugs Framework - "AndroBugs Framework is an Android vulnerability analysis system that helps developers or hackers find potential security vulnerabilities in Android applications."
+
+4. AppSec - Pen testing
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
