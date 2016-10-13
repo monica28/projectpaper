@@ -81,7 +81,11 @@ The research in \cite{abolghasemi} presents the challenges involved in SMS-based
 
 There are two types of mobile applications - Mobile Web or Native. Mobile web apps are really websites accessed through the mobile's browser. Native apps are developed specific to the mobile platform and are installed through an application store. Mobile OS like iOS and Android provide APIs for encryption and expect the developers to implement the security features in their app. This results in security issues.
 
-OWASP Mobile Security Project listed the top ten risks in mobile applications\cite{owsasp}.
+(OWASP guidelines not necessary in lit review?)
+
+[[
+
+Open Web Application Security Project is an online community that publishesarticles, methodologies and technologies in web application security. The OWASP application security cheat sheet is used as a reference for identifying vulnerabilities in mobile application in \cite{acharya2015} and \cite{saito2015}. OWASP Mobile Security Project listed the top ten risks in mobile applications\cite{owasp}.
 1. Weak server side controls - untrustworthy input to a backend API service due to lack of proper security controls such as patches and updates or secure configurations.
 
 2. Insecure data storage - sensitive data stored on the device with no protection may result in privacy violations and exposure of personal informtion leading to identity theft, fraud, reputation damage. (malware, malicious user)
@@ -102,6 +106,8 @@ OWASP Mobile Security Project listed the top ten risks in mobile applications\ci
 
 10. Lack of Binary protections - hosting code in untrustworthy environment (expand)
 E.g. also medical apps privacy policies paper - example of comprehensive study of issue.
+
+]]
 
 \subsection{Case studies}
 Cifuentes et al\cite{cifuentes2015} conducted a research and anlyzed the vulnerabilites in mobile health applications according to the standards of OWASP model \cite{owasp}.  Usually, helath data is collected from users through sensors in mobile devices or peripheral devices thorugh bluetooth. These data require high level security for data storage. However mobile Health apps are vulnerable to malware attacks. In the research conducted in [], the mHealth apps were divided into six groups based on fucntionality and ten applications were selected for each group to be tested. The applications were assessed based on level of risk, type of
