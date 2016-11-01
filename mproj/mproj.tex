@@ -57,7 +57,22 @@ Please note your proposal need not follow the included section headings - this i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Literature Review}\label{survey}
 
-In their 5th Annual State of Application Security Report \cite{arxan}, app security company Arxan analysed 126 mobile health and finance apps from US, UK, Germany and japan and found that 90\% of them had security vulnerabilities. The research also noticed a disparity in the perceived secuirty of mobile apps by the users and the companies and the reality of the level of security in their app. More than 90\% of the apps tested were found to have atleast 2 of the top 10 security vulnerability listed by the OWASP project. Also,  59 percent of the Android mobile finance apps tested had at least three OWASP Mobile Top 10 Risks, whereas 100 percent of the iOS apps tested had at least 3 top risks. The most prevalent vulnerability was found to be binary protection lacking and insufficinet transport layer protection which may then lead to application code tampering, reverse-engineering, privacy violations, and data theft. According to the study conducted by IBM and Ponemon Institute in 2015, 40\% of large companies "aren’t taking the right precautions to secure the mobile apps they build for customers" \cite{ibm}. The study researched secuirty practices in over 400 companies and found that 50\% of the organizations devote zero budget towards mobile security. These companies include financial services, health and pharmaceutical, the public sector, entertainment and retail which are industries that use sensitive data. The study also says that average of \$34 million is spent by each company annually on mobile app development but only 5.5 percent is being allocated to mobile apps security.  
+TODO Use short hard wraps of about 120 lines.  Short lines are easier to maintain in a repository.
+
+In their 5th Annual State of Application Security Report \cite{arxan}, app security company Arxan analysed 126 mobile
+health and finance apps from US, UK, Germany and japan and found that 90\% of them had security vulnerabilities. The
+research also noticed a disparity in the perceived secuirty of mobile apps by the users and the companies and the
+reality of the level of security in their app. More than 90\% of the apps tested were found to have atleast 2 of the top
+10 security vulnerability listed by the OWASP project. Also, 59 percent of the Android mobile finance apps tested had at
+least three OWASP Mobile Top 10 Risks, whereas 100 percent of the iOS apps tested had at least 3 top risks. The most
+prevalent vulnerability was found to be binary protection lacking and insufficinet transport layer protection which may
+then lead to application code tampering, reverse-engineering, privacy violations, and data theft. According to the study
+conducted by IBM and Ponemon Institute in 2015, 40\% of large companies "aren’t taking the right precautions to secure
+the mobile apps they build for customers" \cite{ibm}. The study researched secuirty practices in over 400 companies and
+found that 50\% of the organizations devote zero budget towards mobile security. These companies include financial
+services, health and pharmaceutical, the public sector, entertainment and retail which are industries that use sensitive
+data. The study also says that average of \$34 million is spent by each company annually on mobile app development but
+only 5.5 percent is being allocated to mobile apps security.
 
 Android and Apple's iOS are the major mobile platforms in the world right now. A secure mobile OS is necessary for a secure mobile transaction. Android systems are vulnerable to attacks since android applications are self signed and no way to check the safety of the application. 
 According to Gartner's report, Android has 84.1\% market share on smartphone sales in first quarter of 2016[access ref].
@@ -133,6 +148,21 @@ The third technique of malware detection is the Application permission Analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Experimental Design}
+
+TODO Tables Create two tables.  One listing the applications, when they were downloaded, release or version number, file
+name, owning organisation.  Second table listing the tools used for analysis, analysis approach (static, dynamics etc,
+features tested.), version number and so on.
+
+TODO Describe method for using AndroidBugs to discover potential vulnerabilities and then manually verify these.
+
+TODO Write up proposed methodology and trial the entire method on one application and show me the results.
+
+TODO Create a script for any automable parts of your analysis. 
+
+TODO State the research questions to be asked and answered about the security of mobile financial applications.
+
+
+
 This research is focused on analysing the security in mobile financial applications. For this study, a total of 20 different banking and payment applications have been selected.  
 The process of this experiment can be described in three steps:
 
@@ -145,6 +175,8 @@ The process of this experiment can be described in three steps:
 The dataset can then be used to determine the level of security in the applications and can also be compared with each other.
 
 A number of tools are available for testing mobile applications against security attacks and detecting vulnerabilities. Secuirty analysis tools are of three types - static, dynamic and forensic. Static tools can decompile the java code from the apk and can either check automatically for weak implementations of secuirty or allow manual analysis of the code. For the purpose of this study, four static tools have been chosen, each different from the other in various features. 
+
+TODO This might have to move to an appendix.
 
 1) AndroBugs is an android vulnerability scanner that can be used to find security vulnerabilities in mobile applications. Its features inlcude finding security vulnerabilities in an Android app, checking if the code is missing best practices, checking dangerous shell commands like "su", collecting information from millions of apps and checking an app’s security protection [ref]. This tool can be downloaded from the author's github page [ref] and installed directly into Windows. The analysis is then done by executing the command \textit{androbugs.exe -f [APK file]}. At the end of the execution, a report file is genreated and saved in a "Reports" folder. The report contains basic information of the app like the name and version of the package and then the log containing the various vulnerability checks performed. The level of vulnerability is indicated through tags like "[Critical]", "[Warning]" and "[Notice]".
 
