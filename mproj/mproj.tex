@@ -132,7 +132,33 @@ The third technique of malware detection is the Application permission Analysis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Further chapters}
+\chapter{Experimental Design}
+This research is focused on analysing the security in mobile financial applications. For this study, a total of 20 different banking and payment applications have been selected.  
+The process of this experiment can be described in three steps:
+
+1. Identify the components in each application that perform similar functions. For example, logging in, SSL Implemetation, etc. A list of components to be verified is created to be used across all the applications.
+
+2. A lsit of vulnerabilities and security issues to look for in each app is created. OWASP has provided a list of 10 most common security vulnerabilities usually found in mobile applications [ref]. As part of the experiment, this study will include the "OWASP Top 10" while testing for vulnerabilities.
+
+3. Run the tools for each application and collect the dataset. The analysis should cover testing for all the vulnerabilites in the prepared list.
+
+The dataset can then be used to determine the level of security in the applications and can also be compared with each other.
+
+A number of tools are available for testing mobile applications against security attacks and detecting vulnerabilities. Secuirty analysis tools are of three types - static, dynamic and forensic. Static tools can decompile the java code from the apk and can either check automatically for weak implementations of secuirty or allow manual analysis of the code. For the purpose of this study, four static tools have been chosen, each different from the other in various features. 
+
+1) AndroBugs is an android vulnerability scanner that can be used to find security vulnerabilities in mobile applications. Its features inlcude finding security vulnerabilities in an Android app, checking if the code is missing best practices, checking dangerous shell commands like "su", collecting information from millions of apps and checking an app’s security protection [ref]. This tool can be downloaded from the author's github page [ref] and installed directly into Windows. The analysis is then done by executing the command \textit{androbugs.exe -f [APK file]}. At the end of the execution, a report file is genreated and saved in a "Reports" folder. The report contains basic information of the app like the name and version of the package and then the log containing the various vulnerability checks performed. The level of vulnerability is indicated through tags like "[Critical]", "[Warning]" and "[Notice]".
+
+[[Insert part of the report file here]]
+
+2) FlowDroid is a taint analysis tool which uses a precise model of Android’s lifecycle and handles callbacks invoked by the Android framework [ref]. Financial applications handle a lot of sensitive data like IMEI, location, login information, etc. Android uses the Permissions system to limit the access to sensitive data but are not sufficent to prevent data from leaking. Taint analysis is used to determine whether sensitive data remains within its boundaries and that untrusted data doesnot enter trusted repositiores in the application. \textit{source} is an external resource to an application from which data is read and a \textit{sink} is  an external resource to which data is written. FlowDroid is claimed to have achieved 93\% recall and 86\% precision in DroidBench (test suite to evaluate accuracy and efficiency of taint analysis tools) [ref]. To run FlowDroid, first all the necessary projects should be downloaded from the author's website in a directory. The site also contains the list of sources and sinks necessary to configure FlowDroid. Once this is done, the tool can be run by executing the following command:
+[[Command]]
+
+3) Another method to conduct static analysis is Reverse Engineering. Three tools - dex2jar, JD\_GUI and ApkTools are used for this method. dex2jar is used to convert the apk file of the app to the jar file. JD-GUI is the decompiler that decompiles the jar into the java class files. ApkTools is used to get the manifest file in a readable form. Once the java source code is available, it is then analysed manually to check for weak implementation of code.
+
+4) Drozer [[describe the process]]
+
+
+The results obtained from these analysis tools can then be organised together in order to compare the types of vulnerabilties most commonly found, level of criticality and security measures employed. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
