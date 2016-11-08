@@ -1,0 +1,109 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+</style>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+<div  data-bind="foreach: txnerror,visible:txnerror().length>0">
+			<div class="info_row" data-bind="text: errdesc"></div>
+		</div>
+  <div class="content" data-bind='visible:!txnerror().length'>
+    
+  
+			<div class="success_msg">
+			<p>Transaction successful</p>
+		</div>
+    
+	
+			  <div class="summblock" >
+			<div class="info_row odd"> <span class="info_row_left page_title_sub">Thank You</span> <span class="info_row_right "></span>
+				<div class="clearfix"></div>
+			</div>
+
+
+			<div class="info_row dark_header"> <span class="info_row_left">Order received on </span> <span class="info_row_right" id="tempdate">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd" id="PTFP" style="display:none;"> <span class="info_row_left">Amount</span> <span class="info_row_right page_title_sub" id="selectedamount">
+								
+								 </span>
+								<div class="clearfix"></div>
+							</div>
+						
+							<div class="info_row odd"  id="NPTFP" style="display:none;"> <span class="info_row_left">Units</span> <span class="info_row_right" id="selectedunits">
+								  
+								 </span>
+								<div class="clearfix"></div>
+							</div>
+			
+					<div class="info_row odd" id="NPTFPELSE" style="display:none;"> <span class="info_row_left">Units</span> <span class="info_row_right" id="selectedunits1">
+						 
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+			<div class="info_row even"> <span class="info_row_left clslineht">Order Reference No </span> <span class="info_row_right" id="txnnumber">
+				 
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			
+				<div class="info_row alignc"> 
+					 <span id="errdescmsg"></span>
+					<div class="clearfix"></div>
+				</div>
+			
+				<div class="info_row alignc"> 
+					 <span id="warningmsg"></span>
+					<div class="clearfix"></div>
+				</div>
+			
+			<div class="info_row odd"> <span class="info_row_left clslineht">Mutual Fund Account</span> <span class="info_row_right" id="unitholderid">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"> <span class="info_row_left clslineht">Mutual Fund Name</span> <span class="info_row_right clslineht" id="amcname">
+				 
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left">Scheme Name</span> <span class="info_row_right clslineht" id="fundname">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left">Cut-Off Time</span> <span class="info_row_right" id="cutofftime">
+				 
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+	
+					<div class="info_row odd"> <span class="info_row_left" id="swtchType">Switch Type</span> <span class="info_row_right" id="STwchName">Partial</span>
+						<div class="clearfix"></div>
+					</div>
+				
+			
+			<div class="info_row even"> <span class="info_row_left">SI Frequency</span> <span class="info_row_right" id="sifrequency"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left">SI date</span> <span class="info_row_right" id="sidate"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left">SI days</span> <span class="info_row_right" id="day"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left">Start Date</span> <span class="info_row_right" id="startdate"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left">End Date</span> <span class="info_row_right" id="enddate"></span>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+    </div>
+</div>

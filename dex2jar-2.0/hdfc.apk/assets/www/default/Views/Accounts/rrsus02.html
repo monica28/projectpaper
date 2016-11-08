@@ -1,0 +1,58 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmsus02" id="frmsus02" method="post" data-bind='submit: rrsus02Submit'>
+  	
+  	 
+  		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left">Account No. to be linked</span> 
+			<span class="info_row_right clslineht" id="fromacctDetails"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left startchqlbl">Fixed Deposit Account No.</span> 
+			<span class="info_row_right" id="toacctnoDetails">				
+			</span>
+			<div class="clearfix"></div>
+			</div>				
+			
+		</div>					
+			<br/>
+			<div class="clearfix20"></div>
+		   <div class="info_row2">
+		    <input type="submit" class="button" value="Confirm" >
+		   </div>
+  			
+  		   <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+  			
+		   <input type="hidden" name="fldCasaAcctDetail" id="fldCasaAcctDetail" value="" />
+		   <input type="hidden" name="fldCasaAcctNo" id="fldCasaAcctNo" value="" />			   
+		   <input type="hidden" name="fldTdAcctDetail" id="fldTdAcctDetail" value="" />
+		   <input type="hidden" name="fldTdAcctNo" id="fldTdAcctNo" value="" />
+			   
+ 		   <input type="hidden" name="fldLinkedAcctNo" id="fldLinkedAcctNo" value="" />
+		   <input type="hidden" name="fldLinkedAcctDetail" id="fldLinkedAcctDetail" value="" />
+		   <input type="hidden" name="fldSwpInAcctNo" id="fldSwpInAcctNo" value="" />
+		   <input type="hidden" name="fldSwpInAcctDetail" id="fldSwpInAcctDetail" value="" />
+		   <input type="hidden" name="fldDestAcctNo" id="fldDestAcctNo" value="" />
+		   <input type="hidden" name="fldSrcAcctNo" id="fldSrcAcctNo" value="" />
+		   <input type="hidden" name="fldToBrn" id="fldToBrn" value="" />
+		   <input type="hidden" name="fldFromBrn" id="fldFromBrn" value="" />
+		   <input type="hidden" name="fldFromNamCcy" id="fldNamCcy" value="" />
+		   <input type="hidden" name="fldToNamCcy" id="fldToNamCcy" value="" />
+		   <input type="hidden" name="fldToAcctBal" id="fldToAcctBal" value="" />
+		   <input type="hidden" name="fldFromAcctBal" id="fldFrmAcctBal" value="" /> 
+		  					
+	</form>
+  </div>
+</div>
+

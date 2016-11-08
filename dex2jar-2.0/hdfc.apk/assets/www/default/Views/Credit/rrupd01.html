@@ -1,0 +1,194 @@
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+    
+
+	
+			<form name="frmrrupd01" id="frmrrupd01"  method="post" data-bind='submit: rrupd01Submit'> 
+
+	<br/>
+	
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+      <div data-bind="foreach: ccaccountList1">
+     <div class="info_row">
+      	<div class="info_row2">Card No.</div>
+      	<div class="info_row3 page_title_sub"  id="cardNo" data-bind="html: cardNo"></div>
+      	
+        </div> 
+
+      
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Tel. (Residence)</div>
+      	<div class="info_row3">
+      	<input type="tel" name="fldTelResi" id="fldTelResi" data-bind="value: fldTelResi" size="10" maxlength="10"/>
+        </div> 
+     </div>
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Tel. (Office)</div>
+      	<div class="info_row3">
+      	<input type="tel" name="fldTelOffice" id="fldTelOffice" data-bind="value: fldTelOffice" size="10" maxlength="10" />
+        </div> 
+     </div>
+     
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Extension</div>
+      	<div class="info_row3">
+      	<input type="tel" name="fldExtnOffice" id="fldExtnOffice" data-bind="value: fldExtnOffice" size="9" maxlength="9" />
+        </div> 
+     </div>
+     
+     <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Email (Residence)</div>
+      	<div class="info_row3">
+      	<input type="email" name="fldEmailResi" id="fldEmailResi" data-bind="value: fldEmailResi"  />
+        </div> 
+     </div>
+     
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Email (Office)</div>
+      	<div class="info_row3">
+      	<input type="email" name="fldEmailOffice" id="fldEmailOffice" data-bind="value: fldEmailOffice"  />
+        </div> 
+     </div>
+     
+	<div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+     
+     <div class="info_row">
+      	<div class="info_row2">Tel. (Mobile)</div>
+      	<div class="info_row3">
+      	<input type="tel" name="fldMobile" id="fldMobile" data-bind="value: fldMobile" size="10" maxlength="10"/>
+        </div> 
+     </div>
+     <div class="clearfix"></div>
+		
+	 <input type="hidden" name="fldCardAANNo" id="fldCardAANNo"  data-bind="value: fldCardAANNo"  />
+
+	<input type="hidden" name="fldCardNo" id="fldCardNo" value="" />
+
+	<br />
+			<div class="info_row alignc">
+				<input type="submit" class="button" value="Continue" />
+				<div class="clearfix"></div>
+			</div>
+				 	
+	
+	<input type="hidden" name="fldTxnId" value="UPD" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="01" />
+	
+	
+</div>
+	
+	</form>
+
+	
+	
+
+
+</div>
+</div>
+
+<script>
+$.validator.addMethod("checkInvalid", function(value, element) {
+//alert(!/[~`!#$%\^&*+=\-\[\]\\;,/{}|\\:<>\?]/g.test(value));
+return !/[~`!#$%\^&*+=\-\[\]\\;,/{}|\\:<>\?]/g.test(value);
+}, "Invalid characters found in the email id. Email(Residence)");
+
+$.validator.addMethod("numb", function(value, element) {
+alert(this.optional(element) || /^\d+$/.test(value));
+return this.optional(element) || /^\d+$/.test(value);
+}, "Invalid characters found in the email id. Email(Residence)");
+
+
+
+
+
+$("#frmrrupd01").validate({
+	rules: {
+		fldCardNo: "required",
+			
+
+
+	fldTelResi: {
+  digits: true
+ },
+ 	fldExtnOffice: {
+  digits: true
+ },
+ 	fldMobile: {
+  digits: true,
+  minlength: 10,
+  maxlength:10
+ },
+ 
+ 	fldTelOffice: {
+  digits: true
+ },
+ 
+	
+	fldEmailResi: {
+     
+      checkInvalid:true,
+      email: true,
+      
+    },
+      fldEmailOffice: {
+      
+      checkInvalid:true,
+      email: true,
+      
+    },	},
+	messages: {
+		fldCardNo: "Select Card Number",
+	    fldEmailResi:{
+			
+			checkInvalid:"Invalid characters found in the email id. Email(Residence)",	
+			email : "Invalid Email (Residence)",	
+				
+		},
+		    fldEmailOffice:{
+			
+			checkInvalid:"Invalid characters found in the email id. Email(Office)",	
+			email : "Invalid Email (Office)",	
+				
+		},
+			fldTelResi: {
+				    digits: "Numeric characters are allowed for Tel. (Residence)",
+           },	
+           	fldTelOffice: {
+				    digits: "Numeric characters are allowed for Tel. (Office)",
+           },
+            	fldMobile: {
+				    digits: "Numeric characters are allowed for Mobile No.",
+				    minlength:"Mobile No. must be of length 10",
+				    maxlength:"Mobile No. must be of length 10"
+           },
+            	fldExtnOffice: {
+				    digits: "Numeric characters are allowed for Extension",
+           },
+	}
+});
+</script>

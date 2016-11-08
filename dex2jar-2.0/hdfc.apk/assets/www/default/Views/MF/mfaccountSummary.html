@@ -1,0 +1,88 @@
+			
+	<style>
+	.info_row { display:table; width:100%; }
+	.summblock { margin:0 5px !important; }
+</style>
+
+<div id="wrapper" style="top:96px;">
+<div class="info_row" id="accExitsMsg" style="padding-top:8px;display:none;"><p>Beneficiary not available.</p></div>	  
+
+  <div class="content sub_content" data-bind="visible: mfaccountList().length > 0">
+	 	
+		
+ <div data-bind="foreach: mfaccountList">
+			<div class="summblock">
+			
+				<div class="info_row dark_header"> <span class="info_row_left">Account Number</span> 
+				<span class="info_row_right clslineht" data-bind="text: codacctno">
+					
+				</span>
+				<div class="clearfix"></div>
+			  </div>
+			  
+			
+			  
+			  
+			 	<div class="info_row odd"> <span class="info_row_left clslineht">Sole / First Holder</span> <span class="info_row_right clslineht" data-bind="text: beneficiaryname">
+							   </span>
+							<div class="clearfix"></div>
+						</div>
+				
+
+					
+						<div class="info_row even"> <span class="info_row_left">Second Holder</span> <span class="info_row_right clslineht" data-bind="text: beneficiaryname2">
+							   </span>
+							<div class="clearfix"></div>
+						</div>
+				
+
+					
+						<div class="info_row odd"> <span class="info_row_left">Third Holder</span> <span class="info_row_right clslineht" data-bind="text: beneficiaryname3">
+							   </span>
+							<div class="clearfix"></div>
+						  </div>
+
+		
+			  
+			  <div class="info_row even"> 
+				<span class="info_row_left clslineht">Present Value of Holding</span> 
+				<span class="info_row_right clslineht" data-bind="text: totalholding"></span>
+				<div class="clearfix"></div>
+			   </div>				  
+			
+			</div>  
+			  <br/>
+
+
+		<div class="info_row odd"> 
+			<span class="info_row_left">Total</span> 
+			<span class="info_row_right clslineht" data-bind="text: totalholding">
+			
+			</span>
+			<div class="clearfix"></div>
+		</div>
+						  
+	</div>
+		
+		
+		<br/>
+		<div class="info_row">
+		<p><b>Note:</b></p><br/>
+		<p>- W.e.f January 1,2016 any subscription whether fresh, additional investment, or switch shall not be permitted by the AMCs if the KYC status of PAN for Mutual Funds is not updated as "KYC Registered-New KYC".</p><br/>
+		
+		<p>- As per regulatory requirement, individual investors and joint holders are required to provide extended KYC details. In absence of the same, transactions may get rejected by AMC/RTA. Joint holders of ISA ( Mutual Fund) accounts may update the same through "Update Extended KYC" option in NetBanking Request section of Accounts tab. Non-individual customers & HUFs may submit extended KYC details to Branches /Relationship manager. In absence of the same, transactions may get rejected by AMC/RTA.</p><br/>
+		
+		<p>- Please note that from September 1, 2009 there are ISA account maintenance charges, payable quarterly for all customers or applicable fees that would be charged to Private Banking / Advisory customers. We have sent communications to all and in case you have not received communications, we request you to get in touch with your Branch / Advisor.</p><br/>
+		<p>- With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+		<p>- In terms of SEBI Circular No IMD/SM/7179/2010 dated June 2nd 2010 unitholders have been allowed unfettered and unrestricted access to transact at AMC/ RTA. Please note that in light of this change we are directly dependent on the AMC to ensure that feeds received from the AMCs / RTAs are in line with the above regulatory change. HDFC bank shall thus neither be liable for any mismatch in details with the AMCs nor to any rejection of transaction thereafter. </p><br/><br/>
+		<p>NEW !!</p><br/><br/>
+		<p> - For our Wealth Advisory Services Customers :</p><br/>
+		<p> Under our Wealth Advisory Services, we offer advice on Mutual Fund investments based on the fundamental principles around Asset Allocation.</p><br/>
+		<p>- For ongoing advice, please contact your Relationship Manager / Personal Banker or your Branch Manager.</p><br/>
+		</div>
+
+	</div>
+	
+
+	</div>
+	

@@ -1,0 +1,99 @@
+<div id="wrapper" style="top:96px;">
+        
+        <div class="content">
+            <div class="uid_box">
+                <form class="custStyleInput" name="frmLoginPass" id="frmLoginPass" method="post" data-bind='submit: custIdPassSubmit'>
+				<div class="width100per">
+                  <p class="width40Per">
+                    <label>Customer Id:</label>
+                  </p>
+                  <p class="width60Per">
+                    <label class="txtright padR10" data-bind="text: userID"></label>
+                  </p>
+				</div>
+				<div class="width100per">
+                  <p class="width40Per">
+                    <label style="margin-top:8px">Password:</label>
+                  </p>
+                  <p class="width60Per">
+                    <input type="password" name="upass" id="upass" required value="" autocomplete="off"/>
+                  </p>
+				</div>
+				
+				<div id="rsacheck" data-bind="visible: rsacheck">
+				<div class="clearfix15"></div>
+				<div class="dispTable clear">
+					<div class="dispTCell loginCheckBox">
+						<input type="checkbox" name="chkLogin" id="chkLogin" />
+					</div>
+					
+					<div class="dispTCell">
+						<label>Please confirm your Secure Access Image and Message to login</label>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<label for="chkLogin" class="error" style="display:none;"></label>
+				<div class="clearfix15"></div>
+				<div class="width100per">
+                  <p class="width60Per">
+                    <label>Secure Access Message:</label>
+                  </p>
+                  <p class="width40Per">
+                    <label class="txtright" data-bind="text: secureText"></label>
+                  </p>
+				</div>
+				<div class="width100per">
+					<img data-bind="attr:{src: userSecureImg}" />
+				</div>
+				</div>
+				
+                  <p class="width100Per center_div" style="margin-top:25px">
+					<input type="submit" value="Login" class="button" style="width:254px">
+                    <!--<a href="#/home-loggedin" id="login" class="button" style="min-width:254px">Login</a>-->
+                  </p>
+                  
+                  <input type="hidden" name="rsaEnroll" id="rsaEnroll" data-bind="value: rsaEnrollReq" />
+                  
+                <input type="hidden" name="fldRsaUserStatus" id="fldRsaUserStatus" />
+				<input type="hidden" name="fldRsaImagePath" id="fldRsaImagePath" />
+				<input type="hidden" name="fldTptCustomer" id="fldTptCustomer" />
+				<input type="hidden" name="fldRsaImageWidth" id="fldRsaImageWidth" />
+				<input type="hidden" name="fldRsaImageText" id="fldRsaImageText" />
+				<input type="hidden" name="fldRsaUserPhrase" id="fldRsaUserPhrase" />
+				<input type="hidden" name="fldRsaImageHeight" id="fldRsaImageHeight" />
+				<input type="hidden" name="fldRsaImageId" id="fldRsaImageId" />
+				<input type="hidden" name="fldRsaEnrollRequired" id="fldRsaEnrollRequired" />
+				<input type="hidden" name="fldDeviceTokenFSO" id="fldDeviceTokenFSO" />
+				<input type="hidden" name="fldChecked" id="fldChecked" value="true" />
+				<input type="hidden" name="fldLoginUserId" id="fldLoginUserId" data-bind="value: userID" />
+				<input type="hidden" name="fldCustId" id="fldCustId" data-bind="value: userID" />
+                 
+                 <input type="hidden" name="fldTxnId" id="fldTxnId" value="LGN" />
+                 <input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="04" />
+                  
+                </form>
+				
+				</div>
+        
+        </div>
+        
+        </div>
+<script type="text/javascript">
+	$("#frmLoginPass").validate({
+		rules: {
+			upass: "required",
+			chkLogin: {
+	            required: {
+	                depends: function(element) {
+	                	var tmpsrch = $('#rsaEnroll').val();
+	                    return tmpsrch == 'N'
+	                }
+	            }
+	        }
+		},
+		messages: {
+			upass: "Enter Password",
+			chkLogin: "Confirm Secure Access Details"
+		}
+	});	
+</script>

@@ -1,0 +1,127 @@
+<style>
+input[type=button] {
+width: 150px;
+margin: auto;
+display: table;
+}
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  				<div class="content">
+		<form name="rrpmb02" id="rrpmb02"  method="post" data-bind='submit: rrpmb02submit'>
+					<div class="info_row rchgMenu"> 
+						
+							<div><label> Mobile Operator</label></div>
+							<div class="dispTable">
+							<span class="rchgMobNum" id="mobname1"></span>
+							</div>
+					  
+					</div>
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+					<div class="info_row rchgMenu"> 
+						
+							<div><label> Mobile Number</label></div>
+							<div class="dispTable">
+								<span class="rchgMobNum" id="mobnumber1"></span>
+							</div>
+					  
+					</div>
+					<div  id="RechargeSection" style="display:none;">
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+					<div class="info_row rchgMenu"> 
+						
+							<div><label>Recharge Amount</label></div>
+							<div class="dispTable">
+								<input type="number" id="rchamt" name="rchamt" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+							</div>
+							
+					</div>
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					<div class="info_row rchgMenu"> 
+					
+					
+					
+					<div><label>Select Bank Account</label></div>
+							<div class="dispTable">
+						<select name="mobbak" id="mobbak" data-bind="options: mobbakdetails, optionsText: 'mobacctno', optionsValue: 'mobbankval',value: mobanklist,  optionsCaption: '-Select-'">
+						</select>
+							</div>
+					</div>
+					
+					</div>
+					
+					<div class="clearfix20"></div>
+					
+					 <div style="width:95%;" >
+		               <div class="" style="float:left; margin-left: 12px;display:block;width:45%;"  id="Recharge1">
+						    <input type="button" class="button" value="Recharge Now"  onclick="RechargeMobile1()"/>
+							
+					    </div>
+						<div class="" style="display:none;margin: 0 auto; width:45%; clear:both;"  id="Recharge2">
+						    
+							<input type="submit" class="button" value="Recharge Now" />
+					    </div>
+						<div class="" style="float:right;display:block;width:45%;" id="DeleteRecharge1">
+						     <input type="button" class="button" style="background: #666; border-color:#666;  width: 75px;" value="Delete" data-bind="click: Deletbiller">
+			            </div> 
+		             </div>
+					
+					
+					<input type="hidden" name="mobshortname1" id="mobshortname1" value=""/>
+                    <input type="hidden" name="authenticate1" id="authenticate1" value=""/>
+					 <input type="hidden" name="Billeraccounid" id="Billeraccounid" value=""/>
+
+				</form>
+				
+				<div class="clearfix"></div>
+				
+				 <div class="info_row">
+				 <br/><br/>
+				 
+		<b>Note:</b>
+		<br/><br/>
+		<p>- The limit for Prepaid mobile recharge per day is Rs. 1000/- per Cust ID.</p>
+		<br/>
+		<p>- Please check with the mobile operator for increase in talk-time limit and validity period on the recharge amount.</p>
+		<br/>
+        <p>- On successful recharge, mobile operator will send the confirmation of recharge through SMS on your mobile phone. In case you do not receive any confirmation, please check with your mobile operator. </p>
+		<br/>
+        <p>- Rejection of Payment: Incase the recharge amount is debited from your bank account and talk-time limit is not increased for any reason, the amount will be reversed into your bank account within 3 to 5 working days</p>
+		<br/>
+
+		<br/>
+
+			<div class="clearfix"></div>
+
+			<div class="clearfix"></div>
+		 </div>
+
+			</div>
+		</div>
+					<script>
+				function RechargeMobile1(){
+				$('#Recharge2').show();
+				$('#Recharge1').hide();
+				$('#RechargeSection').show();
+				$('#DeleteRecharge1').hide();	
+						
+						
+				}
+$("#rrpmb02").validate({
+	
+	rules: {
+		rchamt: "required",
+		mobbak:"required"
+			
+	},
+	messages: {
+		rchamt: "Please enter the recharge amount",
+		mobbak:"Please select the bank account"							
+	}
+});
+				
+				</script>

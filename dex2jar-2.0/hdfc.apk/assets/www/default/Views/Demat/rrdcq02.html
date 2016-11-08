@@ -1,0 +1,121 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<link href="css/mobiscroll-2.0.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/libs/mobiscroll-2.0.custom.min.js" type="text/javascript"></script>
+
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+    
+	   
+	   <div style="display:none;" id="errormessage">
+    	<div class="info_row"><p id="msg2"></p></div>
+       </div>
+	
+    	<div id="statlmentcalender" style="display:none;">
+    	 <div class="info_row odd"> <span class="info_row_left clslineht">Clearing Corporation</span> 
+	        <span class="info_row_right clslineht" id="Clearing">
+			   </span>
+				
+			   </span>
+	        <div class="clearfix"></div>
+		 </div>
+		 <br/>		  
+		  
+		   <div data-bind="foreach:SettlementList">
+				
+				<div class="summblock" >
+				
+					<div class="info_row dark_header"> <span class="info_row_left">Market Type</span> 
+				        <span class="info_row_right" data-bind="text:mkttp" >
+						
+						   </span>
+				        <div class="clearfix"></div>
+					 </div>
+		 
+					
+					
+				
+				<div class="info_row odd"> <span class="info_row_left">Market Desc</span> 
+			        <span class="info_row_right clslineht" data-bind="text:mkttpdesc" >
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div>
+					
+				<div class="info_row even"> <span class="info_row_left">Settlement No.</span> 
+			        <span class="info_row_right" data-bind="text:setlno">
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+				
+				
+						
+				<div class="info_row odd"> <span class="info_row_left">Start Date</span> 
+			        <span class="info_row_right" data-bind="text:stlstartdt">
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+				
+				
+				
+				<div class="info_row even"> <span class="info_row_left">End Date</span> 
+			        <span class="info_row_right" data-bind="text:stlenddt">
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+					
+				
+				<div class="info_row odd"> <span class="info_row_left">NSDL Date</span> 
+			        <span class="info_row_right" data-bind="text:nsdlpayindt">
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+				
+						
+				
+				<div class="info_row even"> <span class="info_row_left">NSDL Time</span> 
+			        <span class="info_row_right" data-bind="text:nsdlpayintm">
+						
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+				
+			
+				<div class="info_row odd"> <span class="info_row_left">Pay In Date</span> 
+			        <span class="info_row_right" data-bind="text:payindt">
+					
+					   </span>
+			        <div class="clearfix"></div>
+				</div> 
+				
+				
+				<div class="info_row even"> <span class="info_row_left">Pay Out Date</span> 
+			        <span class="info_row_right" data-bind="text:payoutdt">
+						
+			        <div class="clearfix"></div>
+				</div>
+				
+				</div> 
+				<br/>
+			
+				<br/>
+			</div>
+				<div class="info_row" style="display:none;" id="msg"><p>The total records found exceeded the maximum allowed. Please refine your search.</p></div>
+			
+		     </div> 
+   
+           <br/>
+    
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.dark_header { background:#c0d3f1; }
+
+.autoslide-slider1 .slider .item, .autoslide-slider2 .slider .item, .autoslide-slider3 .slider .item { background: url("../img/carousel_block.png") no-repeat scroll center center transparent !important; }
+
+.panel_new {
+background: url("../img/carousel_bgblock.png") no-repeat scroll 0 0 transparent !important;
+
+}
+
+.next { width:12px !important;
+	height:16px !important;
+	background-image: url('../img/back1.png') !important;
+	}
+.prev{
+width:12px !important;
+	height:16px !important;
+	background-image: url('../img/next.png') !important;
+}
+
+
+.calBox { background:#e67919  !important; width:54px; text-align:center; color:#fff; }

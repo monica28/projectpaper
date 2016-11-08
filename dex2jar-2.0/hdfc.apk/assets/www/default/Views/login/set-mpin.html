@@ -1,0 +1,137 @@
+<div id="wrapper" class="mpin" style="top:96px;">
+<div class="content">				
+<div class="uid_box">
+		
+	<form name="Mpin" id="Mpin" method="post"  method="post" data-bind='submit:MpinSubmit' >
+		
+		<div class="info_row centerDiv">				
+			<div class="info_row2" >Please enter 4 digit Quick access pin</div> 
+			<div class="info_row3 fourInput ">
+				<input id="pin11" class='inputs passC'  name="pin11" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+							<input  id="pin12" class=' inputs passC'  name="pin12" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+							<input id="pin13" class=' inputs passC'  name="pin13" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+							<input  id="pin14" class='inputs passC'  name="pin14" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+						</div>
+					</div>
+					<div class="info_row centerDiv">
+						<!-- <div class="info_row2" style="margin-left: 11%;">Re-enter 4 digit Quick access pin</div> 
+						<div class="info_row3 fourInput" style="margin-left: 11%;">  -->
+						<div class="info_row2" >Re-enter 4 digit Quick access pin</div> 
+						<div class="info_row3 fourInput" >  
+							<input id="pin21" class='inputs passC'  name="pin21" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+							<input  id="pin22" class='inputs passC'  name="pin22" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+				<input id="pin23" class=' inputs passC'  name="pin23" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+
+				<input  id="pin24" class='inputs passC'  name="pin24" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" />
+			</div>				
+	
+		</div>	
+		
+			<div class="row mar_t_50">
+				<input type="submit" class="button" value="Continue" style="width: 315px;">
+			</div>			  
+	</form>
+
+</div>
+</div>
+</div>
+
+	
+<script type="text/javascript">
+if(localStorage.getItem("logerr") == "true"){
+	window.location.hash = '#mPB_login_error';
+}
+
+if(localStorage.getItem("logerrcount")){
+	var temp = localStorage.getItem("logerrcount");
+}
+else{var temp = 0;}
+//$("#pin11").focus();
+$(".inputs").keyup(function () {
+    if (this.value.length == 1) {
+      $(this).next('.inputs').focus();
+    }
+	if ($('#pin14').val().length == 1) {
+		$('#pin14').blur();
+		hdfc_android.hideKeyboard();		
+	}
+});
+function forgot(){
+	//localStorage.setItem("cnpn","");
+	window.location.hash = '#mPB_register';
+}
+function login(){
+//if($("#MPBLOGIN").valid()){
+	if($('#pin11').val()=="" || $('#pin12').val()=="" || $('#pin13').val()=="" || $('#pin14').val()==""){
+			alert('Please Enter 4 digit Login PIN');
+			return false;
+	}
+	var mpin = $('#pin11').val()+""+$('#pin12').val()+""+$('#pin13').val()+""+$('#pin14').val();
+	if(localStorage.getItem('loginerror') != "true"){
+	var tempPin = booksStore(localStorage.getItem("cnpn"));
+		if(mpin == tempPin){
+			var temppbkid = booksStore(localStorage.getItem("csd"));
+			passbookID = temppbkid;
+			window.location = "#financialSummary";
+			localStorage.setItem("logerrcount","0");
+		}
+		else{
+		
+			temp++;
+			if(temp == 5){
+				localStorage.setItem("logerr","true");
+				window.location.hash = '#mPB_login_error';
+				localStorage.setItem("logerrcount",temp);
+			}else{
+				var test = "Invalid PIN! "+(5 - temp)+" attempts remaining.";
+				alert(test);
+				$("input[type='tel']").val('');
+				localStorage.setItem("logerrcount",temp);
+			}
+		}
+	}
+	else{
+		alert("Your account has been blocked as you have made 5 unsuccessful Login attempts. Please re-register to start using mPassbook again");
+	}
+//}
+}
+
+$("#MPBLOGIN").validate({
+	//errorLabelContainer: $("#aadhar_Submit div.container"),  
+	rules: {
+		//pin14: "required"
+	},
+	messages: {
+		//pin14: "Enter App PIN"
+	}
+});
+//hdfc_android.getGCMID();
+//getNativeData('hideKeyboard', function(data){}, function(msg){},'');
+
+	$("#Mpin").validate({
+		rules: {
+			fldmPin: "required",
+			fldmPin2: "required",
+			
+			chkLogin: {
+	            required: {
+	                depends: function(element) {
+	                	var tmpsrch = $('#rsaEnroll').val();
+	                    return tmpsrch == 'N'
+	                }
+	            }
+	        }
+		},
+		messages: {
+			fldmPin: "Please enter mPIN",
+			fldmPin2: "Please Re-enter mPIN",
+			chkLogin: "Confirm Secure Access Details"
+		}
+	});	
+</script>
+	

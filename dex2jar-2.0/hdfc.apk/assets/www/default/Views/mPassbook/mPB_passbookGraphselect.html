@@ -1,0 +1,280 @@
+<style>
+	body .header, body .footer{display:none !important;}
+	.topBar > span {padding: 0 70px 0 65px;}
+	#graph{width:100% !important;height:100% !important;}
+    .topBar{position:fixed;}
+    .hamburger{left:30px;}
+    .hamburger:before, .hamburger:after, .hamburger span {left:4px;}
+    .hamburger.close{left:10px;}
+    .back_btn {line-height:74px;width: 30px; height: 70px; top: 0;left: 0;}
+    .mPB.show .back_btn{display:none;}
+</style>
+
+<section class="mPB">
+	<!-- starts topBar -->	
+	<div class="topBar">
+         <a onclick="interactiveClick();" class="back_btn"><span class="ico23"></span></a>
+		<a href="javascript:void(0);" class="hamburger"><span class="ico"></span></a>
+		<span>Month Wise Report</span>		
+	</div>
+	<div class="content sub_content">	
+	
+	<!-- ends topBar -->	
+	<!-- starts wraper -->	
+	<div class="wrapper">
+		<div class="assetHead row">
+            <div class="leftCol">
+                <label>Account</label> 				
+				<select name="fldAcctNo" id="fldAcctNo" data-bind="options: accountListPSBK,  optionsText:  'codacctno', optionsValue: 'codacctno', value: selAccount, event: {change:showSelectedAccount}" >
+				</select>	
+            </div>
+            <div class="rightCol">
+                <label>Available Balance</label> 				
+                <span class="rs" data-bind="text:curraccbalval">₹ 2,34,789.12 </span>
+            </div>			
+        </div>
+        
+		<div class="assetSummry">
+			<div class="info_row">
+				<div class="info_row3">  
+					<p class="radio_box" style='padding-top: 15px;'>
+					  <label>
+							<input type="radio" name="radOption" id="autopay" value="autopay1" checked="checked" />
+							<span>Income Vs Expenditure</span>
+					  </label>
+					</p>
+					<p class="radio_box marTB10">
+					 <label style="float:left;">
+							<input type="radio" name="radOption" id="nonautopay" value="autopay2"  />
+							<span>Category</span>
+					 </label>
+					 <select id='categoryselect' name="fldAcctNo" data-bind="options: AllCategories,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_short', value:'', optionsCaption:'-Select Category-'" style="width:auto;float:right;font-size:1em;"></select>
+					</p>  
+				</div>
+			</div>
+			<div class="info_row fromToDate" style='padding-top: 15px;'> 
+			
+				<div class="info_row2">From</div> 
+				
+				<div class="info_row3 noPad">
+				
+					<div class="widthHalf">
+						<select id='FromMonth'>					
+							<option value="">-Month-</option>
+							<option value="01">Jan</option>
+							<option value="02">Feb</option>
+							<option value="03">Mar</option>
+							<option value="04">Apr</option>
+							<option value="05">May</option>
+							<option value="06">Jun</option>
+							<option value="07">July</option>
+							<option value="08">Aug</option>
+							<option value="09">Sep</option>
+							<option value="10">Oct</option>
+							<option value="11">Nov</option>
+							<option value="12">Dec</option>
+						</select>
+					</div>	
+					<div class="widthHalf">
+						<select id='FromYear'>					
+							
+						</select>
+					</div>
+				</div>	
+				 
+			</div>
+			<div class="info_row fromToDate" > 
+			
+				<div class="info_row2">To</div> 
+				
+				<div class="info_row3 noPad">
+					<div class="widthHalf">
+						<select id='ToMonth'>					
+							<option value="">-Month-</option>
+							<option value="01">Jan</option>
+							<option value="02">Feb</option>
+							<option value="03">Mar</option>
+							<option value="04">Apr</option>
+							<option value="05">May</option>
+							<option value="06">Jun</option>
+							<option value="07">July</option>
+							<option value="08">Aug</option>
+							<option value="09">Sep</option>
+							<option value="10">Oct</option>
+							<option value="11">Nov</option>
+							<option value="12">Dec</option>
+						</select>
+					</div>	
+					<div class="widthHalf">
+						<select id='ToYear'>					
+							<!-- <option value="">-Year-</option>
+							<option value="2015">2015</option> -->
+						</select>
+					</div>
+				</div>	
+				 
+			</div>
+			<div class="info_row" style='padding: 15px;'>
+                <a href="javascript:void(0);" class="button input_btn" onclick='getgraph();'>Submit</a>
+            </div>
+
+		</div>
+		
+    </div>
+	</div>
+	<!-- ends wraper -->	
+</section>	
+
+<script src="js/libs/misc.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		selaccno = GraphID;
+		$("#fldAcctNo").val(GraphID);
+		accdata = accountListPSBK();
+		$(accdata).each(function(index, accnodet){
+										if(accnodet.codacctno == GraphID){
+											selectedAccount({ accno: accnodet.codacctno, displaytxt: accnodet.codacctno, acctbalance: accnodet.acctbalance, acctType: accnodet.acctType});
+											
+											var currAccData = selectedAccount();
+											fldAcctNo = currAccData.accno;            
+											curraccbalval = currAccData.acctbalance;
+										}
+						});
+		$('.rs').html(curraccbalval);
+	},500);
+});
+$('#ToYear').empty();
+			var min = 2015;
+			if((new Date().getMonth()+1) == '12' && new Date().getDate() == '31' && new Date().getFullYear() == min){
+					var max = new Date().getFullYear()+1;
+			}
+			else{
+					var max = new Date().getFullYear();
+			}
+			//var max = 2018;
+				select = document.getElementById('ToYear');
+				var opt = document.createElement('option');
+				opt.value = "";
+				opt.innerHTML = "-Year-";
+				select.appendChild(opt);
+			for (var i = min; i<=max; i++){
+				var opt = document.createElement('option');
+				opt.value = i.toString();
+				opt.innerHTML =i.toString();
+				select.appendChild(opt);
+			}
+			
+$('#FromYear').empty();
+			var min = 2015;
+			if((new Date().getMonth()+1) == '12' && new Date().getDate() == '31' && new Date().getFullYear() == min){
+					var max = new Date().getFullYear()+1;
+			}
+			else{
+					var max = new Date().getFullYear();
+			}
+			//var max = 2018;
+				select = document.getElementById('FromYear');
+				var opt = document.createElement('option');
+				opt.value = "";
+				opt.innerHTML = "-Year-";
+				select.appendChild(opt);
+			for (var i = min; i<=max; i++){
+				var opt = document.createElement('option');
+				opt.value = i.toString();
+				opt.innerHTML =i.toString();
+				select.appendChild(opt);
+			}
+function monthDiff(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+function getgraph(){debugger;
+if($('#nonautopay').is(':checked') && $('#categoryselect').val() == ''){
+	alert('Please select category to proceed');
+	return false;
+}
+if($('#FromMonth').val() == ''){
+	alert("Select from Month");
+	return false;
+}
+if($('#FromYear').val() == ''){
+	alert("Select from Year");
+	return false;
+}
+if($('#ToMonth').val() == ''){
+	alert("Select To Month");
+	return false;
+}
+if($('#ToYear').val() == ''){
+	alert("Select To Year");
+	return false;
+}
+if($('#ToYear').val() < $('#FromYear').val()){
+	alert("From Year can not be greater than To Year");
+	return false;
+}
+if($('#ToYear').val() == $('#FromYear').val()){
+	if($('#ToMonth').val() < $('#FromMonth').val()){
+		alert("From Month can not be greater than To Month");
+		return false;
+	}
+	if($('#ToMonth').val() == $('#FromMonth').val()){
+		alert("Select minimum two months for Month Wise Report");
+		return false;
+	}
+}
+var today = new Date();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+									if(mm<10) {
+										mm='0'+mm
+									}
+
+if($('#ToMonth').val() > mm && $('#ToYear').val() == yyyy){
+	alert("Please select To Month upto current Month");
+	return false;
+}									
+
+if($('#ToYear').val() > $('#FromYear').val()){
+	var temp = monthDiff(
+		new Date($('#FromYear').val(), $('#FromMonth').val(), 01), // November 4th, 2008
+		new Date($('#ToYear').val(), $('#ToMonth').val(), 01)  // March 12th, 2010
+	);
+	if(temp < 2){
+		alert("Select minimum two months for Month Wise Report");
+		return false;
+	}
+	if(temp > 11){
+		alert("Duration should not greater than One year");
+		return false;
+	}
+}
+
+busyInd.show();
+if($('#nonautopay').is(':checked')){
+	catgraph = "true";
+	catgraphname = $('#categoryselect').val();
+}
+else{catgraph = "false";}
+	var model = new mPassbookViewModel();
+	model.getgraph();
+}
+function interactiveClick(){
+    financialID1 = $('#acntno').html();
+    if(localStorage.getItem("Demo") == "Done"){
+        window.location.hash = "#interactive";
+    }
+    else{
+        window.location.hash = "#interactiveStatement";
+    }
+}
+</script>
+
+  
+
+

@@ -1,0 +1,105 @@
+<style>
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  
+  <form name="fbiller" id="fbiller"  method="post" data-bind='submit: rrblp01Submit'>
+	<br/>
+	 <div id="biller" style="display:none;"> 
+	<div class="info_row2"><div class="info_row">Pay Bill For</div></div>
+	<br/>
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+      
+	  
+	
+      <div class="info_row">
+      	<div class="info_row2">Utility Identification No.</div>
+      	<div class="info_row3">
+			<select name="fldBillDetails" id="fldBillDetails" data-bind="options: BillerList, optionsText: 'displaytxt', optionsValue: 'displayvalue1', value: selBiller, optionsCaption: '-Select-'">
+			
+		    </select>	
+        </div> 
+      </div>
+	
+	    <br/>  
+    <div class="clearfix"></div>
+	<div class="linedivider"></div>
+	<br/>   
+	<div class="clearfix"></div>
+	
+	<div class="alignc"> <input type="submit" class="button" value="BillPay" ></div>
+	    <br/> <br/> 
+	    
+	<div class="info_row2"><div class="info_row"> Utilities Registered for Bill Payment</div></div>    
+    <br/>
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+	    <br/>
+	    
+    <div class="alignc">
+     
+  
+  <div data-bind="foreach: BillerList1">
+	<div> <span class="page_title_sub" data-bind="text: billcompname"></span> <br/>
+	  <span class="f_lgrey"> Identification No: <span data-bind="text: mnemname"></span></span>  <br/>
+	 
+	  <span class="f_lgrey"> Bill Status: No Bill Due</span>
+	  
+	  </div>
+	
+	  <br/>
+	  
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+	<br/>
+   
+  	<div class="clearfix"></div>
+	</div>
+ 
+  </div>
+  
+  </div>
+      
+  
+  <div id="Nobiller" style="display:none;">
+  	<br/>
+    <div class="info_row2"><div class="info_row">	<p>No Registered billers!</p></div></div><br/>
+	</div>
+    
+    
+	<input type="hidden" name="fldRequestId" id="fldRequestId" value="RRBLP02" />
+	<input type="hidden" name="fldTxnId" value="BLP" />
+	
+	<input type="hidden" name="fldScrnSeqNbr" value="02" />
+  
+  <input type="hidden" id="fldBillDetails_txt" name="fldBillDetails_txt" value="" />
+  
+  <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+
+  
+  
+   
+ </form>
+
+  
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#fbiller").validate({
+	rules: {
+		fldBillDetails: "required",
+	},
+	messages: {
+		fldBillDetails: "Please select Utility Identification No.",
+	}
+});
+
+</script>

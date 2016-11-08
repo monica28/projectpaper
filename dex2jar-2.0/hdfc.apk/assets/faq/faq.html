@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link href="file:///android_asset/faq/layout.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="file:///android_asset/faq/jquery.js"></script>
+</head>
+
+<body class="faq">
+<div id="header1"></div>
+<div id="content">
+    <div id="content-nav">
+        <a name="1"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="1">How does the app get information on my spends, bills and transactions?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p>The app picks up data from the SMS sent by your bank, billers or merchants to your phone. The SMS data is organized into an easy to understand view.</p>
+            </div>
+        </div>
+
+        <a name="2"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="2">Is my data secure?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p><span>The app is designed with multiple levels of security and privacy protection.</span></p>
+
+                <ol>
+                    <li> The app doesn&rsquo;t have access to or ask for any sensitive data &ndash; like full account numbers, bank login/password, OTPs, etc.</li>
+                    <li>Your data is never shared with anyone</li>
+                    <li>Your personal SMS are never read</li>
+                </ol>
+            </div>
+        </div>
+
+        <a name="3"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="3">How do I manage my cash expenses?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p>Since your bank sends an SMS for every cash withdrawal, the app has a record of the total cash withdrawn in a given month.</p>
+                <p><strong>Adding a cash spend:</strong> You can record your cash spends by using the blue “+” button on the main screen.  Enter the cash amount, spend category and receiver name. This will be added to your monthly spend.</p>
+                <p> <img src="file:///android_asset/faq/images/image04.png"> </p>
+                <p><strong>Keeping track of cash available to spend:</strong> The “Cash Income/Wdl” section on the main screen shows how much cash has been spent (red bar), and how much is still available to spend (blue bar)</p>
+                <p> <img src="file:///android_asset/faq/images/image01.png"> </p>
+                <p><strong>Maintaining a list of all cash transaction:</strong> The Cash Management screen will display the list of all cash withdrawals and spend for a month.</p>
+            </div>
+        </div>
+
+        <a name="4"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="4">If I have unused cash from the previous month can I carry it forward for use in the next month?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p >At the beginning of the month, the app will automatically remind you to carry forward any unused cash from the previous month to the next. Alternatively, you can manually forward the unused cash by clicking on “Cash Forward” on the cash management screen.</p>
+                <p> <img src="file:///android_asset/faq/images/image06.png"> </p>
+            </div>
+        </div>
+
+        <a name="5"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="5">How do I delete a bank account that I do not want to track in the app?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p>Go to “Account Balances” from the left menu. Click on the settings icon on the top right corner. Select the account you would like to hide and check the box “Hide account and transactions”.</p>
+                <p> <img src="file:///android_asset/faq/images/image02.png"> </p>
+            </div>
+        </div>
+
+        <a name="6"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="6">Can I manually add a bank or credit card account that I don't get SMS for?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p >Yes you can. Go to the “Account Balances” screen from the left menu. Click on the settings icon on the top right corner. Click on the “+” button on bottom right corner and then select Bank Account or Credit Card and enter the details.</p>
+                <p> <img src="file:///android_asset/faq/images/image00.png"> </p>
+            </div>
+        </div>
+
+        <a name="7"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="7">How do I separate personal expenses from my business expenses?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p>All accounts are tagged as personal by default. But the app gives you the option to have separate views for your Personal and Business expenses. To enable this, go to the “Account Balances” screen through the left menu.</p><p>Click on the settings icon on top right. To tag accounts as “Business”, click on the relevant accounts one at a time. Once on this screen, select the  “Business” option. </p><p>All transactions from these accounts will be automatically tagged as Business transactions. Similarly, you have the option to change a particular transaction from Business to Personal and vice versa by selecting a transaction and clicking on Business or Personal. </p>
+                <p> <img src="file:///android_asset/faq/images/image05.png"> </p>
+            </div>
+        </div>
+
+        <a name="8"></a>
+        <p class="accordion_toggle"><a href="#" accesskey="8">How do I create a new spend category?</a></p>
+        <div class="accordion_content">
+            <div class="horizontal_container">
+                <p>App comes with several standard spend and transfer categories. However, you can create your own.  Select the transaction which you want to assign a new category to. This will take you to “Edit Transaction”.  Now click on the category to select from a set of of predefined categories or click on the ‘+’ button at the bottom of the screen to create a new category.</p>
+                <p> <img src="file:///android_asset/faq/images/image08.png"> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var currentItem;
+    $(function() {
+        $('.accordion_content').hide();
+
+        $('.accordion_toggle a').click(function(e){
+            if($(this).parent().hasClass('current')) {
+                $(this).parent()
+                        .removeClass('current')
+                        .next('.accordion_content').slideUp();
+            } else {
+                $(document).find('.current')
+                        .removeClass('current')
+                        .next('.accordion_content').slideUp();
+                $(this).parent()
+                        .addClass('current')
+                        .next('.accordion_content').slideDown();
+                currentItem = $(this);
+                setTimeout(function() {
+                    $(document.body).animate({
+                        'scrollTop': currentItem.offset().top
+                    }, 500);
+                }, 500);
+            }
+            e.preventDefault();
+        });
+    });
+
+</script>
+</body>
+</html>

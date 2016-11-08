@@ -1,0 +1,121 @@
+<style>
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  
+  <div class="info_row odd" id="accExitsMsg" style="display:none;">
+	<span class="info_row_menu_left" style="width:15%;"><img src="img/alerticon.png" /></span>
+		<span class="info_row_menu_right clslineht" style="width:72%;">
+			Sorry ! You do not have any Fixed Deposits linked to your Cust ID.
+		</span> 
+  </div>
+		
+  
+  <form class="custStyleInput" name="frmfss01" id="frmfss01" method="post" data-bind='submit: rrfss01Submit'>
+   <div data-bind="visible: accSlider">
+   
+   <br/>
+        <div class="clearfix"></div>
+	    <div class="linedivider"></div>   
+	    <div class="clearfix"></div>
+      		
+   <div class="clearfix"></div>
+      
+	<div class="info_row"><div class="info_row2">Savings / Current Account</div> 
+		<div class="info_row3">
+			<select name="selAcct" id="selAcct" data-bind="options: fssSavingAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: selFssSavingAcc, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+    <div class="info_row"><div class="info_row2">Fixed Deposit Account</div> 
+		<div class="info_row3">
+			<select name="cmbSrcAcctNo" id="cmbSrcAcctNo" data-bind="options: fssFDAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: selFssFDAcc, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>  
+
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+	  
+	<div class="info_row"><div class="info_row2">Terms and Conditions (Mandatory)</div><div class="info_row3">
+		<select name="fldChecked" id="fldChecked">
+		<option value="true">Accept</option>
+		<option value="false">Decline</option>
+		</select>
+	</div>
+	</div>
+      
+	<div class="clearfix"></div>
+		 
+   <div class="clearfix20"></div>
+   <div class="info_row2">
+    <input type="submit" class="button" value="Continue" >
+   </div>
+   
+    <br/>
+      
+		<div class="info_row ">
+		<br/>
+		<p><b>Note:</b></p>
+		<br/>
+		<p>This facility is available on NetBanking only to customers having a Savings or Current account with the Bank where the holding pattern is SINGLE i.e. there are no JOINT holders.</p>
+		<br/>
+		<p>Only the Principal amount of the Fixed Deposit will be considered for the Sweep-in facility.</p>
+		<br/>
+		<p>Fixed Deposits will be broken on first-in-first out basis.</p>
+		<br/>
+		<p>Sweep-in facility is not available on Fixed Deposits of value Rs 15 lacs and above booked at preferential interest rates.</p>
+		<br/>
+		<p>For availing Sweep-in facility on Fixed Deposits of value Rs 15 lacs and above booked at non-preferential rates, please contact your nearest HDFC Bank Branch.</p>
+		<br/>
+		<p>If there is a lien marked on the Fixed Deposit,please note that the sweep-in will not be maintained. Please view the Fixed Deposit summary page and check for a lien on the Fixed Deposit.</p>
+		<br/>
+		<p> To discontinue with the sweep-in facility on a particular Fixed Deposit, please visit your nearest HDFC Bank Branch.</p>
+		<br/>
+		<p>If there is a lien marked on the Fixed Deposit,please note that the sweep-in will not be maintained. Please view the Fixed Deposit
+		summary page and check for a lien on the Fixed Deposit.</p>
+		<br/>
+		<p>To discontinue with the sweep-in facility on a particular Fixed Deposit, please visit your nearest HDFC Bank Branch.</p>
+		<br/>
+		<p>In order to know more about this facility, please visit your nearest HDFC Bank Branch or call up PhoneBanking.</p>
+		
+		<div class="clearfix"></div>
+				      </div>
+      
+
+  	<input type="hidden" name="fldFCDBRequestId" id="fldFCDBRequestId" />
+  	
+   
+   </div>
+   </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#frmfss01").validate({
+	rules: {
+		selAcct: "required",
+		cmbSrcAcctNo: "required",
+		fldChecked: {chkvalid: "#fldChecked"},
+	},
+	messages: {
+		selAcct: "Select Savings / Current Account",
+		cmbSrcAcctNo: "Select Fixed Deposit Account",
+		fldChecked: {
+                chkvalid: "Please accept the Terms and Conditions before proceeding."
+            }		
+	}
+});
+
+</script>

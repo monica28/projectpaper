@@ -1,0 +1,75 @@
+
+
+
+<div id="wrapper" style="top:96px;">
+  <div id="content_container">
+     
+  <form name="frmrrdcl01" id="frmrrdcl01" method="post"  data-bind='submit: rrdcl01Submit'>
+    <div class="sub_content">
+
+	
+	
+			<div class="info_row"><p>Please select the ATM / Debit card you wish to hotlist / block from the list below.</p></div>
+			<br/>
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row">
+				<div class="info_row2">Card No.</div>
+				<div class="info_row3">
+				<select name="selCard" class="styled" id="selCard" data-bind="options: dbtAccountList, optionsText: 'cardnum', optionsValue: 'cardval'">
+			
+		    </select>	
+	
+				
+			</div> 
+			</div>
+      
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			<br/>
+			<div class="alignc"><input type="submit" class="button" value="Continue" ></div>
+			
+			<div class="info_row">
+			<p><b>Note:</b></p><br/>
+			<p>Hotlisted / Inactive cards are not listed above.</p><br/>
+			<p>Only those cards which are linked to your cust id will be visible under Debit Card status.</p><br/>
+			<p>This facility is currently not available for erstwhile Centurion Bank of Punjab customers and the same will be available shortly. In case you want to hotlist your Debit Card, kindly contact the HDFC Bank PhoneBanking now.</p>
+			</br>
+			</br>
+			</br>
+			</div>
+			
+	 
+
+	 
+	
+	
+	
+	</div>
+	</form>
+    
+  </div>
+	<div id="CardCnt" class="info_row" style="padding-top:5px;display:none;" ><p>No Debit/ATM cards linked to the custid.</p></div>
+  
+  
+  </div>
+
+<script>
+$("#frmrrdcl01").validate({
+	rules: {
+		selCard: "required",
+			
+	},
+	messages: {
+		selCard: "Select Card Number",
+				
+	}
+});
+</script>
+
+
+
+

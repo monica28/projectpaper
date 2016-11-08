@@ -1,0 +1,60 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+
+   <form class="custStyleInput" name="frmEmrConti" id="frmEmrConti" method="post" data-bind='submit: rremr04Submit'>
+   <div >
+   
+   		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left">Customer ID</span> 
+			<span class="info_row_right emrCustId"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Email ID</span> 
+			<span class="info_row_right clslineht emrEmailId" style="word-wrap: break-word;margin-top:5px;"></span>
+				<div class="clearfix"></div>
+			</div>			
+			</div>
+			
+			<div class="clearfix20"></div>
+			   <div class="info_row2">
+			    <input type="submit" class="button" value="Confirm" >
+			   </div>
+			
+   </div>
+   
+   
+	<input type="hidden" name="fldDOB" id="fldDOB" value="" />	
+	<input type="hidden" name="fldLogAccount" id="fldLogAccount" value="" />
+	<input type="hidden" name="fldCustEmail" id="fldCustEmail" value="" />
+	<input type="hidden" name="fldPhone" id="fldPhone" value="" />
+	<input type="hidden" name="fldPhoneOff" id="fldPhoneOff" value="" />
+	<input type="hidden" name="fldFax" id="fldFax" value="" />
+	<input type="hidden" name="fldCustNamFull" id="fldCustNamFull" value="" />
+	<input type="hidden" name="fldCtrUpdSrlNo" id="fldCtrUpdSrlNo" value="" />
+	<input type="hidden" name="fldAdd1" id="fldAdd1" value="" />
+	<input type="hidden" name="fldAdd2" id="fldAdd2" value="" />
+	<input type="hidden" name="fldAdd3" id="fldAdd3" value="" />
+	<input type="hidden" name="fldCity" id="fldCity" value="" />
+	<input type="hidden" name="fldState" id="fldState" value="" />
+	<input type="hidden" name="fldZIP" id="fldZIP" value="" />
+	<input type="hidden" name="fldCntry" id="fldCntry" value="" />	
+	<input type="hidden" name="fldMobileNo" id="fldMobileNo" value="" />
+	<input type="hidden" name="fldAcctNo" id="fldAcctNo" value="" />	
+	<input type="hidden" name="fldconvstatus" id="fldconvstatus" value=""/>
+	<input type="hidden" name="fldemailstmt" id="fldemailstmt" value="" />	
+	<input type="hidden" name="fldListAccts" id="fldListAccts" value="" />
+	
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+</form>
+  </div>
+</div>

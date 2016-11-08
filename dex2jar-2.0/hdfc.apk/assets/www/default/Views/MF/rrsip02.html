@@ -1,0 +1,421 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+</style>
+
+<script type="text/javascript">
+function trim(text) {
+    return text.replace(/^\s+|\s+$/g, "");
+}
+
+function callFreqDetails()
+{
+//alert('inside');
+	var ob = document.getElementById('fldFrequency');
+	var freqsel = ob.options[ob.selectedIndex].value;
+	var lenfreq = document.getElementById('fldFrequency').options.length;
+	var arrfreq = freqsel.split('#');
+	//console.log("frequecbt  "+arrfreq);	
+	// days hidden variable
+	var selectdaysobj = document.getElementById("fldSiDay");
+	selectdaysobj.options.length = 1;
+		
+	var hid_days = document.getElementById('hid_strdays').value;
+	
+	for(i=0;i<lenfreq;i++){
+		var tmpfr = document.getElementById('fldFrequency').options[i].value;
+		
+		var nmval = tmpfr.split('#');
+		
+		if(nmval[0] == arrfreq[0]){
+			var hidfreqvari = "hid_freq_"+nmval[0];
+			var hidfreqdate = "hid_freqdate_"+nmval[0];
+			
+			var selectedfreq = document.getElementById(hidfreqvari).value;
+			var freqdtlist = document.getElementById(hidfreqdate).value;
+			
+			var arrfreqselval = selectedfreq.split('###');
+			var arrfreqdtval = freqdtlist.split('###');
+			
+			document.getElementById('freqminamt').innerHTML = arrfreqselval[1];
+			document.getElementById('freqminsi').innerHTML = arrfreqselval[2];
+			document.getElementById('freqminuni').innerHTML = arrfreqselval[3];
+			document.getElementById('strfreqnm').innerHTML = arrfreqselval[0];
+			
+			document.getElementById('fldMinAmount').value = arrfreqselval[1];
+			document.getElementById('fldNoofsi').value = arrfreqselval[2];
+			document.getElementById('fldMinUnit').value = arrfreqselval[3];
+			
+			var selectobj = document.getElementById("fldSiDate");
+			selectobj.options.length = 1;
+
+			for(m=0;m<arrfreqdtval.length;m++) {
+				if(trim(arrfreqdtval[m]) != ''){
+			    selectobj.options[selectobj.options.length] = new Option(trim(arrfreqdtval[m]), trim(arrfreqdtval[m]));
+			    }			   
+			}
+			
+			
+			//document.getElementById('selectfldSiDate').innerHTML = arrfreqdtval[0];			
+		}			
+	}
+	
+	if(arrfreq[1] != 'Monthly' && arrfreq[1] != 'Fortnightly' && arrfreq[1] != 'Quarterly'){
+		
+		var arrstrdays = hid_days.split('|||');
+		var tmpselstr = '';
+		
+		for(g=0;g < arrstrdays.length-1;g++) {
+				arrvalstrdays = arrstrdays[g].split('###');
+				
+				if(g == 0)
+					tmpselstr = arrvalstrdays[1];					
+				
+				selectdaysobj.options[selectdaysobj.options.length] = new Option(trim(arrvalstrdays[1]), trim(arrvalstrdays[0]));			   	
+		}	
+
+		//document.getElementById('selectfldSiDay').innerHTML = tmpselstr;	
+	}
+	
+var freqname=$("#fldFrequency option:selected").text();
+	if (freqname == 'Monthly' || freqname == 'Fortnightly' || freqname == 'Quarterly') {
+$('#fldSiDay').val('');
+                    $('#fldSiDay').attr('disabled', 'disabled');
+               
+	}
+	 else if(freqname =='Weekly' )
+             {       $('#fldSiDay').removeAttr('disabled');}
+             else{
+             
+             $('#fldSiDay').val('');
+                    $('#fldSiDay').attr('disabled', 'disabled');
+             }
+	
+}
+
+
+function formSubmit(reqid, txnid, seqno)
+{
+	
+	
+	//alert(trim(document.getElementById('fldSiDate').value));
+	//document.getElementById("f1").submit();
+	var objs = document.getElementById('fldAccount');
+	document.getElementById('fldAccount_txt').value = objs.options[objs.selectedIndex].innerHTML;
+	
+	var freqnm = document.getElementById('fldFrequency').value;
+	
+	if(freqnm == '')
+	{
+		alert('Please select si frequency');
+		return false;
+	}
+	
+	if(document.f1.fldSiDay.selectedIndex == 0 && document.f1.fldSiDate.selectedIndex == 0) {
+		alert("Please select either Days or Date");
+		document.f1.fldSiDate.focus();
+		return false;
+	}
+	
+	var objs1 = document.getElementById('fldSiDay');
+	document.getElementById('fldSiDay_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+	
+	var objs2 = document.getElementById('fldSiDate');
+	document.getElementById('fldSiDate_txt').value = objs2.options[objs2.selectedIndex].innerHTML;
+	
+	//document.getElementById("f1").submit();
+}
+</script>
+<style>
+.styled-select select {
+   background: transparent;
+   width: 450px;   
+   font-size: 18pt;
+   border: 1px solid #fff;
+   height: 37px;
+   line-height:37px;   
+}
+
+.styled-select {  
+   width:100%;
+   background-position: 95% 50%;
+   height: 35px;
+   line-height:37px;
+   overflow: hidden;
+   background: url(img/DropD_btn.png) no-repeat right #fff;
+}
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+    
+        
+	<div  data-bind="foreach: txnerror,visible:txnerror().length>0"><span data-bind="text:errdesc"></span></div>
+		
+        <form name="f1" id="f1" method="post" data-bind='submit: rrsip02Submit,visible:!txnerror().length' >
+    
+    <div class="sub_content">
+
+    		
+			<div id="fndinfo" style="display:none">
+    		
+			<div class="info_row even"><span class="info_row_left clslineht">Mutual Fund Account</span> 
+			<span class="info_row_right" id="unitholderid1">
+				
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Mutual Fund Name</span> 
+				<span class="info_row_right clslineht" id="amcname1">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row even"><span class="info_row_left clslineht">Scheme Name</span> 
+				<span class="info_row_right clslineht" id="fundname1">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			
+			
+			<div class="info_row odd"><span class="info_row_left">NAV</span> 
+				<span class="info_row_right clslineht" id="navandnavdate">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">Cut-Off Time</span> 
+				<span class="info_row_right" id="cutofftime">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<br/>
+		  <div class="clearfix"></div>
+	      <div class="linedivider"></div>   
+	      <div class="clearfix"></div>
+	      
+	      <div class="info_row">
+	      	<div class="info_row2">Frequency name</div>
+	      	<div class="info_row3" id="pfreq">
+	      	<!-- <div class="styled-select">-->
+			<select name="fldFrequency" id="fldFrequency" data-bind="options: mfFundList1, optionsText: 'displaytxt', optionsValue: 'accountValue', value: mfFromAcctNo, optionsCaption: '-Select Si Frequency-'">
+		          
+		        </select>
+	      	 
+		       <!-- </div>     	-->
+	        </div> 
+	      </div>
+			
+	      <div class="clearfix"></div>
+	      <div class="linedivider"></div>   
+	      <div class="clearfix"></div>
+						
+			
+				
+			<div data-bind="foreach: mfFundList1">
+				<input type="hidden"  data-bind="attr: { id: 'hid_freq_' + freqid, name: 'hid_freq_' + freqid  }, value:freqname+'###'+minsitxnamt+'###'+noofsi+'###'+minsitxnunits  " >
+					
+				</input>
+	
+				<input type="hidden" data-bind="attr: { id: 'hid_freqdate_' + freqid, name: 'hid_freqdate_' + freqid  },  value: createDateValue(date)  " >
+						
+					
+				</input>
+			</div>
+			
+			<input type="hidden" id="hid_strdays" name="hid_strdays"  />
+			
+			<div class="info_row even"><span class="info_row_left">Minimum Amount</span> 
+				<span class="info_row_right" id="freqminamt">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<input type="hidden" name="fldMinAmount" id="fldMinAmount" value="" />
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Minimum Number of SI</span> 
+				<span class="info_row_right" id="freqminsi">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<input type="hidden" name="fldNoofsi" id="fldNoofsi" value="" />
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Minimum Units</span> 
+				<span class="info_row_right" id="freqminuni">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<input type="hidden" name="fldMinUnit" id="fldMinUnit" value="" />
+			<div class="info_row even"><span class="info_row_left clslineht">Current Holding Value</span> 
+				<span class="info_row_right" id="currentholdingamt">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left">Frequency</span> 
+				<span class="info_row_right" id="strfreqnm">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+		      
+		      <div class="info_row">
+		      	<div class="info_row2">Days</div>
+		      	<div class="info_row3">
+		      	<!--<div class="styled-select">-->
+		      		<select name="fldSiDay" id="fldSiDay" class="styled">
+			          <option value=""  selected="true" >-Select day-</option>
+			        </select>
+			     <!--</div>-->
+		        </div> 
+		      </div>
+      
+		    <div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			  
+			  <div class="info_row">
+		      	<div class="info_row2">Date</div>
+		      	<div class="info_row3">
+		      	<!--<div class="styled-select">-->
+		      		<select name="fldSiDate" id="fldSiDate" class="styled">
+			          <option value=""  selected="true" >-Select date-</option>
+			        </select>	
+			    <!--</div>-->
+		        </div> 
+		      </div>
+      
+		    <div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row">
+		      	<div class="info_row2">No. of Installment</div>
+		      	<div class="info_row3">
+		      	
+		      		<input type="text" name="fldNoOfInstallment" id="fldNoOfInstallment" value="" size="10" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+			    </div> 
+		      </div>
+			
+		     <div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row">
+		      	<div class="info_row2">Bank Account No.</div>
+		      	<div class="info_row3">
+				<select name="fldAccount" id="fldAccount" data-bind="options: bankAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: mfFromsiType, optionsCaption: '-Select-'">
+		          
+		        </select>
+		      		
+			    </div> 
+		      </div> 
+			
+		     <div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			  
+			<div class="info_row">
+		      	<div class="info_row2">Investment Amount</div>
+		      	<div class="info_row3">
+		      		<input type="text" name="fldTypeValue" id="fldTypeValue" value="" size="10" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" />
+			    </div> 
+		      </div>
+			
+			<div class="alignc"><input type="submit" class="button" value="Continue"/> </div>
+			<br/>
+			</div>
+			
+				<div class="info_row" id="InvldFund" style="display:none;"><p>Invalid Fund.</p></div>
+			
+			<div class="info_row">
+			<p>Same day NAV would be applicable for transactions done before the cut off time.</p><br/>
+			<p>For transactions received post cut off time applicable NAV would be the next business day.</p><br/>
+			<p>Please refer Terms and Conditions for NAV applicability on Liquid Schemes transactions and all transactions done on Saturday, Sundays and Holidays.</p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>	
+	
+	</div>
+	
+	<input type="hidden" name="fldRequestId" value="RRSIP04" />
+	<input type="hidden" name="fldTxnId" value="SIP" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="04" />
+	
+	<input type="hidden" id="fldSiDate_txt" name="fldSiDate_txt" value="" />
+	<input type="hidden" id="fldSiDay_txt" name="fldSiDay_txt" value="" />
+	<input type="hidden" id="fldAccount_txt" name="fldAccount_txt" value="" />
+	<input type="hidden" id="fldCodTxn" name="fldCodTxn" value="" />			
+	
+
+	<input type="hidden" id="fldSelUhid" name="fldSelUhid" value="" />
+	<input type="hidden" id="fldFromTxn" name="fldFromTxn" value="SIP" />
+	<input type="hidden" id="screenSelectionTemp" name="screenSelectionTemp" value="done" />
+	<input type="hidden" id="fldUhid" name="fldUhid" value="" />
+	<input type="hidden" id="fldFundCode" name="fldFundCode" value="" />
+	<input type="hidden" id="fldAmcId" name="fldAmcId" value="" />	
+	<input type="hidden" id="fldFundName" name="fldFundName" value="" />
+	<input type="hidden" id="fldFundCurr" name="fldFundCurr" value="" />
+	<input type="hidden" id="fldSettlementDate" name="fldSettlementDate" value="" />
+	<input type="hidden" id="fldIsin" name="fldIsin" value="" />
+	<input type="hidden" id="fldStartDate" name="fldStartDate" value="20/10/2080" />
+	<input type="hidden" id="fldEndDate" name="fldEndDate" value="20/10/2090" />
+	<input type="hidden" id="fldParentForm" name="fldParentForm" value="frmTxn" />
+	<input type="hidden" id="fldSubmitForm" name="fldSubmitForm" value="N" />
+	<input type="hidden" id="fldCodTxn" name="fldCodTxn" value="BUY" />
+	
+	<input type="hidden" id="fldfundname2" name="fldfundname2" value="" />	
+	<input type="hidden" id="fldfundcode2" name="fldfundcode2" value="" />	
+	
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+	
+	</form>
+	<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#pfreq select[name="fldFrequency"]').change(function(e) {
+   	callFreqDetails();
+  });
+
+  //callFreqDetails();
+});
+
+function createDateValue(dates) {
+//return dates.join("###");
+
+if(typeof(dates)=="string"){
+ return dates+"###";
+ //return dates.split(",").join("###");
+}
+else{
+   return dates.join("###");
+}
+}
+$("#f1").validate({
+	 rules: {
+            fldAccount: "required",
+        },
+        messages: {
+           fldAcceptTerms:"Please Select Bank Account No."
+        }
+});
+
+</script>
+    </div>
+</div>

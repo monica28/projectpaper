@@ -1,0 +1,53 @@
+
+    <div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content"> 
+ 
+    <div class="sub_content" id="mainDiv">
+
+	
+   		<!-- <div class="info_row" data-bind="visible: error"><p data-bind="text: errormsg"></p></div> -->	
+
+	
+		<div data-bind="foreach: dbtAccountList">
+			
+			<div class="summblock">
+			 
+			<div class="info_row dark_header"><span class="info_row_left">Card No.</span> 
+			<span class="info_row_right" data-bind="text: cardnum"> </span>
+				<div class="clearfix"></div>
+			</div> 
+			
+		<div class="info_row odd"><span class="info_row_left">Status</span> 
+				<span class="info_row_right" id="statusid" data-bind="text: Status">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			</div>
+			<div class="clearfix"></div>
+			<br/>
+			
+	</div>
+		<div id="CardCnt" class="info_row" style="padding-top:5px;display:none;" ><p>No Debit/ATM cards linked to the custid.</p></div>
+	
+			<div class="info_row">			
+			<p><b>Note:</b></p><br/>
+			<p>Only those cards which are linked to your cust id will be visible under Debit Card status.</p>
+			<br/>
+			<p>This facility is currently not available for erstwhile Centurion Bank of Punjab customers and the same will be available shortly. In case you want to hotlist your Debit Card, kindly contact the HDFC Bank PhoneBanking now.</p>
+			</br>
+			</br>
+			<div class="clearfix"></div>
+			</div> 
+			
+			
+ 
+
+		
+	 
+	
+
+	
+	</div>
+	</div>
+    </div>

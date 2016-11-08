@@ -1,0 +1,76 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.summblock { margin:0 5px !important; }
+</style>
+
+<div id="wrapper" style="top:96px;">
+  
+  
+  <div class="content sub_content">
+<div class="info_row" id="accExitsMsg" style="padding-top:5px;display:none;">
+    <p>You do not have Fixed Deposit with the Bank</p>
+ </div>
+<div class="info_row" id="maturityMsg" style="padding-top:5px;display:none;">
+    <p>Maturity amount does not include TDS</p>
+    <br>
+</div>
+      
+	  
+	  <div data-bind="foreach: fixedDepositList">
+	  
+	 <div class="summblock">		
+		
+		<div class="info_row dark_header"><span class="info_row_left">Account No.</span>
+		<span class="info_row_right" data-bind="text: codacctno"></span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row  odd"><span class="info_row_left">Maturity Amount</span> 
+		<span class="info_row_right page_title_sub" data-bind="text: tdmatamt"></span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left">Maturity Date</span> 
+		<span class="info_row_right"  data-bind="text: tdmatdate"></span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Branch</span> 
+		<span class="info_row_right clslineht" data-bind="text: nambranch"></span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left">Currency</span> 
+		<span class="info_row_right" data-bind="text: namccyshrt"></span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Deposit Start Date</span> 
+		<span class="info_row_right" data-bind="text: tdacctopendate"></span>
+			<div class="clearfix"></div>
+		</div>
+		<div class="info_row even"><span class="info_row_left">Principal Amount</span> 
+			<span class="info_row_right" data-bind="text: currbalance"></span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Rate of Interest</span> 
+		<span class="info_row_right" data-bind="text: rateint">
+			</span>
+			<div class="clearfix"></div>
+		</div>		
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left"></span> 
+		<span class="info_row_right"></span>
+				<div class="clearfix"></div>
+			</div>
+	 </div>
+			
+	  
+      <div class="clearfix"></div>
+
+  </div>
+  <!-- /content --> 
+  
+</div>

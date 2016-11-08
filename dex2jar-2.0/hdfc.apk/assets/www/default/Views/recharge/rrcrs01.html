@@ -1,0 +1,70 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content">
+<form name="rrcrs01" id="rrcrs01" method="post" data-bind='submit: rrcrs01submit'>
+					<div class="info_row rchgMenu"> 
+						
+							<div><label>Reference number</label></div>
+								<div class="dispTable">
+								
+									<input type="text" id="mobref" name="mobref" />
+							
+							</div>
+					  
+					</div>
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+							
+				
+					
+					
+					<div class="clearfix20"></div>
+					<div class="center_div">
+						<input type="submit" class="button" value="Show Status" />
+					</div>
+				</form>
+				<div class="info_row">
+
+		<b>Note:</b>
+
+		<br/><br/>
+		<p>- You can check your transaction Ref. No in the payment sms received.</p>
+		<br/>
+		<p>- Please note that if your recharge is not successful due to any reason, the debited amount will be reversed to your account within 3 to 5 days.</p>
+		<br/>
+
+
+
+
+
+			<div class="clearfix"></div>
+
+
+
+			<div class="clearfix"></div>
+
+		 </div>
+
+				</div>
+			</div>
+<script>
+
+$("#rrcrs01").validate({
+	
+	rules: {
+		mobref: "required",
+		
+			
+	},
+	messages: {
+		mobref: "Please enter the Reference number",
+							
+	}
+});
+
+
+
+</script>			
+			
+</div>			
+		

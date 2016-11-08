@@ -1,0 +1,135 @@
+
+
+
+<div id="wrapper" style="top:96px;">
+  <div id="content_container">
+     
+  <form name="frmrsdpi01" id="frmrsdpi01" method="post"  data-bind='submit:rsdpi01Submit'>
+    <div class="sub_content">
+
+	
+	
+			<div class="info_row"><p></p></div>
+			<br/>
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row">
+				<div class="info_row2">Card No.</div>
+				<div class="info_row3">
+				<select name="fldCardNo" class="styled" id="fldCardNo" data-bind="options: AccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', optionsCaption: '-Select-'">
+			
+		    </select>	
+	
+				
+			</div> 
+			</div>
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+				<div class="info_row">
+				<div class="info_row2">NewPin:</div>
+				<div class="info_row3">
+				<input class="styled passC" type='tel'  name="fldNewPin" id="fldNewPin" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" value="" maxlength="4" >
+			
+		    </span>	
+	
+				
+			</div> 
+			</div>
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+						<div class="info_row">
+				<div class="info_row2">New Confirm Pin:</div>
+				<div class="info_row3">
+				<input class="styled passC" type='tel' name="fldNewConfirmPin" class="num" id="fldNewConfirmPin" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" value="" maxlength="4" >
+			
+		    
+	
+				
+			</div> 
+			</div>
+      
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			<br/>
+			<div class="alignc"><input type="submit" class="button" value="Continue" ></div>
+			
+		<div class="info_row">
+			<p><b>Note:</b></p><br/>
+			<p>You can use this PIN (Personal identification number) for authenticating Point of Sale transactions at Merchant outlets.</p><br/>
+			<p>For security reasons please do not share PIN with anyone.</p><br/>
+			<p>You can anytime change the PIN at ATM/NetBanking.</p>
+			</br>
+			</br>
+			</br>
+			</div>
+			         <input type="hidden" name="fldRsaPublicKey" id="fldRsaPublicKey" value="" />
+	                <input type="hidden" name="fldCardAANNo" id="fldCardAANNo" value="" />
+	                <input type="hidden" name="fldExpDate" id="fldExpDate" value="" />
+
+	 
+	
+	
+	
+	</div>
+	</form>
+    
+  </div>
+	<div id="CardCnt" class="info_row" style="padding-top:5px;display:none;" ><p>No Debit/ATM cards linked to the custid.</p></div>
+  
+  
+  </div>
+
+ <script type="text/javascript">
+  $.validator.addMethod("Password_not_same", function(value, element) {
+ // alert($('#fldNewPass').val() != value);
+   return $('#fldNewPin').val() == value;
+}, "PIN Number do not match.");
+
+	$("#frmrsdpi01").validate({
+		rules: {
+		    yearfldExpDate: "required",
+		    monthfldExpDate: "required",
+			fldCardNo: "required",
+			fldNewPin: {
+			       required: true,
+				    minlength: 4,
+		            maxlength:4
+                
+            },
+
+			
+			fldNewConfirmPin: {
+			       required: true,
+				   minlength: 4,
+		           maxlength:4,
+                   Password_not_same:true     
+               },
+		},
+		messages: {
+		    monthfldExpDate: "Please Select Expiry Month",
+		    yearfldExpDate: "Please Select Expiry Year",
+            fldCardNo: "Please card number",
+			fldNewPin: {
+					required : "Please Pin No.",
+			        minlength: "Please enter 4 digit Pin Number.",
+		            maxlength:"Please enter 4 digit Pin Number."		   
+            },
+            
+			fldNewConfirmPin: {
+					required : "Please Re-Enter Pin.",
+					minlength: "The Pin Number updated in the Re-Enter Pin filled, is not 4 digit.",
+		            maxlength:"The Pin Number updated in the Re-Enter Pin filled, is not 4 digit.",
+			       Password_not_same:"Pin Number do not match."		   
+               }
+           			
+		}
+		
+	});	
+	
+
+</script>

@@ -1,0 +1,788 @@
+<style>
+    body .header, body .footer{display:none !important;}
+    .topBar > span {padding: 0 70px 0 50px;}
+	#canvas-holder{width:150px;}
+	.amtBox span{top:0;}	
+	.assetBox aside:first-child span {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font-size:0.85em;}
+	.mPB .list_box a aside{vertical-align:top;}
+	.amount{display:none !important;}
+	.amount_show{display:block !important;}
+	.assetBox aside:nth-child(3) span{margin:0 !important;padding:1px;}
+	.assetBox aside:nth-child(1){width:60%;}
+	.assetBox aside:nth-child(2){width:40%;}
+	.link{ width: 100%; text-align: center;}
+	.link a{display: inline-block;padding-top: 12px;}
+	.assetChart .contets{padding-bottom:0;}	
+	.assetBox.show_more aside:first-child span {white-space:normal;}
+	.assetBox.show_more .amount { display: block !important;}	
+	.arrowIcon:before {content: "\e913";}
+	.assetBox.show_more .arrowIcon:before {content: "\e914";}
+	.mPB select{width:80%;}
+	.assetSummry .time{padding: 0 10px 10px 10px;}
+	.more_arrow{bottom:40px}
+	.amtBox input{height:34px;}
+	.link{margin-top:20px !important;float:left;}
+.chartDesc{position:relative;}
+.chartDesc .noCatg{position: absolute;left: 0;top: 0;right: 0;bottom: 0;background: #fff;z-index: 1;text-align: center;display:none; padding-top: 15px; color: #b0b0b0;  font-size: 0.8em;}	
+</style>
+<section class="mPB">
+ <div class="content sub_content">	
+    <!-- starts topBar -->	
+    <div class="topBar">
+        <a href="javascript:void(0);" class="hamburger"><span class="ico"></span></a>
+        <span>Interactive Statement</span>
+        <a href="javascript:void(0);" class="filter ico ico15"></a>
+		<div class="searchWrap">
+			<form>
+				<fieldset>
+					<i id="searchBack" class="searchBack"></i>
+					<input class="searchBox" type="text">
+					<span class="searchIcon ico ico14" id="searchIcon" onclick="srch();"></span>
+					<span class="searchIcon ico ico26" id="searchIcon1" style="display:none;"></span>
+				</fieldset>
+			</form>
+		</div>
+    </div>	
+    <!-- ends topBar -->	
+    <!-- starts wraper -->	
+    <div class="wrapper">
+
+        <div class="assetHead row">
+            <div class="leftCol">			
+               	<label>Account</label>
+				<select name="fldAcctNo" id="fldAcctNo" data-bind="options: accountListPSBK,  optionsText:  'codacctno', optionsValue: 'codacctno', value: selAccount, event: {change:showSelectedAccount}" >
+				</select>	 
+            </div>
+            <div class="rightCol">
+                <label>Available Balance</label> 				
+                <span class="rs" data-bind="text:curraccbalval"> ₹ 2,34,789.12 </span>
+            </div>			
+        </div>
+		
+		<div class="assetChart row" id="Uppertabs" style="display:none;">
+		    <div class="head">
+                <ul class="tab">
+                    <li>
+						<a class="active" id='Expenses' onclick='tabclick(id);'>Expenses</a>
+                    </li>
+					<li>
+                        <a id='Income' onclick='tabclick(id);'>Income</a>
+                    </li>
+                </ul>
+				<a href="#Categories" class="avilCatg">
+					<span class="ico ico25"></span>
+				</a>
+            </div>
+        </div>
+
+        <div class="assetChart row chartDesc">
+            <div class="contets row">
+
+				<div class="canvas_box">
+					<div id="canvas-holder">
+						<canvas id="chart-area" width="500" height="500"/>
+					</div>
+				</div>
+
+                <div class="chartLegend" >
+                    <ul data-bind="foreach: piechartarray">
+                        <li>
+                            <span class="title" data-bind="text: label">Debit Card *** 6004</span>
+                            <span class="value" data-bind="text: value">₹ 21,322.76</span>
+							<span class="line" data-bind="style:{background:color}"></span>
+                        </li>
+                    </ul>
+                </div>
+				<span class="more_arrow"></span>
+				<div class="link">
+					<a onclick="monthwise();">See Monthwise Report<span class="ico24" ></span></a>
+				</div>
+            </div>
+			<span class="noCatg" id="noCatg">Sorry no chart available for selected criteria.</span>
+        </div>
+		<!-- ko if: accountListMpassbook().length != 0 -->
+        <div class="assetSummry padB102">
+				<div class="transBox">					
+					<span class="lastUpdt"></span>					
+				</div>                
+					<div class="clear_box" id="filterserach" style='display:none;'>
+							<span id='filtertext'>Showing filtered result</span>
+							<a onclick="clearFilter();">Clear</a>
+					</div>				
+                <div class="row noPad noBorder" data-bind="foreach: accountListMpassbook">
+				<!-- ko if: TXN_DATE != "" -->
+				<h3 class="heading" data-bind="text:TXN_DATE">11 Aug 2014</h3>
+				<!-- /ko -->
+                    <div class="info_row">						
+                        <div class="info_row3 padL5"> 
+<!--                             <select data-bind="attr: {id:TXNID},value: TXN_CATAGORY" onchange='confrmval(this.id)'>
+								<option value="">Select</option>							
+                                <option value="Credit">Credit Card</option>
+								<option value="Fund">Fund Transfer </option>
+                            </select>
+ -->						<!-- ko if: TXN_WITHDRAWAL == null -->	
+								<select name="fldAcctNo" data-bind="attr: {id:TXNID}, options: CategoryList,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_short', optionsCaption:'-Select Category-', event:{ change: confrmval}">
+								</select>
+							<!-- /ko -->
+							<!-- ko if: TXN_DEPOSIT == null -->
+								<select name="fldAcctNo" data-bind="attr: {id:TXNID}, options: CategoryList_expense,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_short', optionsCaption:'-Select Category-', event:{ change: confrmval}">
+								</select>
+							<!-- /ko -->							
+                        </div>
+                    </div>
+                    <div class="info_row">
+                       <span class="time" data-bind="text:TXN_VALUE_DATE">"11:30 pm</span>
+                    </div>
+                    <div class="info_row list_box" >
+                        <a class="assetBox" href="javascript:void(0)">
+                            <aside>
+                                <span class="textNarration" data-bind="text:TXN_NARRATION1"></span>
+                            </aside>
+                            <aside>
+							<!-- ko if: TXN_WITHDRAWAL == null -->
+                                <span class="greenTxt" data-bind="text:TXN_DEPOSIT">₹ 1,267.00 Dr</span>
+                                <span data-bind="text:TXN_CLOSING_BAL" class="amount">₹ 2,33,522.12</span>
+							<!-- /ko -->
+							<!-- ko if: TXN_DEPOSIT == null -->
+                                <span class="redTxt" data-bind="text:TXN_WITHDRAWAL">₹ 1,267.00 Dr</span>
+                                <span data-bind="text:TXN_CLOSING_BAL" class="amount">₹ 2,33,522.12</span>
+							<!-- /ko -->
+                            </aside>
+                            <aside>
+                                <span class="ico arrowIcon"></span>
+                            </aside>
+                        </a>
+                    </div>
+					<div class="info_row editBtn" data-bind="attr: {id:TXNID+'-remark'}" onclick='editRemark(this.id)' style="display:none;">
+						<span data-bind="text:TXN_ADDREMARKS" class='remarktext' style='float: left;'></span>
+						<a class="ico ico22 remark"></a>
+					</div>
+                </div>
+           
+        </div>	
+		<!-- ko if: accountListMpassbook().length > 9 -->
+		<div class="appearError" >	
+			<div class="info_row">
+				<p id="continueText">You need to set categories for minimum 10 transactions for a pie chart to appear.
+				</p>
+			</div>
+			<div class="info_row">						
+				<input id='category_btn' type="button" class="button input_btn" value="CONTINUE" style='display:none;' onclick='viewchart();'/>
+				<span id='category_txt' class="remainig">10 Remaining</span>
+			</div>
+		</div>
+		<!-- /ko -->
+		<!-- /ko -->
+		<!-- ko if: accountListMpassbook().length == 0 -->
+		<div class="appearError" id="notrans">	
+			<div class="info_row">
+				<p style="margin:0;">No Transactions Found</p>
+			</div>			
+		</div>
+		<!-- /ko -->
+    </div>
+    </div>
+</section>
+     
+<section class="fixedWrap">
+    <section class="popWrap one notePopup" style="height: 370px;">
+        <div class="popHeader ">
+            <div class="pageTitle ">
+                <h2 class="alignCenter">Filter Transactions</h2>
+                <a href="javascript:void(0);" class="closeIcon"><span class="ico ico16"></span></a>
+            </div>						
+        </div>				
+    
+                <div class="ftConfBox">
+                    <div class="content sub_content">	
+                        <form>							
+                            <div class="info_row">
+                                <div class="info_row2">By Type</div> 
+                                <div class="info_row3 padL5"> 
+                                    <select id="type" onchange='typeChange()'>					
+                                        <option value="Both">Both - Debit & Credit</option>
+										<option value="Cr">Credit (Cr)</option>
+										<option value="Dr">Debit (Dr)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="info_row">
+                                <div class="info_row2">By Duration</div> 
+                                <div class="info_row3 padL5"> 
+                                    <select id="duration">
+										<option value="">-Select-</option>									
+                                        <option value="week">This Week</option>
+										<option value="month">This Month</option>
+										<option value="lastmonth">Last Month</option>
+										<option value="last3month">Last Three Months</option>
+										<option value="last12">Last 12 Months</option>
+										<option value="year">This Year</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="info_row">
+                                <div class="info_row2">By Amount</div> 								
+                                <div class="info_row3 amtBox widthHalf"> 
+                                    <input type="tel" class="line" placeholder="Min" id='minamnt' onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>	
+                                   <span>₹ </span>
+                                </div>	
+                                <div class="info_row3 amtBox widthHalf"> 
+                                    <input type="tel" class="line" placeholder="Max" id='maxamnt' onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>	
+                                   <span>₹ </span>
+                                </div>	
+                            </div>
+                            <div class="info_row">
+                                <a class="info_row_left page_block_sub advanceFilters">Advanced Filters 
+									<span class="right_arrow">
+										<span class="ico ico17"></span>
+										<span class="ico ico19" style="display:none;"></span>
+									</span>
+								</a>
+                                <div id="filterCont" style="display:none;">
+
+                                    <div class="info_row fromToDate"> 
+                                        <div class="info_row2">By Date</div> 
+                                        <div class="info_row3 noPad">
+                                            <div class="widthHalf">
+                                                <input class="line" type="text" readonly="readonly" name="fldFromDate" id="fldFromDate" placeholder="From" />
+                                                <div  id="show_date"><span class="ico ico18"></span></div>
+                                            </div>	
+                                            <div class="widthHalf">
+                                                <input class="line" type="text" name="fldToDate" readonly="readonly" id="fldToDate" placeholder="To" />
+                                                <div  id="show_date1"><span class="ico ico18"></span></div>
+                                            </div>
+                                        </div>										   
+                                    </div>	 
+
+                                    <div class="info_row">
+                                        <div class="info_row2">By Category</div> 
+                                        <div class="info_row3"> 
+											 <select id='categoryval' class="categoryval both" name="fldAcctNo" data-bind="options: AllCategories,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_name', value:'', optionsCaption:'-Select-'" ></select>
+											 
+											  <select id='categoryval1' class="categoryval CR" name="fldAcctNo" data-bind="options: CategoryList,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_name', value:'', optionsCaption:'-Select-'" style="display:none;"></select>
+											 
+											  <select id='categoryval2' class="categoryval DR" name="fldAcctNo" data-bind="options: CategoryList_expense,  optionsText: 'TXN_Category_name', optionsValue: 'TXN_Category_name', value:'', optionsCaption:'-Select-'" style="display:none;"></select>
+											 
+                                        </div>
+                                    </div>
+                                    <div class="info_row">
+                                        <div class="info_row2">Sort By</div> 
+                                        <div class="info_row3"> 
+                                            <select id='sort'>
+												<option value="">-Select-</option>											
+                                                <option value="DateAsc">Date Ascending</option>
+												<option value="DateDes">Date Descending</option>
+												<option value="AmntAsc">Amount Ascending</option>
+												<option value="AmntDes">Amount Descending</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info_row marTB10">
+                                <div class="info_row2">
+                                    <input type="button" class="button widthFull" value="SUBMIT" onclick='filtersubmit();'/>
+                                </div>
+                            </div>
+                        </form>
+                 
+                </div>
+            </div>
+     	
+    </section>	
+</section>
+<section class="fixedWrap">
+	<section class="popWrap two notePopup" style="height: 150px;">
+		<div class="popHeader">
+			<div class="pageTitle">
+				<h2 class="alignCenter">Add Note</h2>				
+			</div>						
+		</div>
+		
+		
+		<div class="ftConfBox">
+			<div class="content sub_content">	
+				<form>							
+					<div class="info_row">								
+						<input type="text" id='remarkval' class="line" placeholder="Enter Remark" />							
+					</div>
+				</form>
+			</div>
+		</div>
+			
+
+		<div class="popFooter twoBtn">
+			<div class="pageTitle">
+				<a href="javascript:void(0);" class="noBorder cancelIcon">Cancel</a>
+				<a href="javascript:void(0);" class="" id='okBtn'>Add</a>
+			</div>						
+		</div>
+				
+	  </section>	
+</section>
+
+<script src="js/libs/misc.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+	if($('.hamburger').hasClass("close")) {			
+		$(".asideBar").removeClass("close");			
+	}
+	else {
+		$(".asideBar").removeClass("show");			
+	}
+});
+
+ function srch(){
+        $('#searchIcon1').show();
+        $('#searchIcon').hide();
+    };
+
+$('input[type=text],input[type=tel],input[type=number]').on('click', function(e){ 
+	e.stopPropagation();
+	$('.popWrap').css('bottom','230px');
+});
+$(document).on('click',  function(e){
+	$('.popWrap').css('bottom','0');
+});
+
+function monthwise(){
+	GraphID = $('#fldAcctNo').val();
+	selaccno = GraphID;
+	window.location.hash= "#mPB_passbookGraph";
+}
+function typeChange(){
+	var test = $('#type').val();
+	if(test == "Both"){
+		$('.both').show();
+		$('.CR').hide();
+		$('.DR').hide();
+	}
+	if(test == "Cr"){
+		$('.both').hide();
+		$('.CR').show();
+		$('.DR').hide();
+	}
+	if(test == "Dr"){
+		$('.both').hide();
+		$('.CR').hide();
+		$('.DR').show();
+	}
+}
+function tabclick(id){
+	busyInd.show();
+	setTimeout(function(){
+		busyInd.hide();
+    }, 3000);
+	if(id == "Expenses"){
+		typetras = "Dr"
+		$('#Income').removeClass('active');
+		$('#Expenses').addClass('active');
+		chartcreate();
+		setTimeout(function(){
+			var ctx = document.getElementById("chart-area").getContext("2d");
+			window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive: true,segmentShowStroke:false,showTooltips: false});
+		}, 3000);
+		//var actno = booksStore(selaccno);
+		//SelectPassBookDataInteractive(actno,"Dr");
+	}
+	if(id == "Income"){
+		typetras = "Cr"
+		$('#Expenses').removeClass('active');
+		$('#Income').addClass('active');
+		chartcreate();
+		setTimeout(function(){
+			var ctx = document.getElementById("chart-area").getContext("2d");
+			window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive: true,segmentShowStroke:false,showTooltips: false});
+		}, 3000);
+		//var actno = booksStore(selaccno);
+		//SelectPassBookDataInteractive(actno,"Cr");
+	}
+}
+
+function filtersubmit(){
+
+	if($("#duration").val()!= "" && $("#fldFromDate").val() != ""){
+		alert("Enter 'By Date' or 'By Duration'");
+		$('#fldFromDate').val(""); $('#fldToDate').val(""); $("#duration").val("");
+		return false;
+	}
+	if($("#fldFromDate").val() != ""){
+		if($("#fldToDate").val() == ""){
+			alert("Enter To Date");
+			return false;
+		}
+				tmpdt1 = $('#fldFromDate').val();
+				tmpdt3= $('#fldToDate').val();
+			
+				arrdt1 = tmpdt1.split('/');
+				arrdt3 = tmpdt3.split('/');
+				
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+
+				var yyyy = today.getFullYear();
+				if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} 
+				var today = dd+'/'+mm+'/'+yyyy;
+				
+				tmpdt2 = today;
+				arrdt2 = tmpdt2.split('/');
+                var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+
+                var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+			   
+			    var date3= new Date(arrdt3[2],arrdt3[1],arrdt3[0]);
+			  
+			   if ( date1 > date3 ){
+	                alert("To Date must be greater than From Date");
+                  return false;  
+               }
+			   
+			   if( date1 > date2 ){
+			      customAlert("From Date can not be greater than Today");
+                  return false;  
+			   }
+			   
+			    if( date3 > date2 ){
+			      customAlert("To Date can not be greater than Today");
+                  return false;  
+			   }
+	}
+	if($('#minamnt').val() != "" && $("#maxamnt").val() != ""){
+		if(parseFloat($('#minamnt').val()) > parseFloat($("#maxamnt").val())){
+			alert("Max amount must be greater than Min Amount");
+			$('#minamnt').val(""); $("#maxamnt").val("");
+			return false;
+		}
+	}
+	busyInd.show();
+	setTimeout(function () {
+               busyInd.hide();
+            }, 3000);
+	mode = "interactive";
+	setTimeout(function (){
+			$('#filterserach').show();
+		$('#filtertext').html("Showing filtered result");
+	}, 1000);
+	filter= 'filter';
+	FilterStatement();
+	 event.stopPropagation();
+            $('.popWrap').removeClass('show');
+            setTimeout(function () {
+                $('.popWrap').parent().hide(0);
+            }, 300);
+            event.preventDefault();
+            return false;
+}
+
+   
+				
+	if(accountListMpassbook().length < 10){
+		//$('.assetChart').hide();
+	}
+
+        $('.closeIcon,#yesBtn,#noBtn,.cancelIcon').on('click', function (event) {
+            event.stopPropagation();
+            $('.popWrap').removeClass('show');
+            setTimeout(function () {
+                $('.popWrap').parent().hide(0);
+            }, 300);
+            event.preventDefault();
+            return false;
+
+        });
+        $('#okBtn').on('click', function (event) {
+			setTimeout(function(){
+				busyInd.hide();
+            }, 5000);
+			if($('#remarkval').val() != ""){
+				var temp1 = $('#remarkval').val();
+				if(temp1.length < 20){
+				   id = currentid.split('-')[0];
+				   var actno = booksStore($('#fldAcctNo').val());
+					UpdateNarration(id,$('#remarkval').val(),actno);
+					$("#"+currentid).find('.remarktext').html($('#remarkval').val());
+					event.stopPropagation();
+					$('.popWrap').removeClass('show');
+					setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+					event.preventDefault();
+					return false;
+				}
+				else{alert("Please enter less than 20 characters."); return false;}
+			}
+			else{alert("Enter Remark"); return false;}
+        });
+
+        $('.filter').on('click', function () {
+			$("#duration").val("");  $("#fldFromDate").val("");
+			$("#fldToDate").val("");  $('#minamnt').val("");
+			$("#maxamnt").val(""); $("#sort").val("");
+			$('#type').val("Both"); $('.DR').val('');
+			$('.CR').val(''); $('.both').val('');
+			$('.both').show();
+			$('.CR').hide();
+			$('.DR').hide(); $('#filterCont').hide();
+			$('.ico17').show();$('.ico19').hide();
+            $('.popWrap.one').parent().show(0);
+            $('.popWrap.one').parent().addClass('show');
+            $('.popWrap.one').addClass('show');
+            setTimeout(scrollLoaded, 300);
+        });
+
+		
+		$('.advanceFilters').click(function (e) {
+            e.preventDefault();
+
+            $('.right_arrow').not($(this).find('.right_arrow')).find('.ico:first-child').show();
+            $('.right_arrow').not($(this).find('.right_arrow')).find('.ico:last-child').hide();
+            $(this).find('.right_arrow .ico').toggle();
+
+            $('.toggle_content').not($(this).next()).slideUp();
+            $(this).next().slideToggle();
+			setTimeout(refresh, 300);
+
+        });
+
+        $(function () {
+            var now = new Date();
+			var dtmin = new Date();
+				 dtmin.setDate(dtmin.getDate());
+				 var dtmax = new Date();
+				 dtmax.setDate(dtmax.getDate() + 60);
+            $('#fldFromDate,#fldToDate').scroller({
+                preset: 'date',
+                theme: 'sense-ui',
+                display: 'modal',
+                mode: 'scroller',
+                dateOrder: 'ddMYYYY',
+                endYear: now.getFullYear() + 10,
+				maxDate: new Date(dtmin.getFullYear(), dtmin.getMonth(), dtmin.getDate())
+            });
+            $('#show_date1').click(function () {
+                $('#fldToDate').scroller('show');
+                return false;
+            });
+            $('#show_date').click(function () {
+                $('#fldFromDate').scroller('show');
+                return false;
+            });
+            $('#clear').click(function () {
+                $('#fldFromDate').val('');
+                return false;
+            });
+        });
+
+   
+    /* starts chart */
+    showchartflg= localStorage.getItem("viewchartflg");
+  //  console.log("length of M showchartflg page"+showchartflg);
+	if(m == 10  && showchartflg!="showchart"){
+		$("#Uppertabs").hide();
+		$('.assetChart.chartDesc').hide();
+		$('#category_btn').show();
+		$('#category_txt').hide()
+		$('#continueText').html("Press Continue to view your Income and Expense break up chart.");
+		//console.log("show1");
+		//$('.assetChart').show();
+	}
+	if(m >= 10 && showchartflg=="showchart"){
+		//chartcreate();
+		//busyInd.hide();
+	//	console.log("show2");
+		$("#Uppertabs").show();
+		$('.appearError').hide();
+		$('.assetChart').show();
+	}
+	if(m < 10){
+		//busyInd.hide();
+		$('.appearError').show();
+		$('.assetChart.chartDesc').hide();
+		$("#Uppertabs").hide();
+		//console.log("show3");
+		var temp = 10 - m;
+		$('#category_txt').html(temp+" Remaining");
+	}
+	
+function confrmval(id){
+	if($('#filterserach').is(':visible')){
+		var temp = id.TXNID;
+		topPos=$("#"+temp).offset().top-123;
+		if(changevalstart == "start"){
+			busyInd.show();
+			var category = $("#"+temp).val();
+			//console.log("category "+category);
+			var type = typetras;
+			var acntNO = $('#fldAcctNo').val();
+			UpdateCatagory1(temp,category,acntNO,type);
+			$('html,body').animate({
+				scrollTop: topPos										  
+			});
+			changevalstart = "";
+			setTimeout(function () {
+				$('#filterserach').show();
+				if(filter == 'search'){
+					$('#filtertext').html("Showing search result");
+				}
+					busyInd.hide();
+					changevalstart = "start";
+			}, 2000);
+		}
+	}
+	else{
+		var temp = id.TXNID;
+		topPos=$("#"+temp).offset().top-123;
+		if(changevalstart == "start"){
+			busyInd.show();
+			var category = $("#"+temp).val();
+			//console.log("category 2"+category);
+			var type = typetras;
+			var acntNO = $('#fldAcctNo').val();
+			UpdateCatagory(temp,category,acntNO,type);
+			$('html,body').animate({
+				scrollTop: topPos										  
+			});
+			changevalstart = "";
+			setTimeout(function () {
+					busyInd.hide();
+					changevalstart = "start";
+			}, 2000);
+		}
+	}
+}
+
+function viewchart(){
+    showchartflg01="showchart";
+    localStorage.setItem("viewchartflg",showchartflg01);
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+chartcreate();
+$('.assetChart.chartDesc').show();
+	$("#Uppertabs").show();
+	$('.appearError').hide();
+	setTimeout(function (){
+		var ctx = document.getElementById("chart-area").getContext("2d");
+		window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive: true, showTooltips: false, segmentShowStroke : false});
+    }, 1000);
+}
+
+function editRemark(id){
+//alert($("#"+id).find('.remarktext').html());
+currentid = id;
+$('#remarkval').val($("#"+id).find('.remarktext').html());
+	$('.popWrap.two').parent().show(0);
+	$('.popWrap.two').parent().addClass('show');
+	$('.popWrap.two').addClass('show');	
+	//setTimeout(scrollLoaded,300);
+}
+
+ $(document).ready(function(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();	
+	if(dd<10) {
+		dd='0'+dd;
+	} 
+	if(mm<10) {
+		mm='0'+mm;
+	} 	
+	var hour    = today.getHours();
+	var minute  = today.getMinutes();
+	var seconds = today.getSeconds();  
+	today = dd+'/'+mm+'/'+yyyy;
+	if(hour<10) {
+				hour='0'+hour
+			} 
+			if(minute<10) {
+				minute='0'+minute
+			} 
+			if(seconds<10) {
+				seconds='0'+seconds
+			} 
+	time= hour+":"+minute+":"+seconds;
+ 		
+	$(document).on('click', '.assetBox', function(){
+		$('.assetBox.show_more').removeClass('show_more');
+		$('.editBtn').hide();
+		$(this).addClass('show_more');
+		$(this).parent().next().show();
+	});
+	
+	$(document).on('click', '.show_more', function(){
+		$(this).parent().next().hide();
+		$(this).removeClass('show_more');
+	});
+	
+$('#searchIcon').click(function(){
+	$('#searchIcon1').show();
+	$(this).hide();
+});
+
+$('#searchIcon1').click(function(){
+	busyInd.show();
+	$(this).hide();
+	if($('.searchBox').val() == ""){
+		busyInd.hide();
+		alert("Enter Search text");
+		$('#searchIcon').show();
+		$('.searchBox').val('');
+		return false;
+	}
+	else{
+		setTimeout(function (){
+			$('#filterserach').show();
+			$('#filtertext').html("Showing search result");
+			$('#searchIcon1').hide();
+			$('#searchIcon').show();
+			$('.searchWrap').removeClass('clicked');
+		}, 1000);
+		filter= 'search';
+		filterSearch($('.searchBox').val());
+	}
+	//filterSearch($('.searchBox').val());
+	$('#searchIcon').show();
+	$('.searchBox').val('');
+	setTimeout(function () {
+		busyInd.hide();
+	}, 5000);
+});
+
+$('.wrapper').click(function (){
+	$('#searchIcon1').hide();
+	$('#searchIcon').show();
+	$('.searchWrap').removeClass('clicked');										
+});
+
+setTimeout(function(){ 
+	(function($) {
+		$.fn.hasScrollBar = function() {
+			return this.get(0).scrollHeight > this.height();
+		}
+	})(jQuery);
+	
+	if($('.chartLegend').hasScrollBar()){
+		$('.more_arrow').show();			
+	}else{
+		$('.more_arrow').hide();			
+	}
+}, 1000);
+
+$('.chartLegend').bind('scroll', function(){
+	if($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight){
+		$('.more_arrow').hide();
+	}else{
+		$('.more_arrow').show();
+	}		
+});	
+	
+ });
+ function clearFilter(){
+		busyInd.show();
+		$('#filterserach').hide();
+		//SelectPassBookData();
+		SelectPassBookDataInteractive(booksStore($('#fldAcctNo').val()),typetras);
+		setTimeout(function (){busyInd.hide();}, 5000);
+	}
+</script>
+

@@ -1,0 +1,73 @@
+
+
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  <form name="frmrrvpr01" id="frmrrvpr01"  method="post" data-bind='submit: rrvpr01Submit'>
+    <div class="sub_content">
+			<br/>
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			 <div class="info_row"> <div class="info_row2">Mutual Fund Account</div> <div class="info_row3">
+				 <select name="fldUhid" id="fldUhid" class="page_title_sub styled" data-bind="options: mfaccountList1, optionsText: 'cardNo', optionsValue: 'cardNo' ">
+				 </select>
+				 </div>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row"> <div class="info_row2">Mutual Fund Name</div> <div class="info_row3">
+				 <select name="fldAmcId" id="fldAmcId" class="page_title_sub styled" data-bind="options: mflist, optionsText: 'amcname', optionsValue: 'amcid' ">
+					 
+					
+				 </select>
+				 </div>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row"> <div class="info_row2">Report as on Date (dd/mm/yyyy)</div> <div class="info_row3 page_title_sub" id="cdate">
+				
+				 </div>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			<br/>
+	<div class="info_row alignc">
+				<input type="submit" class="button" value="Continue" />
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="info_row">
+			<p><b>Note:</b></p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p>
+	<br/>
+	<br/>
+		</div>
+			
+			
+			<input type="hidden" name="fldTxnId" value="VPR" />
+			<input type="hidden" name="fldScrnSeqNbr" value="03" />
+			<input type="hidden" id="fldUhid_txt" name="fldUhid_txt" value="" />
+			<input type="hidden" id="fldAmcId_txt" name="fldAmcId_txt" value="" />
+			<input type="hidden" id="acctTemp" name="acctTemp" value="1" />
+			  
+	</div>
+	</form>
+
+  </div>
+</div>
+<script>
+$('#cdate').html(getCurrdate());
+
+</script>

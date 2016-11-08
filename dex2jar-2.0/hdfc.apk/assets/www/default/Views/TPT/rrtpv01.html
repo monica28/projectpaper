@@ -1,0 +1,119 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+</style>
+<link href="css/mobiscroll-2.0.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/libs/mobiscroll-2.0.custom.min.js" type="text/javascript"></script>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmtpv01" id="frmtpv01" method="post" >
+  	<br/>
+		
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+			
+	<div class="info_row"> <div class="info_row2">Reference Number</div> <div class="info_row3">
+		<input type="text" name="fldTxnRefNo" id="fldTxnRefNo" value="" size="10" class="rs_fld"/>
+	</div>
+	<div class="clearfix"></div>
+	</div>
+		  
+	<div class="clearfix"></div>
+	<div class="linedivider"></div>   
+	<div class="clearfix"></div>
+			
+			
+	<div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"> <div class="info_row2">From Date (dd/mm/yyyy)</div> 
+	<div class="info_row3">
+        <div class="width100per" style="padding-right:40px; position:relative;"><input type="text"  readonly="readonly"  name="fldStartDate" id="fldStartDate"  />
+        <div  id="show_date"><img src="img/index.png"  /></div></div>		
+     </div>
+	 </div>
+	 
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+    
+     <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"><div class="info_row2">To Date (dd/mm/yyyy)</div> 
+	<div class="info_row3">
+        <div class="width100per" style="padding-right:40px; position:relative;"><input type="text" name="fldEndDate" readonly="readonly" id="fldEndDate" />
+        <div  id="show_date1"><img src="img/index.png"  /></div></div>
+     </div>
+     <div class="clearfix"></div>
+     </div>
+	  
+	<!-- <div class="info_row alignc" data-bind="click: $root.calltpvView"><a  class="btn">View</a> </div> -->
+	<div class="clearfix20"></div>
+	<div class="info_row">
+    <input type="button" class="button2" onclick="callViewData();" value="View" >
+   </div>	
+	
+        <div id="rtgstxnsError" style="display:none;">
+        <div class="clearfix20"></div>
+        <div class="info_row"><p>No records found</p></div>
+        </div>
+		
+	<div id="rtgstxns" style="display:none;">	
+	<div class="info_row"> <div class="info_row2">Reference Number</div> <div class="info_row3">
+		<select name="fldSelTxnRefNo" id="fldSelTxnRefNo" class="styled" data-bind="options: rtgsTxnList, optionsText: 'txnDesc', optionsValue: 'txnVal', value: fldSelTxnRefNo">
+				
+		</select>
+	   </div>
+	</div>
+	<div class="clearfix20"></div>
+	<div class="info_row alignc"><a data-bind="click: $root.calltpvViewDetails" class="button2">View Details</a> </div>
+	
+	</div>
+		<br/>
+		<br/>
+		
+  	<input type="hidden" id="fldActionType" name="fldActionType" value="list" />
+	<input type="hidden" id="viewselected" name="viewselected" value="1" />
+	<input type="hidden" id="fldSelTxnRefNo_txt" name="fldSelTxnRefNo_txt" value="" />
+		   
+  
+   </form>
+
+  </div>
+</div>
+<script>
+function callViewData(){	
+	tptmodel = new TPTViewModel();
+	tptmodel.calltpvView();
+}
+
+$(function(){
+	var now = new Date();
+    $('#fldStartDate,#fldEndDate').scroller({
+        preset: 'date',
+        theme: 'sense-ui',
+        display: 'modal',
+        mode: 'scroller',
+        dateOrder: 'ddMYYYY',
+		endYear: now.getFullYear() + 10
+    });
+    
+    
+
+
+$('#show_date1').click(function(){
+$('#fldEndDate').scroller('show'); 
+return false;
+});
+
+$('#show_date').click(function(){
+$('#fldStartDate').scroller('show'); 
+return false;
+});
+
+
+$('#clear').click(function () {
+$('#fldStartDate').val('');
+return false;
+});
+
+
+});
+</script>

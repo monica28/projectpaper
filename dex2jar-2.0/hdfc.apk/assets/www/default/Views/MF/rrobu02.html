@@ -1,0 +1,164 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+     
+  <form name="frmrrobu01" id="frmrrobu02"  method="post" data-bind='submit: rrobu02Submit'>
+			
+			  <br/>
+    <div class="sub_content">
+
+    		
+			
+    		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left clslineht">Mutual Fund Account</span> 
+			<span class="info_row_right" id="unitholderid" >
+			
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Mutual Fund Name</span> 
+				<span class="info_row_right clslineht" id="amcname" >
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row even"><span class="info_row_left clslineht">Scheme Name</span> 
+				<span class="info_row_right clslineht" id="fundname">
+				
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+		
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">NAV</span> 
+				<span class="info_row_right clslineht" id="navandnavdate">
+					as on 
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">Cut-Off Time</span> 
+				<span class="info_row_right" id="cutofftime">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Minimum Amount (Initial Purchase)</span> 
+				<span class="info_row_right clslineht" id="minamtandstepamt">
+					 in multiples of 
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left clslineht">Minimum Amount (Additional Purchase)</span> 
+				<span class="info_row_right clslineht"  id="minamtaddtnlandstepamtaddtnl">
+in multiples of 
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Current Holding Value</span> 
+				<span class="info_row_right clslineht"  id="currentholdingamt">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+
+			</div>
+			
+			<br/>
+			      
+			<div class="info_row"><div class="info_row2">Bank Account No.</div> 
+				<div class="info_row3">
+					<select name="fldAccount" id="fldAccount" class="styled" data-bind="options: mfaccountList3, optionsText: 'accountno', optionsValue: 'accountno' ">
+			         
+			        </select>
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>
+		    <div class="linedivider"></div>   
+		    <div class="clearfix"></div>
+      
+			<div class="info_row"><div class="info_row2">Investment Amount</div> 
+				<div class="info_row3">
+					<input type="text" name="fldTypeValue" id="fldTypeValue" value="" size="10" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+				</div>
+			</div>
+			
+			  <div class="clearfix"></div>
+						<br/>
+	<div class="info_row alignc">
+				<input type="submit" class="button" value="Continue" />
+				<div class="clearfix"></div>
+			</div>
+			<br/>
+			
+			<div class="info_row">
+			<p>Same day NAV would be applicable for transactions done before the cut off time.</p><br/>
+			<p>For transactions received post cut off time applicable NAV would be the next business day.</p><br/>
+			<p>Please refer Terms and Conditions for NAV applicability on Liquid Schemes transactions and all transactions done on Saturday, Sundays and Holidays.</p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>
+			
+			
+				<div class="info_row" id="errorfund" style="display:none;"> <span class="info_row_left"></span> 
+			<span class="info_row_right">
+				Invalid Fund.
+			   </span>
+			<div class="clearfix"></div>
+		  </div> 
+			
+	
+	</div>
+	
+	
+	<input type="hidden" name="fldTxnId" value="OBU" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="02" />
+	
+	<input type="hidden" id="fldAccount_txt" name="fldAccount_txt" value="" />
+	
+
+		<input type="hidden" id="fldMinAmt1" name="fldMinAmt1" value="" />	
+	
+
+	<input type="hidden" id="fldSubmitForm" name="fldSubmitForm" value="Y" />
+	<input type="hidden" id="fldParentForm" name="fldParentForm" value="frmOrderBuy" />
+	<input type="hidden" id="fldFundCriteria" name="fldFundCriteria" value="" />
+	<input type="hidden" id="fldAction" name="fldAction" value="" />	
+	<input type="hidden" id="fldCodTxn" name="fldCodTxn" value="BUY" />
+	<input type="hidden" id="fldSelUhid" name="fldSelUhid" value="" />
+	<input type="hidden" id="fldFromTxn" name="fldFromTxn" value="OBU" />
+	<input type="hidden" id="fldUhid" name="fldUhid" value="" />
+	<input type="hidden" id="fldFundCode" name="fldFundCode" value="" />
+	<input type="hidden" id="fldAmcId" name="fldAmcId" value="" />	
+	<input type="hidden" id="fldFundName" name="fldFundName" value="" />
+	<input type="hidden" id="fldFundCurr" name="fldFundCurr" value="" />
+	<input type="hidden" id="fldSettlementDate" name="fldSettlementDate" value="" />
+	<input type="hidden" id="fldIsin" name="fldIsin" value="" />
+	<input type="hidden" id="fldfundname2" name="fldfundname2" value="" />
+	<input type="hidden" id="fldfundcode2" name="fldfundcode2" value="" />
+	
+	</form>
+    
+  </div>
+ </div>
+ 
+ <script type="text/javascript">
+$("#frmrrobu02").validate({
+	rules: {
+		fldAccount: "required",
+		fldTypeValue: "required",		
+	},
+	messages: {
+		fldAccount: "Select Bank Account No.",
+		fldTypeValue: "Enter Investment Amount",		
+	}
+});
+</script>

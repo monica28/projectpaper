@@ -1,0 +1,108 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+	
+		<form name="frmipb03" id="frmipb03" method="post" data-bind='submit: rripb03Submit'>
+		<div class="summblock">
+		
+		 
+		  
+		 <div class="info_row dark_header"> <span class="info_row_left clslineht">Investment Amount</span> 
+		 <span class="info_row_right clslineht clsamt">				
+			   </span>
+			<div class="clearfix"></div>
+		  </div> 
+		
+		<div class="info_row odd"> <span class="info_row_left clslineht">Mutual Fund Account</span> 
+		<span class="info_row_right clslineht clsunitholder">			
+			   </span>
+			<div class="clearfix"></div>
+		  </div>
+		  
+		  <div class="info_row even"> <span class="info_row_left clslineht">Mutual Fund Name</span> 
+		  <span class="info_row_right clslineht clsamcname">
+				
+			   </span>
+			<div class="clearfix"></div>
+		  </div>
+		  
+		  <div class="info_row odd"> <span class="info_row_left">Scheme Name</span> 
+		  <span class="info_row_right clslineht clsfundname">
+				
+			   </span>
+			<div class="clearfix"></div>
+		  </div> 
+
+		  <div class="info_row even"> <span class="info_row_left clslineht">Bank Account No.</span> 
+		  <span class="info_row_right clslineht clsaccno">
+				
+			   </span>
+			<div class="clearfix"></div>
+		  </div>
+		  </div>
+		  
+		  <br/>
+		  
+		  
+		  
+		  <div class="info_row"><div class="info_row2">Terms and Conditions (Mandatory)</div>
+		  <div class="info_row3">
+				<select name="fldAcceptTerms" id="fldAcceptTerms" class="styled">
+					<option value="true">Accept</option>
+					<option value="false">Decline</option>
+				</select>
+			</div>
+		  </div>
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+
+		
+		  
+		 <div class="clearfix20"></div>
+		   <div class="info_row">
+		    <input type="submit" class="button" value="Continue" >
+		   </div> 
+			 
+		 <br/>  
+		  
+		 <div class="info_row">
+		 	<p><b>Note:</b></p><br/>
+			<p>Same day NAV would be applicable for transactions done before the cut off time. For transactions received post cut off time applicable NAV would be the next business day. Please refer Terms and Conditions for NAV applicability on Liquid Schemes transactions and all transactions done on Saturday, Sundays and Holidays.</p><br/>
+			<p>The ARN holder, being HDFC Bank Limited has disclosed to me/us all the commissions (in the form of trail commission or any other mode), payable to him it for the different competing Schemes of various Mutual Funds from amongst which the Scheme is being recommended to me/us.</p><br/>
+			<p>In terms of SEBI circular no. SEBI/IMD/CIR No.4/ 168230/09 dated June 30, 2009, no entry load will be charged by the Scheme to the investor effective August 1, 2009. Upfront commission shall be paid directly by the investor to the AMFI registered Distributors based on the investors' assessment of various factors including the service rendered by the distributor.</p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p>
+		</div>
+		
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+		<input type="hidden" name="fldOperationId" id="fldOperationId" value="RRIPB04" />
+		<input type="hidden" name="fldScrnSeqNbr" value="04" />
+		<input type="hidden" name="fldTxnId" value="IPB" />
+		
+		<input type="hidden" name="fldUhid" id="fldUhid" value="" />
+		<input type="hidden" name="fldFundCode" id="fldFundCode" value="" />
+		<input type="hidden" name="fldAmcId" id="fldAmcId" value="" />
+		<input type="hidden" name="fldAccount" id="fldAccount" value="" />
+		<input type="hidden" name="fldTypeValue" id="fldTypeValue" value="" />
+		<input type="hidden" name="fldAcceptTerms_txt" id="fldAcceptTerms_txt" value="" />
+
+
+
+		</form>
+		
+	</div>
+	
+    <!-- Start section search_box -->
+  </div>
+  <script type="text/javascript">
+$("#frmipb03").validate({
+	 rules: {
+            fldAcceptTerms: {chkvalid: "#fldAcceptTerms"},
+        },
+        messages: {
+        	fldAcceptTerms: {
+               chkvalid: "Please Accept Terms and Conditions.",
+            }
+        }
+});
+</script>

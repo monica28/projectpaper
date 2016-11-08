@@ -1,0 +1,64 @@
+<style>
+    body .header, body .footer{display:none !important;}
+    .bottom_text{margin-top:25px;}    
+    .success_msg{padding-top:10px;}
+    .success_msg p{display: inline-block; font-size: 1.5em;}
+</style>
+
+<section class="mPB">
+    <div class="content sub_content">	
+        <!-- starts topBar -->	
+        <div class="topBar">
+            <a href="javascript:void(0);" class="hamburger"><span class="ico"></span></a>
+            <span>Request Statement</span>                
+        </div>	
+        <!-- ends topBar -->
+        <div class="wrapper side_spacing">
+
+            <div class="success_msg">
+                <p>Transaction successful</p>	
+            </div>
+			
+			<div class="summblock">
+				<div class="info_row  dark_header">
+				 <span class="info_row_right" id="refNo" style="width: 100%;"></span>
+				<div class="clearfix"></div>
+				</div>
+			</div>
+
+        </div>
+
+        <!-- /outer_wrap-->
+    </div>
+
+</section>
+
+<script src="js/libs/misc.js" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        var now = new Date();
+        $('#fldFromDate,#fldToDate').scroller({
+            preset: 'date',
+            theme: 'sense-ui',
+            display: 'modal',
+            mode: 'scroller',
+            dateOrder: 'ddMYYYY',
+            endYear: now.getFullYear() + 10
+        });
+        $('#show_date1').click(function () {
+            $('#fldToDate').scroller('show');
+            return false;
+        });
+        $('#show_date').click(function () {
+            $('#fldFromDate').scroller('show');
+            return false;
+        });
+        $('#clear').click(function () {
+            $('#fldFromDate').val('');
+            return false;
+        });
+    });
+</script>
+
+

@@ -1,0 +1,133 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+	.rs_fld {font-size:15pt;}
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <div class="info_row odd" id="accExitsMsg" style="display:none;">
+	<span class="info_row_menu_left" style="width:15%;"><img src="img/alerticon.png" /></span>
+		<span class="info_row_menu_right clslineht" style="width:72%;">
+			To use the Third Party Transfer facility, you first need to input the account details of the person you would like to transfer funds to.
+		</span> 
+  </div>
+		
+  
+  <form class="custStyleInput" name="frmtpt03" id="frmtpt03" method="post" data-bind='submit: rrtpt03Submit'>
+   <div data-bind="visible: accSlider">
+   
+   <br/>
+        <div class="clearfix"></div>
+	    <div class="linedivider"></div>   
+	    <div class="clearfix"></div>
+      		
+   <div class="clearfix"></div>
+      
+	<div class="info_row"><div class="info_row2">From Account</div> 
+		<div class="info_row3">
+			<select name="fldFromAcctNo" id="fldFromAcctNo" data-bind="options: fromAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldFromAcctNo">
+			
+		    </select>	
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+    <div class="info_row"><div class="info_row2">To Account</div> 
+		<div class="info_row3">
+			<select name="fldToAcctNo" id="fldToAcctNo" data-bind="options: toAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldToAcctNo, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>  
+	
+	<div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+       
+       <div class="info_row">
+      	<div class="info_row2">Description</div>
+      	<div class="info_row3">
+      	  <input type="text" id="fldTxnDesc" name="fldTxnDesc" value="" size="10" class="rs_fld" />
+      	</div>      	
+      </div>
+
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+       
+       <div class="info_row">
+      	<div class="info_row2">Amount</div>
+      	<div class="info_row3">
+      	  <input type="text" id="fldTxnAmount" name="fldTxnAmount" value="" size="10" maxlength="15" class="rs_fld" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+      	</div>      	
+      </div>
+      
+		 <div class="clearfix"></div>
+      
+      <div class="clearfix20"></div>
+   <div class="info_row">
+    <input type="submit" class="button" value="Continue" >
+   </div>
+   
+      <br/>
+      <div class="clearfix"></div>
+      
+      
+      	<div class="info_row">
+			<br/>
+			<p><b>Note:</b></p><br/>
+			<!-- <p>- Beneficiary activation takes 12 hours. Post activation of a beneficiary, you can transfer a maximum of Rs. 1,00,000/- per day to each beneficiary for the first 2 days.</p><br/> -->
+			<p>- Rs 2 lacs is the default daily transfer limit per Cust ID per day. To increase or decrease the limit please log into NetBanking and select the "Modify TPT Limit" transaction within the Third Party Transfer tab</p><br/>
+			<p>- The maximum amount of funds that can be transferred per cust Id per day is Rs 10 lacs.</p><br/>
+			<p>- Limit of Rs 10 lacs applies whether as an individual or multiple transactions.</p><br/>
+			<p>- The above funds transfer limit is applicable to the following set of transactions (on an individual or on multiple basis):</p><br/>
+			<p>- Funds Transfer to other HDFC Bank accounts.</p><br/>
+			<p>- Funds Transfer to non HDFC Bank accounts.</p><br/>
+			<br/>
+			<p>- Our Bank does not ask for the details of your Account / IPIN / Password via e-mail / sms or in person. Therefore any one asking you for such information on behalf of the bank / technical team would be fraudulent, so please do not divulge these details to them. While entering these details on NetBanking or conducting transactions, please ensure that you are on the official HDFC Bank website (http://www.hdfcbank.com). You should be familiar with the process of conducting net transactions, and should refrain from doing so, if not familiar. You should refer to the Bank's guidance, on how to conduct such transactions, in this regard.</p><br/>
+			<p>- The Bank shall also not be responsible for fraudulent online transactions through improper disclosure of confidential details by you. Please be reminded that the viewing option and transactions option on the Net are different and exercise suitable caution accordingly.</p><br/>
+			<p>- Maximum of Rs 1 lakh can be transferred to each beneficiary for the first 2 days post beneficiary addition.</p><br/>
+		</div>
+      
+
+  	<input type="hidden" name="fldRequestId" id="fldRequestId" />
+  	<input type="hidden" name="fldTxnId" id="fldTxnId" value="TPT" />
+  	<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="02" />
+  	<input type="hidden" name="fldEntityId" id="fldEntityId" />
+  	<input type="hidden" name="fldBenefType" id="fldBenefType" value="TPT" />
+  	<input type="hidden" name="fldOperationId" id="fldOperationId" value="RRTPT04" />
+   
+   
+   </div>
+   </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#frmtpt03").validate({
+	rules: {
+		fldFromAcctNo: "required",
+		fldToAcctNo: "required",
+		fldTxnDesc: "required",
+		fldTxnAmount: {
+			required: true,
+			min: 1
+		},
+	},
+	messages: {
+		fldFromAcctNo: "Select From Account",
+		fldToAcctNo: "Select To Account",
+		fldTxnDesc: "Enter Description",
+		fldTxnAmount: {
+			required: "Enter Amount",
+			min: "Amount should be greater than 0"
+		},
+	}
+});
+
+</script>

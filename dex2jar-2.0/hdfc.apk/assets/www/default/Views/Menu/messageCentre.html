@@ -1,0 +1,179 @@
+<style>
+   .msgCenter li {padding-top:15px; padding-bottom:15px;}
+   .msgCenter li > div { display:table; width: 100%;}
+   .msgCenter li > div > span { display:table-cell; vertical-align:top; box-sizing:border-box; } 
+   .msgCenter li > div > span:first-child { width:65px; }
+   .msgCenter li > div > span:last-child { padding-left:12px;   color: rgb(100, 98, 98); }
+   .msgCenter .button { padding: 0 20px;margin-top: 10px; }
+   .msgCenter .button.payNow { width: auto; margin-left: 77px; }
+   .msgCenter .midVwBtn { clear:both;}
+   .msgCenter .midVwBtn .button.vwStmnt { float:right; width:60%; }
+   .msgCenter .midVwBtn .button.payNow { width:35%; margin-left:0; padding:0; float:left; }
+</style>
+<div id="wrapper" style="top:96px;">
+   <div class="content">
+      <!-- <div data-bind="foreach:notificationmsgs">
+         <div data-bind="text: Msg"></div>
+         <button id="btn1" value="" data-bind="text: btntext"></button>
+         <button id="btn2" value="" data-bind="text: btntext"></button>
+         
+         </div> -->
+	
+		   <!-- ko if: notificationmsgs().length == 0 &&  msgCentreList().length == 0 -->
+		      <div class="uid_box"> 
+         <div class="errMSAn" style="display:none;">No record found</div>
+		 </div>
+	   <!-- /ko -->
+	   
+   <!-- ko if: notificationmsgs().length > 0 --> 
+      <div class="uid_box"> 
+	 
+		 <!-- ko if:notificationmsgs().length > 0  -->
+          <div class="calRowWp" style="display:none;">
+            <ul class="listBox msgCenter" data-bind="foreach: notificationmsgs">
+               <li >
+                  <div>
+                     <!-- ko if: buttonno === "one"   -->
+					 
+                     <!-- ko if: HASH === 'rrasm01' || HASH === 'rrasm01@' || HASH === 'rrasm01@@'-->
+                     <span><img src="img/acc_accountsummary.png" /></span>
+                     <!-- /ko -->
+					 
+					 <!-- ko if:  HASH === 'billpayment' || HASH === 'billpayment@' || HASH === 'billpayment@@' -->
+                     <span><img src="img/bill_pay.png" /></span>
+                     <!-- /ko -->
+					 
+                    
+					 
+                  
+                     <!-- ko if: HASH === 'rraci01'|| HASH === 'rraci01' || HASH === 'rraci01@@' || HASH === 'rraci01@' || HASH === 'rraci01@@' || HASH === 'rraci01@'||HASH === 'rrccp01'|| HASH === 'rrccp01@' || HASH === 'rrccp01@@'  -->
+                     <span><img src="img/cc_accountinfo.png" /></span>
+                     <!-- /ko -->
+					 
+                    <!-- /ko --> 
+					
+			      	
+                     <span data-bind="text: Msg"> </span>
+					
+                  </div>
+                  <div>
+                     <!-- ko if: buttonno === "one"   -->
+					  <!-- ko if: HASH === 'rrasm01' || HASH === 'rrasm01@' || HASH === 'rrasm01@@' || HASH === 'rraci01' || HASH === 'rraci01@' || HASH === 'rraci01@@'-->
+					  <input type="button" class="button vwActSumNow" data-bind="attr: { 'id': HASH },value: btntext"  onclick="btnclick(this.id);"  style=""> 
+                     
+                     <!-- /ko -->	
+					  <!-- ko if: HASH === 'billpayment' || HASH === 'billpayment@' || HASH === 'billpayment@@'|| HASH === 'rrccp01' || HASH === 'rrccp01@' || HASH === 'rrccp01@@' -->
+					  <input type="button" class="button payNow" data-bind="attr: { 'id': HASH },value: btntext"  onclick="btnclick(this.id);" style=""  ></input>
+					     <!-- /ko -->
+				 <!-- /ko -->	
+					 
+                 
+                     <!--<input type="button" class="button vwActSumNow" value="View Account Summary Now" style=""> -->
+                  </div>
+               </li>
+            </ul>
+         </div>
+		  <!-- /ko --> 
+	</div>  
+ <!-- /ko -->	  
+		  
+<!-- ko if: msgCentreList().length > 0 -->
+	  <div class="uid_box"> 
+  
+         <div class="calRowWrap">
+            <ul class="listBox">
+			
+               <div data-bind="foreach: msgCentreList">
+                  <li>
+                     <aside>
+                        <div class="calBox">
+                           <span class="f26"  data-bind="text: campday"></span>
+                           <span class="f16"  data-bind="text: campmonth"></span>
+                        </div>
+                     </aside>
+                     <aside>
+                        <label class="f16"  data-bind="text: campdesc"></label>
+                     </aside>
+                  </li>
+               </div>
+			
+            </ul>
+         </div>
+	
+
+  	
+      </div>
+ <!-- /ko -->	
+   </div>
+</div>
+<script>
+   function btnclick(hashval){
+   
+   	if(hashval.indexOf("@")===-1){
+	  
+   	    if(hashval==="rrasm01"){
+   		   accsumm="accsumm";
+   	      window.location.hash="#login";
+   		}
+		else if(hashval==="rrftr01"){
+		   fundtransfermsg="fundtransfermsg";
+		   window.location.hash="#login";
+		}
+		else if(hashval==="rrwcm01"){
+		   Mutulfund="Mutulfund";
+	       window.location.hash="#login";
+		}
+		else if(hashval=== "debithome"){
+		   debitcrdhome="debitcrdhome";
+	       window.location.hash="#login";
+		}
+		else if(hashval=== "billpayment"){
+		   viewpaybill="viewpaybill";
+	       window.location.hash="#login"
+		}
+		else if(hashval==="rraci01"){
+		
+   		   crditcardstatment="crditcardstatment";
+   	      window.location.hash="#login";
+   		}
+		else if(hashval==="rrccp01"){
+		
+   		   crditcardpayment="crditcardpayment";
+   	      window.location.hash="#login";
+   		}
+   	}
+   	else{
+   	  Hashvalue=hashval.split("@")[0];
+   	  if(Hashvalue==="rrasm01"){
+   		   accsumm="accsumm";
+   	      window.location.hash="#login";
+   		}
+		else if(Hashvalue==="rrftr01"){
+		   fundtransfermsg="fundtransfermsg";
+		   window.location.hash="#login";
+		}
+		else if(Hashvalue==="rrwcm01"){
+		   Mutulfund="Mutulfund";
+	       window.location.hash="#login";
+		}
+		else if(Hashvalue=== "debithome"){
+		   debitcrdhome="debitcrdhome";
+	       window.location.hash="#login";
+		}
+		else if(Hashvalue=== "billpayment"){
+		   viewpaybill="viewpaybill";
+	       window.location.hash="#login"
+		}
+		else if(Hashvalue==="rraci01"){
+   		  crditcardstatment="crditcardstatment";
+   	      window.location.hash="#login";
+   		}
+		else if(Hashvalue==="rrccp01"){
+   		   crditcardpayment="crditcardpayment";
+   	      window.location.hash="#login";
+   		}
+   	}
+   }
+ 
+  
+</script> 

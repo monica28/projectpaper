@@ -1,0 +1,223 @@
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  
+  <div class="info_row odd" id="accExitsMsg" style="display:none;">
+	<span class="info_row_menu_left" style="width:15%;"><img src="img/alerticon.png" /></span>
+		<span class="info_row_menu_right clslineht" style="width:72%;">
+			Two or more A/cs are required to carry out this transaction
+		</span> 
+  </div>
+		
+  
+  <form class="custStyleInput" name="frmrdo01" id="frmrdo01" method="post" data-bind='submit: rrrdo01Submit'>
+   <div data-bind="visible: accSlider">
+   
+   <br/>
+        <div class="clearfix"></div>
+	    <div class="linedivider"></div>   
+	    <div class="clearfix"></div>
+      		
+   <div class="clearfix"></div>
+      
+	<div class="info_row"><div class="info_row2">From Account</div> 
+		<div class="info_row3">
+			<select name="selAcctTemp" id="selAcctTemp" data-bind="options: rdAccountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: selAcctTemp, event: {change: RDFromAccountChange} , optionsCaption: '-Select Account-'">
+			
+		    </select>	
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+    <div class="info_row odd"><span class="info_row_left">Place of Recurring Deposit</span> <span class="info_row_right"> 
+			Home Branch	
+			</span>
+			<div class="clearfix"></div>
+		</div>
+
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+       
+     <div class="info_row"><div class="info_row2">State</div> 
+		<div class="info_row3">
+			<input type="text" name="fldState" id="fldState" value=""  readonly="readonly"/>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	 
+	 <div class="info_row"><div class="info_row2">City</div> 
+		<div class="info_row3">
+			<input type="text" name="fldCity" id="fldCity" value="" readonly="readonly" />
+		</div>
+	</div>
+	
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	 	  
+	 <div class="info_row"><div class="info_row2">Branch</div> 
+		<div class="info_row3">
+			<input type="text" name="fldBrnname" id="fldBrnname" value="" readonly="readonly"/>
+		</div>
+	</div>
+	
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	  <br/>
+	  
+	 <div class="info_row"><div class="info_row2">Installment Amount</div> 
+		<div class="info_row3">
+			<input type="number" class="num" name="fldDepositAmt" id="fldDepositAmt" value="" />
+		</div>
+	</div>
+	
+	 <div class="clearfix"></div>
+	 
+	<div class="info_row">
+	<p>Min Rs 1000.00/- (and max in multiples of 100 there after) Max Rs 1499900.00/-</p>
+	</div> 
+	
+	<br/>
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	
+	<div class="info_row"><div class="info_row2">Year</div> 
+		<div class="info_row3">
+			<select name="fldTermYrs" id="fldTermYrs" data-bind="options: rdYearList, optionsText: 'txt', optionsValue: 'val', value: fldTermYrs, optionsCaption: '-Select Year-'">
+			
+		    </select>			
+		</div>
+	</div>
+
+	<br/>
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	<div class="info_row"><div class="info_row2">Month</div> 
+		<div class="info_row3">
+			<select name="fldTermMonths" id="fldTermMonths" data-bind="options: rdMonthList, optionsText: 'txt', optionsValue: 'val', value: fldTermMonths, optionsCaption: '-Select Month-'">
+			
+		    </select>				
+		</div>
+	</div>	 
+      
+	<br/>
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	  
+	<div class="info_row"><div class="info_row2">Principal and Interest Credit A/c No</div> 
+		<div class="info_row3">
+			<select name="fldIntCrAcctNoTemp" id="fldIntCrAcctNoTemp" data-bind="options: rdAccountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: fldIntCrAcctNoTemp, optionsCaption: '-Select Principal and Interest Credit A/c No-'">
+			
+		    </select>
+		</div>
+	</div>	
+      	 
+
+  	<input type="hidden" name="fldIntCrAcctNo" id="fldIntCrAcctNo" value=""  />
+	<input type="hidden" name="selAcct" id="selAcct" value=""  />
+	<input type="hidden" name="balance" id="balance" value=""  />
+	<input type="hidden" name="fldAcctNbr" id="fldAcctNbr" value=""  />
+	<input type="hidden" name="fldIntAcctNo" id="fldIntAcctNo" value=""  />
+	<input type="hidden" name="fldAmtBal" id="fldAmtBal" value=""  />
+	<input type="hidden" name="fldAcctCurr" id="fldAcctCurr" value=""   />
+	<input type="hidden" name="fldNamCurrency" id="fldNamCurrency" value=""  />
+	<input type="hidden" name="fldFdBrnNam" id="fldFdBrnNam" value=""  />
+	<input type="hidden" name="fldBrn" id="fldBrn" value=""  />
+	<input type="hidden" name="fldLoanAmnt" id="fldLoanAmnt" value="Min Rs 1000.00/- (and max in multiples of 100 there after) Max Rs 1499900.00/-"  />
+	<input type="hidden" name="fldAmtMin" id="fldAmtMin" value=""  />
+ 	<input type="hidden" name="fldAmtMax" id="fldAmtMax" value=""  />
+	<input type="hidden" name="fldTermMin" id="fldTermMin" value=""  />
+	<input type="hidden" name="fldTermMax" id="fldTermMax" value =""  />
+	
+	<input type="hidden" name="fldOperationId" value="RRRDO02" />
+	<input type="hidden" name="fldScrnSeqNbr" value="02" />
+	<input type="hidden" name="fldTxnId" Value="RDO" />
+	
+	<input type="hidden" name="fldRDPlace" Value="Home" />
+  	
+   <div class="clearfix20"></div>
+   <div class="info_row2">
+    <input type="submit" class="button" value="Continue" >
+   </div>
+   
+   </div>
+   </form>
+   <br/>
+<div class="info_row"><p><b>Note:</b></p>
+<br/>
+<p>1. The Recurring Deposit would be booked in the same holding pattern as that of the debit account number.</p><br/>
+<p>2. If the account does not have sufficient balance on the date of debit, the Recurring Deposit request would be rejected.</p><br/>
+<p>3. The value date of your Recurring Deposit will be the date that the savings account is debited, depending on the date of processing of your request and all the subsequent installments will be debited on the same date every month.</p><br/>
+<p>4. The interest rate applicable on the Recurring Deposit will be the prevailing rate as on the date of first debit towards the Recurring Deposit account.</p><br/>
+<p>5. The minimum booking amount to be Rs 1000.00/-, and the maximum is upto and including Rs 1499900.00/-. If any other amount is entered by the customer, the Recurring Deposit will be rejected.</p><br/>
+<p>6. Once your Recurring Deposit account is opened, you will be able to view the Recurring Deposit account details under Recurring Deposit Summary.</p><br/>
+<p>7. Your Recurring Deposit advice will be sent to you by email if you have registered for email statements, else will be desptached by post.</p><br/>
+<p>8. Please approach the nearest HDFC Bank branch in case of any further queries.	</p><br/>
+<p>9. For NRI customers, a minimum tenure of RD is 12 months </p><br/>
+<p>10. A minimum tenure of 6 months (and in multiples of 3 months thereafter) up to a maximum tenure of 10 years </p> <br/>
+<p>11. TDS on RD is applicable as per Finance Act 2015 </p> <br/>
+</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#frmrdo01").validate({
+	rules: {
+		selAcctTemp: "required",
+		fldIntCrAcctNoTemp: "required",
+		fldDepositAmt: "required",
+		fldTermYrs: {
+          required:  function() {
+                 if ($('#fldTermMonths').val()) {
+                      return false;
+                 }
+                 else {
+                    return true;
+                 }
+          },},
+		fldTermMonths: {
+          required:  function() {
+                 if ($('#fldTermYrs').val()) {
+                      return false;
+                 }
+                 else {
+                    return true;
+                 }
+          },},
+		
+	},
+	messages: {
+		selAcctTemp: "Select From Account",
+		fldIntCrAcctNoTemp: "Select Principal and Interest Credit Account",
+		fldDepositAmt: "Enter Installment Amount",
+		fldTermYrs: "Select Year",
+		fldTermMonths: "Select Month",
+	}
+});
+
+/*
+$(document).on('change','#selAcctTemp',function(e){
+
+	accmodel.RDFromAccountChange();
+});*/
+
+$('.num').keyup(function(){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+</script>

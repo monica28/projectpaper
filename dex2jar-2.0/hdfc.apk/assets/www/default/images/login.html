@@ -1,0 +1,68 @@
+<div id="wrapper" style="top:96px;">
+    
+    <div class="content">
+        <div class="uid_box">
+            <form class="custStyleInput" name="frmLogin" id="frmLogin" method="post" data-bind='submit: custIdSubmit'>
+              <p class="width40Per" style="margin-top:8px">
+                <label>Customer Id:</label>
+              </p>
+              <p class="width60Per">
+                <input type="text" name="fldLoginUserId" id="fldLoginUserId" required  value="" maxlength="10" autocomplete="off" />
+              </p>
+             
+             <input type="hidden" name="fldRequestId" id="fldRequestId" value="RRLG101" />
+             <input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="01" />
+             <input type="hidden" name="fldTxnId" id="fldTxnId" value="RGN" />
+             
+              <p style="margin-top:25px" class="width100Per center_div">                
+                 <input type="submit" class="button" value="Continue" style="width: 140px;">
+               </p> 
+                  
+             </form>
+	
+	</div>
+ </div>
+ 
+
+</div>
+
+ 
+<div class="secure_banking">
+	<a onclick="openLink('http://www.hdfcbank.com/htdocs/common/other/Security-Tips/Security-Tips-Mob.html')">
+		<img src="img/secure_banking.jpg" alt="Secure Banking">
+		<span>Know More</span>
+	</a>	
+</div> 
+
+<script type="text/javascript">
+$("#fldLoginUserId").on("keydown", function (e) {
+    return e.which !== 32;
+});
+$.validator.addMethod("alpha", function(value, element) {
+	 value = value.trim();
+	 $('#fldLoginUserId').val(value);
+     return this.optional(element) || /^[a-z0-9]+$/i.test(value); 
+}
+, "Customer ID should contain Alphabets and Numbers"); 
+
+	$("#frmLogin").validate({
+		rules: {
+			fldLoginUserId:{
+			required:true,
+			alpha:true
+			}, 							
+		},
+		messages: {
+			fldLoginUserId:{
+			required : "Enter Customer Id",
+			alpha : "Customer ID should contain Alphabets and Numbers",			
+		},	
+												
+		}
+	});
+	
+	function openLink(url){
+			window.open(url,'_blank','location=no');  
+			return false;
+    }
+</script>

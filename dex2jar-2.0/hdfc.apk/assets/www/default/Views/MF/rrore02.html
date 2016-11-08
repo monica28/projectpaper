@@ -1,0 +1,145 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+     
+  <form name="frmrrore02" id="frmrrore02"  method="post" data-bind='submit: rrore02Submit'>
+    <div class="sub_content" >
+
+ 
+			
+    		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left clslineht">Mutual Fund Account</span> 
+			<span class="info_row_right" id="unitholderid">
+			
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Mutual Fund Name</span> 
+				<span class="info_row_right clslineht" id="amcname">
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row even"><span class="info_row_left">Scheme Name</span> 
+				<span class="info_row_right clslineht" id="fundname">
+
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+		
+			
+			<div class="info_row odd"><span class="info_row_left">NAV</span> 
+				<span class="info_row_right clslineht" id="navandnavdate">
+ as on 
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">Cut-Off Time</span> 
+				<span class="info_row_right" id="cutofftime">
+			
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+	
+			
+			<div class="info_row odd"><span class="info_row_left">Minimum Amount</span> 
+				<span class="info_row_right clslineht" id="minamtandstepamt">
+					in multiples of 
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+
+			
+			<div class="info_row even"><span class="info_row_left">Minimum Units</span> 
+				<span class="info_row_right" id="minunits">
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			</div>
+			<br/>
+			
+			<div class="clearfix"></div>
+		    <div class="linedivider"></div>   
+		    <div class="clearfix"></div>
+		    
+			<div class="info_row"><div class="info_row2">Redemption Type</div> 
+				<div class="info_row3">
+					<select name="fldPartialFull" id="fldPartialFull" class="styled">
+			          <option value='P'>Partial</option>
+			          <option value='F'>Full</option>
+			        </select>
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>
+		    <div class="linedivider"></div>   
+		    <div class="clearfix"></div>
+		    
+		    <div class="info_row"><div class="info_row2">Amount</div> 
+				<div class="info_row3">
+					<input type="text" name="fldAmount" id="fldAmount" value="" size="10" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>
+		    <div class="linedivider"></div>   
+		    <div class="clearfix"></div>
+			
+		    
+		    <div class="info_row"><div class="info_row2">Units</div> 
+				<div class="info_row3">
+					<input type="text" name="fldUnits" id="fldUnits" value="" size="10" />
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			
+			<div class="info_row">
+			<p>Enter either Units or Amount for Redemption in case of Partial redemption. </p><br/>
+			<p>To avoid transaction rejection, enter Units or Amount less than or equal to Current Mutual Fund holdings.</p><br/>			
+			</div>
+			
+					<br/>
+	<div class="info_row alignc">
+				<input type="submit" class="button" value="Continue" />
+				<div class="clearfix"></div>
+			</div>				<br/>
+			
+			<div class="info_row">
+			<p>Same day NAV would be applicable for transactions done before the cut off time.</p><br/>
+			<p>For transactions received post cut off time applicable NAV would be the next business day.</p><br/>
+			<p>Please refer Terms and Conditions for NAV applicability on Liquid Schemes transactions and all transactions done on Saturday, Sundays and Holidays.</p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>
+			
+		
+			<div><p>	Invalid Fund.</p></div>			
+			
+
+	
+	</div>
+	
+	<input type="hidden" name="fldRequestId" value="RRORE03" />
+	<input type="hidden" name="fldTxnId" value="ORE" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="03" />
+	
+	<input type="hidden" id="fldPartialFull_txt" name="fldPartialFull_txt" value="" />
+	
+	<input type="hidden" id="fldMinAmt1" name="fldMinAmt1" value="" />	
+	<input type="hidden" id="fldMinUnt1" name="fldMinUnt1" value="" />
+	<input type="hidden" id="fldUhid" name="fldUhid" value="" />
+	<input type="hidden" id="fldFundCode" name="fldFundCode" value="" />
+	<input type="hidden" id="fldAmcId" name="fldAmcId" value="" />
+	<input type="hidden" id="fldAccount" name="fldAccount" value="" />
+	<input type="hidden" id="fldfundname2" name="fldfundname2" value="" />	
+	<input type="hidden" id="fldfundcode2" name="fldfundcode2" value="" />
+	
+
+	
+	</form>
+    
+  </div>
+  </div>

@@ -1,0 +1,82 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmvmt02" id="frmvmt02" method="post" data-bind='submit: rrvmt02Submit'>
+  
+  <div class="summblock">
+    
+    	<div class="info_row dark_header"><span class="info_row_left">From Account</span> 
+		<span class="info_row_right clsfrmaccount"></span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Amount</span> 
+		<span class="info_row_right page_title_sub clsamount">		
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+    	<div class="info_row even"><span class="info_row_left">Sender's Name</span> 
+		<span class="info_row_right clssendername">			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Receiver's Name</span> 
+		<span class="info_row_right clsreceivername">			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left clslineht">Sender's Comments</span> 
+		<span class="info_row_right clslineht clssendercomm">			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		
+		<div class="info_row odd"><span class="info_row_left">Visa Card No.</span> 
+		<span class="info_row_right clsvisacard">
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		
+	</div>
+	
+	<div class="clearfix20"></div>
+   <div class="info_row">
+    <input type="submit" class="button" value="Confirm" >
+   </div>
+   
+   <input type="hidden" name="fldOperationId" value="RRVMT03" />
+	<input type="hidden" name="fldTxnId" value="VMT" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="03" />
+		
+	<input type="hidden" name="fldUserRefNo" id="fldUserRefNo"  value="" />
+	<input type="hidden" name="fldDateTime" id="fldDateTime" value="" />
+	<input type="hidden" name="fldRsaTxnId" id="fldRsaTxnId" value="" />
+	<input type="hidden" name="fldClientSessionId" id="fldClientSessionId" value="" />
+	<input type="hidden" name="fldFcatSessionId" id="fldFcatSessionId" value="" />
+	<input type="hidden" name="fldsendersName" id="fldsendersName" value="" />
+	<input type="hidden" name="fldFromAcct" id="fldFromAcct" value="" />
+	<input type="hidden" name="fldvisaBinNo" id="fldvisaBinNo" value="" />
+	<input type="hidden" name="fldamount" id="fldamount" value="" />
+	<input type="hidden" name="fldrecieversName" id="fldrecieversName" value="" />
+	<input type="hidden" name="fldsendersComments" id="fldsendersComments" value="" />
+	<input type="hidden" name="fldExtSessionId" id="fldExtSessionId" value="" />
+	<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+   
+  </form>
+
+  </div>
+</div>

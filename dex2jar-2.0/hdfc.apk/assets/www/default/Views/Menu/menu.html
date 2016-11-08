@@ -1,0 +1,313 @@
+<style>
+.content {
+    height: auto;
+    overflow: visible;
+    padding: 0;
+}
+.menu_box .tradeSec{ background: url("img/Securites-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .aag{ background: url("img/aag-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .Wealth{ background: url("img/Wealth-Icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .payzapp{ background: url("img/payzapp-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .chillr{ background: url("img/chillr-icon-optn2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .hindi{ background: url("img/hindi-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .smartbuy{ background: url("img/smartbuy-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .vroom{ background: url("img/vroom-icon-2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .Mpin{ background: url("img/quick-access-pin.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+.menu_box .moneyview{ background: url("img/icon_expense_tracker.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);}
+
+
+</style>
+<script>
+$(document).ready(function() {
+	var Customer_type = localStorage.getItem("Customer_Type");
+	
+	        if(Customer_type == 'classic'){
+        		$('.h_title').addClass('classic_h_title');
+        		$('.logo img').hide();
+        		$('.logo').addClass('classic_logo');
+				$('.footer_nav').addClass('classic_footer');
+				$('.footer_nav li').addClass('classic_footer_bg');
+				$("#mailid").prop("href", "mailto:classicbanking@hdfcbank.com?Subject=");
+        		$('.back .back').addClass('classic_back');
+        	}
+        	if(Customer_type == 'imperia'){
+        		$('.h_title').addClass('Imp_h_title');
+        		$('.logo img').hide();
+        		$('.logo').addClass('Imp_logo');
+        		$('.footer_nav a').addClass('Imp_footer');
+        		$('.footer_nav li').addClass('Imp_footer_bg');
+        		$('.h_title').addClass('Imp_h_title:after');
+				$("#mailid").prop("href", "mailto:imperiabanking@hdfcbank.com?Subject=");
+        		$('.back .back').addClass('Imp_back');
+        	}
+        	if(Customer_type == 'preferred'){
+        		$('.h_title').addClass('Pref_h_title');
+        		$('.logo img').hide();
+        		$('.logo').addClass('Pref_logo');
+        		$('.footer_nav a').addClass('Pref_footer');
+        		$('.footer_nav li').addClass('Pref_footer_bg');
+        		$('.h_title').addClass('Pref_h_title:after');
+				$("#mailid").prop("href", "mailto:preferredbanking@hdfcbank.com?Subject=");
+				$('.back .back').addClass('Pref_back');
+        	}
+});
+
+</script>
+<div class="content hdfc_pattern" id="wrapper1" style="top:0;padding-top:47px;">            
+	<div class="menu_box">
+		<a href="#loginmethod"><div class="mnu_row">
+			<div class="mnu_icon"></div>
+			<div class="mnu_txt">My Account</div>			
+		</div></a>
+		
+		<a href="#MpinRegister"><div class="mnu_row">
+			<div class="mnu_icon Mpin"></div>
+			<div class="mnu_txt">Set/Change Quick Access PIN</div>			
+		</div></a>
+		
+		<!-- <a href="#MpinRegister"><div class="mnu_row">
+			<div class="mnu_icon"></div>
+			<div class="mnu_txt">Change Quick access pin</div>			
+		</div></a> -->
+		
+		<a onclick="BillpayPage()" style="text-decoration:none;"><div class="mnu_row">
+			<div class="mnu_icon BLP"></div>
+			<div class="mnu_txt">BillPay &amp; Recharge</div>			
+		</div></a>
+		
+		
+		<a href="#applyNow"><div class="mnu_row">
+			<div class="mnu_icon AN"></div>
+			<div class="mnu_txt">Apply Now</div>			
+		</div></a>
+		<a onclick="openMpassbookpage();" ><div class="mnu_row">
+			<div class="mnu_icon mPassbook"></div>
+			<div class="mnu_txt">mPassbook</div>			
+		</div></a>
+	<!-- 	<a onclick="TransferFunds()" style="text-decoration:none;"><div class="mnu_row">
+			<div class="mnu_icon FND"></div>
+			<div class="mnu_txt">Transfer Funds</div>			
+		</div></a> -->
+		
+		
+		<a onclick="hdfcExtApp('com.enstage.wibmo.hdfc','hdfcPayzap');">
+			<div class="mnu_row">
+				<div class="mnu_icon payzapp"></div>
+				<div class="mnu_txt">PayZapp <br/>One click payments</div>
+			</div>  
+		</a> 
+<a onclick="openLink('https://mobileoffers.smartbuy.hdfcbank.com/list_offer/credit_card')" style="text-decoration:none;">
+		<div class="mnu_row">
+		   
+			<div class="mnu_icon smartbuy"></div>
+			<div class="mnu_txt">SmartBuy Offers</div>
+		</div>
+		</a>
+		
+		
+	   <a onclick="hdfcExtApp('in.chillr','hdfcChillr');">
+			<div class="mnu_row">
+				<div class="mnu_icon chillr"></div>
+				<div class="mnu_txt">Chillr<br/>Send money to contacts</div>
+			</div>  
+		</a> 
+		
+			
+		
+	 	<a onclick="hdfcExtApp('com.snapwork.hdfcsec','hdfcsec');">
+			<div class="mnu_row">
+				<div class="mnu_icon tradeSec"></div>
+				<div class="mnu_txt">Trade with HDFC Securities</div>
+			</div>  
+		</a>
+		
+		
+		<a onclick="hdfcExtApp('com.snapwork.hdfc.hindi','hdfcHindi');">
+			<div class="mnu_row">
+				<div class="mnu_icon hindi"></div>
+				<div class="mnu_txt">HDFC Bank Hindi App</div>
+			</div>  
+		</a>
+		
+		
+		
+		<a onclick="hdfcExtApp('com.hdfcaag','hdfcaag');">
+			<div class="mnu_row">
+				<div class="mnu_icon aag"></div>
+				<div class="mnu_txt">AAG</div>
+			</div>  
+		</a> 
+		
+		<a onclick="hdfcExtApp('com.girnarsoft.hdfcconsumer','hdfcVroom');">
+			<div class="mnu_row">
+				<div class="mnu_icon vroom"></div>
+				<div class="mnu_txt">Autopedia</div>
+			</div>  
+		</a> 
+		
+		
+		<a onclick="hdfcExtApp('com.hdfcbank.coese.InvestTrack','hdfcWealth');">
+			<div class="mnu_row">
+				<div class="mnu_icon Wealth"></div>
+				<div class="mnu_txt">Invest Track</div>
+			</div>  
+		</a> 
+		
+		
+		<a href="#messageCentre">
+            <div class="mnu_row">
+                <div class="mnu_icon MMC">   
+						<span class="msgCount" data-bind="text: UNREADMSGCOUNT" style="display:none;"></span> 				 
+				</div>
+                <div class="mnu_txt">My Message Center</div>
+            </div>
+        </a>
+		
+		
+		
+	
+		<a onclick="openNativePage();" style="text-decoration:none;">
+		<div class="mnu_row" >
+			<div class="mnu_icon leads"></div>
+			<div class="mnu_txt">Locate Branches &amp; ATMs</div>
+		</div>
+		</a>
+		
+		<a href="#settings">
+	     <div class="mnu_row">
+				<div class="mnu_icon settings"></div>
+				<div class="mnu_txt">Notification Settings</div>
+			</div>  
+		</a>
+		
+		
+		<a href="mailto:support@hdfcbank.com?Subject=" target="_top" id="mailid">
+		<div class="mnu_row">
+			<div class="mnu_icon va"></div>
+			<div class="mnu_txt">Feedback</div>
+		</div>
+		</a>
+		
+		<a onclick="openNativePage3();" style="text-decoration:none;">
+		<div class="mnu_row">
+			<div class="mnu_icon rpt"></div>
+			<div class="mnu_txt">Contact Us</div>
+		</div>  
+		</a>  
+		
+	
+		
+      <a onclick="openMoneyView();" style="text-decoration:none;">
+		<div class="mnu_row">
+			<div class="mnu_icon moneyview"></div>
+			<div class="mnu_txt">Expense Tracker</div>
+		</div>  
+		</a> 
+		
+		
+		                
+	</div>                
+</div>
+<script>
+$("#bv").hide();
+var Customer_type = localStorage.getItem("Customer_Type");
+
+if (Customer_type == null) {
+  var Customer_type = 'default';
+    function openMoneyView()
+    {
+
+		var params = {
+				nameParam : Customer_type
+		};
+		hdfc_android.getApiVersion();
+		WL.NativePage.show("com.whizdm.activities.LauncherActivity", backFromNativePage, params);
+		
+	}
+	function openNativePage3(){
+	$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=ContactUs&ptype=Android",function(data) {});
+	var params = {
+			nameParam : Customer_type
+	};
+	WL.NativePage.show("com.snapwork.hdfc.ContactsActivity", backFromNativePage, params);
+	}	
+	function openNativePage(){
+	$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Offers&ptype=Android",function(data) {});
+			var params = {
+			nameParam : Customer_type
+	};
+	WL.NativePage.show("com.snapwork.hdfc.MapViewActivity", backFromNativePage, params);
+	}
+	function openNativePage1(){
+	$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Offers&ptype=Android",function(data) {});
+			var params = {
+			nameParam : Customer_type
+	};
+	WL.NativePage.show("com.snapwork.hdfc.ShowOffersActivity", backFromNativePage, params);
+	}
+}
+else{
+   function openMoneyView(){
+
+		var params = {
+				nameParam : Customer_type
+		};
+		hdfc_android.getApiVersion();
+		WL.NativePage.show("com.whizdm.activities.LauncherActivity", backFromNativePage, params);
+		
+	}
+	function openNativePage3(){
+	$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=ContactUs&ptype=Android",function(data) {});
+		var params = {
+				nameParam : Customer_type
+		};
+		WL.NativePage.show("com.snapwork.hdfc.ContactsActivity", backFromNativePage, params);
+	}
+	function openNativePage(){
+ $.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Locator&ptype=Android",function(data) {});
+		var params = {
+				nameParam : Customer_type
+		};
+		WL.NativePage.show("com.snapwork.hdfc.MapViewActivity", backFromNativePage, params);
+	}
+	function openNativePage1(){
+$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Offers&ptype=Android",function(data) {});
+		var params = {
+				nameParam : Customer_type
+		};
+		WL.NativePage.show("com.snapwork.hdfc.ShowOffersActivity", backFromNativePage, params);
+	}
+}
+function backFromNativePage(data){
+	//alert("Received phone number is: " + data.phoneNumber);
+}
+
+function BillpayPage(){
+    billpaypage="billpayment";
+	window.location.hash="#login";
+}
+function TransferFunds(){
+    fundtransferNli="fundtransfer";
+	window.location.hash="#login";
+}
+
+function openLink(url){
+			window.open(url,'_blank','location=no');  
+			return false;
+    }
+function openMpassbookpage(){
+	$("#mPassbookcss").attr("href","css/mPB/mPB.css");
+	busyInd.show();
+	setTimeout(function(){
+		busyInd.hide();
+		$('.asideBar').show();	
+		if((localStorage.getItem("cnpn") != null && localStorage.getItem("cnpn") != '') || (localStorage.getItem("cnpnpatt") != null && localStorage.getItem("cnpnpatt") != ''))
+		{
+			window.location.hash = '#mPassbook01';
+		}
+		else{
+			window.location.hash = '#mPassbook';
+		}
+	},1200);
+}
+</script>

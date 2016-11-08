@@ -1,0 +1,141 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.summblock { margin:0 5px !important; }
+	#table1, #table {width: 100%;}
+	#table { padding:0 10px; }
+	#table1 td {
+	text-align: left;
+	vertical-align: top;
+	padding-left: 0px;
+	}
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <div class="info_row" id="accExitsMsg" style="padding-top:5px;display:none;">
+    <p>You do not have any transactions for the selected period</p>
+    <br>
+  </div>
+  <div class="info_row" id="flgwarningMsg" style="display:none;"><p></p><div class="clearfix"></div></div>
+  
+  
+   <div class="info_row odd">
+    </div>
+	<table id="table">
+	<tr>
+		<td>		
+		<div class="info_row" style="color:#7f7f7f"><div class="info_row2">Mutual Fund Account Number</div> 
+			<div class="info_row">
+			  <span class="info_row_left page_block_sub" name="fldAcctNo" id="fldAcctNo" data-bind="text: selAccountmf">
+				
+			  </span>	
+			</div>
+		</div>		
+		</td>
+		</tr>
+	</table>
+	
+	<table id="table1" align="center" cellpadding="5" cellspacing="0">
+	<tr>
+		<td>
+			<div class="panel_new">
+			<span class="rotating-item swipe" >
+			<div class="info_row4 alignc" style="margin:10px 0 0 0;font-size:11pt;">Holding Value</div>
+			
+			<div style="height: 2px;margin: 0px 0 0 8px;padding: 0 10px;width: 87%;">
+				<div style=" float:left;height: 2px;width: 20%;background-color:#ed1c24;">
+				</div>
+				<div style=" float:left;height: 2px;width: 80%;background-color:#004a8f;">
+				</div>
+			</div>
+			
+			<div class="info_row4 page_block_sub alignc" style="margin:8px 0 0 0;" data-bind="text: curraccbalval"></div>
+			</span>     
+			</div>
+		</td>
+	</tr>
+	</table>
+	
+     <!-- ko if: mfaccountList2().length > 0 --> 			
+	<div class="info_row odd"> <span class="info_row_left clslineht">Report as on Date <br/>(dd/mm/yyyy)</span> <span class="info_row_right" id="cdate">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+		
+			 <div data-bind="foreach: mfaccountList2">	
+				<div class="summblock">
+					<div class="info_row dark_header"> <span class="info_row_left clslineht">Mutual Fund Name</span> <span class="info_row_right" data-bind="text: amcname">
+					
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row odd"> <span class="info_row_left">Scheme Name</span> <span class="info_row_right clslineht" data-bind="text: fundname">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row even"> <span class="info_row_left">Balance Units</span> <span class="info_row_right" data-bind="text: fundholding">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row odd"> <span class="info_row_left clslineht">Average Purchase NAV</span> <span class="info_row_right" data-bind="text: fundnav">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row even"> <span class="info_row_left clslineht">Average Cost Value</span> <span class="info_row_right" data-bind="text: fundccy">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row odd"> <span class="info_row_left">Latest NAV</span> <span class="info_row_right" data-bind="text: latnav">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="info_row even"> <span class="info_row_left">Present Value</span> <span class="info_row_right" data-bind="text: presentvalue">
+						
+						 </span>
+						<div class="clearfix"></div>
+					</div>
+					</div>
+					<br/>
+				</div>
+				<div class="clearfix"></div>
+						<div class="info_row" id="Nofund" style="display:none;" ><b><span>Holding statement details not available</span></b><div class="clearfix"></div>
+
+					</div>
+				<br/>
+				<div class="info_row">
+					<p>The Mutual Fund Holding Statement is prepared based on data received from AMCs (Mutual Funds), RTAs (Registrars). HDFC Bank is not responsible for issues due to incorrect data received from its sources. HDFC Bank provides this report on Best Effort Basis.</p><br/>
+				</div>	
+		
+						
+			
+			<div class="clearfix"></div>
+			
+			<br/>
+			<div class="info_row">
+			<p><b>Note:</b></p>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>	
+
+
+
+  
+<!-- /ko -->
+  </div>
+</div>
+<script>
+/*$(document).on('change','#fldAcctNo',function(e){
+alert("call acc");
+	accmodel.showSelectedAccount();
+});*/
+</script>
+
+<script>
+$('#cdate').html(getCurrdate());
+
+</script>

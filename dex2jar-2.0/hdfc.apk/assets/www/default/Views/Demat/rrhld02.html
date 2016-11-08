@@ -1,0 +1,192 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; } 
+	
+</style>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+       <div style="display:none;" id="erormsg">
+    	<div class="info_row" ><p>No records fetched for the given search criteria</p></div>
+       </div>
+		
+			<div style="display:none;" id="hldts">
+			   	<div style="display:none;" id="custdetails">
+				<div class="info_row odd"><span class="info_row_left" >DPID</span> <span class="info_row_right" id="clikey"> 
+				
+				</span>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="info_row odd"><span class="info_row_left" >Client ID</span> <span class="info_row_right" id="acctno"> 
+				</span>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="info_row odd"><span class="info_row_left clslineht" >Name of the First Holder</span> <span class="info_row_right clslineht" id="fhldnm"> 
+					
+					</span>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+				<br/>
+			
+				</div>
+			
+			
+		<div style="display:none;" id="dpacunt">
+			<div class="info_row" style="color:#7f7f7f"><div class="info_row2">DP Account Number</div> 
+				 <div class="info_row3 page_block_sub" id="did">
+						
+					</div>
+				</div>
+
+				
+				<div class="clearfix"></div>
+			
+				<div class="panel_new" >
+					<span class="rotating-item swipe">
+					<div class="info_row4 alignc" style="margin:10px 0 0 0;font-size:11pt;">Holding Value</div>
+
+					<!--p class="lineslider" style="margin:5px 0 0 7px;"></p-->
+					<div style="height: 2px;margin: 0px 0 0 8px;padding: 0 10px;width: 87%;">
+						<div style=" float:left;height: 2px;width: 20%;background-color:#ed1c24;">
+						</div>
+						<div style=" float:left;height: 2px;width: 80%;background-color:#004a8f;">
+						</div>
+					</div>
+					
+			<div class="info_row4 page_block_sub alignc" style="margin:8px 0 0 0;" id="hlv">Rs.</div>
+					
+					</span>     
+				</div>
+				
+		  </div>
+				<div class="info_row odd" ><p>All Holdings are as of End of Day
+				   <b> <span id="holddt"> </span></b></p>
+				</div>
+			
+				<br/>	
+      
+             <div  >	  
+				
+				
+				
+					
+				<div data-bind="foreach: flddpaccDetails">
+					<!-- ko if: srno === '1' -->
+						<br/><br/>
+					<!-- /ko -->
+					<!-- ko ifnot: srno === 'last' -->
+					<div class="summblock">
+					<!-- ko if: srno === '1' &&  acctdesc1 === 'Online Trading Holds'-->
+					<div  id="note">
+							<p>Please note that, while arriving at Saleable Balances, Holds Taken &amp; Under Process Quantity should be subtracted from the Beneficiary Balance.</p>
+					</div>
+					<!-- /ko -->
+					<!-- ko if: srno === '1' -->	
+						<div class="info_row "><span class="info_row_left">Type of Holding</span> <span class="info_row_right" data-bind="text:acctdesc1" > 
+						
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+						<!-- /ko -->
+						<div class="info_row dark_header"><span class="info_row_left">Sr. No.</span> <span class="info_row_right" data-bind="text:srno" > 
+						
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">ISIN</span> <span class="info_row_right" data-bind="text:isin"> 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row even"><span class="info_row_left">Company Name</span> <span class="info_row_right clslineht" data-bind="text:coname" > 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">Scrip Type</span> <span class="info_row_right" data-bind="text:scriptp"> 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row even"><span class="info_row_left">Balance</span> <span class="info_row_right page_title_sub" data-bind="text:hldqty"> 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">Market Rate</span> <span class="info_row_right" data-bind="text:mktrt"> 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row even"><span class="info_row_left">Market Value</span> <span class="info_row_right" data-bind="text:mktval" > 
+							
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						
+							<div class="info_row odd"  ><span class="info_row_left" id="R1">Remarks</span> <span class="info_row_right" data-bind="text:balstat" > 
+								
+								</span>
+								<div class="clearfix"></div>
+							</div>
+						
+							
+					</div>	
+					<!-- /ko -->
+						<!-- ko if: srno === 'last' -->
+						<br/>
+					
+						<div class="info_row"><p>Total Value as of
+						<b><span   data-bind="text:acctdesc1"></span>: 
+							
+							 <span class="page_title_Sub" data-bind="text:balstat"></span> </b></p>
+							
+							<div class="clearfix"></div>
+						</div>
+						<!-- /ko -->	
+				</div>
+				
+				<div  >	
+						<div class="info_row odd"><span class="info_row_left"></span> <span class="info_row_right">
+							</span>
+							<div class="clearfix"></div>
+						</div>
+						</div>
+				
+				
+				
+			
+				
+					<div class="info_row" id="singleDemat" style="display:none;"><p>Total Value as of
+					<b><span  id="hld"></span>: 
+						
+						 <span class="page_title_Sub" id="totv"></span> </b></p>
+						
+						<div class="clearfix"></div>
+					</div>
+             </div>
+				
+		
+			
+
+        </div> 
+		 
+        
+   </div>
+</div>

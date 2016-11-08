@@ -1,0 +1,117 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmReqAccStmtConf" id="frmReqAccStmtConf" method="post" data-bind='submit: reqChequeBookConfirmSubmit'>
+  	<br/>
+      <div class="info_row"><p>Please verify and confirm your request for Cheque Book.</p></div>
+      <br/>
+  		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left">Account No.</span> 
+			<span class="info_row_right clslineht" id="fldacctnodet"></span>
+				<div class="clearfix"></div>
+			</div>
+			<input type="hidden" name="fldacctno" id="fldacctno" data-bind="value: fldacctno" />
+			<div class="info_row odd"><span class="info_row_left">Contact Details</span> 
+			<span class="info_row_right clslineht"> 
+			</span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Address</span> 
+			<span class="info_row_right clslineht" id="fldaddr1"></span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left"></span> 
+			<span class="info_row_right clslineht" id="fldaddr2"></span>
+				<div class="clearfix" ></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left"></span> 
+			<span class="info_row_right clslineht" id="fldaddr3"></span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">City</span> 
+			<span class="info_row_right" id="fldcustcity"></span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">State</span> 
+			<span class="info_row_right" id="fldcuststate"></span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Zip</span> 
+			<span class="info_row_right" id="fldzip"></span>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Country</span>
+			<span class="info_row_right" id="fldcntry">        		
+        	</span>
+				<div class="clearfix"></div>
+		    </div>
+			
+			<br/>
+	  <div class="info_row">
+	  <p><b>Important:</b></p><br/>
+	  <p>l/We agree and acknowledge that the cheque book(s) will be dispatched by courier to my correspondence address. I/We confirm that I/We have read or will
+read Conditions for issue and Use of chequebooks, on the cover and agree to abide by such conditions or such other conditions applicable from time to time.
+I/We hereby acknowledge the need to exercise care when drawing cheques and agree that I/We will not draw cheques by any means which may enable a cheque to be altered in a manner which is not readily detectable.</p><br/><br/>
+	  </div>
+	  
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+			
+				
+	  
+			<div class="info_row"><div class="info_row2">Confirm Address</div><div class="info_row3">
+				<select name="fldChecked" id="fldChecked">
+				<option value="true">Accept</option>
+				<option value="false">Decline</option>
+				</select>
+			</div>
+			</div>
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="clearfix20"></div>
+		   <div class="info_row2">
+		    <input type="submit" class="button" value="Submit" >
+		   </div>
+  			<br/><br/>
+  			<input type="hidden" id="fldRequestId" name="fldRequestId" />
+  			<input type="hidden" id="fldAcctDetail" name="fldAcctDetail" />
+  				  <br/>
+  				    <br/>		
+	</form>
+  </div>
+</div>
+<script type="text/javascript">
+
+$("#frmReqAccStmtConf").validate({
+	 rules: {
+	 		
+            fldChecked: {chkvalid: "#fldChecked"},
+        },
+        messages: {
+        	fldChecked: {
+                chkvalid: "As confirmed by you, since the mailing address updated in our records is incorrect, the request cannot be processed. Kindly visit nearest branch to update your address."
+            }
+        }
+});
+</script>

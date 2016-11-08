@@ -1,0 +1,631 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; } 
+	
+input[type="button"] {
+    display: table;
+    margin: auto;
+    width: 150px;
+}
+input[type=submit] {
+width: 120px !important;
+margin: auto;
+display: table;
+}
+</style>
+<script type="text/javascript">
+
+function formSubmit()
+{
+	var othflag = document.getElementById('flagOtherdetails').value;
+
+	var objs = document.getElementById('fldAlertString1');
+	document.getElementById('fldAlertString1_txt').value = objs.options[objs.selectedIndex].innerHTML;
+	
+	
+	deliveryChannels1 = document.getElementById('deliveryChannels').value;
+	otherDetails1 = document.getElementById('otherDetails').value;
+	
+	document.getElementById('fldAlertDesc').value =  document.getElementById('fldAlertString1_txt').value;
+	if(othflag == "yes"){
+		if(document.getElementById('otherDetails') != undefined)
+		{
+			var objs2 = document.getElementById('otherDetails');
+			document.getElementById('otherDetails_txt').value = objs2.options[objs2.selectedIndex].innerHTML;
+			document.getElementById('fldAlertString').value =  document.getElementById('fldAlertString1').value+"##"+deliveryChannels1+"##"+otherDetails1+"~~";
+			//document.getElementById('otherDetails_txt').value =  document.getElementById('otherDetails').innerHTML;
+		}
+	}else{
+		var objs2 = document.getElementById('otherDetails');
+		objs2.options[objs2.selectedIndex].value = "";
+		document.getElementById('otherDetails').value = "";
+		document.getElementById('otherDetails_txt').value = "";
+		document.getElementById('fldAlertString').value =  document.getElementById('fldAlertString1').value+"##"+deliveryChannels1+"##~~";
+	}
+	
+	var objs1 = document.getElementById('deliveryChannels');
+	document.getElementById('deliveryChannels_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+
+//	document.getElementById("f1").submit();
+	
+}
+
+function formEditSubmit()
+{
+	var objs = document.getElementById('fldAlertString1');
+	document.getElementById('fldAlertString1_txt').value = objs.options[objs.selectedIndex].innerHTML;
+	
+	document.getElementById('fldAlertString').value =  document.getElementById('fldAlertString1').value;
+	document.getElementById('fldAlertDesc').value =  document.getElementById('fldAlertString1_txt').value;
+	document.getElementById('fldRequestId').value =  'RRALM02';
+	//document.getElementById('fldRequestId').value =  'RRALM02';
+	//document.getElementById('fldScrnSeqNbr').value =  '02';
+	//document.getElementById('fldTxnId').value =  'ALM';
+	//document.getElementById("feditdel").submit();	
+}
+
+function formDeleteSubmit()
+{
+	var objs = document.getElementById('fldAlertString1');
+	document.getElementById('fldAlertString1_txt').value = objs.options[objs.selectedIndex].innerHTML;
+	
+	document.getElementById('fldAlertString').value =  document.getElementById('fldAlertString1').value;
+	document.getElementById('fldAlertDesc').value =  document.getElementById('fldAlertString1_txt').value;
+	document.getElementById('fldRequestId').value =  'RRALD03';
+	//document.getElementById('fldRequestId').value =  'RRALD03';
+	//document.getElementById('fldScrnSeqNbr').value =  '03';
+	//document.getElementById('fldTxnId').value =  'ALD';
+	document.getElementById('fldLogoffReq').value =  'N';
+	//document.getElementById('fldCodProd').value =  '100';
+	    
+	//document.getElementById("feditdel").submit();	
+}
+
+/* <![CDATA[ */
+function callDetails()
+{
+	var pgreqtype = document.getElementById('requestType').value;
+	
+	document.getElementById('alertdet_content').style.display = 'block';
+	//CASA-0001
+	var selectedalert = document.getElementById('fldAlertString1').value;
+	
+	//hid_CASA-0001
+	var hidvarnm = "hid_"+selectedalert;
+	
+	var altdet = document.getElementById(hidvarnm).value;
+	//Periodic alert for account balance######FR######B
+	
+	var arrdet = altdet.split("######");
+	
+	document.getElementById('alertdesc').innerHTML = arrdet[0];
+	
+	if(arrdet[1] == 'TB'){
+	
+		if(selectedalert == 'FWBELOW_EOD' || selectedalert == 'FWCRL_ONL' || selectedalert == 'FWDBL_ONL' || selectedalert == 'CASA-0009' || selectedalert == 'CASA-0008' || selectedalert == 'CASA-0003'){
+		
+			/*txtothers = "<select name='otherDetails' id='otherDetails'><option value='5000'>5000</option><option value='10000'>10000</option><option value='20000'>20000</option><option value='50000'>50000</option></select>";
+			
+			document.getElementById('otherdet').innerHTML = txtothers;*/
+			document.getElementById('othdet_dropdown').style.display = 'block';	
+			
+			document.getElementById('selectotherDetails').innerHTML = '5000';
+			
+			var selectobj = document.getElementById("otherDetails");
+			selectobj.options.length = 0;
+			
+			selectobj.options[selectobj.options.length] = new Option('5000', '5000');
+			selectobj.options[selectobj.options.length] = new Option('10000', '10000');
+			selectobj.options[selectobj.options.length] = new Option('20000', '20000');
+			selectobj.options[selectobj.options.length] = new Option('50000', '50000');
+
+			document.getElementById('otherdet_remain').style.display = 'none';
+			document.getElementById('flagOtherdetails').value = "yes";			
+		
+		}else{
+			//document.getElementById('otherdet').innerHTML = '-';
+			document.getElementById('othdet_dropdown').style.display = 'none';	
+			document.getElementById('otherdet_remain').style.display = 'block';	
+			document.getElementById('flagOtherdetails').value = "no";
+		}
+	}
+	else if(arrdet[1] == 'FR'){
+		txtothers = "<select name='otherDetails' id='otherDetails'><option value='W'>Weekly</option></select>";
+			
+		//document.getElementById('otherdet').innerHTML = txtothers;
+		document.getElementById('othdet_dropdown').style.display = 'block';	
+		
+			document.getElementById('selectotherDetails').innerHTML = 'Weekly'; 
+		
+			var selectobj = document.getElementById("otherDetails");
+			selectobj.options.length = 0;			
+			selectobj.options[selectobj.options.length] = new Option('Weekly', 'W');			
+			document.getElementById('otherdet_remain').style.display = 'none';	
+			document.getElementById('flagOtherdetails').value = "yes";
+	}else{
+		//document.getElementById('otherdet').innerHTML = '-';
+		document.getElementById('othdet_dropdown').style.display = 'none';	
+		document.getElementById('otherdet_remain').style.display = 'block';
+		document.getElementById('flagOtherdetails').value = "no";
+	}
+	
+	if(arrdet[2] == 'E'){
+			var selectchobj = document.getElementById("deliveryChannels");
+			selectchobj.options.length = 0;
+			
+			selectchobj.options[selectchobj.options.length] = new Option('Email', 'E');
+			document.getElementById('selectdeliveryChannels').innerHTML = 'Email';
+	}
+	else if(arrdet[2] == 'S'){
+			var selectchobj = document.getElementById("deliveryChannels");
+			selectchobj.options.length = 0;
+			
+			selectchobj.options[selectchobj.options.length] = new Option('SMS', 'S');
+			document.getElementById('selectdeliveryChannels').innerHTML = 'SMS';
+	}
+	else if(arrdet[2] == 'B'){
+			var selectchobj = document.getElementById("deliveryChannels");
+			selectchobj.options.length = 0;
+			
+			selectchobj.options[selectchobj.options.length] = new Option('Email', 'E');
+			selectchobj.options[selectchobj.options.length] = new Option('SMS', 'S');
+			selectchobj.options[selectchobj.options.length] = new Option('Both', 'B');
+			document.getElementById('selectdeliveryChannels').innerHTML = 'Email';
+	}else{
+			var selectchobj = document.getElementById("deliveryChannels");
+			selectchobj.options.length = 0;
+			
+			selectchobj.options[selectchobj.options.length] = new Option('Email', 'E');
+			selectchobj.options[selectchobj.options.length] = new Option('SMS', 'S');
+			selectchobj.options[selectchobj.options.length] = new Option('Both', 'B');
+			document.getElementById('selectdeliveryChannels').innerHTML = 'Email';
+	}
+}
+
+function callEditDetails()
+{
+	document.getElementById('alertdetedit_content').style.display = 'block';
+	
+	var selectedalert = document.getElementById('fldAlertString1').value;
+	
+	var hidvarnm = "hid_ed_"+selectedalert;
+	
+	var altdet = document.getElementById(hidvarnm).value;
+	
+	var arrdet = altdet.split("######");
+	var chtxt = '';
+	var txtoth = '';
+	
+	document.getElementById('editalertdesc').innerHTML = arrdet[0];
+	if(arrdet[3] == 'B')
+		chtxt = 'Both';
+	if(arrdet[3] == 'E')
+		chtxt = 'Email';
+	if(arrdet[3] == 'S')
+		chtxt = 'SMS';	
+		
+	document.getElementById('editchannel').innerHTML = chtxt;
+	document.getElementById('deliveryChannels').value = arrdet[3];
+	
+	if(arrdet[1] == 'D')
+		txtoth = 'Daily';
+	else if(arrdet[1] == 'M')
+		txtoth = 'Monthly';
+	else if(arrdet[1] == 'F')
+		txtoth = 'Fortnightly';	
+	else if(arrdet[1] == 'W')
+		txtoth = 'Weekly';
+	else
+		txtoth = arrdet[1];
+
+	if(txtoth == ''){txtoth = '-';}
+	document.getElementById('editotherdet').innerHTML = txtoth;	
+	document.getElementById('otherDetails').value = arrdet[1];	
+
+}
+/* ]]> */
+</script>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+   <div class="content">
+          <div style="display:none;" >
+						<div id="selectotherDetails"></div>
+						<div id="selectdeliveryChannels"></div>
+		  </div>
+    <div  id="RTypeED" style="display:none;" >
+    	
+			<div id="regAlrtBox" style="display:none;">
+			
+			<span data-bind="foreach: dbtAccountList">
+		      <input type="hidden"  data-bind="attr: { id: 'hid_ed_' + id, name: 'hid_ed_' + id  }, value:description+'######'+param_additional+'######'+channelavail+'######'+channel+'######'+adtnl_paramtype  " />
+			 </span>
+			  
+		    
+		     
+			<form name="feditdel" id="feditdel" method="post" data-bind='submit: rralt022Submit'>
+		        		      
+		       <br/>
+		       
+		       <div class="clearfix"></div>
+			    <div class="linedivider"></div>   
+			    <div class="clearfix"></div>
+			    
+			    <div class="info_row">
+			  	<div class="info_row2">Available alerts for account</div>
+			  	<div class="info_row3" >
+				<span id="AvAlrtFaccts"></span>    	
+			    </div> 
+			  </div>
+			  
+				<div class="clearfix"></div>
+			    <div class="linedivider"></div>   
+			    <div class="clearfix"></div>
+			    
+			    <div class="info_row">
+			  	<div class="info_row2">Select Alert</div>
+			  	<div class="info_row3">
+				<!-- <select name="fldAlertString1" id="fldAlertString1" data-bind="options: dbtAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldAcctNo, optionsCaption: '-Select-'"> -->
+			<select name="fldAlertString1" id="fldAlertString1" data-bind="options: dbtAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldAcctNo">
+				</select> 
+			  	   	
+			    </div> 
+			  </div>
+  
+		     
+		      
+		      
+		      <div class="clearfix20"></div>
+		      <div class="alignc">
+					<input type="button" class="button" value="View Alert Details" style="width:170px;" onclick="callEditDetails();" />
+			  </div>
+		      <br/>
+		    
+		     
+		     <div id="alertdetedit_content" style="display:none;">
+		      
+		     <div class="info_row page_title_sub">Alert Details</div>
+		    
+			<div class="info_row odd"> <span class="info_row_left">Alert Type</span> 
+				<span class="info_row_right clslineht" id="editalertdesc">
+					
+				</span>
+				<div class="clearfix"></div>
+			  </div>
+			 
+			<div class="info_row even"> <span class="info_row_left">Delivery Channel</span> 
+				<span class="info_row_right" id="editchannel">
+					
+				</span>
+				<div class="clearfix"></div>
+			  </div>
+			
+			<div class="info_row odd"> <span class="info_row_left">Other Details</span> 
+				<span class="info_row_right" id="editotherdet">
+					
+				</span>
+				<div class="clearfix"></div>
+			  </div>
+		      <div class="clearfix20"></div>
+		     <div style="width:95%">
+		     <div class="" style="float:left; margin-left: 12px;">
+						<input type="submit" class="button" value="Edit" onclick="formEditSubmit();" />
+						 </div>
+						 <div class="" style="float:right;">
+						<input type="submit" class="button" value="Delete"  onclick="formDeleteSubmit();" />
+			 </div> 
+			 </div>
+		    <!--   <div style="width:95%">
+		     <div class="" style="float:left; margin-left: 12px;">
+						<input type="submit" class="button" value="Edit" onclick="formEditSubmit();" />
+						 </div>
+						 <div class="" style="float:right;">
+						<input type="submit" class="button" value="Delete"  onclick="formDeleteSubmit();" />
+			 </div> 
+			 </div> -->
+		      <input type="hidden" name="fldRequestId" id="fldRequestId" value="RRALM02" />
+			  <input type="hidden" name="fldScrnSeqNbr" value="02" />
+			  <input type="hidden" name="fldTxnId" value="ALM" />
+			  
+			  <input type="hidden" id="fldAlertString1_txt" name="fldAlertString1_txt" value="" />
+			 
+			  
+			  <input type="hidden" id="fldAcctNo" name="fldAcctNo" value="" />
+			  <input type="hidden" id="fldNamBranch" name="fldNamBranch" value="" />
+			  <input type="hidden" id="fldCodProd" name="fldCodProd" value="" />
+			  <input type="hidden" id="requestType" name="requestType" value="" />
+			  <input type="hidden" id="fldAlertDesc" name="fldAlertDesc" value="" />
+			  <input type="hidden" id="fldAlertString" name="fldAlertString" value="" />
+			  <input type="hidden" id="deliveryChannels" name="deliveryChannels" value="" />
+			  <input type="hidden" id="otherDetails" name="otherDetails" value="" />
+			  	   <input type="hidden" id="flagOtherdetails" name="flagOtherdetails" value="" />
+			  <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+			   <input type="hidden" id="fldLogoffReq" name="fldLogoffReq" />
+		  
+			   
+	      </form> 
+        	</div>
+		
+		
+			<div class="info_row" id="RegAlrtChk" style="display:none;"><p>You are registered for all alert types.</p></div>		
+			
+		<div id="AltNtavl" style="display:none;">
+        		<div class="info_row"><p>Alerts not available for this Account Type.</p></div>
+        		
+        		 
+					<div id="unauthalerttypesAvlDiv" style="display:none;">
+			    	<div class="page_title_sub">Alert Pending For Authorization</div><br/>
+					<div class="info_row odd"> <span class="info_row_left">Alert Pending For Authorization for account:</span> 
+			        <span class="info_row_right" id="artPendngAccDetails">
+						
+					</span>
+					<div class="clearfix"></div>
+			      </div>
+			      
+			      
+			  
+			      <div data-bind="foreach: regalertList">
+			      		<div class="info_row even"> <span class="info_row_left">Alert Type:</span> 
+					        <span class="info_row_right clslineht" data-bind="text:description"></span>
+					     	<div class="clearfix"></div>
+					     </div>
+					     
+					  
+					     
+					      <div class="info_row even"> <span class="info_row_left">Delivery Channel:</span> 
+					        <span class="info_row_right">
+							 <!-- ko if: channel.channelid === 'E' -->
+									Email
+							  <!-- /ko -->
+							  <!-- ko if: channel.channelid === 'S' -->
+									SMS
+							  <!-- /ko -->
+							  <!-- ko if: channel.channelid === 'B' -->
+									Both
+							  <!-- /ko -->
+							 <!-- ko if: channel.channelid === '' -->
+									-
+							  <!-- /ko -->
+							  
+					       
+							</span>
+					        <div class="clearfix"></div>
+					      </div>
+					      
+					      <div class="info_row odd"> <span class="info_row_left">Other Details:</span> 
+					        <span class="info_row_right">
+								<!-- ko if: param_additional === 'D' -->
+									Daily
+							  <!-- /ko -->
+							  <!-- ko if: param_additional === 'M' -->
+									Monthly
+							  <!-- /ko -->
+							  <!-- ko if: param_additional === 'W' -->
+									Weekly
+							  <!-- /ko -->
+							   <!-- ko if: param_additional === '' -->
+									<span data-bind="text:param_additional"></span>
+							  <!-- /ko -->
+					        
+							</span>
+					        <div class="clearfix"></div>
+					      </div>
+					      <br/>
+					     </div>
+			     
+			      </div>
+			    
+			    </div>
+   
+    
+    </div>
+    
+   </div>
+    
+    
+    
+		<div id="AlerGtBox" style="display:none">
+			
+			<span data-bind="foreach: alertList">
+		      <input type="hidden"  data-bind="attr: { id: 'hid_' + id, name: 'hid_' + id  }, value:description+'######'+param_additional+'######'+channel  " />
+			 </span>
+			  
+			  
+			<form name="f1" id="f1" method="post" data-bind='submit: rralt021Submit'>
+		    
+			 <br/>
+		       
+		       <div class="clearfix"></div>
+			    <div class="linedivider"></div>   
+			    <div class="clearfix"></div>
+			    
+			    <div class="info_row">
+			  	<div class="info_row2">Available alerts for account</div>
+			  	<div class="info_row3">
+			  		<span id="AvAlrtFaccts"></span>   	
+			    </div> 
+			  </div>    
+			
+			  
+				<div class="clearfix"></div>
+			    <div class="linedivider"></div>   
+			    <div class="clearfix"></div>
+			    
+			    <div class="info_row">
+		      	<div class="info_row2">Select Alert</div>
+		      	<div class="info_row3">
+				<!--  <select name="fldAlertString1" id="fldAlertString1" data-bind="options: rdAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldAcctNo, optionsCaption: '-Select-'">-->
+			<select name="fldAlertString1" id="fldAlertString1" data-bind="options: rdAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldAcctNo">
+			</select> 
+		      	 	
+		        </div> 
+		      </div>
+		      
+		      <div class="clearfix"></div>
+			  <div class="linedivider"></div>   
+			  <div class="clearfix"></div>
+		      		      
+		      
+		      
+		      <div class="alignc"><input type="button" class="button" onclick="callDetails();" style="width:170px;" value="View Alert Details" /></div>
+		      <br/>
+		      
+		     
+		     <div id="alertdet_content" style="display:none;">
+		      
+		     <div class="info_row page_title_sub">Alert Details</div>
+		      		     
+		     <div class="info_row odd"> <span class="info_row_left">Alert Type</span> 
+		        <span class="info_row_right clslineht" id="alertdesc">					
+				</span>
+		     	<div class="clearfix"></div>
+		     </div>
+		     
+				<div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+			    
+			    <div class="info_row">
+		      	<div class="info_row2">Delivery Channel</div>
+		      	<div class="info_row3">
+		      	 <select name="deliveryChannels" id="deliveryChannels" class="styled">
+		        		<option value="E">Email</option>
+		        		<option value="S">SMS</option>
+		        		<option value="B">Both</option>
+		        	</select>  	
+		        </div> 
+		      </div>
+		      
+		      <div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+			    
+			    <div class="info_row">
+		      	<div class="info_row2">Other Details</div>
+		      	<div class="info_row3" id="otherdet">
+		      	   <div id="othdet_dropdown">
+		      	   	<select name="otherDetails" id="otherDetails" class="styled">
+		        			<option value='5000'>5000</option>
+		        			<option value='10000'>10000</option>
+		        			<option value='20000'>20000</option>
+		        			<option value='50000'>50000</option>
+		        	</select>
+		      	   </div>
+		      	   <span id="otherdet_remain" >
+		      	   -
+		      	   </span>
+		        </div> 
+		      </div>
+		      
+		      <div class="clearfix20"></div>
+		     <div class="alignc"><input type="submit" class="button" value="Continue"  onclick="formSubmit();" /></div>
+		     
+		     </div> 
+		     
+		      <input type="hidden" name="fldRequestId" value="RRALT03" />
+			  <input type="hidden" name="fldScrnSeqNbr" value="03" />
+			  <input type="hidden" name="fldTxnId" value="ALT" />
+			  
+			  <input type="hidden" id="fldAlertString1_txt" name="fldAlertString1_txt" value="" />
+			  <input type="hidden" id="deliveryChannels_txt" name="deliveryChannels_txt" value="" />
+			  <input type="hidden" id="otherDetails_txt" name="otherDetails_txt" value="" />
+			  
+			  <input type="hidden" id="fldAcctNo" name="fldAcctNo" value="" />
+			  <input type="hidden" id="fldNamBranch" name="fldNamBranch" value="" />
+			  <input type="hidden" id="fldCodProd" name="fldCodProd" value="" />
+			  <input type="hidden" id="requestType" name="requestType" value="" />
+			  <input type="hidden" id="fldAlertDesc" name="fldAlertDesc" value="" />
+			  <input type="hidden" id="fldAlertString" name="fldAlertString" value="" />
+			
+			 
+			   <input type="hidden" id="flagOtherdetails" name="flagOtherdetails" value="" />
+			  <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+		  
+			   
+	      </form> 
+        	
+				
+			<div class="info_row" id="RegAlrtChk" style="display:none;"><p>You are registered for all alert types.</p></div>
+		
+				<div id="AltNtavl" style="display:none;">
+        		<div class="info_row"><p>Alerts not available for this Account Type.</p></div>
+        		
+        		 
+					<div id="unauthalerttypesAvlDiv" style="display:none;">
+			    	<div class="page_title_sub">Alert Pending For Authorization</div><br/>
+					<div class="info_row odd"> <span class="info_row_left">Alert Pending For Authorization for account:</span> 
+			        <span class="info_row_right" id="artPendngAccDetails">
+						
+					</span>
+					<div class="clearfix"></div>
+			      </div>
+			      
+			      
+			  
+			      <div data-bind="foreach: alertList">
+			      		<div class="info_row even"> <span class="info_row_left">Alert Type:</span> 
+					        <span class="info_row_right clslineht" data-bind="text:description"></span>
+					     	<div class="clearfix"></div>
+					     </div>
+					     
+					  
+					     
+					      <div class="info_row even"> <span class="info_row_left">Delivery Channel:</span> 
+					        <span class="info_row_right">
+							 <!-- ko if: channel.channelid === 'E' -->
+									Email
+							  <!-- /ko -->
+							  <!-- ko if: channel.channelid === 'S' -->
+									SMS
+							  <!-- /ko -->
+							  <!-- ko if: channel.channelid === 'B' -->
+									Both
+							  <!-- /ko -->
+							  <!-- ko if: channel.channelid === '' -->
+									-
+							  <!-- /ko -->
+							  
+					       
+							</span>
+					        <div class="clearfix"></div>
+					      </div>
+					      
+					      <div class="info_row odd"> <span class="info_row_left">Other Details:</span> 
+					        <span class="info_row_right">
+								<!-- ko if: param_additional === 'D' -->
+									Daily
+							  <!-- /ko -->
+							  <!-- ko if: param_additional === 'M' -->
+									Monthly
+							  <!-- /ko -->
+							  <!-- ko if: param_additional === 'W' -->
+									Weekly
+							  <!-- /ko -->
+							  <!-- ko if: param_additional === '' -->
+									<span data-bind=" text:param_additional"></span>
+							  <!-- /ko -->
+							 
+					        
+							</span>
+					        <div class="clearfix"></div>
+					      </div>
+					      <br/>
+					     </div>
+			     
+			      </div>
+			    
+			    </div>
+     </div>
+   <br/>
+    	<div class="info_row"> 
+    			<p><span id="errmsge" style="display:none;">You are registered for all alert types</span></p>
+    			<br/>
+				<p><b>Note:</b></p>
+				<br/>
+				<p>For security reasons, alerts for debit transactions done through NetBanking will be sent to the mobile number updated under your contact details. Incase the mobile number is not provided, then the alert will be sent to the e-mail id updated under contact details. To update the contact details, please visit your nearest branch. All other Alerts will be sent on the mobile number / email registered under Insta Alert.</p>
+			<div class="clearfix"></div>
+			</div>
+   </div>
+</div>
+  

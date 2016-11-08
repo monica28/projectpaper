@@ -1,0 +1,14 @@
+.dark_header { background :#f9f2af !important; }
+.autoslide-slider1 .slider .item, .autoslide-slider2 .slider .item, .autoslide-slider3 .slider .item { background:url(../img/Pref/carousel_block.png) no-repeat scroll center center transparent !important;  }
+.panel_new { background: url(../img/Pref/carousel_bgblock_p.png) no-repeat scroll 0 0 transparent !important; }
+.next{
+	width:12px !important;
+	height:16px !important;
+	background-image: url('../img/Pref/Arrow_F.png') !important;
+}
+.prev{
+	width:12px !important;
+	height:16px !important;
+	background-image: url('../img/Pref/Arrow_B.png') !important;
+}
+.calBox { background :#f9f2af !important; color: #004a8f !important;}

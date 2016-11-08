@@ -1,0 +1,114 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <div class="info_row odd" id="accExitsMsg" style="display:none;">
+	<span class="info_row_menu_left" style="width:15%;"><img src="img/alerticon.png" /></span>
+		<span class="info_row_menu_right clslineht" style="width:72%;">
+			Two or more A/cs are required to carry out this transaction
+		</span> 
+  </div>
+		
+  
+  <form class="custStyleInput" name="frmftr02" id="frmftr02" method="post" data-bind='submit: rrftr02Submit'>
+   <div data-bind="visible: accSlider">
+   
+   <br/>
+        <div class="clearfix"></div>
+	    <div class="linedivider"></div>   
+	    <div class="clearfix"></div>
+      		
+   <div class="clearfix"></div>
+      
+	<div class="info_row"><div class="info_row2">From Account</div> 
+		<div class="info_row3">
+			<select name="fldFromAcctNo" id="fldFromAcctNo" data-bind="options: accountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldFromAcctNo">
+			
+		    </select>	
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+    <div class="info_row"><div class="info_row2">To Account</div> 
+		<div class="info_row3">
+			<select name="fldToAcctNo" id="fldToAcctNo" data-bind="options: accountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldToAcctNo, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>  
+
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+       
+       <div class="info_row">
+      	<div class="info_row2">Amount</div>
+      	<div class="info_row3">
+      	  <input type="text" id="fldAmtTxn" name="fldAmtTxn" value="" size="10" class="rs_fld" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+      	</div>      	
+      </div>
+      
+		 <div class="clearfix"></div>
+      <br/>
+      
+      	 <div class="info_row">
+	 <p><b>Note:</b></p><br/>
+	 <p>- Funds transfer facility enables you to transfer funds between your own accounts (accounts linked to your cust id).</p><br/>
+	 <p>- In order to transfer funds to other customers of HDFC Bank, you can use our Third Party Transfer (TPT) facility. To register for TPT, you need to complete the Third Party Transfer Application Form and submit it at any HDFC Bank branch. The Third Party transfer Form can be downloaded from the website or obtained from any HDFC Bank branch.</p><br/>
+	 <p>- Please verify your contact details to ensure prompt delivery.</p>
+	
+        <div class="clearfix"></div>
+      </div>
+      
+
+  	<input type="hidden" name="fldFCDBRequestId" id="fldFCDBRequestId" />
+  	
+   <div class="clearfix20"></div>
+   <div class="info_row">
+    <input type="submit" class="button" value="Submit" >
+   </div>
+   </div>
+   </form>
+ <br/>
+  <br/>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$.validator.addMethod("account_not_same", function(value, element) {
+   return $('#fldFromAcctNo').val() != $('#fldToAcctNo').val()
+}, "From Account and To Account cannot be same");
+
+$("#frmftr02").validate({
+	rules: {
+		fldFromAcctNo: "required",
+		fldToAcctNo: {
+                required: true,
+                account_not_same: true                
+        },
+		fldAmtTxn: {
+                required: true,
+                min: 1                
+        }
+	},
+	messages: {
+		fldFromAcctNo: "Select From Account",
+		fldToAcctNo:{
+			required : "Select To Account",
+			account_not_same : "From account number and To account number cannot be same.",			
+		},
+		fldAmtTxn: {
+                required: "Enter Amount",
+                min: "Amount should be greater than 0.0"                
+        },
+	}
+});
+
+</script>

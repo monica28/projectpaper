@@ -1,0 +1,77 @@
+<style>
+   .info_row { display:table; width:100%; }
+   .summblock { margin:0 5px !important; }
+   
+   .info_row_left_new {
+    display: block;
+    float: left;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 3px 5px;
+  
+}
+</style>
+<script src="js/common.js"></script>
+<div id="wrapper" style="top:96px;">
+  <div class="success_msg">
+		<p>Your payment request has been successfully processed. </p>	
+	</div>
+   <div class="content sub_content">
+      <div class="summblock">
+
+		 <div class="info_row  dark_header"><span class="info_row_left_new " id="type"></span>
+				<div class="clearfix"></div>
+		</div>
+         <div class="info_row odd">
+            <span class="info_row_left">Biller Short Name</span> 
+            <span class="info_row_right" id="billershorts"></span>
+            <div class="clearfix"></div>
+         </div>
+		 <div class="info_row even">
+            <span class="info_row_left">Reference</span> 
+            <span class="info_row_right" id="refrenceno"></span>
+            <div class="clearfix"></div>
+         </div>
+         <div class="info_row odd" id="REF1" style="display:none;">
+            <span class="info_row_left" id="fldlablefrst"></span> 
+            <span class="info_row_right" id="authenticator1"></span>
+            <div class="clearfix"></div>
+         </div>
+         <div class="info_row even" id="REF2" style="display:none;">
+            <span class="info_row_left" id="fldlablesecnd"></span> 
+            <span class="info_row_right" id="authenticator2"></span>
+            <div class="clearfix"></div>
+         </div>
+		 <div class="info_row odd" id="REF3" style="display:none;">
+            <span class="info_row_left" id="fldlablethrd"></span> 
+            <span class="info_row_right" id="authenticator3"></span>
+            <div class="clearfix"></div>
+         </div>
+		 <div class="info_row even" id="REF4" style="display:none;">
+            <span class="info_row_left" id="fldlableforth"></span> 
+            <span class="info_row_right" id="authenticator4"></span>
+            <div class="clearfix"></div>
+         </div>
+		 <div class="info_row even" id="REF5" style="display:none;">
+            <span class="info_row_left clslineht" id="fldlablefive"></span> 
+            <span class="info_row_right clslineht" id="authenticator5"></span>
+            <div class="clearfix"></div>
+         </div>
+		 <div class="info_row odd" id="amount" style="display:none;">
+            <span class="info_row_left">Amount</span> 
+            <span class="info_row_right page_title_sub" id="amounts" style="display:none;"></span>
+			 <span class="info_row_right page_title_sub" id="amounts1"></span>
+            <div class="clearfix"></div>
+         </div>
+         <div class="info_row even">
+            <span class="info_row_left">Bank Account</span> 
+            <span class="info_row_right" id="billaccnts"></span>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+      
+   </div>
+   <div class="clearfix"></div>
+</div>
+<!-- /content --> 
+</div>

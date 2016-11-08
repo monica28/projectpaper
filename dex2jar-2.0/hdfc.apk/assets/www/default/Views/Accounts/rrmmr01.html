@@ -1,0 +1,89 @@
+<style>
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  <div class="info_row" id="accExitsMsg" style="display:none;"><p>You do not have active account with the bank.</p></div>
+  
+  <form class="custStyleInput" name="frmmmr01" id="frmmmr01" method="post" data-bind='submit: rrmmr01Submit'>
+   <div >
+   
+   <br/>
+        <div class="clearfix"></div>
+	    <div class="linedivider"></div>   
+	    <div class="clearfix"></div>
+      		
+   <div class="clearfix"></div>
+      
+	<div class="info_row"><div class="info_row2">Account Number</div> 
+		<div class="info_row3">
+			<select name="fldAcctNo" id="fldAcctNo" data-bind="options: MMIDaccountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: selAccount, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>
+
+	 <div class="info_row dark_header">
+				<span class="info_row_left">Mobile Number</span> 
+				<span class="info_row_right"> 
+					<a href="javascript:void(0);" class="disableclick" id="mobno"></a>
+				</span>
+				<div class="clearfix"></div>
+			</div>
+      <br/>
+      	
+			<div class="info_row">
+			  <div class="info_row2">I Accept Terms and Conditions (Mandatory)</div>
+			    <div class="info_row3">
+				<select name="fldChecked" id="fldChecked" class="styled">
+				<option value="true">Accept</option>
+				<option value="false">Decline</option>
+				</select>
+			</div>
+			</div>
+
+			<div class="clearfix20"></div>
+   <div class="info_row2">
+    <input type="submit" class="button" value="Submit" >
+   </div>
+   <br/>
+	
+		<br/>
+	    <div class="info_row"> 
+			 <p><b>Note:</b></p>
+			 <br/>
+			 <p>- The MMID generated is unique for the account number.</p><br/>
+			 <p>- You need to share this MMID and registered Mobile Number with Remitter to receive money to this account.</p><br/>
+			 <p>- MMID cannot be generated for NRE/NRO accounts.</p><br/>
+			 <p>- Multiple MMIDs cannot be generated for the same account number.</p><br/>
+			 <p>- Please visit HDFC Banks website for Terms and Conditions.</p><br/>
+			 <br/>
+		</div>	
+      
+   
+   </div>
+   <input type="hidden" id="emailid" name="emailid"/>
+   <input type="hidden" id="CusTNm" name="CusTNm" />
+    <input type="hidden" name="fcbrequestid" id="fcbrequestid" />
+    <input type="hidden" name="fldRequestId" id="fldRequestId" />
+   </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#frmmmr01").validate({
+	rules: {
+		fldAcctNo: "required",
+		fldChecked: {chkvalid: "#fldChecked"},		
+	},
+	messages: {
+		fldAcctNo: "Select Account Number",
+		fldChecked: {
+               chkvalid: "Please Accept Terms and Conditions.",
+            }		
+	}
+});
+
+</script>

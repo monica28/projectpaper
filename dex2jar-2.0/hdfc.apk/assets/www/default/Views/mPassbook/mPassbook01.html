@@ -1,0 +1,90 @@
+<style>
+	body > .header, body > .footer{display:none !important;}
+</style>
+
+<section class="mPB bg1">
+	<!-- logo -->
+	<div class="mPB_logo">
+		<img src="img/mPB/mPB_logo.png" alt="HDFC BANK mPassbook" />
+	</div>
+	<!-- /logo -->
+	
+	<ul class="menuBar">
+		<li>
+			<a onclick="logincall();">
+				<span>
+					<span class="ico ico1"></span>
+				</span>
+				<span>
+					<span class="txt">Login</span>
+				</span>
+			</a>
+		</li>
+		<li>
+			<a onclick="openNativePage();">
+				<span>
+					<span class="ico ico2"></span>
+				</span>
+				<span>
+					<span class="txt">Locate Branches & ATMs</span>
+				</span>
+			</a>
+		</li>
+		<li>
+			<a onclick="openNativePage3();">
+				<span>
+					<span class="ico ico3"></span>
+				</span>
+				<span>
+					<span class="txt">Contact Us</span>
+				</span>
+			</a>
+		</li>
+		<li>
+			<a href="mailto:support@hdfcbank.com?Subject="> 
+				<span>
+					<span class="ico ico4"></span>
+				</span>
+				<span>
+					<span class="txt">Feedback</span>
+				</span>
+			</a>
+		</li>
+	</ul>
+	
+</section>
+<script>
+var Customer_type1 = localStorage.getItem("Customer_Type");
+
+if (Customer_type1 == null) {
+  var Customer_type = 'default';
+}
+else{var Customer_type = Customer_type1;}
+	function openNativePage(){
+		$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Offers&ptype=Android",function(data) {});
+				var params = {
+				nameParam : Customer_type
+		};
+		WL.NativePage.show("com.snapwork.hdfc.MapViewActivity", backFromNativePage, params);
+	}
+	function openNativePage3(){
+		$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=ContactUs&ptype=Android",function(data) {});
+		var params = {
+				nameParam : Customer_type
+		};
+		WL.NativePage.show("com.snapwork.hdfc.ContactsActivity", backFromNativePage, params);
+	}
+function logincall(){
+		if(localStorage.getItem('logTy') == "Pin"){
+			window.location.hash = "mPB_login";
+		}
+		else{
+			if(localStorage.getItem('loginerror') != "true"){
+				hdfc_android.launchPinAuthScreen(booksStore(localStorage.getItem("cnpnpatt")));
+			}
+			else{
+				window.location.hash = "mPB_login_error";
+			}
+		}
+}	
+</script>

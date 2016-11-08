@@ -1,0 +1,607 @@
+<style>
+    body .header, body .footer{display:none !important;}
+    .topBar > span {padding: 0 120px 0 65px;}
+	.assetSummry{padding-bottom:50px;position:relative;}
+	.amtBox span{top:0;}
+	#NotransError{
+		padding: 15px 20px;
+	}
+	
+	#myList li{ display:none;}
+	#loadMore {
+		color:green;
+		cursor:pointer;
+	}
+	#loadMore:hover {
+		color:black;
+	}
+	
+	.text_content{white-space:normal !important;}	
+	.assetBox aside:first-child span {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		font-size:0.85em;
+	}
+	.mPB .list_box a aside{vertical-align:top;}
+	.assetSummry .row{padding:0;}
+	
+    .refresh {
+        position: absolute;
+        display: block;
+        right: 7px;
+        top: 24px;
+        background: #ebebeb;
+        color: #004a8f;
+        border-radius: 3px;
+        font-size: 10px;
+        padding: 6px 5px 4px;
+    }
+	
+	.amount{display:none !important;}
+	.amount_show{display:block !important;}
+	.assetBox aside:nth-child(3) span{margin:0 !important;padding:1px;}	
+	.assetBox aside:nth-child(1){width:60%;}
+	.assetBox aside:nth-child(2){width:40%;}
+	.assetBox.show_more aside:first-child span {white-space:normal;}
+	.assetBox.show_more .amount { display: block !important;}	
+	.arrowIcon:before {content: "\e913";}
+	.assetBox.show_more .arrowIcon:before {content: "\e914";}
+	.fromToDate{margin-bottom:10px;}
+        
+   .hamburger{left:30px;}
+   .hamburger:before, .hamburger:after, .hamburger span {left:4px;}
+   .hamburger.close{left:10px;}
+   .back_btn {line-height:74px;width: 30px; height: 70px; top: 0;left: 0;}
+   .mPB.show .back_btn{display:none;}
+   .mPB .searchWrap {right:80px;}
+   .mPB .searchWrap.clicked{right:0;}
+   .mPB .filter{right: 57px;}
+   .mPB .searchWrap.clicked .searchIcon{position:fixed;}
+</style>
+
+<section class="mPB">
+    <!-- starts topBar -->	
+    <div class="topBar">
+        <a href="#financialSummary" class="back_btn"><span class="ico23"></span></a>
+        <a href="javascript:void(0);" class="hamburger"><span class="ico"></span></a>
+        <span>Passbook</span>
+		<a href="javascript:void(0);" class="refresh">Refresh</a>
+        <a href="javascript:void(0);" class="filter ico ico15 filterBtn filterbutton"></a>
+        <div class="searchWrap">
+			<form>
+				<fieldset>
+					<i id="searchBack" class="searchBack"></i>
+					<input class="searchBox" type="text">
+					<span class="searchIcon ico ico14" id="searchIcon" onclick="srch();"></span>
+					<span class="searchIcon ico ico26" id="searchIcon1" style="display:none;"></span> 
+				</fieldset>
+			</form>
+		</div>
+    </div>	
+    <!-- ends topBar -->	
+    <!-- starts wraper -->	
+
+    <div class="content sub_content">	
+        <div class="wrapper">
+            <div class="assetHead row">
+                <div class="leftCol">
+                    <label>Account</label>
+                    <select name="fldAcctNo" id="fldAcctNo" data-bind="options: accountListPSBK,  optionsText:  'codacctno', optionsValue: 'codacctno', value: selAccount, event: {change:showSelectedAccount01}" >
+                    </select> 	 
+                    					
+                </div>
+                <div class="rightCol">
+                    <label>Available Balance</label> 				
+                    <span class="rs" data-bind="text:curraccbalval" ></span>
+                </div>			
+            </div>
+
+            <div class="assetSummry">				
+				<form>
+					<div id="thelist">	
+						<div class="transBox">					
+							<span class="lastUpdt"></span>					
+						</div>             
+						
+						<div class="clear_box" id="filterserach" style='display:none;'>
+							<span id='filtertext'>Showing filtered result</span>
+							<a onclick="clearFilter();">Clear</a>
+						</div>
+						
+						<ul id="myList" data-bind="foreach: accountListMpassbook">
+							<li>
+								<div class="row noBorder">
+									<!-- ko if: TXN_DATE != "" -->
+									<h3 class="heading" data-bind="text:TXN_DATE">11 Aug 2014</h3>
+									<!-- /ko -->
+
+									<div class="info_row" style='padding-top:5px;'>
+										<span class="time" data-bind="text:TXN_VALUE_DATE">"11:30 pm</span>
+									</div>
+								 
+									<div class="info_row list_box" style='padding-top:5px;'>
+										<a class="assetBox" href="javascript:void(0)">
+											<aside>
+												<span class="textNarration" data-bind="text:TXN_NARRATION1"></span>
+											</aside>
+											<aside>
+												<!-- ko if: TXN_WITHDRAWAL == null -->
+												<span class="greenTxt" data-bind="text:TXN_DEPOSIT">₹ 1,267.00 Dr</span>
+												<span data-bind="text:TXN_CLOSING_BAL" class="amount">₹ 2,33,522.12</span>
+												<!-- /ko -->
+												<!-- ko if: TXN_DEPOSIT == null -->
+												<span class="redTxt" data-bind="text:TXN_WITHDRAWAL">₹ 1,267.00 Dr</span>
+												<span data-bind="text:TXN_CLOSING_BAL" class="amount">₹ 2,33,522.12</span>
+												<!-- /ko -->
+											</aside>
+											<aside>
+												<span class="ico arrowIcon"></span>
+											</aside>
+										</a>
+									</div>
+									<!--
+									<div class="info_row editBtn" >
+										 <a class="ico ico22 remark"></a><span data-bind="text:TXN_ADDREMARKS" class='remarktext'></span> 
+									</div>
+									-->
+								</div>
+							</li>
+						</ul>	
+						
+						<!-- <div class="info_row">
+							<a href="javascript:void(0);" class="button filterBtn marTB10 filterbutton"><span class="ico15 marR10"></span>FILTER TRANSACTION</a>					
+						</div>	 -->
+					
+					</div>
+				</form> 
+									
+			
+				<!-- ko if: accountListMpassbook().length == 0 -->
+					<div id="NotransError">
+						<p>No Transactions Found</p>
+					</div>
+				<!-- /ko -->				
+				
+			</div>
+			<!-- ko if: accountListMpassbook().length != 0 -->
+			<div class="refresh_box" id="loadMore">
+				<a class='load' >Click here to load more</a>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>	
+	<!-- ends wraper -->	
+</section>	
+
+<section class="fixedWrap">
+    <section class="popWrap one notePopup" style="height: 330px;">
+        <div class="popHeader ">
+            <div class="pageTitle ">
+                <h2 class="alignCenter">Filter Transactions</h2>
+                <a href="javascript:void(0);" class="closeIcon"><span class="ico ico16"></span></a>
+            </div>						
+        </div>				
+    
+                <div class="ftConfBox">
+                    <div class="content sub_content">	
+                        <form>							
+                            <div class="info_row">
+                                <div class="info_row2">By Type</div> 
+                                <div class="info_row3 padL5"> 
+                                    <select id="type">					
+                                        <option value="Both">Both - Debit &amp; Credit</option>
+										<option value="Cr">Credit (Cr)</option>
+										<option value="Dr">Debit (Dr)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="info_row fromToDate"> 
+                                        <div class="info_row2">By Date</div> 
+                                        <div class="info_row3 noPad">
+                                            <div class="widthHalf">
+                                                <input class="line" type="text" readonly="readonly" name="fldFromDate" id="fldFromDate" placeholder="From" />
+                                                <div  id="show_date"><span class="ico ico18"></span></div>
+                                            </div>	
+                                            <div class="widthHalf">
+                                                <input class="line" type="text" name="fldToDate" readonly="readonly" id="fldToDate" placeholder="To" />
+                                                <div  id="show_date1"><span class="ico ico18"></span></div>
+                                            </div>
+                                        </div>										   
+                            </div>	 
+                            <div class="info_row">
+                                <div class="info_row2">By Amount</div> 								
+                                <div class="info_row3 amtBox widthHalf"> 
+                                    <input type="tel" class="line" placeholder="Min" id='minamnt' onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>	
+                                   <span>₹ </span>
+                                </div>	
+                                <div class="info_row3 amtBox widthHalf"> 
+                                    <input type="tel" class="line" placeholder="Max" id='maxamnt' onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>	
+                                   <span>₹ </span>
+                                </div>	
+                            </div>
+
+                            <div class="info_row marTB10">
+                                <div class="info_row2">
+                                    <input type="button" class="button widthFull" value="SUBMIT" onclick='filtersubmit();'/>
+                                </div>
+                            </div>
+                        </form>
+                 
+                </div>
+            </div>
+     	
+    </section>	
+</section>
+
+<section class="fixedWrap">
+    <section class="popWrap two notePopup" style="height: 175px;">
+        <div class="popHeader">
+            <div class="pageTitle">
+                <h2 class="alignCenter">Add Note</h2>              
+            </div>						
+        </div>
+
+        <div class="iScroll" id="scrollWrap2" style="bottom:70px;">
+            <div id="scroller2">
+                <div class="ftConfBox">
+                    <div class="content sub_content">	
+                        <form>							
+                            <div class="info_row">								
+                                <input type="text" id='remarkval' class="line" placeholder="Enter Remark" />							
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>	
+
+        <div class="popFooter twoBtn">
+            <div class="pageTitle">
+                <a href="javascript:void(0);" class="noBorder cancelIcon">Cancel</a>
+                <a href="javascript:void(0);" class="" id='okBtn'>Add</a>
+            </div>						
+        </div>
+
+    </section>	
+</section>
+
+<script src="js/libs/misc.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+	if($('.hamburger').hasClass("close")) {			
+		$(".asideBar").removeClass("close");			
+	}
+	else {
+		$(".asideBar").removeClass("show");			
+	}	
+	if(financialID){
+	  // $("#fldAcctNo option:contains(" + financialID + ")").attr('selected', 'selected');
+	}
+	
+	//
+});
+		
+	function srch(){
+        $('#searchIcon1').show();
+        $('#searchIcon').hide();
+    };
+
+	/* $('input[type=text],input[type=tel],input[type=number]').on('click', function(e){
+		e.stopPropagation();
+		$('.popWrap').css('bottom','230px');
+	});
+	$(document).on('click',  function(e){
+		$('.popWrap').css('bottom','0');
+	});
+	$('.fromToDate input[type=text]').on('click', function(){ 		
+		$('.popWrap').css('bottom','0');
+	}); */
+
+	function filtersubmit() {
+		if($("#fldFromDate").val() != ""){
+		if($("#fldToDate").val() == ""){
+			alert("Enter To Date");
+			return false;
+		}
+				tmpdt1 = $('#fldFromDate').val();
+				tmpdt3= $('#fldToDate').val();
+			
+				arrdt1 = tmpdt1.split('/');
+				arrdt3 = tmpdt3.split('/');
+				
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+
+				var yyyy = today.getFullYear();
+				if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} 
+				var today = dd+'/'+mm+'/'+yyyy;
+				
+				tmpdt2 = today;
+				arrdt2 = tmpdt2.split('/');
+                var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+
+                var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+			   
+			    var date3= new Date(arrdt3[2],arrdt3[1],arrdt3[0]);
+			  
+			   if ( date1 > date3 ){
+	                alert("To Date must be greater than From Date");
+                  return false;  
+               }
+			   
+			   if( date1 > date2 ){
+			      customAlert("From Date can not be greater than Today");
+                  return false;  
+			   }
+			   
+			    if( date3 > date2 ){
+			      customAlert("To Date can not be greater than Today");
+                  return false;  
+			   }
+	}
+	if($('#minamnt').val() != "" && $("#maxamnt").val() != ""){
+		if(parseFloat($('#minamnt').val()) > parseFloat($("#maxamnt").val())){
+			alert("Max amount must be greater than Min Amount");
+			$('#minamnt').val(""); $("#maxamnt").val("");
+			return false;
+		}
+	}
+	busyInd.show();
+	setTimeout(function () {
+               busyInd.hide();
+            }, 3000);
+		mode = "";
+		$('#filterserach').show();
+		$('#filtertext').html("Showing filtered result");
+		FilterStatement1();
+	 event.stopPropagation();
+            $('.popWrap').removeClass('show');
+            setTimeout(function () {
+                $('.popWrap').parent().hide(0);
+            }, 300);
+            event.preventDefault();
+            return false;
+	}
+
+	$(document).ready(function () {
+		var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+			
+			if(dd<10) {
+				dd='0'+dd
+			} 
+
+			if(mm<10) {
+				mm='0'+mm
+			} 
+
+			
+		var hour    = today.getHours();
+		var minute  = today.getMinutes();
+		var seconds = today.getSeconds();  
+		today = dd+'/'+mm+'/'+yyyy;
+			if(hour<10) {
+				hour='0'+hour
+			} 
+			if(minute<10) {
+				minute='0'+minute
+			} 
+			if(seconds<10) {
+				seconds='0'+seconds
+			} 
+		time= hour+":"+minute+":"+seconds;
+		
+		//$('.lastUpdt').html("Last updated at "+today+" "+time);
+		$('.closeIcon,#yesBtn,#noBtn,.cancelIcon').on('click', function (event) {
+			event.stopPropagation();
+			$('.popWrap').removeClass('show');
+			setTimeout(function () {
+				$('.popWrap').parent().hide(0);
+			}, 300);
+			event.preventDefault();
+			return false;
+
+		});
+		$('#okBtn').on('click', function (event) {
+			//alert(currentid);
+			id = currentid.split('-')[0];
+			UpdateNarration(id, $('#remarkval').val(), selaccno);
+			$("#" + currentid).find('.remarktext').html($('#remarkval').val());
+			event.stopPropagation();
+			$('.popWrap').removeClass('show');
+			setTimeout(function () {
+				$('.popWrap').parent().hide(0);
+			}, 300);
+			//busyInd.hide();
+			//window.location="#accounts";
+			event.preventDefault();
+			return false;
+		});
+
+		$('.filterbutton').on('click', function () {
+			 $("#fldFromDate").val("");
+			$("#fldToDate").val("");  $('#minamnt').val("");
+			$("#maxamnt").val(""); $('#type').val("Both");
+			$('.popWrap.one').parent().show(0);
+			$('.popWrap.one').parent().addClass('show');
+			$('.popWrap.one').addClass('show');
+			//setTimeout(scrollLoaded, 300);
+		});
+		
+		$('.refresh').on('click', function () {
+			var model = new mPassbookViewModel(); 
+			model.PassbookRefreshCall(selaccno);
+		});
+
+		$(function () {
+			var now = new Date();
+			
+			var dtmin = new Date();
+				 dtmin.setDate(dtmin.getDate());
+				 var dtmax = new Date();
+				 dtmax.setDate(dtmax.getDate() + 60);
+			
+			$('#fldFromDate,#fldToDate').scroller({
+				preset: 'date',
+				theme: 'sense-ui',
+				display: 'modal',
+				mode: 'scroller',
+				dateOrder: 'ddMYYYY',
+				endYear: now.getFullYear() + 10,
+				maxDate: new Date(dtmin.getFullYear(), dtmin.getMonth(), dtmin.getDate())
+                //maxDate: new Date(dtmax.getFullYear(), dtmax.getMonth(), dtmax.getDate()),
+
+			});
+			$('#show_date1').click(function () {
+				$('#fldToDate').scroller('show');
+				return false;
+			});
+			$('#show_date').click(function () {
+				$('#fldFromDate').scroller('show');
+				return false;
+			});
+			$('#clear').click(function () {
+				$('#fldFromDate').val('');
+				return false;
+			});
+		});
+                      
+		setTimeout(function () {							
+			size_li = $("#myList li").size();
+			x=4;
+			$('#loadMore').show();
+			$('#myList li:lt('+x+')').show();                    
+			topposition=$('#myList li[style]').last().offset().top;    
+				
+			$('#loadMore').click(function () {
+				$('html,body').animate({
+					scrollTop: topposition										  
+				});									
+				topposition=$('#myList li[style]').last().offset().top;
+				try{
+					if(busyAuthChk == 0){
+						busyAuthChk = 1;
+						busyAuth2 = new WL.BusyIndicator('content', {
+							text: 'Loading..',
+							duration: 60.00
+						}).show();
+					}							
+				
+					//setTimeout(function (){
+					//	busyAuth2 = new WL.BusyIndicator('content', {
+					//	text: 'Loading more transactions..',
+					//	duration: 60.00
+					//	}).hide();
+					//	busyInd = new WL.BusyIndicator('content', {text : 'Loading...',duration:60.00});
+					//}, 1000);
+					setTimeout(function (){
+						busyAuth2 = new WL.BusyIndicator('content', {
+							text: 'Loading..',
+							duration: 60.00
+						}).hide();
+						busyAuthChk = 0;
+						busyInd = new WL.BusyIndicator('content', {text : 'Loading...',duration:60.00});
+					}, 2000);
+				}catch(e){
+					busyAuth2 = new WL.BusyIndicator('content', {
+						text: 'Loading..',
+						duration: 60.00
+					}).hide();
+				}
+				x= (x+5 <= size_li) ? x+5 : size_li;
+				$('#myList li:lt('+x+')').show();
+				if(x == size_li){
+					$('#loadMore').hide();
+				}                         
+			});	
+		}, 7000);
+                      
+                      $(document).on('click', '.assetBox', function(){
+                                     $('.assetBox.show_more').removeClass('show_more');
+                                     $('.editBtn').hide();
+                                     $(this).addClass('show_more');
+                                     $(this).parent().next().show();
+                                     });
+                      
+                      $(document).on('click', '.show_more', function(){
+                                     $(this).parent().next().hide();
+                                     $(this).removeClass('show_more');
+                                     });
+                      
+                      $('#searchIcon').click(function(){
+                      $('#searchIcon1').show();
+	                $(this).hide();
+                      });
+                      $('#searchIcon1').click(function(){
+                            
+							
+								busyInd.show();
+	                      $(this).hide();
+							
+
+							
+							if($('.searchBox').val() == ""){
+								busyInd.hide();
+								navigator.notification.alert("Enter Search text");
+								$('#searchIcon').show();
+								$('.searchBox').val('');
+								return false;
+							}
+							else{
+								filterSearch($('.searchBox').val());
+								$('#filtertext').html("Showing search result");
+								$('#filterserach').show();
+								$('#searchIcon1').hide();
+								$('#searchIcon').show();
+								$('.searchWrap').removeClass('clicked');
+							}
+
+							$('#searchIcon').show();
+							$('.searchBox').val('');
+							setTimeout(function () {
+								busyInd.hide();
+							}, 5000);
+						});											  
+						                      
+                      $('.wrapper').click(function (){
+                                          $('#searchIcon1').hide();
+                                          $('#searchIcon').show();
+                                          $('.searchWrap').removeClass('clicked');
+                                          $('.topBar').removeClass('clicked');
+                                          });
+	});
+	function editRemark(id) {
+		//alert($("#"+id).find('.remarktext').html());
+		currentid = id;
+		$('#remarkval').val($("#" + id).find('.remarktext').html());
+		$('.popWrap.two').parent().show(0);
+		$('.popWrap.two').parent().addClass('show');
+		$('.popWrap.two').addClass('show');
+		//setTimeout(scrollLoaded, 300);
+	}
+	function confrmval(id) {
+		if (changevalstart == "start") {
+			busyInd.show();
+			//alert(id);
+			//alert("111 "+$("#"+id).val());
+			var category = $("#" + id).val();
+			UpdateCatagory(id, category, selaccno);
+			changevalstart = "";
+			setTimeout(function () {
+				changevalstart = "start";
+			}, 500);
+		}
+	}
+	
+	function clearFilter(){
+		busyInd.show();
+		$('#filterserach').hide();
+		SelectPassBookData(booksStore($('#fldAcctNo').val()));
+		setTimeout(function (){busyInd.hide();}, 5000);
+	}
+</script>

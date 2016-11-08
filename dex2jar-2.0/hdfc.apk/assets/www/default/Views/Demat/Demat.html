@@ -1,0 +1,233 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+</style>
+<script type="text/javascript" src="js/common.js"></script>
+<div id="wrapper" class="menu" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+  
+       <div class="info_row odd" id="accExitsMsg" style="display:none;">
+			<span class="info_row_menu_left" style="width:15%;"><img src="img/alerticon.png" /></span>
+			<span class="info_row_menu_right clslineht" style="width:72%;">
+			You are not authorised to do any transaction. Please contact the nearest branch.
+			</span> 
+		</div>
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+		<div class="autoslide-slider3" id="acnt" style="display:none;">
+			  <div class = 'slider' data-bind="foreach:demataccountlist">
+		
+				<div class="item" data-bind="attr:{id: 'item'+strid}">
+				<span style="display:none;  data-bind="text:acctno"></span>
+					<a href="javascript:void(0);" data-bind="click: $root.rrhld01Onclicksubmit" >
+					<span class="rotating-item swipe" >
+					<div class="info_row4 alignc" style="margin:25px 0 0 0;font-size:11pt; color:#7f7f7f">DP Account Number</div>
+					<div class="info_row4 page_block_sub alignc" style="margin:8px 0 0 0;color:#000;" data-bind="text:acctno">
+					
+					</div>
+					<div class="redBlueLine">
+                      <div style="float:left;height: 2px;width: 20%;background-color:#ed1c24;"> </div>
+                     <div style="float:left;height: 2px;width: 80%;background-color:#004a8f;"> </div>
+                  </div>
+					<div class="info_row4 alignc" style="margin:8px 0 0 0;font-size:11pt; color:#7f7f7f">Holding Value</div>
+					<div class="info_row4 page_block_sub alignc" style="margin:0px 0 0 0;">Rs.<span data-bind="text:holdval"></span></div>
+					
+					</span></a>     
+				</div>
+				
+			</div>
+			<div class = 'prev unselectable'></div>
+			<div class = 'next'></div>
+		  </div>
+	
+	<div class="scrollable" id="scrollMe">
+	<br/>
+
+	<div class="info_row odd dark_header">
+		<span class="info_row_left page_title_carousel">Enquiry</span>
+		<span class="info_row_right"></span>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+	    
+	<a href="#rrhld01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_holdingquery.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Holdings Query</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrdpl01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_listofac.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">List of Account</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+			    
+	<a href="#rrdpq01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_clientprofile.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Client Profile</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrdts01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_transactionstatement.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Transaction Statement</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrdmq01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_status.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Demat Status</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrdiq01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_isinsearch.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">ISIN Search</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrdcq01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/demat_settlmentcalender.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel clslineht23">Settlement Calender Master</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	 <div class="info_row"><br/><p>Now Submit your transactions through Internet (SPEEDe) </p>
+			<br/>
+			 <p>HDFC Bank Ltd. provides convenient facility called SPEED-e (Internet based transaction) whereby account holder can submit delivery instructions electronically through SPEED-e website of NSDL. SPEED-e offers secured means of transaction processing eliminating preparation of instruction slips and submission of the same across the counter to the depository participant. The IDEAS facility helps in viewing the current transactions and balances(holdings) of demat account on internet on real time basis. For registration and more details please write to <a href="javascript:void(0);" class="disableclick">dphelp@hdfcbank.com</a>.
+			 </p><br/><br/>
+      </div>
+
+	
+	  
+	</div>
+	
+	<form name="f2" id="f2" action="app://" method="get">
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+		<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="" />
+		<input type="hidden" name="fldTxnId" id="fldTxnId" value="" />
+		<input type="hidden" id="acctTemp" name="acctTemp" value="1" />
+		
+		<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId">
+			
+		</input>
+	</form>
+	
+	<form name="f1" id="f1" action="app://" method="get">
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="RRHLD02" />
+	<input type="hidden" name="fldTxnId" id="fldTxnId" value="HLD" />
+	<input type="hidden" name="fldIntAcctNo" id="fldIntAcctNo" value="" />
+	<input type="hidden" name="fldIntAcctNo_txt" id="fldIntAcctNo_txt" value="" />
+	<input type="hidden" name="fldHoldingVal" id="fldHoldingVal" value="" />
+	<input type="hidden" name="fldScrnSeqNbr" value="02" />
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId">
+  		
+	</input>
+
+	</form>
+
+	
+    </div>
+</div>
+<script>
+$(document).ready(function($) {
+	var  conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}	
+    console.log('CP on mobile banner account summart '+bannerHeight);	
+	if(cpBanner.indexOf("No banner") > -1 == false){	
+        if(cpBanner=='' && cpbannerclose5!='adcloseDmt'){
+				loadXMLDoc();
+				setTimeout(function(){
+						if (navigator.onLine && cpBanner!='') {
+						  $('.ad_banner').show();
+				          $('#cpCnt').html(cpBanner);			
+				        } else {
+					      $('.ad_banner').hide();
+				        }
+						var menu = $(".menu");
+						var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}
+						menu.animate({top: bannerHeight + 'px'},1000);
+					
+				},2000);
+		}
+		if(cpBanner!='' && cpbannerclose5!='adcloseDmt'){
+			//alert("gghjtgiytkk");
+			setTimeout(function(){
+		        var menu = $(".menu");					
+	           if (navigator.onLine && cpBanner!='' && cbannerForDemat!='') {
+				  $('.ad_banner').show();
+				$('#cpCnt').html(cbannerForDemat);	
+				} else if(cbannerForDemat!=''){
+					$('.ad_banner').show();
+					$('#cpCnt').html(cbannerForDemat);	
+				}else {
+						$('.ad_banner').hide();
+				}
+				var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}				
+				menu.animate({top: bannerHeight + 'px'},1000);
+			},1000);
+		}
+		if( cpbannerclose5=="adcloseDmt"){		 
+			$('.ad_banner').hide();
+			var menu = $(".menu");
+			menu.animate({top: '96px'},1000);
+		}
+
+		
+	}	
+}); 
+   
+</script>

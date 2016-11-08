@@ -1,0 +1,86 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+		<div data-bind="foreach: txnErrorList">
+			<div class="info_row" data-bind="text: errdesc"></div>
+		</div>
+		
+		<form name="frmosw01" id="frmosw01" method="post" data-bind='submit: rrosw01Submit'>
+		
+		<br/>
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+		
+		<div class="info_row"> <div class="info_row2">Mutual Fund Account</div>
+		 <div class="info_row3">
+			<select name="fldUhid" id="fldUhid" class="styled" data-bind="options: unitholderList, optionsText: 'unitholderid', optionsValue: 'unitholderid', value: fldUhid, optionsCaption: '-Select-'">
+			
+			</select>
+			   </div>
+		  </div>
+		  
+		  
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+
+		<div class="clearfix20"></div>
+	   <div class="info_row">
+	    <input type="submit" class="button" value="Search" >
+	   </div>
+   
+		  
+		<div class="clearfix"></div>
+		<br/>
+		<div class="info_row"><p>Select Mutual Fund Account and click on search to get a list of schemes available for switch.</p>
+		<br/>
+		<p><b>Note:</b></p><br/>
+		<p>- W.e.f January 1,2016 any subscription whether fresh, additional investment, or switch shall not be permitted by the AMCs if the KYC status of PAN for Mutual Funds is not updated as "KYC Registered-New KYC".</p><br/>
+		<p>- As per regulatory requirement, individual investors and joint holders are required to provide extended KYC details. In absence of the same, transactions may get rejected by AMC/RTA. Joint holders of ISA ( Mutual Fund) accounts may update the same through "Update Extended KYC" option in NetBanking Request section of Accounts tab. Non-individual customers & HUFs may submit extended KYC details to Branches /Relationship manager. In absence of the same, transactions may get rejected by AMC/RTA.</p><br/>
+		<p>- With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be  liable to be rejected by the respective mutual fund houses.</p>
+		
+		
+		</div>
+		 
+			<input type="hidden" name="fldfundname1" value="1" />
+			<input type="hidden" name="fldCodTxn" value="SWITCH" />
+			<input type="hidden" name="fldFundId" value="" />
+			<input type="hidden" name="fldSelUhid" value="" />	
+			<input type="hidden" name="fldAction" value="" />
+			<input type="hidden" name="fldFromTxnId" value="OSW" />
+			<input type="hidden" name="fldFromTxn" value="" />
+			<input type="hidden" name="fldFundCriteria" value="" />
+			<input type="hidden" name="fldFundCode" value="" />
+			<input type="hidden" name="fldFundName" value="" />
+			<input type="hidden" name="fldParentForm" value="frmTxn" />
+			<input type="hidden" name="fldSubmitForm" value="Y" />
+			<input type="hidden" name="fldAmcId" value="" />
+			<input type="hidden" name="fldFromFundCode" value="" />
+			<input type="hidden" name="fldSequenceNext" value="02" />
+			<input type="hidden" name="fldSequencePrevious" value="01" />
+			
+			
+			<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+			<input type="hidden" name="fldOperationId" value="RRASH02" />
+			<input type="hidden" name="fldTxnId" value="ASH" />
+			<input type="hidden" name="fldScrnSeqNbr" value="02" />
+  		    <input type="hidden" id="fldUhid_txt" name="fldUhid_txt" value="" />
+			  
+			  
+
+
+		</form>			
+	</div>
+</div>
+<script type="text/javascript">
+$("#frmosw01").validate({
+	rules: {
+		fldUhid: "required",		
+	},
+	messages: {
+		fldUhid: "Select Mutual Fund Account",			
+	}
+});
+</script>

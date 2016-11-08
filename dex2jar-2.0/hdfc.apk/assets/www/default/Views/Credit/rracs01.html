@@ -1,0 +1,318 @@
+
+
+<style>
+	.info_row { display:table; width:100%; }
+	.linedivider { border:0 none; }
+</style>
+  <script type="text/javascript" src="js/common.js"></script>
+<div id="wrapper"  class="menu" style="top:96px;">
+	<div class="autoslide-slider3" id="block" data-bind="visible: accSlider">
+    <div class = 'slider' data-bind="foreach: ccaccountList">      
+      
+      <div class="item" data-bind="attr:{id: strid}"> <span class="rotating-item swipe" > <a data-bind="click: $root.ccaccountStmtDetails">
+        <div class="info_row4 alignc" style="margin:28px 0 0 0;font-size:11pt;color:#7f7f7f;" >Credit Card No</div>
+        <div class="info_row4 page_block_sub alignc" style="margin:5px 0 0 0;color:#000;" data-bind="text: codacctno"></div>
+        <div class="redBlueLine">
+          <div style="float:left;height: 2px;width: 20%;background-color:#ed1c24;"> </div>
+          <div style="float:left;height: 2px;width: 80%;background-color:#004a8f;"> </div>
+        </div>
+        <div class="info_row4 alignc" style="margin:5px 0 0 0;font-size:11pt; color:#7f7f7f">Available Credit</div>
+        <div class="info_row4 page_block_sub alignc" style="margin:8px 0 0 0;" data-bind="text: acctbalance"></div>
+        </a> </span> 
+        </div>        
+    </div>
+    <div class = 'prev unselectable'></div>
+    <div class = 'next'></div>
+  </div>
+  
+  
+<div class="info_row" id="accExitsMsg" style="padding-top:5px;display:none;">
+    <p>			No credit cards are mapped to the user. Map a card and return to the transaction OR your request cannot be processed temporarily. We regret the inconvenience caused.
+</p>
+    <br/>
+  </div>
+  
+  
+
+    <div class="sub_content">
+
+	
+	
+
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+
+		
+		
+	
+	
+	
+		
+		
+	<div class="scrollable" id="scrollMe">
+	<br/>
+	
+	<div class="info_row odd dark_header">
+		<span class="info_row_left page_title_carousel">Transact</span>
+		<span class="info_row_right"></span>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+			    
+	<a href="#rrccp01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_creditcardpayment.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Credit Card Payment</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<div class="info_row odd dark_header">
+		<span class="info_row_left page_title_carousel">Enquiry</span>
+		<span class="info_row_right"></span>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+	
+	  <a href="#ccaccountSummary">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_accountsummary.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Account Summary</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	    
+	<a href="#rraci01" >
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_accountinfo.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Account Information</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrunb01"  >
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_viewunbilledtrans.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel clslineht23">View Unbilled Transactions</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+	<div class="info_row odd dark_header">
+		<span class="info_row_left page_title_carousel">Request</span>
+		<span class="info_row_right"></span>
+		<div class="clearfix"></div>
+	</div>
+	<br/>
+	
+   <!--  <a href="#rrupd00" >
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_updatecontactdetails.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Update Contact Details</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div> -->
+    
+	<a href="#rrcac01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_registernewcard.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Register New Card</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+	<!-- <a href="#rrest01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_statementemail.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Statement on Email</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div> -->
+    
+	<a href="#rrpcr01" >
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_creditcardatmpin.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Credit Card ATM PIN</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+	<a href="#rrcdc01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_deregistercard.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Deregister Card</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+		<a href="#rscip01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/credit_pin.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Instant PIN Generation</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	<a href="#rrapr00" >
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_autopayregister.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Autopay Register</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+	
+	<a href="#rrapd01">
+	<div class="info_row odd">
+		<span class="info_row_menu_left"><img src="img/cc_autopayderister.png" /></span> 
+		<span class="info_row_menu_right page_title_carousel">Autopay De-register</span>
+		<span class="right_arrow"><img src="img/rarrow.png" /></span>
+		<div class="clearfix"></div>
+	</div>
+	</a>
+	
+	<div class="clearfix"></div>
+    <div class="linedivider"></div>   
+    <div class="clearfix"></div>
+    
+	
+		
+	</div>
+	<form name="f2" id="f2" action="app://" method="get">
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+		<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="" />
+		<input type="hidden" name="fldTxnId" id="fldTxnId" value="" />
+		<input type="hidden" id="acctTemp" name="acctTemp" value="1" />
+		<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId">
+	
+		</input>
+	</form>
+	
+	<form name="f1" id="f1" action="app://" method="get">
+	<input type="hidden" name="fldInitialSwitch" id="fldInitialSwitch" value="I" />
+	<input type="hidden" name="fldLastTxnSeqNo" id="fldLastTxnSeqNo" value="0" />
+	<!--here-->
+	<input type="hidden" name="fldRequestId" value="RRUNB02" />
+	<input type="hidden" name="fldTxnId" value="UNB" />
+	<input type="hidden" id="titleTemp" name="titleTemp" value="1" />
+	<input type="hidden" name="fldScrnSeqNbr" value="02" />
+	<input type="hidden" id="fldCodDrCr" name="fldCodDrCr" value="B" />
+	<input type="hidden" id="fldCardNo" name="fldCardNo" value="" />
+	<input type="hidden" id="fldCodDrCr_txt" name="fldCodDrCr_txt" value="Both" />
+	<input type="hidden" id="fldAvailCredit" name="fldAvailCredit" value="" />
+	<input type="hidden" id="fldCardNo_txt" name="fldCardNo_txt" value="" />
+  
+  <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId">
+
+  </input>
+		
+	
+
+	</form>
+	
+
+	
+
+
+</div>
+<script>
+$(document).ready(function($) {
+	var  conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}	
+    console.log('CP on mobile banner account summart '+bannerHeight);	
+	if(cpBanner.indexOf("No banner") > -1 == false){		
+		if(cpBanner=='' && cpbannerclose4!='adcloseCC'){
+				loadXMLDoc();
+				setTimeout(function(){
+						
+						if (navigator.onLine && cpBanner!='') {
+						 $('.ad_banner').show();
+				         $('#cpCnt').html(cpBanner);				
+						} else {
+					      $('.ad_banner').hide();
+						}	
+						var menu = $(".menu");
+						var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}
+						menu.animate({top: bannerHeight + 'px'},2000);
+						
+				},2000);
+		}
+		if(cpBanner!='' && cpbannerclose4!='adcloseCC'){
+			//alert("gghjtgiytkk");
+			setTimeout(function(){
+		        var menu = $(".menu");					
+				
+				if (navigator.onLine && cpBanner!=''&&cbannerForCC!='') {
+						 $('.ad_banner').show();
+				         $('#cpCnt').html(cbannerForCC);				
+			    } else if(cbannerForCC!=''){
+						$('.ad_banner').show();
+				         $('#cpCnt').html(cbannerForCC);
+				}else {
+					      $('.ad_banner').hide();
+				}	
+				var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}				
+				menu.animate({top: bannerHeight + 'px'},2000);
+			},2000);
+		}
+		if( cpbannerclose4=="adcloseCC"){		 
+			$('.ad_banner').hide();
+			var menu = $(".menu");
+			menu.animate({top: '96px'},2000);
+		}
+	}	
+});    
+</script>

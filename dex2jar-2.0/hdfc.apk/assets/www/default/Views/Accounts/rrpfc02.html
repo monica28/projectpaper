@@ -1,0 +1,706 @@
+<style>
+  input[type=button] {
+  width: 150px;
+  margin: auto;
+  display: table;
+}
+#otheradd .info_row {
+  padding: 0;
+}
+</style>
+<link href="css/mobiscroll-2.0.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/libs/mobiscroll-2.0.custom.min.js" type="text/javascript"></script>
+<div id="wrapper" style="top:96px;">
+	<div class="content sub_content">
+	
+	<form name="rrpfcg02" id="rrpfcg02" method="post" data-bind='submit:rrpfcg02Submit'>			
+		<div id="customerdetails"> 
+			<div class="info_row">
+				<span class="info_row_left page_block_sub" style="padding-left:10px; width:100%;">Customer details </span>
+			</div>
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;">
+			
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Account No.</span> 
+					<span class="info_row_right accno"></span>					
+				</div>      
+			  
+				<div class="info_row odd"> 
+					<span class="info_row_left">Name</span> 
+					<span class="info_row_right custname"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Date of Birth</span> 
+					<span class="info_row_right Dob"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Gender</span> 
+					<span class="info_row_right Gender"></span>					
+				</div>      
+			  
+				<div class="info_row even"> 
+					<span class="info_row_left">Telephone No.(R)</span> 
+					<span class="info_row_right TelephoneR" style="word-break:break-all;line-height: 20px;padding-top: 6px;"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Telephone No.(O)</span> 
+					<span class="info_row_right TelephoneO" style="word-break:break-all;line-height: 20px;padding-top: 6px;"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Mobile No.</span> 
+					<span class="info_row_right mobileno"></span>					
+				</div>						
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Email ID</span> 
+					<span class="info_row_right emailid"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Address</span> 
+					<span class="info_row_right clslineht address"></span>					
+				</div>
+				<div class="info_row even addressline2" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht address2"></span>					
+				</div>
+				<div class="info_row even addressline3" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht address3"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">City</span> 
+					<span class="info_row_right city"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">State</span> 
+					<span class="info_row_right State"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Country</span> 
+					<span class="info_row_right Country"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Pincode </span> 
+					<span class="info_row_right pincode"></span>					
+				</div>
+				
+			</div>
+			
+			<div class="clearfix20"></div>		
+			<div class="info_row">
+				<input type="button" class="button" value="Continue" id="custdetails">
+			</div>   
+			<div class="clearfix20"></div>
+		</div>
+		
+		<div id="passportdetail" style="display:none;">
+		   <div class="info_row">
+				<span class="info_row_left page_block_sub" style="padding-left:10px; width:100%;">Passport Details</span>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">Passport No.</div> 
+				<div class="info_row3"> 
+					<input type="text" name="fldpassportno" id="fldpassportno" maxlength="16" >
+				</div>
+			</div>
+			
+			 <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"> 
+				<div class="info_row2">Passport Expiry Date (dd/mm/yyyy)</div> 
+				<div class="info_row3">
+					<div class="width100per" style="padding-right:40px; position:relative;">
+					<input type="text"  readonly="readonly"  name="fldFromDate" id="fldFromDate" />
+					<div  id="show_date"><img src="img/index.png" /></div></div>		
+				 </div>
+			 </div>	 
+			    
+			 <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">
+				<div class="info_row2">Date of issuance of passport (dd/mm/yyyy)</div> 
+				<div class="info_row3">
+					<div class="width100per" style="padding-right:40px; position:relative;">
+					<input type="text" name="fldToDate" readonly="readonly" id="fldToDate" />
+					<div  id="show_date1"><img src="img/index.png" /></div></div>
+				 </div>    
+			 </div>	 
+			 
+			 <div class="info_row">
+				<div class="info_row2">Place of issuance of passport</div> 
+				<div class="info_row3"> 
+					<input type="text" name="fldPassportPlace" id="fldPassportPlace" maxlength="20" autocomplete="off">
+				</div>
+			</div>
+			
+			<div class="clearfix20"></div>		
+			<div class="info_row">
+				<input type="button" class="button" value="Continue" id="passdeatil">
+			</div>		   
+			<div class="clearfix20"></div>
+		</div>
+		
+		
+		<div id="regaddress" style="display:none;">
+		     <div class="clearfix10"></div>	
+			
+			<div class="info_row odd dark_header"> 			
+				<span class="info_row_left">Account No.</span> 
+				<span class="info_row_right accno"></span>		
+			</div>
+			
+			<div class="info_row" style="padding:0;">
+				<div class="info_row2">Dispatch card to</div> 
+				<div class="info_row3">  
+					<p class="width50Per radio_box" style="padding-left: 0px">
+					   <label>
+							<input type="radio" name="radOption" id="addrRadioNo" checked="checked" value="addrRadioNo"  />
+							<span>Registered Address</span>
+					   </label>
+					</p>
+					<p class="width50Per radio_box">
+					  <label>
+						<input type="radio" name="radOption"  id="addrRadioYes" value="addrRadioYes"/>
+						<span>Other Address</span>
+					  </label>
+					</p>  
+				</div>
+			</div>
+		<div id="otheradd" style="display:none;" >
+			<div class="info_row">
+				<div class="info_row2">Address</div> 
+				<div class="info_row3"> 
+				
+					<input type="text" name="flddispatchAddr1" id="flddispatchAddr1" maxlength="35">
+					<input type="text" name="flddispatchAddr2" id="flddispatchAddr2" maxlength="35">
+					<input type="text" name="flddispatchAddr3" id="flddispatchAddr3" maxlength="35">
+				</div>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">City</div> 
+				<div class="info_row3"> 
+					<input type="text" name="flddispatchCity" id="flddispatchCity" maxlength="20" autocomplete="off">
+				</div>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">State</div> 
+				<div class="info_row3"> 
+					<input type="text" name="flddispatchState" id="flddispatchState" maxlength="20" autocomplete="off">
+				</div>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">Country</div> 
+				<div class="info_row3"> 
+					<input type="text" name="flddispatchCntry" id="flddispatchCntry" maxlength="20" autocomplete="off">
+				</div>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">Pincode</div> 
+				<div class="info_row3"> 
+					<input type="number" name="flddispatchZip" id="flddispatchZip" class="num" maxlength="6">
+				</div>
+			</div>
+		</div>
+		
+		<div id="Registaddress">
+		     <div class="info_row">
+				<span class="info_row_left page_block_sub" style="padding-left:10px; width:100%;">Registered Address details</span>
+			</div>
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;;margin-bottom: 15px !important;">
+			
+				<div class="info_row even"> 
+					<span class="info_row_left">Address</span> 
+					<span class="info_row_right clslineht address"></span>					
+				</div>
+				
+				<div class="info_row even addressline2" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht  address2"></span>					
+				</div>
+				<div class="info_row even addressline3" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht address3"></span>					
+				</div>
+				
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">City</span> 
+					<span class="info_row_right city"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">State</span> 
+					<span class="info_row_right State"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Country</span> 
+					<span class="info_row_right Country"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Pincode </span> 
+					<span class="info_row_right pincode"></span>					
+				</div>
+				
+			</div>
+		</div>
+		
+						
+			<div class="clearfix20"></div>		
+			<div class="info_row">
+				<input type="button" class="button" value="Continue" id="address">
+			</div>		   
+			<div class="clearfix20"></div>
+		</div>
+		
+		
+		<div id="travaldetails" style="display:none;">
+           <div class="info_row">
+				<span class="info_row_left page_block_sub" style="padding-left:10px; width:100%;">Travel Details</span>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">Purpose of travel</div> 
+				<div class="info_row3"> 
+					<select name="forexpurpose" id="forexpurpose" data-bind="options: forexpurpose, optionsText: 'displaytxt', optionsValue: 'codacctno', value: 'accountValue',optionsCaption: '-Select-'">					
+					</select>
+				</div>
+			</div>
+	
+			 
+			 <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"> 
+				<div class="info_row2">Date of travel (dd/mm/yyyy)</div> 
+				<div class="info_row3">
+					<div class="width100per" style="padding-right:40px; position:relative;">
+					<input type="text"  readonly="readonly"  name="fldfromdate" id="fldfromdate" />
+					<div  id="SHOW_DATE"><img src="img/index.png" /></div></div>		
+				 </div>
+			 </div>	 
+			    
+			 <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">
+				<div class="info_row2">Estimated date of return (dd/mm/yyyy)</div> 
+				<div class="info_row3">
+					<div class="width100per" style="padding-right:40px; position:relative;">
+					<input type="text" name="fldtodate" readonly="readonly" id="fldtodate" />
+					<div  id="SHOW_DATE1"><img src="img/index.png" /></div></div>
+				 </div>    
+			 </div>	
+
+           <input type="hidden" id="buttonval" name="buttonval" value="">
+		    <input type="hidden" id="fldOrgTxnId" name="fldOrgTxnId" value="PFC" />
+             	<div class="clearfix20"></div>		
+			      <div class="info_row">
+				     <input type="submit" class="button" value="Continue">
+			    </div>		   
+			<div class="clearfix20"></div>		
+
+        			  
+		</div>
+		
+		   
+		</form>
+		 <div class="clearfix20"></div>
+		   <div class="info_row">
+	       	<p><b>Note:</b></p><br/>
+	       	<p>The card will be delivered to the address provided by you. </p><br/>
+	       	<p>Multicurrency Platinum ForexPlus Cards requested on overseas locations (including overseas mailing address), or at locations where this facility is not available, the request will not be processed and the value will be credited to your account. The processing fee (issuance fee and applicable taxes) is non refundable.</p><br/>
+           <!--  <p>Please Click here to know more about Multicurrency Platinum ForexPlus Card.</p> -->
+			
+      </div>	
+		
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+$.validator.addMethod('greaterThan', 
+function(value, element) {
+
+
+                tmpdt1 = $('#fldToDate').val();
+				arrdt1 = tmpdt1.split('/');
+				
+				tmpdt2 = $('#fldFromDate').val();
+				arrdt2 = tmpdt2.split('/');
+               var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+
+              var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+
+    if ( date1 > date2) {
+	
+     return false;  
+    }
+	else{
+return true;
+}
+
+},'Date of Passport Expiry Date should be greater than Date of issuance of passport .');
+
+
+$.validator.addMethod('secodgreaterThan', 
+function(value, element) {
+
+
+                tmpdt1 = $('#fldtodate').val();
+				arrdt1 = tmpdt1.split('/');
+				
+				tmpdt2 = $('#fldfromdate').val();
+				arrdt2 = tmpdt2.split('/');
+                var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+
+                var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+
+    if ( date1 > date2) {
+	
+     return false;  
+    }
+	else{
+return true;
+}
+
+},'Date of issuance of passport should be later than Passport Expiry Date.');
+
+
+
+
+$.validator.addMethod('CurrentDate', 
+function(value, element) {
+
+                tmpdt1 = $('#fldfromdate').val();
+				arrdt1 = tmpdt1.split('/');
+				
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+
+				var yyyy = today.getFullYear();
+				if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} 
+				var today = dd+'/'+mm+'/'+yyyy;
+				
+				tmpdt2 = today;
+				arrdt2 = tmpdt2.split('/');
+               var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+
+              var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+
+    if ( date2 < date1) {
+	
+     return false;  
+    }
+	else{
+return true;
+}
+
+},'To Date cannot be greater than Current Date');
+
+
+
+
+$.validator.addMethod("alpha", function(value, element) {
+     return this.optional(element) || /^[A-Za-z ]+$/i.test(value); 
+}
+, "Please Enter Valild Place of issuance of passport");  
+
+$.validator.addMethod("alphanumeric", function(value, element) {
+     return this.optional(element) || /^[A-Za-z0-9]+$/i.test(value); 
+}
+, "Please enter valid Passport no");  
+
+
+
+$("#rrpfcg02").validate({
+
+	 rules: {
+	 		
+			flddispatchAddr1:"required",
+			flddispatchAddr2:"required",
+			flddispatchCntry:"required",
+			
+			forexpurpose:"required",
+			fldFromDate:{
+		     required:true,
+		   },
+		   flddispatchZip: {	
+		       required:true,
+		       minlength: 6,
+		       maxlength:6
+		  }, 
+		   fldpassportno:{
+		     alphanumeric:"#fldpassportno",
+		     required:true,
+		   },
+		   
+		   fldToDate:"required",
+		   
+		   
+		   fldPassportPlace:{
+		     alpha:"#fldPassportPlace",
+		     required:true,
+		   },
+		   
+		   flddispatchCity:{
+		     alpha:"#flddispatchCity",
+		     required:true,
+		   },
+		  flddispatchState:{
+		     alpha:"#flddispatchState",
+		     required:true,
+		   },
+		   flddispatchCntry:{
+		     alpha:"#flddispatchCntry",
+		     required:true,
+		   },
+		  
+        },
+        messages: {
+        
+			flddispatchAddr1:"Please Enter Address",
+			flddispatchAddr2:"Please Enter Address",
+		
+		
+			forexpurpose:"Please Select Pupose of travel",
+            fldToDate:"Date of issuance of passport cannot be blank",
+			fldFromDate:{
+		     required:"Passport Expiry Date cannot be blank",
+		   },
+		   fldpassportno:{
+		     alphanumeric:"Please enter valid Passport no",
+		     required:"Please Enter Passport No",
+		   },
+		   
+		   flddispatchZip: {	
+		       required:"Please Enter Pincode",
+			   minlength:"Pincode must be of length 6",
+			   maxlength:"Pincode must be of length 6"
+		  }, 
+		  
+		   
+		   fldPassportPlace:{
+		      required :"Please Enter Place of issuance of passport",
+		   },
+		   flddispatchCity:{
+		      alpha:"Please Enter valid City",
+		      required :"Please Enter City",
+		   },
+		   flddispatchState:{
+		      alpha:"Please Enter valid State.",
+		      required :"Please Enter State",
+		   },	
+           flddispatchCntry:{
+		       alpha:"Please Enter valid Country.",
+		      required :"Please Enter Country",
+		   },				
+        }
+});
+
+
+
+    $("#custdetails").click(function(){
+	  $("html, body").animate({ scrollTop: 0 }, "slow");
+     $("#passportdetail").show();
+	 $("#customerdetails").hide();
+    });
+	
+	$("#passdeatil").click(function(){
+	 $("html, body").animate({ scrollTop: 0 }, "slow");
+	 if($("#rrpfcg02").valid()){
+
+	   tmpdt1 = $('#fldFromDate').val();
+	   arrdt1 = tmpdt1.split('/');
+				
+	   var today = new Date();
+	   var dd = today.getDate();
+	   var mm = today.getMonth()+1; //January is 0!
+
+	   var yyyy = today.getFullYear();
+	   if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} 
+				var today = dd+'/'+mm+'/'+yyyy;
+				
+		tmpdt2 = today;
+		arrdt2 = tmpdt2.split('/');
+		
+		tmpdt3 = $('#fldToDate').val();
+	    arrdt3 = tmpdt3.split('/');
+		
+         var date1 = new Date(arrdt1[2],arrdt1[1],arrdt1[0]);
+         var date2 = new Date(arrdt2[2],arrdt2[1],arrdt2[0]);
+		 var date3 = new Date(arrdt3[2],arrdt3[1],arrdt3[0]);
+		 
+		if(date1 <=  date2) {
+
+		   customAlert("Please select the valid expiry date of your passport");
+           return;  
+		}
+		if(date3 >= date1 ) {
+	
+		   customAlert("Please select the valid expiry date / Date of issuance of your passport");
+           return;  
+		}
+		if(date3 >= date2 ) {
+	
+		   customAlert("Please select the valid expiry date / Date of issuance of your passport");
+           return;  
+		}
+		 
+	 
+      $("#passportdetail").hide();
+	   $("#regaddress").show();
+	   }
+    });
+	$("#address").click(function(){
+	if($("#rrpfcg02").valid()){
+	 $("html, body").animate({ scrollTop: 0 }, "slow");
+      $("#regaddress").hide();
+	 $("#travaldetails").show();
+	 }
+    });
+	
+	
+	
+	
+	
+	$(document).ready(function(){
+				    $('input[type="radio"]').click(function(){
+				
+					if($(this).attr("value")=="addrRadioNo"){
+						$("#Registaddress").show();
+						$("#otheradd").hide();
+					}
+					if($(this).attr("value")=="addrRadioYes"){
+					    $("#otheradd").show();
+					    $("#Registaddress").hide();
+					    
+					}
+					
+				    });
+					
+					
+	});
+	
+	$(function(){
+		var now = new Date();
+		
+		    var dtmin = new Date();
+			dtmin.setDate(dtmin.getDate() + 1);
+			var dtmax = new Date();
+		    dtmax.setDate(dtmax.getDate() + 7300);
+			
+			var todtmax = new Date();
+			todtmax.setDate(todtmax.getDate() - 1);
+			var todtmin = new Date();
+		    todtmin.setDate(todtmin.getDate() - 10950);
+			
+			
+			
+				 
+		$('#fldFromDate').scroller({
+			preset: 'date',
+			theme: 'sense-ui',
+			display: 'modal',
+			mode: 'scroller',
+			dateOrder: 'ddMYYYY',
+			endYear: now.getFullYear() + 10,
+			minDate: new Date(dtmin.getFullYear(), dtmin.getMonth(), dtmin.getDate()),
+            maxDate: new Date(dtmax.getFullYear(), dtmax.getMonth(), dtmax.getDate()),
+		});
+		
+		$('#fldToDate').scroller({
+			preset: 'date',
+			theme: 'sense-ui',
+			display: 'modal',
+			mode: 'scroller',
+			dateOrder: 'ddMYYYY',
+			endYear: now.getFullYear() + 10,
+			minDate: new Date(todtmin.getFullYear(), todtmin.getMonth(), todtmin.getDate()),
+            maxDate: new Date(todtmax.getFullYear(), todtmax.getMonth(), todtmax.getDate()),
+		});
+		
+		$('#show_date1').click(function(){
+		  $('#fldToDate').scroller('show'); 
+		  return false;
+		});
+		$('#show_date').click(function(){
+		  $('#fldFromDate').scroller('show'); 
+		  return false;
+		});
+		$('#clear').click(function () {
+		  $('#fldFromDate').val('');
+		  return false;
+		});
+	});
+	
+	
+	  $(function(){
+				var now = new Date();
+				
+				 var dtmin = new Date();
+				 dtmin.setDate(dtmin.getDate() + 3);
+				 var dtmax = new Date();
+				 dtmax.setDate(dtmax.getDate() + 60);
+				 
+				 var todtmin = new Date();
+			         todtmin.setDate(todtmin.getDate() + 3);
+			    var todtmax = new Date();
+		             todtmax.setDate(todtmax.getDate() + 1460);
+			
+				$('#fldfromdate').scroller({
+					preset: 'date',
+					theme: 'sense-ui',
+					display: 'modal',
+					mode: 'scroller',
+					dateOrder: 'ddMYYYY',
+					endYear: now.getFullYear() + 10,
+					   minDate: new Date(dtmin.getFullYear(), dtmin.getMonth(), dtmin.getDate()),
+                       maxDate: new Date(dtmax.getFullYear(), dtmax.getMonth(), dtmax.getDate()),
+				});
+				
+				$('#fldtodate').scroller({
+			preset: 'date',
+			theme: 'sense-ui',
+			display: 'modal',
+			mode: 'scroller',
+			dateOrder: 'ddMYYYY',
+			endYear: now.getFullYear() + 10,
+			minDate: new Date(todtmin.getFullYear(), todtmin.getMonth(), todtmin.getDate()),
+            maxDate: new Date(todtmax.getFullYear(), todtmax.getMonth(), todtmax.getDate()),
+		        });
+				
+				$('#SHOW_DATE1').click(function(){
+				  $('#fldtodate').scroller('show'); 
+				  return false;
+				});
+				$('#SHOW_DATE').click(function(){
+				  $("#fldfromdate").scroller('show'); 
+				  return false;
+				});
+				$('#clear').click(function () {
+				  $('#fldfromdate').val('');
+				  return false;
+				});
+   });
+   
+   
+   $('.num').keyup(function(){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+</script>

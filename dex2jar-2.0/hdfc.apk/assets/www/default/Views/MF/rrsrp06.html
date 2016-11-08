@@ -1,0 +1,176 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+</style>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+    
+              <div class="content" data-bind="foreach: txnerror,visible:txnerror().length>0">
+			<div class="failure_msg info_row2" data-bind="text: errdesc"></div>
+		</div>
+		 
+        <form name="f1" id="f1" method="post" data-bind='submit: rrsrp06Submit'>
+    
+
+    		
+			
+    		<div class="summblock">
+    		
+			<div class="info_row dark_header"><span class="info_row_left clslineht">Mutual Fund Account</span> 
+			<span class="info_row_right" id="unitholderid">
+				
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row odd"><span class="info_row_left">Type of SI</span> 
+			<span class="info_row_right" id="selsitype">
+				
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">AMC Name</span> 
+			<span class="info_row_right clslineht" id="amcname">
+				
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left">Scheme Name</span> 
+				<span class="info_row_right clslineht" id="fundname">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">Cut-Off Time</span> 
+				<span class="info_row_right" id="cutofftime">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left">Frequency</span> 
+				<span class="info_row_right" id="sifreqname">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row even"><span class="info_row_left">Start Date</span> 
+				<span class="info_row_right" id="startdate">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row odd"><span class="info_row_left">End Date</span> 
+				<span class="info_row_right" id="enddate">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+		
+			
+			
+				<div class="info_row even" id="AMT" style="display:none;"><span class="info_row_left">SI Amount</span> 
+					<span class="info_row_right" id="AMTV">
+						
+					</span>
+					<div class="clearfix"></div>
+				</div> 
+			
+			
+				<div class="info_row even" id="NAMT" style="display:none;"><span class="info_row_left">SI Units</span> 
+					<span class="info_row_right" id="NAMTV">
+						
+					</span>
+					<div class="clearfix"></div>
+				</div>
+			<div class="info_row odd"><span class="info_row_left">No of SI</span> 
+				<span class="info_row_right" id="noofsi">
+					
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			</div>
+			<br/>
+   		  
+		  <div class="clearfix"></div>
+	      <div class="linedivider"></div>   
+	      <div class="clearfix"></div>
+      
+			<div class="info_row"><div class="info_row2">Terms and Conditions (Mandatory)</div> 
+				<div class="info_row3">
+					<select name="fldAcceptTerms" class="styled" id="fldAcceptTerms">
+					 <option value="true">Accept</option>
+					 <option value="false">Decline</option>
+					 </select>
+				</div>
+			</div>
+				
+		  <div class="clearfix"></div>
+	      <div class="linedivider"></div>   
+	      <div class="clearfix"></div>
+	      
+			
+			 <div class="clearfix20"></div>
+			<div class="alignc"> <input type="submit" class="button" value="Continue" /></div>
+			<br/>
+			
+			<div class="info_row">
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>			
+			</div>	
+
+	
+	
+	
+	<input type="hidden" name="fldRequestId" value="RRSRP10" />
+	<input type="hidden" name="fldTxnId" value="SRP" />	
+	<input type="hidden" name="fldScrnSeqNbr" value="10" />
+	
+	<input type="hidden" id="fldAcceptTerms_txt" name="fldAcceptTerms_txt" value="" />
+	
+	<input type="hidden" id="fldSelUhid" name="fldSelUhid" value="" />	
+	<input type="hidden" id="fldAction" name="fldAction" value="" />
+	<input type="hidden" id="fldUhid" name="fldUhid" value="" />	
+	<input type="hidden" id="fldSiType" name="fldSiType" value="" />
+	<input type="hidden" id="fldFundCode" name="fldFundCode" value="" />
+	<input type="hidden" id="fldRddelOrder" name="fldRddelOrder" value="" />
+	<input type="hidden" id="fldAccount" name="fldAccount" value="" />
+	<input type="hidden" id="fldTypeValue" name="fldTypeValue" value="" />
+	<input type="hidden" id="fldFrequency" name="fldFrequency" value="" />
+	<input type="hidden" id="fldSiDay" name="fldSiDay" value="" />
+	<input type="hidden" id="fldSiDate" name="fldSiDate" value="" />
+	<input type="hidden" id="fldNoOfInstallment" name="fldNoOfInstallment" value="" />
+	<input type="hidden" id="fldStartDate" name="fldStartDate" value="" />
+	<input type="hidden" id="fldEndDate" name="fldEndDate" value="" />
+	<input type="hidden" id="fldToFundCode" name="fldToFundCode" value="" />
+	<input type="hidden" id="fldPurchase" name="fldPurchase" value="" />
+	
+	
+	
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+	
+	</form>
+ 
+    </div>
+</div>
+<script type="text/javascript">
+$("#f1").validate({
+	 rules: {
+			
+            fldAcceptTerms: {chkvalid: "#fldAcceptTerms"},
+        },
+        messages: {
+           fldAcceptTerms: {
+               chkvalid: "Please Accept Terms and Conditions.",
+            }
+        }
+});
+</script>

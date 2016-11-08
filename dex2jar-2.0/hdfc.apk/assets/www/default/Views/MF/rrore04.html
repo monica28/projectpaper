@@ -1,0 +1,107 @@
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+	   			
+	   		<div class="info_row" id="errdesc" style="display:none;"></div>	
+	   		<div class="info_row" id="errwarn" style="display:none;"></div>
+	   			
+	   		<div class="success_msg">
+			<p>Transaction successful</p>
+			</div>	
+	   			
+    		<div class="summblock">
+   			
+	   			
+   					
+					
+				
+	   			<div class="info_row dark_header"><span class="info_row_left">Order received on</span> 
+				<span class="info_row_right" id="tempdate">
+		
+				</span>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="info_row odd"><span class="info_row_left clslineht">Order Reference No</span> 
+				<span class="info_row_right clslineht1" id="txnnumber">
+				</span>
+					<div class="clearfix"></div>
+				</div>
+   				
+   			
+   		
+    	
+    		
+    		
+			<div class="info_row even"><span class="info_row_left clslineht">Mutual Fund Account</span> 
+			<span class="info_row_right" id="unitholderid">
+			</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Mutual Fund Name</span> 
+				<span class="info_row_right clslineht" id="amcname">
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			<div class="info_row even"><span class="info_row_left">Scheme Name</span> 
+				<span class="info_row_right clslineht" id="fundname">
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<div class="info_row odd"><span class="info_row_left">Cut-Off Time</span> 
+				<span class="info_row_right" id="cutofftime">
+				</span>
+				<div class="clearfix"></div>
+			</div> 
+			
+			<!--  <div class="info_row even"><span class="info_row_left">Bank Account No.</span> 
+				<span class="info_row_right">
+					<xsl:value-of select="//faml//response//response//txndata//txn//account//accountno" />
+				</span>
+				<div class="clearfix"></div>
+			</div> -->
+			
+	
+			
+			<!--  <div class="info_row odd"><span class="info_row_left clslineht">Investment Amount</span> 
+				<span class="info_row_right">
+					<xsl:value-of select="format-number(//faml//response//request//amount,$amtformat)" />
+				</span>
+				<div class="clearfix"></div>
+			</div>-->
+			
+			<div class="info_row even"><span class="info_row_left">Redemption Type</span> 
+				<span class="info_row_right" id="partialfull">
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+
+			
+
+							<div class="info_row odd" id="pamt"><span class="info_row_left">Amount</span> 
+								<span class="info_row_right" id="selectedamount">
+								</span>
+								<div class="clearfix"></div>
+							</div>
+				
+						
+					<div class="info_row odd" id="punit" ><span class="info_row_left">Units</span> 
+								<span class="info_row_right" id="selectedunits">
+								</span>
+								<div class="clearfix"></div>
+							</div>						
+			
+
+	
+			</div>
+			<br/>
+			<div class="clearfix"></div>
+			<div class="info_row">
+				<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>	
+	</div>
+		</div>
+	

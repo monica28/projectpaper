@@ -1,0 +1,361 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.linedivider { border:0 none; }
+</style>
+<script type="text/javascript" src="js/common.js"></script>
+<div id="wrapper" class="menu" style="top:96px;">
+	<div class="autoslide-slider3" id="block" data-bind="visible: accSummSlider">
+    <div class = 'slider' data-bind="foreach: accountSummList">      
+      
+      <div class="item" data-bind="attr:{id: strid}"> <span class="rotating-item swipe" > <a data-bind="click: $root.accountStmtDetails">
+        <div class="info_row4 alignc" style="margin:28px 0 0 0;font-size:11pt;color:#7f7f7f;" data-bind="text: acctType"></div>
+        <div class="info_row4 page_block_sub alignc" style="margin:5px 0 0 0;color:#000;" data-bind="text: codacctno"></div>
+        <div class="redBlueLine">
+          <div style="float:left;height: 2px;width: 20%;background-color:#ed1c24;"> </div>
+          <div style="float:left;height: 2px;width: 80%;background-color:#004a8f;"> </div>
+        </div>
+        <div class="info_row4 alignc" style="margin:5px 0 0 0;font-size:11pt; color:#7f7f7f">Available Balance</div>
+        <div class="info_row4 page_block_sub alignc" style="margin:8px 0 0 0;" data-bind="text: acctbalance"></div>
+        </a> </span> 
+        </div>        
+    </div>
+    <div class = 'prev unselectable'></div>
+    <div class = 'next'></div>
+  </div>
+  
+  
+<div class="info_row" id="accExitsMsg" style="padding-top:5px;display:none;">
+    <p>You do not have current/saving account with the bank.</p>
+    <br>
+  </div>
+  
+  <div class="content sub_content">
+      <div class="info_row odd dark_header"> <span class="info_row_left page_title_carousel">Enquiry</span><span class="info_row_right"></span>
+      </div>
+      <br>
+      <a href="#accountSummary">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_accountsummary.png"></span><span class="info_row_menu_right page_title_carousel">Account Summary</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrsin01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_viewacstatement.png"></span><span class="info_row_menu_right page_title_carousel">View Account Statement</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+
+	 <a onclick="openVideoBankingPage();" id="video" style="display:none;" > 
+
+          <div class="info_row odd"><span class="info_row_menu_left"><img src="img/video_call.png"></span><span class="info_row_menu_right page_title_carousel ">VideoBanking </span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrcsi01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_viewchequestatus.png"></span><span class="info_row_menu_right page_title_carousel">View Cheque Status</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#fdSummary" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_fixeddepositsummary.png"></span><span class="info_row_menu_right page_title_carousel">Fixed Deposits Summary</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rdSummary">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_recurringdepositsummary.png"></span><span class="info_row_menu_right page_title_carousel ">Recurring Deposits Summary</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrtxi01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_tdsenquiry.png"></span><span class="info_row_menu_right page_title_carousel">TDS Inquiry</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrhiq01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_holdinquiry.png"></span><span class="info_row_menu_right page_title_carousel">Hold Enquiry</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      
+      <div class="info_row odd dark_header"> <span class="info_row_left page_title_carousel">Transact</span><span class="info_row_right"></span>
+        <div class="clearfix"></div>
+      </div>
+      <br>
+      <a href="#rrftr02">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_fundtransfer.png"></span><span class="info_row_menu_right page_title_carousel">Funds Transfer</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrfdr01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_openfd.png"></span><span class="info_row_menu_right page_title_carousel">Open Fixed Deposit < 5 Cr </span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrrdo01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_openrd.png"></span><span class="info_row_menu_right page_title_carousel">Open Recurring Deposit</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrfdl01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_lequidetfixeddepost.png"></span><span class="info_row_menu_right page_title_carousel">Liquidate Fixed Deposit</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrfss01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_fixeddepositswipin.png"></span><span class="info_row_menu_right page_title_carousel">Fixed Deposit Sweep-in</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrcss01">
+      <div class="info_row odd"><span class="info_row_menu_left"><img src="img/acc_casaswipin.png"></span><span class="info_row_menu_right page_title_carousel">CASA Sweep-in</span><span class="right_arrow"><img src="img/rarrow.png" /></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrsus01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_supersaver.png"></span><span class="info_row_menu_right page_title_carousel">Super Saver</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+
+      <div class="clearfix"></div>
+      <div class="info_row odd dark_header"> <span class="info_row_left page_title_carousel">Request</span><span class="info_row_right"></span>
+        <div class="clearfix"></div>
+      </div>
+      <br>
+      <a href="#rrsch01">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_stoppaymentchq.png"></span><span class="info_row_menu_right page_title_carousel">Stop Payment of Cheque</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrcbr02">
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_requestchqbook.png"></span><span class="info_row_menu_right page_title_carousel">Request Cheque Book</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrasr02" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_requestacstatement.png"></span><span class="info_row_menu_right page_title_carousel ">Request Account Statement</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+        
+      </div>
+      </a>
+      
+      
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrmmg01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/generate_mmid.png"></span><span class="info_row_menu_right page_title_carousel ">Generate MMID</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+	  
+     <a href="#rrmpg01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/genrate_m-pin.png"></span><span class="info_row_menu_right page_title_carousel ">Generate MPIN</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+	  
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div> 
+      <a href="#rrmmr01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/retrieve_mmid.png"></span><span class="info_row_menu_right page_title_carousel ">Retrieve MMID</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rrmmc01" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/cancel_mmid.png"></span><span class="info_row_menu_right page_title_carousel ">Cancel MMID</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      
+      
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rremr03" >
+      <div class="info_row odd"> <span class="info_row_menu_left"><img src="img/acc_emailstmentregist.png"></span><span class="info_row_menu_right page_title_carousel ">Email Statement Registration</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+      <a href="#rremd01" >
+      <div class="info_row odd"><span class="info_row_menu_left"><img src="img/acc_emailstmentderegis.png"></span><span class="info_row_menu_right page_title_carousel ">Email Statement Deregistration</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+	  <a href="#rrpfc01" >
+      <div class="info_row odd"><span class="info_row_menu_left"><img src="img/forax_Purchase.png"></span><span class="info_row_menu_right page_title_carousel ">Purchase Forex Card</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+      <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+	   <a href="#rrrfx01" >
+      <div class="info_row odd"><span class="info_row_menu_left"><img src="img/forax_reload.png"></span><span class="info_row_menu_right page_title_carousel ">Reload Forex Card</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>
+	 <div class="clearfix"></div>
+      <div class="linedivider"></div>
+      <div class="clearfix"></div>
+	   <a href="#rrvua01" >
+      <div class="info_row odd"><span class="info_row_menu_left"><img src="img/acc_requestchqbook.png"></span><span class="info_row_menu_right page_title_carousel ">View/ Update Aadhaar Card</span><span class="right_arrow"><img src="img/rarrow.png"></span></div>
+      </a>  
+      <div class="clearfix"></div>
+  </div>
+  <!-- /content --> 
+  
+</div>
+
+<script>
+
+
+
+
+function openVideoBankingPage(){
+
+
+
+//alert(1);
+	$.getJSON("http://hdfcanalytics.snapworkapps.com/sectionclicks.html?deviceid="+menuUdid+"&page=Offers&ptype=Android",function(data) {});
+		
+		var Customer_type = localStorage.getItem("Customer_Type");
+
+
+
+if (Customer_type == null)
+
+var Customer_type = 'default';
+
+	var params = {
+
+    "nameParam" : Customer_type,
+
+    "customerFirstName" : Customer_fName_Video,
+
+	"customerLastName" : Customer_lName_Video,
+
+    "CustId" : Customer_Id_Video,
+   
+    "customerAccount" : Customer_accNum_Video,
+    
+    "customerEmail" : video_email,
+    
+    "customerMobile" : video_mobile
+
+};
+
+	
+	//alert(params);
+
+	//if(osversion=='' || osversion==null)
+	//osversion=hdfc_android.getDeviceOSVersion();
+	//	alert(osversion);
+
+	//	WL.NativePage.show("com.snapwork.video.MainActivity", backFromNativePage, params);
+	if(window.navigator.onLine){
+	
+	hdfc_android.getVersion(JSON.stringify(params));
+	}
+	else{
+		navigator.notification.confirm("Please ensure that you have network connectivity and try again!", onNetworkCheck, "Connection Error", "OK"); 
+	}
+	
+	//if(osversion >= 17){
+		//WL.NativePage.show("com.snapwork.video.MainActivity", backFromNativePage, params);
+	//	}else{
+		//  alert('not supportes below 17');
+	//	}
+	}
+	
+function onNetworkCheck(){
+			return ;
+}	
+
+
+$(document).ready(function($) {
+	var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}	
+    console.log('CP on mobile banner account summart '+bannerHeight);
+  //  alert(cbannerForAccount);	
+	if(cpBanner.indexOf("No banner") > -1 == false){		
+		if(cpBanner=='' && cpbannerclose1!='adcloseAccount'){
+				loadXMLDoc();
+				setTimeout(function(){
+				        if (navigator.onLine && cpBanner!='') {
+						  $('.ad_banner').show();
+						  $('#cpCnt').html(cpBanner);
+						} else {
+						  $('.ad_banner').hide();
+						}
+				 		
+						var menu = $(".menu");
+						var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}
+						menu.animate({top: bannerHeight + 'px'},2000);
+						
+				},2000);
+		}
+		if(cpBanner!='' && cpbannerclose1!='adcloseAccount'){
+		//alert("gghjtgiytkk");
+			setTimeout(function(){
+		        var menu = $(".menu");
+				
+				        if (navigator.onLine && cpBanner!=''&&cbannerForAccount!='') {
+						 $('.ad_banner').show();
+				         $('#cpCnt').html(cbannerForAccount);
+						}else if(cbannerForAccount!=''){
+						 $('.ad_banner').show();
+				         $('#cpCnt').html(cbannerForAccount);
+						}
+						else {
+						  $('.ad_banner').hide();
+						}
+            				
+				
+				
+					
+				var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}				
+				menu.animate({top: bannerHeight + 'px'},2000);
+			},2000);
+		}
+		if( cpbannerclose1=="adcloseAccount"){		 
+			$('.ad_banner').hide();
+			var menu = $(".menu");
+			menu.animate({top: '96px'},2000);
+		}
+	}	
+});
+
+</script>

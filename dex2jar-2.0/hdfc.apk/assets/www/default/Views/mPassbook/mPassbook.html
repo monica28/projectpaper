@@ -1,0 +1,48 @@
+<style>
+	body > .header, body > .footer{display:none !important;}
+</style>
+
+<section class="mPB bg">
+	<!-- logo -->
+	<div class="mPB_logo">
+		<img src="img/mPB/mPB_logo.png" alt="HDFC BANK mPassbook" />
+	</div>
+	<!-- /logo -->
+	<div class="bottCont">
+		<div class="info_row">
+			<p>Most convenient and easy way to stay connected to your bank.. always! </p>
+		</div>
+		<div class="info_row">
+			<a onclick="logincheck();" class="button">GET STARTED</a>
+		</div>
+	</div>
+</section>
+<script>
+function logincheck(){
+var Free_space = hdfc_android.getFreeSpace();
+	//var tempPin = booksStore(localStorage.getItem("currentMpin"));
+	if(Free_space < 1000){
+		navigator.notification.confirm(
+			          "You are running low on storage space on your phone. Please clear some data on your device before using mPassbook.",
+			          checkButtonSelections,
+			          'Alert',
+			          'OK');
+	}
+	else{
+		if((localStorage.getItem("cnpn") != null && localStorage.getItem("cnpn") != '') || (localStorage.getItem("cnpnpatt") != null && localStorage.getItem("cnpnpatt") != ''))
+		{
+			window.location.hash = '#mPassbook01';
+		}
+		else{
+			window.location.hash = '#mPB_register';
+		}
+	}
+}
+
+function checkButtonSelections(iValue){
+    if (iValue == 1){
+      		window.location.hash = '#mPB_register';
+    }
+
+}
+</script>

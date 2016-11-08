@@ -1,0 +1,81 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.summblock { margin:0 5px !important; }
+	
+	.info_row_left_new {
+    display: block;
+    float: left;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 3px 5px;
+  
+}
+</style>
+<script src="js/common.js"></script>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+      
+	  
+	  
+	  
+   <form name="rrvua02" id="rrvua02" method="post" data-bind='submit:rrvua02Submit' >	
+			
+	 <div class="summblock">
+	
+			
+			
+			<div class="info_row dark_header"><span class="info_row_left">Customer Name</span> 
+			<span class="info_row_right" style="word-wrap: break-word;" id="custname"></span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"><span class="info_row_left">Customer ID</span> 
+			<span class="info_row_right" style="word-wrap: break-word;" id="custid"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Account No.</span> 
+			<span class="info_row_right"  style="word-wrap: break-word;" id="useracctno"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Aadhaar Card No.</span> 
+				<span class="info_row_right" id="custaadharno"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd" style="display:none;"><span class="info_row_left"></span> 
+				<span class="info_row_right" id="aadhareqid"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+	  </div>
+	  
+	  </br>
+	   <div class="clearfix"></div>
+	       <!--     <div>
+		         <input type="submit" class="button" value="Confirm" />
+	           </div>
+			    -->
+			   <div class="info_row2">
+         
+                 <input type="button" class="button" value="Back" style="width:43%;float:left;" onclick="rrvua02backSubmit();" />&#160;
+                 <input class="button" value="Confirm" style="width:43%;float:right;" type="submit">
+               </div>
+	 
+	</form>	
+      <!--  <div class="info_row">
+		<b>Note:</b>
+		<br/><br/>
+		<p>Payment Date: To ensure no service disruptions or late payment charges, you are requested to pay your bills at least 3 working days before the due date.</p>
+		</br>
+		<p>Rejection of Payment: If the biller details provided by you are incorrect, the biller may not accept the payment.</p>
+		</br>
+		<p>Kindly refer your bill copy to reconfirm the payment amount.</p>
+			<div class="clearfix"></div>
+			
+	   </div>	 -->	
+      <div class="clearfix"></div>
+  </div>
+  <!-- /content --> 
+  
+</div>

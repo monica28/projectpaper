@@ -1,0 +1,52 @@
+<div id="wrapper" style="top:96px;">
+  				<div class="content ">
+		<form name="rruvb01" id="rruvb01" method="post" data-bind='submit: rruvb02Page'>
+				
+						<div class="info_row rchgMenu"> 
+						
+							<div><label>Select Biller Name</label></div>
+							<div class="dispTable">
+						<select name="Billerlist" id="Billerlist" data-bind="options: billerDetails, optionsText: 'displaytxt', optionsValue: 'BillerValue',optionsCaption: '-Select-'">
+						   
+						</select>
+							</div>
+					  
+					</div>
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+					<div class="clearfix20"></div>
+					<div class="center_div">
+						<input type="submit" class="button" value="Submit" />
+					</div>
+					</form>
+					<div class="info_row">
+					 <b>Note:</b>
+					 <br/><br/>
+					 <p>View Billers - Billers that you have added online will be applicable for the NetBanking & MobileBanking Bill Payment service and will not reflect in the PhoneBanking/ ATM Bill Payment channels. Should you also desire to make payment for the above billers through ATM/PhoneBanking, please visit the nearest HDFC Bank Branch and submit a request.</p>
+					 <br/><br/>
+					<p>Delete Billers - Deletion of billers through the online option above will be applicable only for the NetBanking & MobileBanking Bill Payment service and these billers would not be de-registered from ATM/ PhoneBanking bill payment service. To delete billers from PhoneBanking/ ATM, please submit a written request to your nearest HDFC Bank branch.</p>
+					 <div class="clearfix"></div>
+				  </div>
+				   <br/>
+				  
+				</div>
+			</div>
+	<script>
+	$("#rruvb01").validate({
+	
+	rules: {
+		Billerlist: "required"
+		
+			
+	},
+	messages: {
+		Billerlist: "Please Select Biller Name"
+								
+	}
+});
+</script>
+	
+	
+	
+	</script>				

@@ -1,0 +1,181 @@
+<style>		
+.info_row .info_row{padding: 0 5px;}
+
+
+.page_title, .page_title_sub, .rs {
+  color: #001f79;
+  font-size: 12pt;
+}
+
+.passC {-webkit-text-security: disc;-moz-text-security: disc;-ms-text-security: disc;-o-text-security: disc;}
+	.errorBtm{  position: relative;  padding: 0 10px 25px;}
+	.errorBtm .loginCheckBox{vertical-align: top;}
+	.errorBtm label.error{position: absolute;  bottom: 0;left: 10px;}
+</style>
+
+<div id="wrapper" style="top:96px;">
+	<div class="content sub_content">	
+	
+	   
+	
+	<div id="aadharnotexists" style="display:none;">
+	
+	
+	   <div id="savingaccnotexists" style="display:none;">
+	       <div class="info_row">
+  			<p>You do not have any Savings or Current Account with the Bank.</p>
+          </div>
+	   </div>
+	
+	  <div id="savingaccexists" style="display:none;">
+		<form  name="rrvua01" id="rrvua01" method="post" data-bind='submit:rrvua01Submit'>		
+
+			<div class="clearfix10"></div>	
+			
+					
+			<div class="info_row">
+				<div class="info_row2">For Account No.</div> 
+				<div class="info_row3">
+					<select name="fldAcctNo" id="fldAcctNo" data-bind="options: adhaaraccounts, optionsText: 'displaytxt', optionsValue: 'codacctno', value: 'accountValue',optionsCaption: '-Select-'">					
+					</select>
+				</div>
+			</div>		
+            		
+		
+			<div class="info_row">
+				<div class="info_row2">Enter Aadhaar number</div> 
+				<div class="info_row3"> 
+					<input type="number" class="passC" id="fldAadharno" name="fldAadharno" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" value="" maxlength="12">
+				</div>
+			</div>
+			
+			<div class="info_row">
+				<div class="info_row2">Re-Enter Aadhaar</div> 
+				<div class="info_row3"> 
+					<input type="number"  class="num" id="fldAadharno2" name="fldAadharno2" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" value="" maxlength="12">
+				</div>
+			</div>			
+						
+			<div class="clearfix20"></div>	
+	
+			<div class="dispTable clear errorBtm">
+					<div class="dispTCell loginCheckBox">
+						<input type="checkbox" name="aadharCheckYN" id="aadharCheckYN"  value="Y"/>
+					</div>
+					
+					<div class="dispTCell">
+						<label>I give my consent to seed my Aadhaar no. in my above mentioned a/c and, map it at NPCI to enable me to receive DBT. I authorise the Bank to obtain my Aadhaar no, Name and Fingerprint/Iris for authentication with UIDAI for the purpose of demographic authentication / validation / e-KYC purpose. The Bank has informed that my biometrics will not be stored / shared and will be submitted to CIDR only for purpose of authentication. I confirm to have read the detailed terms and conditions mentioned in Bank website on Aadhaar seeding / authentication.
+						</label>
+					</div>
+		    </div>
+			<div class="clearfix20"></div>	
+				<br/>			
+			<div class="info_row">
+				<input type="submit" class="button" value="Update">
+			</div>		   
+			<div class="clearfix20"></div>
+			
+			</div>
+			
+		</form>
+
+     </div>
+	 
+	 <div id="aadharexists" style="display:none;"> 
+	 
+	   <div class="summblock">
+	
+			<div class="info_row dark_header"><span class="info_row_left">Account No.</span> 
+			<span class="info_row_right"  style="word-wrap: break-word;" id="useracctno"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Aadhaar Card No.</span> 
+				<span class="info_row_right" id="custaadharno"></span>
+				<div class="clearfix"></div>
+			</div>
+	  </div>
+	 </div>
+<!-- 
+          <div class="info_row">
+	       	<p><b>Note:</b></p><br/>
+	       	<p>The card will be reloaded within one working day. </p>
+			<br/>
+	       	<p>Maximum value of Forex that can be loaded on the card will be in line with the limits specified under FEMA basis purpose of travel.</p>
+			<br/>
+            <p>Reload request will be rejected and money will be credited back to your account in following scenarios.</p>
+			<br/>
+			<br/>
+            <p>- If it is observed that amount of Foreign currency applied by you is not in line with FEMA guidelines.</p>
+			<br/>
+			<br/>
+            <p>- If the purpose of travel select by you does not match with the purpose for which the Forex card has been issued.</p>
+			<br/>
+			<br/>
+            <p>	Reload Fee for ForexPlus card, ForexPlus Chip Card, ForexPlus Platinum Card & Multicurrency ForexPlus card : Rs 75 + Applicable Taxes.</p>
+			<br/>
+			<p> Applicable charges including Foreign Currency Conversion Service Tax will be debited from your account on next working day from date of placing request.</p>
+			<br/>
+			 <div class="clearfix"></div>
+    </div> -->	
+</div>
+	
+</div>
+
+<script type="text/javascript">
+  $.validator.addMethod("Password_not_same", function(value, element) {
+ // alert($('#fldNewPass').val() != value);
+   return $('#fldAadharno').val() == value;
+}, "Aadhaar Number do not match.");
+
+	$("#rrvua01").validate({
+		rules: {
+		
+			fldAcctNo: "required",
+			aadharCheckYN: "required",
+			fldAadharno: {
+			       required: true,
+				    minlength: 12,
+		            maxlength:12
+                
+            },
+
+			
+			fldAadharno2: {
+			       required: true,
+				   minlength: 12,
+		           maxlength:12,
+                   Password_not_same:true     
+               },
+		},
+		messages: {
+		
+            fldAcctNo: "Please select an account number",
+			aadharCheckYN: "Please confirm compliance to the above",
+			fldAadharno: {
+					required : "Please Enter Aadhaar number.",
+			        minlength: "Please enter 12 digit Aadhaar Number.",
+		            maxlength:"Please enter 12 digit Aadhaar Number."		   
+            },
+            
+			fldAadharno2: {
+					required : "Please Re-Enter Aadhaar number.",
+					minlength: "The Aadhaar Number updated in the Re-Enter aadhaar filled, is not 12 digit.",
+		            maxlength:"The Aadhaar Number updated in the Re-Enter aadhaar filled, is not 12 digit.",
+			       Password_not_same:"Aadhaar Number do not match."		   
+               }
+           			
+		}
+		
+	});	
+	
+	  $('.num').keyup(function(){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+</script>

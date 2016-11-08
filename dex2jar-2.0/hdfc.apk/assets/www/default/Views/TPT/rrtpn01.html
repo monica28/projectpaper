@@ -1,0 +1,259 @@
+<style>
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  
+<div id="tptCont" style="display:none;">
+		<form name="fldrrtpn01" id="fldrrtpn01" method="post" data-bind='submit: rrtpn01Submit'>
+		<br/>
+		 <div class="clearfix"></div>
+			  <div class="linedivider"></div>   
+			  <div class="clearfix"></div>
+		<div class="info_row"><div class="info_row2">From Account</div><div class="info_row3">
+			<select name="fldAcctNo" id="fldAcctNo" class="styled"  data-bind="options: accountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: selAccount, event: {change:showSelectedAccount}">
+				
+			</select>
+			   </div>
+		  </div>
+		  
+		   <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+	
+		<div class="info_row"><div class="info_row2">Beneficiary</div><div class="info_row3">
+			<select name="fldBenefDetail" id="fldBenefDetail" class="styled" data-bind="options: rdAccountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: selAcctTemp, event: {change: RDFromAccountChange}">
+			</select>
+		</div>
+		  </div>
+		  
+		   <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+		  
+		  <div class="info_row"><div class="info_row2">Description</div><div class="info_row3">
+				<input type="text" name="fldTxnDesc" id="fldTxnDesc" size="10" />
+			   </div>
+		  </div>
+		  
+		  <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+		  
+		  <div class="info_row"><div class="info_row3">Amount</div><div class="info_row3">
+				<input type="text" name="fldTxnAmount" id="fldTxnAmount" size="10" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);" />
+			   </div>
+		  </div>
+		  
+		  <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+	  
+		   <div class="info_row"><div class="info_row2">Communication Details</div><div class="info_row3">
+				<select name="fldComMode" id="fldComMode" class="styled">
+					<option value="Default">- Select Option -</option>
+					<option value="SMS">Mobile</option>
+					<option value="EML">Email</option>
+				</select>
+			   </div>
+		  </div>
+		  
+		  <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+		  
+		  <div class="info_row"><div class="info_row2">Mobile number / Email</div><div class="info_row3">
+				<input type="text" name="fldMobileEmail" id="fldMobileEmail" size="10" />
+			   </div>
+		  </div> 
+		  
+		  <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+		  
+		  <div class="info_row"><div class="info_row2">Terms and Conditions (Mandatory)</div><div class="info_row3">
+				<select name="fldChecked" id="fldChecked" class="styled">
+					<option value="true">Accept</option>
+					<option value="false">Decline</option>
+				</select>
+			   </div>
+		  </div>
+
+		  <div class="clearfix"></div>
+		  <div class="linedivider"></div>   
+		  <div class="clearfix"></div>
+		  
+		  
+			<div class="alignc" id="cutoffmsgBox1" style="display:none;"> <input type="submit" class="button" value="Continue" id="confirm_button" /></div>
+		  
+		  <div class="alignc" id="cutoffmsgBox2" style="display:none;"><input type="submit" class="button" value="Submit" id="confirm_button1"></div>
+		
+		 
+	 
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+		<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="01" />
+		<input type="hidden" name="fldTxnId" id="fldTxnId" value="TPN" />
+		<input type="hidden" id="ftrTemp" name="ftrTemp" value="0" />
+		
+		<input type="hidden" name="fldAcctNo_txt" id="fldAcctNo_txt" value="" />
+		<input type="hidden" name="fldBenefDetail_txt" id="fldBenefDetail_txt" value="" />
+		
+		<input type="hidden" name="backButton" value="1" />
+		
+		<input type="hidden" id="fldBenefType" name="fldBenefType" value="" />
+		<input type="hidden" id="fldActionType" name="fldActionType" value="verify" />
+		<input type="hidden" id="fldMinAmount" name="fldMinAmount" value="" />
+		
+		<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+		
+		
+		</form>
+		
+	
+				<div class="info_row">
+		<b>Note:</b>
+		<br/><br/>
+		<p> Rs 2 lacs is the default daily transfer limit per Cust ID per day. To increase or decrease the limit please log into NetBanking and select the "Modify TPT Limit" transaction within the Third Party Transfer tab</p>
+		<br/>
+		<p>NEFT transactions on NetBanking would be charged as below.</p>
+		<br/>
+	<p>- Amounts up to Rs. 10,000 - Rs. 2.5 (exclusive of taxes) per transaction</p>
+	<br/>
+	<p>- Amounts from Rs. 10,001 to Rs. 1 lakh - Rs. 5 (exclusive of taxes) per transaction</p>
+	<br/>
+	<p>- Amounts above Rs. 1 lakh up to Rs. 2 lakh - Rs. 15 (exclusive of taxes) per transaction</p>
+	<br/>
+	<p>- Amounts above Rs. 2 lakh – Rs. 25 (exclusive of taxes) per transaction</p>
+	<br/>
+	<p>The Funds transfer request made by 6 p.m. will be presented to RBI on the same day. The Funds transfer request made after 6 p.m. will be presented to RBI on the next working day. Please note NEFT Fund Transfer Service is not available on 2nd and 4th Saturdays and all Sundays.</p>
+	<br/>
+	<!-- <p> On Saturdays, funds transfer request made by 12 p.m. will be presented to RBI on the same day and funds transfer request made after 12 p.m. will be presented to RBI on the next working day.</p>
+	<br/> -->
+	
+	<p>NRE/NRO customers, please provide your email Id as a mandatory field.</p>
+
+			<div class="clearfix"></div>
+			
+			<br/>
+<p>Funds transfer request made on non-working days will also be presented to RBI on the next working day.</p>
+<br/>
+<p> The actual time taken to credit the account depends on the time taken by the Payees Bank to process the payment.</p>
+<br/>
+<p> The money will reach the Payees bank within the time stipulated by the Reserve Bank of India.</p>
+<br/>
+<p>HDFC Bank is not responsible for any charges / commission of any kind levied / charged by the Beneficiary Bank.</p>
+
+<br/>
+<p>Please be sure that the beneficiary Account number/Credit Card number/mobile number/email id that you enter is correct. HDFC Bank is not in position to validate a Non- HDFC Bank Account number/Credit Card number/mobile number/email id and is not responsible for funds transferred/status confirmation to an unintended recipient.</p>
+<br/>
+<p> This is to inform you that the credit will be effected based solely on the beneficiary account number information and the beneficiary name particulars will not be used.</p>
+<br/>
+<p>For details on safe MobileBanking practices please refer to www.hdfcbank.com.</p>
+<br/>
+<p> Funds transfer status message will be sent post receiving the confirmation from the Payee's Bank.</p>
+<br/>
+<p>For Credit Card payments, please refer to the specific IFSC code for Credit Card payments as recommended by the Credit Card issuing Bank.</p><br/>
+<p>Maximum of Rs 1 lakh can be transferred to each beneficiary for the first 2 days post beneficiary addition.</p><br/>
+
+			<div class="clearfix"></div>
+		 </div>
+
+		 
+
+			
+		  
+		  
+		</div>
+	
+</div id="TptNoMsg" style="display:none;">
+				<div class="info_row odd">
+				<span class="info_row_menu_left" style="padding-top:20px;width:15%;"><img src="img/alerticon.png" /></span>
+				<span class="info_row_menu_right clslineht" style="width:72%;">
+				To use the Third Party Transfer facility, you first need to input the account details of the person you would like to transfer funds to.
+				</span> 
+				</div>
+				<br/>
+			</div>
+		 
+	
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$("#fldrrtpn01").validate({
+	rules: {
+		fldAcctNo: "required",
+		fldChecked: {chkvalid: "#fldChecked"},
+				
+	},
+	messages: {
+		fldAcctNo: "Select From Account",
+				
+	}
+});
+function formSubmit(reqid)
+	{
+		document.getElementById('fldRequestId').value = reqid;
+		
+		var objs = document.getElementById('fldAcctNo');
+		document.getElementById('fldAcctNo_txt').value = objs.options[objs.selectedIndex].innerHTML;
+		
+		document.getElementById("fldBenefType").value = "NEFT";
+		
+		var objs1 = document.getElementById('fldBenefDetail');
+		document.getElementById('fldBenefDetail_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+		document.getElementById("f1").submit();
+	}
+
+	
+	/*function dispConfirm() {
+		var r=confirm("This funds transfer request has been initiated after the RBI cut-off for the day. This request will be presented to RBI on the next working day for further processing. The funds will be debited from the account immediately. Please press OK button to continue or Cancel button to cancel the request");
+		return false;
+		if (r==true) {
+			document.getElementById('fldRequestId').value = 'RRTPN05';
+			document.getElementById("f1").submit();
+		} else {
+			document.getElementById('fldRequestId').value = 'RRTPN01';
+			document.getElementById("f1").submit();
+		}
+	}*/
+
+$(document).ready( function() {
+		$("#confirm_button").click( function() {
+			$('input,select').each(function() {
+				if (!$(this).attr('disabled'))
+					$(this).addClass('dwtd');
+			});
+			$('input,select').attr('disabled', true);
+		
+		
+					jConfirm('This funds transfer request has been initiated after the RBI cut-off for the day. This request will be presented to RBI on the next working day for further processing. The funds will be debited from the account immediately. Please press OK button to continue or Cancel button to cancel the request', '', function(r) {
+						if (r==true) {
+							$('input,select').attr('disabled', false).removeClass('dwtd');
+							document.getElementById('fldRequestId').value = 'RRTPN05';
+							document.getElementById("fldBenefType").value = "NEFT";
+							//document.getElementById("f1").submit();
+						} else {
+							$('input,select').attr('disabled', false).removeClass('dwtd');
+							document.getElementById('fldRequestId').value = 'RRTPN01';
+							//document.getElementById("f1").submit();
+						}
+						//jAlert('Confirmed: ' + r, 'Confirmation Results');
+						//return false;
+					});
+				});
+				$("#confirm_button1").click( function() {
+					document.getElementById('fldRequestId').value = 'RRTPN05';
+					var objs = document.getElementById('fldAcctNo');
+					document.getElementById('fldAcctNo_txt').value = objs.options[objs.selectedIndex].innerHTML;
+					
+					document.getElementById("fldBenefType").value = "NEFT";
+					
+					var objs1 = document.getElementById('fldBenefDetail');
+					document.getElementById('fldBenefDetail_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+				
+				});//document.getElementById("f1").submit();
+});
+</script>

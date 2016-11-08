@@ -1,0 +1,161 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+</style>
+
+<script type="text/javascript">
+function formSubmit()
+{
+	var objs = document.getElementById('fldAcceptTerms');
+	document.getElementById('fldAcceptTerms_txt').value = objs.options[objs.selectedIndex].innerHTML;
+	
+	//document.getElementById("f1").submit();
+}
+</script>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+    
+    <div data-bind="foreach: txnerror,visible:txnerror().length>0">
+			<div class="info_row" data-bind="text: errdesc"></div>
+		</div>
+    
+         <form name="f1sip04" id="f1sip04"  method="post" data-bind='submit: rrsip04Submit,visible:!txnerror().length'>
+		 <input type="hidden" name="fldRequestId" id="fldRequestId" value="RRSIP08" />
+	<input type="hidden" name="fldTxnId" id="fldTxnId" value="SIP" />	
+	<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="08" />
+	
+	<input type="hidden" id="fldAcceptTerms_txt" name="fldAcceptTerms_txt" value="" />
+	
+	<input type="hidden" id="fldUhid" name="fldUhid" value="" />	
+	<input type="hidden" id="fldFundCode" name="fldFundCode" value="" />
+	<input type="hidden" id="fldAmcId" name="fldAmcId" value="" />
+	<input type="hidden" id="fldAccount" name="fldAccount" value="" />
+	<input type="hidden" id="fldTypeValue" name="fldTypeValue" value="" />
+	<input type="hidden" id="fldSiDay" name="fldSiDay" value="" />
+	<input type="hidden" id="fldSiDate" name="fldSiDate" value="" />
+	<input type="hidden" id="fldFrequency" name="fldFrequency" value="" />
+	<input type="hidden" id="fldNoOfInstallment" name="fldNoOfInstallment" value="" />
+	<input type="hidden" id="fldStartDate" name="fldStartDate" value="" />
+	<input type="hidden" id="fldEndDate" name="fldEndDate" value="" />
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+    <div class="sub_content">
+
+    		
+   		
+    		
+			<div class="info_row dark_header"> <span class="info_row_left clslineht">Mutual Fund Account</span> <span class="info_row_right" id="unitholderid">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			
+							
+						
+				
+				
+				
+			<div class="info_row even"> <span class="info_row_left clslineht">Mutual Fund Name</span> <span class="info_row_right" id="amcname">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left">Scheme Name</span> <span class="info_row_right clslineht" id="fundname">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left clslineht">Cut-Off Time</span> <span class="info_row_right" id="cutofftime">
+				
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left clslineht">Frequency </span> <span class="info_row_right" id="sifrequency">
+		       
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left">Days</span> <span class="info_row_right" id="day">
+		          
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left">Date</span> <span class="info_row_right" id="date">
+		        
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left clslineht">No. of Installment</span> <span class="info_row_right" id="installments">
+		          
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"> <span class="info_row_left clslineht">Start date <br/>(dd/mm/yyyy)</span> <span class="info_row_right" id="startdate">
+		        
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"> <span class="info_row_left clslineht">End date <br/>(dd/mm/yyyy)</span> <span class="info_row_right" id="enddate">
+		        
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			
+			
+				<div class="info_row odd"> <span class="info_row_left clslineht">Bank Account No.</span> <span class="info_row_right" id="accountno">
+				  
+				 </span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"> <span class="info_row_left">Amount</span> <span class="info_row_right page_title_sub" id="selectedamount">
+								
+								 </span>
+								<div class="clearfix"></div>
+							</div>
+			</div>
+			<div class="info_row"> <div class="info_row2">Terms and Conditions (Mandatory)</div> <div class="info_row3">
+					<select name="fldAcceptTerms" id="fldAcceptTerms" class="styled">
+					<option value="true">Accept</option>
+					<option value="false">Decline</option>
+					</select>
+					 </div>
+					<div class="clearfix"></div>
+				</div>
+			<div class="info_row alignc"><input type="submit" class="button" value="Continue" />
+				<div class="clearfix"></div>
+			  </div>
+			<br/>
+			
+			<div class="info_row">
+			<p>Same day NAV would be applicable for transactions done before the cut off time.</p><br/>
+			<p>For transactions received post cut off time applicable NAV would be the next business day.</p><br/>
+			<p>Please refer Terms and Conditions for NAV applicability on Liquid Schemes transactions and all transactions done on Saturday, Sundays and Holidays.</p><br/>
+			<p>With effect from 1st January 2011, any investor (all applicants in a folio) investing into mutual funds through the Investment Services Account would be required to be KYC compliant with CVL without which the transactions may be liable to be rejected by the respective mutual fund houses.</p><br/>
+			</div>	
+
+	
+	</div>
+	
+	
+	
+	</form>
+		 
+       
+    </div>
+</div>
+<script type="text/javascript">
+$("#f1sip04").validate({
+	 rules: {
+            fldAcceptTerms: {chkvalid: "#fldAcceptTerms"},
+        },
+        messages: {
+           fldAcceptTerms: {
+               chkvalid: "Please Accept Terms and Conditions.",
+            }
+        }
+});
+</script>

@@ -1,0 +1,103 @@
+<style>
+    body .header, body .footer{display:none !important;} 
+	.input_btn {text-transform:uppercase; margin:25px 0;}
+	.fourInput{margin:auto;}
+	.info_row_left{width:50%; line-height: normal; padding: 8px 5px;}
+	.link{ width: 100%; text-align: center;}
+	.link a{display: inline-block;}
+	.transBox {padding: 0 10px;margin:10px 0 !important;}
+</style>
+
+<section class="mPB">
+   <!-- starts topBar -->	
+    <div class="topBar">
+        <a href="#financialSummary" class="back_btn"><span class="ico23"></span></a>
+        <span>RD Summary</span>
+    </div>
+    <!-- ends topBar -->	
+    <div class="wrapper">
+		<div class="content sub_content">
+				<div class="info_row" id="accExitsMsg" style="padding-top:5px;display:none;">
+					<p>You do not have Recurring Deposit with the Bank</p>
+				 </div>
+				<div class="info_row" id="maturityMsg" style="padding-top:5px;display:none;">
+					<p>Maturity amount does not include TDS</p>
+					<br>
+				</div>
+				<div data-bind="foreach: RDSummaryList" style="padding-top:5px">
+					  
+					<div class="summblock">		
+						<div class="info_row dark_header"><span class="info_row_left">Account No.</span>
+						<span class="info_row_right" id="RDacntNO" data-bind="text: codacctno"></span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">Branch</span> 
+						<span class="info_row_right clslineht" data-bind="text: nambranch"></span>
+							<div class="clearfix"></div>
+						</div>
+						<div class="info_row even"><span class="info_row_left">Currency</span> 
+						<span class="info_row_right" data-bind="text: Currency"></span>
+							<div class="clearfix"></div>
+						</div>
+						<div class="info_row  odd"><span class="info_row_left">Installment Amount</span> 
+						<span class="info_row_right page_title_sub" data-bind="text: RDinstalamnt"></span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row even"><span class="info_row_left">Current Deposit Balance</span> 
+						<span class="info_row_right"  data-bind="text: RddepositBal"></span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">Maturity Amount</span> 
+						<span class="info_row_right" data-bind="text: maturityAmnt"></span>
+							<div class="clearfix"></div>
+						</div> 
+						
+						<div class="info_row even"><span class="info_row_left">Start Date</span> 
+						<span class="info_row_right" data-bind="text: rdacctopendate"></span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="info_row odd"><span class="info_row_left">Maturity Date</span> 
+							<span class="info_row_right" data-bind="text: MaturityDate"></span>
+							<div class="clearfix"></div>
+						</div> 
+						
+						<div class="info_row even"><span class="info_row_left">Tenure(months)</span> 
+							<span class="info_row_right" data-bind="text: RDTenure"></span>
+							<div class="clearfix"></div>
+						</div> 
+						
+						<div class="info_row odd"><span class="info_row_left">Rate of Interest</span> 
+						<span class="info_row_right" data-bind="text: rateint">
+							</span>
+							<div class="clearfix"></div>
+						</div>
+		
+					</div>
+					
+					<div class="transBox">					
+						<span class="lastUpdt1 lastUpdt">Last updated at 12/08/2014 12:43:14</span>					
+					</div> 
+				</div>
+			<div class="clearfix"></div>
+			
+			<div class="link">
+                <a onclick="GetRDStatement();">View Deposit Statement<span class="ico24" ></span></a>
+            </div>
+		   
+
+		</div>
+
+    </div>
+</section>
+<script>
+function GetRDStatement(){
+	var rdNo = $('#RDacntNO').html();
+	currentRDno = rdNo;
+	var model = new mPassbookViewModel();
+	model.RDstatement(rdNo);
+}
+</script>

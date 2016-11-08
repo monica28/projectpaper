@@ -1,0 +1,55 @@
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  				<div class="content">
+   			<div class="success_msg" >
+						<span id="sm"></span>
+			</div>
+  
+	  <div data-bind="foreach: dthdetails">
+  	
+  <a   data-bind="attr: { id: 'hid_dthname_' + dthname, name: 'hid_dthname_' + dthname  }, value:dthname+'###'+dthnum+'###'+dthnum+'###'+accounid  " onclick="CallingRRpmb02Fn(this.value,'rrdth02')" >	
+	<div class="info_row rchgMenu"> 
+						
+							<div><label data-bind="text: dthname" id="dthoper"></label></div>
+							<div class="dispTable">
+								<span class="rchgMobNum" data-bind="text: dthnum" id="dthnum"></span>
+								<span class="right_arrow"></span>
+							</div>
+					  <input type="hidden" id="subcriber1" name="subcriber1" data-bind="value:dthnum" />
+					   
+					</div>
+		
+		</a>
+		 <input type="hidden" id="dth_name" name="dth_name" value=""/>
+		  <input type="hidden" id="dth_num" name="dth_num" value=""/>
+		   <input type="hidden" id="dth_subs" name="dth_subs" value=""/>
+		    <input type="hidden" id="dth_subs" name="dth_subs" value=""/>
+		  <input type="hidden" name="Billeraccounid" id="Billeraccounid" value=""/>
+		<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+	</div>	
+  				
+
+					<div class="clearfix"></div>
+					<div class="linedivider"></div>
+					
+
+					<div class="clearfix20"></div>
+					<div class="center_div">
+						<input type="button" class="button" value="Register New Operator" onclick="rrdth01submit()"/>
+					</div>
+					
+					<script>
+						
+						
+						function rrdth01submit() {
+			
+							window.location="#rdthr01";
+			
+								};
+	
+		
+					
+					</script>
+				</div>
+			</div>

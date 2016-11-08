@@ -1,0 +1,114 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.summblock { margin:0 5px !important; }
+	
+	 .info_row_left_new {
+    display: block;
+    float: left;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 3px 5px;
+  
+}
+</style>
+<script src="js/common.js"></script>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+    <form name="rrmpg01" id="rrmpg01" method="post"  data-bind="submit:rrmpg01Submit">
+	 <div class="summblock">  
+		
+			
+			<div class="info_row dark_header"><span class="info_row_left">Customer Name</span> 
+			<span class="info_row_right" id="custname"></span>
+				<div class="clearfix"></div>
+			</div>
+		
+			
+			<div class="info_row rchgMenu" style="
+    padding: 0 17px;">
+         <div class="info_row_left"  style="
+    PADDING: 0;">Account No</div>
+         <div class="dispTable"  style="
+    position: relative;
+    top: -10px;padding-bottom: 0;
+  padding-top: 0;">
+           <select name="fldFromAcctNo" id="fldFromAcctNo" data-bind="options: mpinaccounts, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldFromAcctNo, optionsCaption: '-Select-'">
+			</select>	
+         </div>
+       </div>
+			
+		
+			<div class="info_row even"><span class="info_row_left">Mobile No.</span> 
+				<span class="info_row_right" id="mobile"></span>
+				<div class="clearfix"></div>
+			</div>
+	        
+			<div class="info_row odd"><span class="info_row_left">Email Id</span> 
+			<span class="info_row_right" id="email" style="word-break:break-all;line-height: 20px;padding-top: 6px;"></span>
+				<div class="clearfix"></div>
+			</div>
+          	
+          <div class="info_row odd" style="display:none;"><span class="info_row_left"></span> 
+			<span class="info_row_right" id="mpinreqid"></span>
+				<div class="clearfix"></div>
+			</div>			
+						
+		</div>
+		  
+	    
+          <br/><br/>		
+		     <div>	
+		    <input type="submit" class="button" value="Continue" />
+	        </div>
+			
+			<input type="hidden" name="custid" id="custid" value="" />
+	        <input type="hidden" name="emailid" id="emailid" value="" />
+	        <input type="hidden" name="number" id="mobno" value="" />
+     </form>
+	   
+				  
+
+
+
+	    </div> 
+      <div class="clearfix"></div>
+	  
+	   <div class="clearfix"></div>
+	  
+	   <div class="info_row">
+	       	<p><b>Note:</b></p><br/>
+	       	<p>- Kindly check for an SMS/e-mail containing your new mPin on your registered Mobile Number/e-mail ID. If no SMS/e-mail is received, please generate an mPin again after half an hour. The         
+        latest mPin received will be the valid one. </p><br/>
+	       	<p>-  The account number selected at the time of mPin generation can be used as debit account for immediate payment transactions done through Chillr App or USSD(*99#), for additional accounts,you will have to generate MMID for that particular account.</p><br/>
+
+            <p>-  The first account, for which your MMID or mPin is generated will be the default account for immediate payment transactions done though Chillr App or USSD (*99#)</p>
+			</br>
+			<p>-  Mpin be same for all the accounts selected at the time of mPin generation.</p>
+	    </div>	
+		
+  </div>
+  <!-- /content --> 
+  
+</div>
+<script>
+ $(document).ready(function(){
+ 
+  // var
+	$("#rrmpg01").validate({
+	
+	rules: {
+		
+		
+		fldFromAcctNo:'required',
+		
+		
+	},
+	messages: {
+
+		 fldFromAcctNo:'Please Select Account Number',
+		
+								
+	}
+});
+	});
+	</script>

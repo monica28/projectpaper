@@ -1,0 +1,128 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+</style>
+<link href="css/mobiscroll-2.0.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/libs/mobiscroll-2.0.custom.min.js" type="text/javascript"></script>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content sub_content">
+  <div class="info_row" id="accExitsMsg" style="display:none;"><p>You do not have active account with the bank.</p></div>
+  
+  <form class="custStyleInput" name="frmReqAccStmt" id="frmReqAccStmt" method="post" data-bind='submit: reqAccountStmtConfirm'>
+   <div data-bind="visible: accSlider">
+   <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+	<div class="info_row"><div class="info_row2">Select Account</div> 
+		<div class="info_row3 ">
+			<select class="page_title_sub" name="fldAcctNo" id="fldAcctNo" data-bind="options: accountList, optionsText: 'displaytxt', optionsValue: 'codacctno', value: selAccount, optionsCaption: '-Select-'">
+			
+		    </select>	
+		</div>
+	</div>
+
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+			
+	  
+    <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"> <div class="info_row2">From Date (dd/mm/yyyy)</div> 
+	<div class="info_row3">
+        <div class="width100per" style="padding-right:40px; position:relative;"><input type="text"  readonly="readonly"  class="page_title_sub" name="fldFromDate" id="fldFromDate"  />
+        <div  id="show_date"><img src="img/index.png"  /></div></div>		
+     </div>
+	 </div>
+	 
+	  <div class="clearfix"></div>
+      <div class="linedivider"></div>   
+      <div class="clearfix"></div>
+    
+     <div class="info_row" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"><div class="info_row2">To Date (dd/mm/yyyy)</div> 
+	<div class="info_row3">
+        <div class="width100per" style="padding-right:40px; position:relative;"><input type="text" class="page_title_sub" name="fldToDate" readonly="readonly" id="fldToDate" />
+        <div  id="show_date1"><img src="img/index.png"  /></div></div>
+     </div>
+     <div class="clearfix"></div>
+     </div>
+	 
+	 <div class="clearfix"></div>
+     <div class="linedivider"></div>   
+     <div class="clearfix"></div>
+	  
+  	<input type="hidden" name="fldFCDBRequestId" id="fldFCDBRequestId" />
+  	
+  	
+   <div class="clearfix20"></div>
+   <div class="info_row">
+    <input type="submit" class="button" value="Submit" >
+   </div>
+   <br/>
+   
+   <div class="info_row"> 
+			 <p><b>Note:</b></p><br/>
+			 <p>- The account statement will be delivered to your recorded mailing addres within 4 working days. Each Statement Request will be charged Rs. 50/-.
+			 </p><br/>
+			 <p>- In case you are registered for Email Statement, the account statement shall be sent to the recorded Email address within 1 working days. There is no charge for Email Statements.
+			 </p><br/>
+			 <p>- If the Account Statement requested is not delivered within the stipulated 4 working days, write-in to us with the subject : Account Statement Inquiry
+			 </p><br/>
+			 <p>-Since the Account Statement will be delivered to your recorded mailing address, please verify your contact details.</p><br/>
+			 <p>- For Imperia, Preferred, Classic Customer, a physical statement will be sent to the address recorded with the Bank. For further queries, please contact your Relationship Managers / Personal Banker.
+			 </p>
+		</div>	 
+   
+   </div>
+   </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#frmReqAccStmt").validate({
+	focusInvalid: false,
+	rules: {
+		fldAcctNo: "required",
+		fldFromDate: "required",
+		fldToDate: "required"	
+	},
+	messages: {
+		fldAcctNo: "Select Account",
+		fldFromDate: "Enter From Date",
+		fldToDate: "Enter To Date"								
+	}
+});
+
+
+$(function(){
+		var now = new Date();
+	    $('#fldFromDate,#fldToDate').scroller({
+	        preset: 'date',
+	        theme: 'sense-ui',
+	        display: 'modal',
+	        mode: 'scroller',
+	        dateOrder: 'ddMYYYY',
+			endYear: now.getFullYear() + 10
+	    });
+	    
+	    
+
+
+$('#show_date1').click(function(){
+  $('#fldToDate').scroller('show'); 
+  return false;
+});
+
+$('#show_date').click(function(){
+  $('#fldFromDate').scroller('show'); 
+  return false;
+});
+
+
+$('#clear').click(function () {
+  $('#fldFromDate').val('');
+  return false;
+});
+});
+
+</script>

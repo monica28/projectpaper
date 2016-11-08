@@ -1,0 +1,202 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmrdo02" id="frmrdo02" method="post" data-bind='submit: rrrdo02Submit'>
+  	<br/>
+  	 
+  		<div class="summblock">
+			
+		<div class="info_row  dark_header"><span class="info_row_left">From Account</span> 
+			<span class="info_row_right codAcctNbr">			
+			</span>
+			<div class="clearfix"></div>
+		</div>
+				
+		<div class="info_row odd"><span class="info_row_left clslineht">Place of Recurring Deposit</span> 
+		<span class="info_row_right ">Home Branch</span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left">State</span> 
+		<span class="info_row_right clslineht stateName" style="word-wrap: break-word;"> 
+			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left">City</span> 
+		<span class="info_row_right cityName" style="word-wrap: break-word;">
+			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left">Branch</span> 
+			<span class="info_row_right clslineht codFdBrnName"  style="word-wrap: break-word;"> 
+			
+			</span>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row odd"><span class="info_row_left clslineht">Installment Amount</span> 
+		<span class="info_row_right page_title_sub tdDepositAmt" style="word-wrap: break-word;">
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		<div class="info_row even"><span class="info_row_left">Deposit Period</span> 
+		<span class="info_row_right clslineht prdOfDep"  style="word-wrap: break-word;"> 
+			
+		</span>
+		<div class="clearfix"></div>
+		</div>
+	
+		<div class="info_row odd"><span class="info_row_left clslineht">Principal and Interest Credit A/c No Value</span> 
+		<span class="info_row_right intPayAcctNbr" style="word-wrap: break-word;">
+		</span>
+		<div class="clearfix"></div>
+		</div>
+		
+		
+		<!-- <input type="hidden" name="selAcct" id="selAcct"  value = "" />
+		<input type="hidden" name="fldTermYrs" id="fldTermYrs" value = "" />
+		<input type="hidden" name="fldTermMonths" id="fldTermMonths" value ="" />
+		<input type="hidden" name="fldCity" id="fldCity" value="" />
+		<input type="hidden" name="fldState" id="fldState" value="" />
+		<input type="hidden" name="fldNamCurrency" id="fldNamCurrency" value="" />
+		<input type="hidden" name="fldIntCrAcctNo" id="fldIntCrAcctNo" value="" />
+		<input type="hidden" name="fldDepositAmt" id="fldDepositAmt" value="" />
+		<input type="hidden" name="fldAcctCurr" id="fldAcctCurr" value="" />
+		<input type="hidden" name="fldBrnname" id="fldBrnname" value="" />
+		<input type="hidden" name="fldBrn" id="fldBrn" value="" />
+		<input type="hidden" name="fldFdBrnNam" id="fldFdBrnNam" value="" />
+		-->
+		<input type="hidden" name="fldBrnname" id="fldBrnname" value="" />
+		<input type="hidden" name="fldAcctCurr" id="fldAcctCurr" value="" />
+		<input type="hidden" name="fldRDTemplateFlag" value="" />
+		<input type="hidden" name="fldtc" value="Y" />
+		<input type="hidden" name="fldlgcode" value="" />
+		<input type="hidden" name="fldlccode" value="" />
+		<input type="hidden" name="fldNamProd" value="" />
+		<input type="hidden" name="fldFrqIntPay" value="" />
+		<input type="hidden" name="fldEmployee" value="" />
+		<input type="hidden" name="fldSweepIn" value="" />
+		<input type="hidden" name="fldDepTermUnit" value="" />
+		<input type="hidden" name="fldRateOfInt" value="" />
+		<input type="hidden" name="fldRateOfIntIndx" value="" />
+		<input type="hidden" name="fldProdCode" value="" />
+		<input type="hidden" name="fldProdCodeVal" value="" />
+		<input type="hidden" name="fldTermYrs" id="fldTermYrs" value="" />
+		<input type="hidden" name="fldTermMonths" id="fldTermMonths" value="" />
+		<input type="hidden" name="fldDepositAmt" id="fldDepositAmt" value="" />
+		<input type="hidden" name="fldPayoutMode" value="" />
+		<input type="hidden" name="fldPayoutModeVal" value="0" />
+		<input type="hidden" name="fldIntCrAcctNo" id="fldIntCrAcctNo" value="" />
+		<input type="hidden" name="fldMaturityInstr" value="" />
+		<input type="hidden" name="fldFlgCumDep" value="" />
+		<input type="hidden" name="fldFlgCumDepVal" value="" />
+		<input type="hidden" name="fldBrn" id="fldBrn" value="" />
+		<input type="hidden" name="selAcct" id="selAcct" value="" />
+		<input type="hidden" name="fldFdBrnNam" id="fldFdBrnNam" value="" />
+		<input type="hidden" name="fldMaturityInstrIndx" value="0" />
+		<input type="hidden" name="custName" id="custName" value="" />
+		<input type="hidden" name="fldCodCcy" value="0" />
+		<input type="hidden" name="fldNamCurrency" id="fldNamCurrency" value="" />
+		<input type="hidden" name="fldSelProd" value="" />
+		<input type="hidden" name="fldCity" id="fldCity" value="" />
+		<input type="hidden" name="fldCustName" id="fldCustName" value="" />
+		<input type="hidden" name="fldAmtBal" id="fldAmtBal" value="" />
+		<input type="hidden" name="fldState" id="fldState" value="" />
+		<input type="hidden" name="fldProdType" value="" />
+		<input type="hidden" name="fldNomineeName" value="" />
+		<input type="hidden" name="fldNomineeDOB" value="" />
+		<input type="hidden" name="fldNomAddr" value="" />
+		<input type="hidden" name="fldNomAddr1" value="" />
+		<input type="hidden" name="fldNomAddr2" value="" />
+		<input type="hidden" name="fldNomAddr3" value="" />
+		<input type="hidden" name="fldNomRelation" value="" />
+		<input type="hidden" name="fldNomRelationTxt" value="" />
+		<input type="hidden" name="fldNomRelationCode" value="" />
+		<input type="hidden" name="fldNomCity" value="" />
+		<input type="hidden" name="fldNomState" value="" />
+		<input type="hidden" name="fldNomCountry" value="" />
+		<input type="hidden" name="fldNomCountryFc" value="" />
+		<input type="hidden" name="fldNomCountryFcTxt" value="" />
+		<input type="hidden" name="fldNomGuardCountryTxt" value="" />
+		<input type="hidden" name="fldNomZip" value="" />
+		<input type="hidden" name="fldNomGuardian" value="" />
+		<input type="hidden" name="fldNomGuardAddr" value="" />
+		<input type="hidden" name="fldNomGuardAddr1" value="" />
+		<input type="hidden" name="fldNomGuardAddr2" value="" />
+		<input type="hidden" name="fldNomGuardAddr3" value="" />
+		<input type="hidden" name="fldNomGuardCity" value="" />
+		<input type="hidden" name="fldNomGuardState" value="" />
+		<input type="hidden" name="fldNomGuardCountry" value="" />
+		<input type="hidden" name="fldNomGuardZip" value="" />
+		<input type="hidden" name="fldNomExistFlag" value="" />
+		<input type="hidden" name="fldNomFacFlag" value="N" />
+		<input type="hidden" name="fldRDPlace" id="fldRDPlace" value="Home" />
+		<input type="hidden" name="fldDepoNat" value="" />
+		<input type="hidden" name="fldCodAcctNbr" id="fldCodAcctNbr" value="" />
+		<input type="hidden" name="fldReponseFlag" value="" />
+		<input type="hidden" name="fldTDType" value="RD" />
+		<input type="hidden" name="fldHoldingPatternFlag" value="" />
+
+		<input type="hidden" name="fldOperationId" id="fldOperationId" value="RRRDO03" />
+		<input type="hidden" name="fldScrnSeqNbr" id="fldScrnSeqNbr" value="03" />
+		<input type="hidden" name="fldTxnId" id="fldTxnId" value="RDO" />
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />			
+			
+		</div>					
+			<br/>
+	  <div class="info_row">
+      	<div class="info_row2 clslineht">I accept the Terms and Conditions of the Bank.</div>
+      	<div class="info_row3">
+      	 <select name="fldtc" id="fldtc" class="styled">
+			<option value="true">Accept</option>
+			<option value="false">Decline</option>
+		</select>     	
+        </div> 
+      </div>
+      
+			<div class="clearfix20"></div>
+		   <div class="info_row2">
+		    <input type="submit" class="button" value="Continue" >
+		   </div>
+  			
+  		
+		  					
+	</form>
+<br/>	
+	<div class="info_row"><p><b>Note:</b></p>
+<br/>
+<p>Once your Recurring Deposit account is opened, you will be able to view the Recurring Deposit account details on HDFC Bank's Net Banking under 'Recurring Deposit Summary'.</p>
+</div>
+
+<br/>	<br/>	
+  </div>
+</div>
+<script type="text/javascript">
+
+$("#frmrdo02").validate({
+	rules: {
+	fldtc: {chkvalid: "#fldtc"},
+	},
+	messages: {
+		
+		fldtc: {
+                chkvalid: "Please accept the Terms and Conditions before proceeding"
+            },		
+	}
+});
+
+</script>

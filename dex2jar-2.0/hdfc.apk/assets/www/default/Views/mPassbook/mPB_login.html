@@ -1,0 +1,139 @@
+<style>
+    body .header, body .footer{display:none !important;} 
+	.input_btn {text-transform:uppercase; margin:25px 0;}
+	.fourInput{margin:auto;}
+</style>
+
+<section class="mPB">
+   <!-- starts topBar -->	
+    <div class="topBar">
+        <a href="#mPassbook01" class="back_btn"><span class="ico23"></span></a>
+        <span>Login</span>
+    </div>
+    <!-- ends topBar -->	
+    <div class="wrapper">
+	  <div class="contents">
+        <form name="MPBLOGIN" id="MPBLOGIN" >
+        <!-- login error-->
+        <div class="login error">
+			<div class="info_row">
+				<div class="info_row2">Enter your App PIN</div> 
+				<div class="info_row3 "> 
+					<div class="fourInput">
+						
+						<input id="pin11" class='inputs passC'  name="pin11" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+
+							<input  id="pin12" class='inputs passC'  name="pin12" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+
+							<input id="pin13" class='inputs passC'  name="pin13" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+
+							<input  id="pin14" class='inputs passC'  name="pin14" type="tel"  value="" size="1" minlength="1" maxlength="1" autocomplete="off" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);"/>
+					</div>
+				</div>
+			</div>
+            <div class="info_row">
+                <input type="button" class="button input_btn" value="LOGIN" onclick="login();">
+            </div>
+            <div class="link">
+                <a href="javascript:void();" onclick="forgot();">Forgot App PIN?<span class="ico24" ></span></a>
+            </div>
+        </div>
+        <!-- /login error-->
+		</form>
+      </div>
+	  <div class="key_div"></div>
+    </div>
+</section>
+
+<script>
+$('input[type=text],input[type=tel],input[type=password]').on('click', function(e){ 
+	e.stopPropagation();
+	$('.key_div').show();
+});
+$(document).on('click',  function(e){
+	$('.key_div').hide();
+});
+$('.button').on('click',  function(e){
+	setTimeout(function(){ 
+		if($("input").hasClass("error")){
+			$('.key_div').show();
+		}else{
+			$('.key_div').hide();
+		}
+	}, 500);
+});
+if(localStorage.getItem("logerr") == "true"){
+	window.location.hash = '#mPB_login_error';
+}
+
+if(localStorage.getItem("logerrcount")){
+	var temp = localStorage.getItem("logerrcount");
+}
+else{var temp = 0;}
+/* $("#pin11").focus();
+if( $("#pin11").focus()){
+	$('.key_div').show();
+} */
+$(".inputs").keyup(function () {
+    if (this.value.length == 1) {
+      $(this).next('.inputs').focus();
+    }
+	if ($('#pin14').val().length == 1) {
+		$('#pin14').blur();
+		hdfc_android.hideKeyboard();
+		$('.key_div').hide();
+	}
+});
+function forgot(){
+	//localStorage.setItem("cnpn","");
+	window.location.hash = '#mPB_register';
+}
+function login(){
+//if($("#MPBLOGIN").valid()){
+	if($('#pin11').val()=="" || $('#pin12').val()=="" || $('#pin13').val()=="" || $('#pin14').val()==""){
+			alert('Please Enter 4 digit Login PIN');
+			return false;
+	}
+	var mpin = $('#pin11').val()+""+$('#pin12').val()+""+$('#pin13').val()+""+$('#pin14').val();
+	if(localStorage.getItem('loginerror') != "true"){
+	var tempPin = booksStore(localStorage.getItem("cnpn"));
+		if(mpin == tempPin){
+			var temppbkid = booksStore(localStorage.getItem("csd"));
+			passbookID = temppbkid;
+			window.location = "#financialSummary";
+			localStorage.setItem("logerrcount","0");
+		}
+		else{
+		
+			temp++;
+			if(temp == 5){
+				localStorage.setItem("logerr","true");
+				window.location.hash = '#mPB_login_error';
+				localStorage.setItem("logerrcount",temp);
+			}else{
+				var test = "Invalid PIN! "+(5 - temp)+" attempts remaining.";
+				alert(test);
+				$("input[type='tel']").val('');
+				localStorage.setItem("logerrcount",temp);
+			}
+		}
+	}
+	else{
+		alert("Your account has been blocked as you have made 5 unsuccessful Login attempts. Please re-register to start using mPassbook again");
+	}
+//}
+}
+
+$("#MPBLOGIN").validate({
+	//errorLabelContainer: $("#aadhar_Submit div.container"),  
+	rules: {
+		//pin14: "required"
+	},
+	messages: {
+		//pin14: "Enter App PIN"
+	}
+});
+//hdfc_android.getGCMID();
+//getNativeData('hideKeyboard', function(data){}, function(msg){},'');
+</script>
+

@@ -1,0 +1,453 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+	
+	
+	.summblock { border: none; }
+	
+	.page_title, .page_title_sub, .rs {
+  color: #001f79;
+  font-size: 12pt;
+}
+
+
+
+	.errorBtm{  position: relative;  padding: 0 10px 25px;}
+	.errorBtm .loginCheckBox{vertical-align: top;}
+	.errorBtm label.error{position: absolute;  bottom: 0;left: 10px;}
+	
+	
+	
+
+   #fldIFSCCode{text-transform:uppercase}
+
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+
+  <form name="rrtpa04" id="rrtpa04" method="post" data-bind="submit:rrtpa04Submit">
+       <!--      <div class="summblock"> 
+				<div class="info_row dark_header"><span class="info_row_left">Beneficiary Type</span> 
+				<span class="info_row_right">Transfer to other bank / Credit Card Payment (using NEFT / IMPS)</span>
+					<div class="clearfix"></div>
+				</div>
+			</div> -->
+		
+			<div class="info_row">
+				<div class="info_row2">Beneficiary Account No / Credit Card No.</div> 
+				<div class="info_row3"> 
+					<input type="tel" id="fldAcctNo" class="passC"  name="fldAcctNo" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);">
+				</div>
+			</div>
+		    
+				<div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+			
+			<div class="info_row">
+				<div class="info_row2">Re-Enter Beneficiary Account No / Credit Card No.</div> 
+				<div class="info_row3"> 
+					<input type="tel" id="fldAcctNo2" name="fldAcctNo2" onblur="extractNumber(this,2,false);" onkeyup="extractNumber(this,2,false);" onkeypress="return blockNonNumbers(this, event, true, false);">
+				</div>
+			</div>	
+		        <div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+				
+				
+			<div class="info_row">
+				<div class="info_row2">Beneficiary account type</div> 
+				<div class="info_row3">
+					<select name="fldAccountType" id="fldAccountType">	
+                             <option value="10" selected="true">Savings</option>
+							<option value="11">Current</option>
+							<option value="12">Overdraft</option>
+							<option value="13">Cash Credit</option>
+							<option value="14">Loan Account</option>
+							<option value="40">NRE</option>
+							<option value="52">Card Payment</option>
+					
+					</select>
+				</div>
+			</div>	
+			
+			    <div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+            <div class="info_row">
+				<div class="info_row2">IFSC Code</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldIFSCCode" name="fldIFSCCode" onfocus="srchifsc()" value=""  maxlength="11" autocomplete="off">
+					<a href="javascript:void(0)" class="filter">click here </a> to search for IFSC Code
+				</div>
+			</div>		
+
+                <div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+				
+		    <div class="info_row">
+				<div class="info_row2">Beneficiary Name</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldNamBenef" name="fldNamBenef" value=""  autocomplete="off">
+				</div>
+			</div>		
+			       <div class="clearfix"></div>
+					<div class="linedivider"></div>   
+					<div class="clearfix"></div>
+			 <div class="info_row">
+				<div class="info_row2">Email ID</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldEmail" name="fldEmail"  value="" autocomplete="off">
+				</div>
+			</div>	
+		  
+		<!--   
+		  	<div class="dispTable clear errorBtm">
+					<div class="dispTCell loginCheckBox">
+						<input type="checkbox" name="fldFEMA" id="fldFEMA"  value="Y"/>
+					</div>
+					
+					<div class="dispTCell">
+						<label id="benepopmsg"></label>
+					</div>
+		    </div> -->
+
+          <br/>  <br/>
+	
+		   <div class="info_row">
+		     	<input type="submit" class="button"  value="Add" >
+		  
+		  </div>
+		  
+		  
+		  <!--  <div class="info_row">
+  					<br/>
+  					<p><b>Note:</b></p><br/>
+  					<p>- Please ensure that the beneficiary Account number/Credit Card number that you enter is correct. HDFC Bank will not validate a Non-HDFC Bank Account number/Credit Card number and is not responsible for funds transferred to an unintended recipient</p><br/>
+  					<p>- For Credit Card payments, please refer to the specific IFSC code for Credit Card payments as recommended by the Credit Card issuing Bank.</p>
+  		   </div> -->
+		 
+	  <div class="clearfix20"></div>
+		<input type="hidden" id="fldBranchDesc" name="fldBranchDesc" value="" >
+		<input type="hidden" id="fldBankDesc" name="fldBankDesc" value="" >  
+	
+	</form> 
+
+  </div>
+</div>
+
+<section class="fixedWrap mpin">
+	<div class="popWrap one" style="height:74%; overflow:auto;">
+		<div class="popHeader themeBgColor">
+			<h2>IFSC Code Lookup - NEFT</h2>
+			<a href="javascript:void(0);" class="closeIcon"></a>
+		</div>
+		<form style="padding:10px;"  name="ifscfrm" id="ifscfrm" method="post" data-bind="submit:ifscfrmSubmit">
+			<div class="info_row">
+			    <b>Note:</b><br/>
+				Please enter the IFSC code or Bank name and branch name/city.
+			</div>			
+		<!-- 	<div class="info_row">
+				<div class="info_row2">IFSC Code</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldCodIFSC" name="fldCodIFSC"  maxlength="14" autocomplete="off">
+				</div>
+			</div> -->
+			<div class="info_row">
+				<div class="info_row2">Bank Name</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldCodBank" name="fldCodBank"  maxlength="14" autocomplete="off">
+				</div>
+			</div>
+			<div class="info_row">
+				<div class="info_row2">Branch Name/city</div> 
+				<div class="info_row3"> 
+					<input type="text" id="fldCodBranch" name="fldCodBranch"  maxlength="14" autocomplete="off">
+				</div>
+			</div>
+			
+			<div class="info_row">
+		     	<input type="submit" class="button" value="Search" id="search" />
+		  
+		   </div>
+			
+		</form>
+	</div>
+</section>
+
+<section class="fixedWrap mpin">
+			<div class="popWrap double" style="height:74%;">
+				
+				<div class="popHeader">
+					<h2>IFSC Code Lookup - NEFT</h2>
+					<a href="javascript:void(0);" class="closeIcon"></a>
+				</div>
+				
+				<div class="popWrapper">
+					<form>
+							
+			   	
+						<div class="row" data-bind="foreach: RecordIFSC">
+							
+						
+							<label class="radio_box">
+								<input type="radio"name="IFSCbranchRadio" id="IFSCbranchRadio" data-bind="value:nambrn+'##'+nambank+'##'+codifsc" onclick="FillIfsc();" />							
+								<span class="bold" data-bind="text:address"></span>
+						        <span data-bind="text:codifsc"></span> 
+								<span data-bind="text:nambrn"></span>
+								<span data-bind="text:nambank" ></span>
+							</label>
+												
+						</div>
+					
+				
+					
+						<!-- <div class="row" id="failifsc" style="display:none;">							
+							<label class="radio_box">
+														
+								<span class="bold">No Record Found</span>
+								
+							</label>							
+						</div> -->
+						
+						<!-- <div class="row">							
+							<label class="radio_box">
+								<input type="radio" name="type" />							
+								<span class="bold">Enter 4 digit login mPIN</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+							</label>							
+						</div>
+						
+						<div class="row">							
+							<label class="radio_box">
+								<input type="radio" name="type" />							
+								<span class="bold">Enter 4 digit login mPIN</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+							</label>							
+						</div>
+						
+						<div class="row">							
+							<label class="radio_box no_border">
+								<input type="radio" name="type" />							
+								<span class="bold">Enter 4 digit login mPIN</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+								<span>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</span>
+							</label>							
+						</div> -->
+						
+					</form>
+					
+				<div class="info_row">
+			       <b>Note:</b><br/>
+				   Please refine your search if you could not find the branch.
+				
+			   </div>	
+				</div>
+				
+				
+				
+			</div>
+		</section>
+
+<script type="text/javascript">
+
+
+			function srchifsc() {
+            $('#fldBranchDesc').val('');
+            $('#fldBankDesc').val('');
+			}
+$.validator.addMethod("alpha", function(value, element) {
+     return this.optional(element) || /^[A-Za-z0-9 @]+$/i.test(value); 
+}
+, "Alphabetic and Numeric characters with spaces are allowed for Beneficiary Name."); 
+
+$.validator.addMethod("alpha01", function(value, element) {
+     return this.optional(element) || /^[A-Za-z0-9]+$/i.test(value); 
+}
+, "Alphabetic and Numeric characters with spaces are allowed for IFSC code."); 
+
+ $.validator.addMethod("Password_not_same", function(value, element) {
+ // alert($('#fldNewPass').val() != value);
+   return $('#fldAcctNo').val() == value;
+}, "Beneficiary account numbers do not match.");
+
+     $("#rrtpa04").validate({
+	rules: {
+		fldAcctNo: {
+         required: true
+	
+		  
+		 },
+		 
+		fldAcctNo2: {	 
+         required: true,
+         Password_not_same:true		 
+		 
+		  
+		 },
+
+
+	    fldEmail: {
+			       
+                   email:true,
+        },	
+		fldNamBenef: {
+			       required: true,
+                   alpha:true     
+        },
+        fldIFSCCode: {
+			       required: true,
+                   alpha01:true,
+                   minlength: 11,
+		           maxlength:11				   
+        },			
+
+  		
+		
+		
+	},
+	messages: {
+		fldAcctNo:{
+		       required:"Please enter beneficiary account no"
+			
+		},
+	    fldAcctNo2:{
+		       required:"Please re-enter beneficiary account no",
+			   Password_not_same:"Beneficiary account numbers do not match"
+			 
+		},
+		
+		fldEmail: {
+			//required: "Please enter email id"
+                
+        },
+		
+		fldNamBenef: {
+			required: "Please enter Beneficiary name",
+			alpha: "Alphabetic and Numeric characters with spaces are allowed for Beneficiary Name." 
+                
+        },
+		fldIFSCCode: {
+			required: "Please select the IFSC Code",
+			alpha01: "Alphabetic and Numeric characters with spaces are allowed for IFSC code." ,
+			minlength:"IFSC Code must be of length 11",
+			maxlength:"IFSC Code must be of length 11"
+                
+        },
+		
+		
+	}
+}); 
+
+
+
+
+  $('.num').keyup(function(){
+    var val = $(this).val();
+    if(isNaN(val)){
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+});
+
+function FillIfsc(){
+		var rates = document.getElementsByName('IFSCbranchRadio');
+	           var rate_value;
+	          
+	                for(var i = 0; i < rates.length; i++){
+	                  if(rates[i].checked){
+	                  rate_value = rates[i].value;
+					   //alert(rate_value);
+	                  }
+	                }
+					IfscDetails = rate_value.split('##');
+					nambrn = IfscDetails[0];
+					nambank = IfscDetails[1];
+					ifsccode = IfscDetails[2];
+					
+					$('#fldIFSCCode').val(ifsccode);
+					$('#fldBranchDesc').val(nambrn);
+					$('#fldBankDesc').val(nambank);
+						
+		
+					/*IfscDetails = rate_value.split('##');
+					$('#bankName').val(IfscDetails[0]);
+					$('#branchName').val(IfscDetails[1]);
+					$('#ifscCode').val(IfscDetails[2]);
+					//$('#PayeeifscCode').val('');$('#PayeebankName').val('');$('#PayeebranchName').val('');
+					$('#PayeebankName').val(IfscDetails[0]);
+					$('#PayeebranchName').val(IfscDetails[1]);
+					$('#PayeeifscCode').val(IfscDetails[2]);	*/				
+					
+	              //  O
+	//closePopup();
+	//$('.double .closeIcon, .radio_box').on('click',function(event){
+				//event.stopPropagation();
+			
+				
+				$('.popWrap.double').removeClass('show');
+				setTimeout(function(){$('.popWrap.double').parent().hide(0);},300);
+				
+					
+				$('.popWrap.one').removeClass('show');
+				setTimeout(function(){$('.popWrap.one').parent().hide(0);},300);
+				//event.preventDefault();
+				//return false; 
+	//});
+
+	//window.location.hash = "#iciAddPayeeNEFT02";
+	$('#accountNumber1').html($('#accountNumber').val());
+	$('#PayeeAcName1').html($('#PayeeAcName').val());
+	$('#PayeeNickName1').html($('#PayeeNickName').val());
+}
+	  
+ $(document).ready(function(){
+			
+			$('.one .closeIcon').on('click',function(event){
+				event.stopPropagation();
+				$('.popWrap.one').removeClass('show');
+				setTimeout(function(){$('.popWrap.one').parent().hide(0);},300);
+				event.preventDefault();
+				return false; 
+			});
+			
+			$('.double .closeIcon, .radio_box').on('click',function(event){
+				event.stopPropagation();
+				$('.popWrap.double').removeClass('show');
+				setTimeout(function(){$('.popWrap.double').parent().hide(0);},300);
+				event.preventDefault();
+				return false; 
+			});
+
+			$('.filter').on('click',function(){
+                            $("#fldCodBank").val('');
+                            $("#fldCodBranch").val('');
+                            
+				$('.popWrap.one').parent().show(0);
+				$('.popWrap.one').parent().addClass('show');
+				$('.popWrap.one').addClass('show');		
+			});
+			
+			 //$('#search').on('click',function(){
+				//$('.popWrap.double').parent().show(0);
+				//$('.popWrap.double').parent().addClass('show');
+				//$('.popWrap.double').addClass('show');	
+			//}); 
+                   $('#search').on('click',function(){
+                                  
+                                   
+                                   setTimeout(function(){
+                                              busyInd.show();
+                                              }, 1000);
+                                   setTimeout(function(){
+                                              busyInd.hide();
+                                              }, 3000);
+                                   });
+			
+		});
+</script> 

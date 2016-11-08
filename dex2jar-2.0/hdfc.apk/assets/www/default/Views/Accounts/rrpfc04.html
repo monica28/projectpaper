@@ -1,0 +1,504 @@
+<style>
+	.errorBtm{  position: relative;  padding: 0 10px 35px;}
+	.errorBtm .loginCheckBox{vertical-align: top;}
+	.errorBtm label.error{position: absolute;  bottom: 0;left: 10px;}
+</style>
+<div id="wrapper" style="top:96px;">
+	<div class="content sub_content">
+	
+		<form name="rrpfcg03" id="rrpfcg03" method="post" data-bind='submit:rrpfcg04Submit'>			
+			<div class="clearfix10"></div>	
+			<div class="summblock" style="margin-left:3px;margin-right:7px;">
+			
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Customer Name</span> 
+					<span class="info_row_right custname"></span>					
+				</div>      
+			  				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Dispatch Address</span> 
+					<span class="info_row_right clslineht address"></span>					
+				</div>
+				<div class="info_row odd addressline2" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht address2"></span>					
+				</div>
+				<div class="info_row odd addressline3" style="display:none;"> 
+					<span class="info_row_left"></span> 
+					<span class="info_row_right clslineht address3"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">City</span> 
+					<span class="info_row_right city"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">State</span> 
+					<span class="info_row_right state"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Country</span> 
+					<span class="info_row_right country"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">Pincode </span> 
+					<span class="info_row_right zipcode"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Debit Account</span> 
+					<span class="info_row_right Debitacc"></span>					
+				</div>     
+				
+			  	<div class="info_row odd"> 
+					<span class="info_row_left">Purpose Of Travel </span> 
+					<span class="info_row_right Purpose"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">Card Varient</span> 
+					<span class="info_row_right VariantDesc"></span>					
+				</div>
+				
+				
+				<div class="info_row odd" style="display:none;"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right fldEqvUsdAmt"></span>					
+				</div>
+				
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right fldEqvUsdAmt1"></span>					
+				</div>
+				
+				
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR  Equivalent Amount</span> 
+					<span class="info_row_right fldEqvInrAmt"></span>					
+				</div>
+				
+				
+			</div>
+			
+			<div class="clearfix10"></div>
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" id="fldcurrancy" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD"></span>					
+				</div>
+				<div class="clearfix10"></div>
+			</div>
+		
+			<div id="fldcurrancy1" style="display:none;">
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr1"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex1"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR1"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD1"></span>					
+				</div>
+				
+			</div>
+			<div class="clearfix10"></div>
+			</div>
+		
+		<div id="fldcurrancy2" style="display:none;">
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr2"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex2"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR2"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD2"></span>					
+				</div>
+				
+			</div>
+			 <div class="clearfix10"></div>
+			</div>
+			
+			<div id="fldcurrancy3" style="display:none;">
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr3"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex3"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR3"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD3"></span>					
+				</div>
+				
+			</div>
+				<div class="clearfix10"></div>
+			</div>
+		
+			<div id="fldcurrancy4" style="display:none;">
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr4"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex4"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR4"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD4"></span>					
+				</div>
+				
+			</div>
+			<div class="clearfix10"></div>
+			</div>
+			
+			
+			<div id="fldcurrancy5" style="display:none;">
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr5"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex5"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR5"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD5"></span>					
+				</div>
+				
+			</div>
+			<div class="clearfix10"></div>
+			</div>
+			
+			
+			<div id="fldcurrancy6" style="display:none;">
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr6"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex6"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR6"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD6"></span>					
+				</div>
+				
+			</div>
+			<div class="clearfix10"></div>
+			</div>
+			
+			
+			<div id="fldcurrancy7" style="display:none;">
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr7"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex7"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR7"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD7"></span>					
+				</div>
+				
+			</div>
+				
+			<div class="clearfix10"></div>
+			</div>
+		
+			<div id="fldcurrancy8" style="display:none;">
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr8"></span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex8">/span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR8"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD8"></span>					
+				</div>
+				
+			</div>
+			 <div class="clearfix10"></div>
+			</div>
+			
+			
+			<div id="fldcurrancy9" style="display:none;">
+			
+			<div class="summblock" style="margin-left:3px;margin-right:7px;" >
+			  
+				<div class="info_row dark_header"> 
+					<span class="info_row_left">Card Currency</span> 
+					<span class="info_row_right" id="fldCurr9">EUR</span>					
+				</div>   							
+							
+				<div class="info_row odd"> 
+					<span class="info_row_left">Forex Amount</span> 
+					<span class="info_row_right" id="fldForex9"></span>					
+				</div>
+				
+				<div class="info_row even"> 
+					<span class="info_row_left">INR Equivalent Amount</span> 
+					<span class="info_row_right" id="fldINR9"></span>					
+				</div>
+				<div class="info_row odd"> 
+					<span class="info_row_left">USD Equivalent Amount</span> 
+					<span class="info_row_right" id="fldUSD9"></span>					
+				</div>
+			</div>
+			   <div class="clearfix10"></div>
+			</div>
+			 <br/>
+			<div class="dispTable clear errorBtm">
+					<div class="dispTCell loginCheckBox">
+						<input type="checkbox" name="fldFEMA" id="fldFEMA"  value="Y"/>
+					</div>
+					
+					<div class="dispTCell">
+						<label>I declare that the total amount of foreign exchange purchased from or remitted through, all sources in India during this  calendar year during including this application is within the limit prescribed by Reserve Bank of India for the said purpose under FEMA requirement and the foreign exchange purchased from you is for the purpose indicated in the form  above.</label>
+					</div>
+		    </div>
+		
+			<div class="dispTable clear errorBtm">
+					<div class="dispTCell loginCheckBox">
+						<input type="checkbox" name="fldTC" id="fldTC" value="Y" />
+					</div>
+					
+					<div class="dispTCell">
+						<label>I accept the  Terms & Conditions of the bank.</label>
+					</div>
+		    </div>
+
+			<div class="info_row">
+				<input type="submit" class="button" value="Confirm">
+			</div>		   
+			<div class="clearfix20"></div>
+		                
+						
+						
+						
+				    <input type="hidden" name="fldFromAcctNo" id="fldFromAcctNo" value=""/>									
+					<input type="hidden" name="fldFromAcctNoIndx" id="fldFromAcctNoIndx" value=""/>									
+					<input type="hidden" name="fldAddrRadio" id="fldAddrRadio" value=""/>
+					<input type="hidden" name='fldPurposeIndx' id='fldPurposeIndx' />
+					<input type="hidden" name='fldCurrIndx' id='fldCurrIndx' />									
+					<input type="hidden" name='fldVariantIndx' id='fldVariantIndx' />
+					<input type="hidden" name='fldBack' id='fldBack'/>
+					<input type="hidden" name='namcustfull' id='namcustfull'/>
+					<input type="hidden" name='datbirthcust' id='datbirthcust'/>
+					<input type="hidden" name='gender' id="gender" />
+					<input type="hidden" name='refcustphone' id="refcustphone" />
+					<input type="hidden" name='refcustphoneOff' id="refcustphoneOff" />
+					<input type="hidden" name='mobileno' id='mobileno' />
+					<input type="hidden" name='refcustemail' id='refcustemail'/>
+					<input type="hidden" name='txtcustadr1' id='txtcustadr1'/>		
+					<input type="hidden" name='txtcustadr2' id='txtcustadr2'/>		
+					<input type="hidden" name='txtcustadr3' id='txtcustadr3'/>
+					<input type="hidden" name='txtcustcity' id='txtcustcity'/>
+					<input type="hidden" name='txtcuststate' id='txtcuststate'/>
+					<input type="hidden" name='txtcustcntry' id='txtcustcntry'/>
+					<input type="hidden" name='txtcustzip' id='txtcustzip'/>
+					<input type="hidden" name='flddispatchAddr1' id='flddispatchAddr1'/>
+					<input type="hidden" name='flddispatchAddr2' id='flddispatchAddr2'/>
+					<input type="hidden" name='flddispatchAddr3' id='flddispatchAddr3'/>
+					<input type="hidden" name='flddispatchCity' id='flddispatchCity'/>
+					<input type="hidden" name='flddispatchState' id='flddispatchState'/>
+					<input type="hidden" name='flddispatchCntry' id='flddispatchCntry'/>
+					<input type="hidden" name='flddispatchZip' id='flddispatchZip'/>
+					<input type="hidden" name='fldPurpose' id='fldPurpose'/>
+					<input type="hidden" name='mothername' id='mothername'/>
+					<input type="hidden" name='fldForex' id='fldForex'/>
+					<input type="hidden" name='fldINR' id='fldINR'/>
+					<input type="hidden" name='fldCurrDesc' id='fldCurrDesc'/>
+					<input type="hidden" name='fldCurr' id='fldCurr'/>
+					<input type="hidden" name='fldVariantDesc' id='fldVariantDesc'/>
+					<input type="hidden" name='fldVariant' id='fldVariant'/>
+					<input type="hidden" name='fldPassport' id='fldPassport'/>
+					<input type="hidden" name='fldDepDate' id='fldDepDate'/>
+					<input type="hidden" name='fldReturnDate' id='fldReturnDate'/>
+					<input type="hidden" name='fldPassportExp' id='fldPassportExp'/>
+					<input type="hidden" name='fldPassportPlace' id='fldPassportPlace'/>
+					<input type="hidden" name='fldDatPassportIssuance' id='fldDatPassportIssuance'/>
+					<input type="hidden" name='fldCurrencyCode' id='fldCurrencyCode'/>
+					<input type="hidden" name='fldRowCount' id='fldRowCount'/>
+					<input type="hidden" name='datefldDepDateIndx' id='datefldDepDateIndx'/>
+					<input type="hidden" name='monthfldDepDateIndx' id='monthfldDepDateIndx'/>
+					<input type="hidden" name='yearfldDepDateIndx' id='yearfldDepDateIndx'/>
+					<input type="hidden" name='datefldReturnDateIndx' id='datefldReturnDateIndx'/>
+					<input type="hidden" name='monthfldReturnDateIndx' id='monthfldReturnDateIndx'/>
+					<input type="hidden" name='yearfldReturnDateIndx' id='yearfldReturnDateIndx'/>
+					<input type="hidden" name='datefldPassportExpIndx' id='datefldPassportExpIndx'/>
+					<input type="hidden" name='monthfldPassportExpIndx' id='monthfldPassportExpIndx'/>
+					<input type="hidden" name='yearfldPassportExpIndx' id='yearfldPassportExpIndx'/>
+					<input type="hidden" name='datefldDatPassportIssuanceIndx' id='datefldDatPassportIssuanceIndx'/>
+					<input type="hidden" name='monthfldDatPassportIssuanceIndx' id='monthfldDatPassportIssuanceIndx'/>
+					<input type="hidden" name='yearfldDatPassportIssuanceIndx' id='yearfldDatPassportIssuanceIndx'/>
+					<input type="hidden" name='fldCurr1Indx' id='fldCurr1Indx'/>
+					<input type="hidden" name='fldCurr2Indx' id='fldCurr2Indx'/>
+					<input type="hidden" name='fldCurr3Indx' id='fldCurr3Indx'/>
+					<input type="hidden" name='fldCurr4Indx' id='fldCurr4Indx'/>
+					<input type="hidden" name='fldCurr5Indx' id='fldCurr5Indx'/>
+					<input type="hidden" name='fldCurr6Indx' id='fldCurr6Indx'/>
+					<input type="hidden" name='fldCurr7Indx' id='fldCurr7Indx'/>
+					<input type="hidden" name='fldCurr8Indx' id='fldCurr8Indx'/>
+					<input type="hidden" name='fldCurr9Indx' id='fldCurr9Indx'/>
+					
+					<!-- <input type="hidden" name='fldCurr1' id='fldCurr1'/>
+					<input type="hidden" name='fldCurr2' id='fldCurr2'/>
+					<input type="hidden" name='fldCurr3' id='fldCurr3'/>
+					<input type="hidden" name='fldCurr4' id='fldCurr4'/>
+					<input type="hidden" name='fldCurr5' id='fldCurr5'/>
+					<input type="hidden" name='fldCurr6' id='fldCurr6'/>
+					<input type="hidden" name='fldCurr7' id='fldCurr7'/>
+					<input type="hidden" name='fldCurr8' id='fldCurr8'/>
+					<input type="hidden" name='fldCurr9' id='fldCurr9'/>
+					
+					<input type="hidden" name='fldForex1' id='fldForex1'/>
+					<input type="hidden" name='fldForex2' id='fldForex2'/>
+					<input type="hidden" name='fldForex3' id='fldForex3'/>
+					<input type="hidden" name='fldForex4' id='fldForex4'/>
+					<input type="hidden" name='fldForex5' id='fldForex5'/>
+					<input type="hidden" name='fldForex6' id='fldForex6'/>
+					<input type="hidden" name='fldForex7' id='fldForex7'/>
+					<input type="hidden" name='fldForex8' id='fldForex8'/>
+					<input type="hidden" name='fldForex9' id='fldForex9'/>
+					
+					<input type="hidden" name='fldINR1' id='fldINR1'/>
+					<input type="hidden" name='fldINR2' id='fldINR2'/>
+					<input type="hidden" name='fldINR3' id='fldINR3'/>
+					<input type="hidden" name='fldINR4' id='fldINR4'/>
+					<input type="hidden" name='fldINR5' id='fldINR5'/>
+					<input type="hidden" name='fldINR6' id='fldINR6'/>
+					<input type="hidden" name='fldINR7' id='fldINR7'/>
+					<input type="hidden" name='fldINR8' id='fldINR8'/>
+					<input type="hidden" name='fldINR9' id='fldINR9'/> -->
+					
+					<input type="hidden" name='fldUserRefNo' id='fldUserRefNo'/>
+					<input type="hidden" name='fldDateTime' id='fldDateTime'/>
+					<input type="hidden" name='pancardno' id='pancardno'/>
+					<input type="hidden" name='fldRsaTxnId' id='fldRsaTxnId'/>
+					<input type="hidden" name='fldClientSessionId' id='fldClientSessionId'/>
+					<input type="hidden" name='fldFcatSessionId' id='fldFcatSessionId'/>
+				   <input type="hidden" id="fldOrgTxnId" name="fldOrgTxnId" value="PFC" />
+					
+		</form>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#rrpfcg03").validate({
+		rules: {
+			
+			fldFEMA:"required",
+			fldTC:"required",
+		},
+		messages: {
+			
+			fldFEMA: "Please confirm compliance to the  FEMA requirement",
+		    fldTC:"Please confirm the agreement with Terms & Conditions",
+		}
+	});	
+</script>

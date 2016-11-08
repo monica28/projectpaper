@@ -1,0 +1,191 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<link href="css/mobiscroll-2.0.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/libs/mobiscroll-2.0.custom.min.js" type="text/javascript"></script>
+
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+	 <div id="isndtls" style="display:none;">
+	 	<div class="info_row" >
+			<p> The Market Rates given below are for information only, without any liability on part of the Bank.</p>
+      	</div>
+      	<br/>
+
+		
+		<div class="summblock" >
+		<div class="info_row dark_header"><span class="info_row_left">ISIN</span> <span class="info_row_right" id="isin"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+		
+		<div class="info_row odd"><span class="info_row_left">Company</span> <span class="info_row_right clslineht" id="coname"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Short Name</span> <span class="info_row_right clslineht" id="shrtnm"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Market Rate</span> <span class="info_row_right clslineht" id="mktrate"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+		
+			
+			<div class="info_row even"><span class="info_row_left clslineht">Market Rate Date</span> <span class="info_row_right clslineht" id="marketdate"> 
+				 
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Registrar Code</span> <span class="info_row_right" id="shregcd"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Registrar Name</span> <span class="info_row_right clslineht" id="shregnm"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			
+			
+			<div class="info_row odd"><span class="info_row_left">Address</span> <span class="info_row_right clslineht" id="ubpadd1"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left"></span> <span class="info_row_right clslineht" id="ubpadd2"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left"></span> <span class="info_row_right clslineht" id="ubpadd3"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left"></span> <span class="info_row_right clslineht" id="ubpadd4"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left"></span> <span class="info_row_right"  id="ubppin"> 
+				 
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row even"><span class="info_row_left">Phone No</span> <span class="info_row_right" id="ubpphone"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			<div class="info_row odd"><span class="info_row_left">Fax No</span> <span class="info_row_right" id="ubpfaxno"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			</div>
+		</div>	
+		
+		
+		<br/>
+		
+		<div id="isinsrch" style="display:none;" data-bind="foreach:ccaccountList">
+			<div class="summblock"   >
+			<div class="info_row dark_header"><span class="info_row_left">Sr. No</span> <span class="info_row_right" data-bind="text:$index() + 1 "> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">ISIN</span> <span class="info_row_right" data-bind="text:isin"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Company</span> <span class="info_row_right" data-bind="text:coname"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Short Name</span> <span class="info_row_right" data-bind="text:shrtnm"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Market Rate</span> <span class="info_row_right" data-bind="text:mktrate"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Market Rate Date</span> <span class="info_row_right clslineht" data-bind="text:mktdt"> 
+				                  
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left clslineht">Registrar Code</span> <span class="info_row_right clslineht" data-bind="text:shregcd"> 
+			
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left clslineht">Registrar Name</span> <span class="info_row_right clslineht" data-bind="text:shregnm"> 
+				
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row even"><span class="info_row_left">Phone No</span> <span class="info_row_right" data-bind="text:ubpphone"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left">Fax No</span> <span class="info_row_right" data-bind="text:ubpfaxno"> 
+				
+				</span>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+			<br/>
+		
+	<br/>
+	
+	   <div id="msg" style="display:none;">
+		<div class="info_row"><p>The total records found exceeded the maximum allowed. Please refine your search.</p></div>
+		</div>
+		</div>
+	
+	    <div id="errormsg" style="display:none;">
+		<div class="info_row"><p>No records fetched for the given search criteria</p></div>
+		</div>
+
+  </div>
+</div>

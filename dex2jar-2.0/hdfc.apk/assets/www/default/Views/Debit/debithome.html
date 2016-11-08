@@ -1,0 +1,105 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.linedivider { border:0 none; }
+</style>
+
+<div id="wrapper"  class="menu" style="top:96px;">
+        <div class="sub_content" style="padding-top: 1%;"> 
+          <div class="info_row odd dark_header"> <span class="info_row_left page_title_carousel">Request</span><span class="info_row_right"></span>
+      </div>
+      <br>
+         <a href="#rrdcl01">
+         	<div class="info_row odd" > 
+       	  	 <span class="info_row_menu_left">
+      
+				<img src="img/debitcard_hotlisting.png" />
+
+       	  	 </span>
+       	  	 <span class="info_row_menu_right page_title_carousel ">Debit Card Hotlisting</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+          
+        </div>
+	</a>
+        <div class="clearfix"></div>
+        <div class="linedivider"></div>
+        <div class="clearfix"></div>
+       
+       <a href="#rrdce01">
+        	<div class="info_row odd" > 
+       	  	 <span class="info_row_menu_left">
+      
+				<img src="img/debitcard_status.png" />
+
+       	  	 </span>
+       	  	 <span class="info_row_menu_right page_title_carousel ">Debit Card Status</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+          
+        </div>
+  </a>
+        <div class="linedivider"></div>
+        <div class="clearfix"></div>
+<a href="#rsdpi01">
+<div class="info_row odd" >
+ <span class="info_row_menu_left">
+
+	<img src="img/debit_pin.png" />
+ </span>
+  	  	 <span class="info_row_menu_right page_title_carousel ">Instant Pin Generation</span><span class="right_arrow"><img src="img/rarrow.png"></span>
+         
+       </div>
+	</a>
+        <div class="clearfix"></div>
+    <div class="linedivider"></div>
+     <div class="clearfix"></div>
+         </div>
+             </div>
+<script>
+$(document).ready(function($) {
+	var  conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}	
+    console.log('CP on mobile banner account summart '+bannerHeight);	
+	if(cpBanner.indexOf("No banner") > -1 == false){	
+       if(cpBanner=='' && cpbannerclose6!='adcloseDC'){
+				loadXMLDoc();
+				setTimeout(function(){
+						    if (navigator.onLine && cpBanner!='') {
+						  $('.ad_banner').show();
+						  $('#cpCnt').html(cpBanner);
+						} else {
+						  $('.ad_banner').hide();
+						}
+				 		
+						var menu = $(".menu");
+						var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}
+						menu.animate({top: bannerHeight + 'px'},1000);
+						$('#cpCnt').html(cpBanner);
+				},2000);
+		}
+		if(cpBanner!='' && cpbannerclose6!='adcloseDC'){
+		//alert("gghjtgiytkk");
+			setTimeout(function(){
+		        var menu = $(".menu");	
+                      if (navigator.onLine && cpBanner!='' && cbannerForDC!='') {
+						  $('.ad_banner').show();
+						  $('#cpCnt').html(cbannerForDC);
+						}else if(cbannerForDC!=''){
+							$('.ad_banner').show();
+							$('#cpCnt').html(cbannerForDC);
+						} else {
+						  $('.ad_banner').hide();
+						}
+				 						
+				$('.ad_banner').show();
+				$('#cpCnt').html(cbannerForDC);	
+				var conveniancecount = $("div[id*='bannerHtml']").length;if(conveniancecount > 1){bannerHeight = $('#bannerHtml').height()+100;}else{bannerHeight = $('#bannerHtml').height()+100;}				
+				menu.animate({top: bannerHeight + 'px'},1000);
+			},1000);
+		}
+		if( cpbannerclose6=="adcloseDC"){		 
+			$('.ad_banner').hide();
+			var menu = $(".menu");
+			menu.animate({top: '96px'},1000);
+		}
+	
+		
+	}	
+});    
+</script>
+               

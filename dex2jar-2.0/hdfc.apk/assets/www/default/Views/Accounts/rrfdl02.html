@@ -1,0 +1,65 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmfdl02" id="frmfdl02" method="post" data-bind='submit: rrfdl02Submit'>
+  	 
+  		<div class="summblock">
+		        <div class="info_row dark_header"> <span class="info_row_left clslineht">Fixed Deposit Account</span> 
+		        	<span class="info_row_right fldfdacctno"></span>
+		        	<div class="clearfix"></div>
+		      	</div>
+		      	<div class="info_row odd"> <span class="info_row_left clslineht">Total Amount to be Credited</span> 
+		        	<span class="info_row_right page_title_sub fldfdredeemamt" ></span>
+		        	<div class="clearfix"></div>
+		      	</div>
+		      	<div class="info_row even"> <span class="info_row_left">Credit To Account</span> 
+		        	<span class="info_row_right fldcasaacctno"></span>
+		        	<div class="clearfix"></div>
+		      	</div>
+		        <div class="info_row odd"> <span class="info_row_left">Principal Amount</span> 
+		        	<span class="info_row_right fldfdprincipalbal"></span>
+		        	<div class="clearfix"></div>
+		      	</div>
+		      	<div class="info_row even" > <span class="info_row_left">Interest Earned</span> 
+		        	<span class="info_row_right fldfdinterest"></span>
+		        	<div class="clearfix"></div>
+		      	</div>
+		      	
+			  </div>					
+			
+			<div class="clearfix20"></div>
+		   <div class="info_row2">
+		    <input type="submit" class="button" value="Confirm" >
+		   </div>
+		   <br/>
+  			<div class="info_row "><span class="info_row_left"></span> <div class="clearfix"></div></div>
+		      <div class="info_row">
+        	<p><b>Note:</b></p><br/>
+        	<p>- For payout deposits if interest has been already paid at the contracted rate, then on premature liquidation the excess interest paid out will be recovered from the deposit.</p><br/>
+        	<p>- Incase the interest amount is not sufficient for TDS recovery, at times it may lead to deduction of TDS from the FD principal.</p><br/>
+        	
+        	</div>
+  		   <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+  			
+		   <input type="hidden" name="fldFDAcctNo" id="fldFDAcctNo" value="" />
+		   <input type="hidden" name="fldCasaAcctNo" id="fldCasaAcctNo" value="" />
+		   <input type="hidden" name="fldCasaNamCcy" id="fldCasaNamCcy" value="" />
+		   <input type="hidden" name="fldFDNamCcy" id="fldFDNamCcy" value="" />
+		   <input type="hidden" name="fldCasaAcctBal" id="fldCasaAcctBal" value="" />
+		   <input type="hidden" name="fldFDAcctBal" id="fldFDAcctBal" value="" />
+		   <input type="hidden" name="fldFlgLiquidate" id="fldFlgLiquidate" value="Y" />
+		   <input type="hidden" name="fldDepositNo" id="fldDepositNo" value="" />			 
+	  					
+	</form>
+  </div>
+</div>
+

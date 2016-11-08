@@ -1,0 +1,197 @@
+<style>
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.info_row p { padding-left:10px; }
+	.summblock { margin:0 5px !important; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+<form name="frmtpn05" id="frmtpn05"  method="post" data-bind='submit: rrtpn05Submit'>
+		
+		
+		 <div class="summblock">
+		 <div class="info_row dark_header"> <span class="info_row_left clslineht">From Account</span> <span class="info_row_right clslineht fldAcctNo" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div> 
+		  <div class="info_row odd"> <span class="info_row_left clslineht">Beneficiary IFSC Code</span> <span class="info_row_right clslineht ifsccode" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div>
+		<div class="info_row even"> <span class="info_row_left clslineht">Beneficiary Name</span> <span class="info_row_right narrative" >
+			
+			   </span>
+			<div class="clearfix"></div>
+		  </div>
+		  <div class="info_row odd"> <span class="info_row_left clslineht">Beneficiary Account Number</span> <span class="info_row_right clslineht codacctno" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div>
+		  <div class="info_row even"> <span class="info_row_left">Bank Name</span> <span class="info_row_right clslineht bankname" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div>
+		  <div class="info_row odd"> <span class="info_row_left">Amount</span> <span class="info_row_right page_title_sub fldtxnamount" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div>
+		  <div class="info_row even"> <span class="info_row_left">Description</span> <span class="info_row_right clslineht fldtxndesc" >
+			
+			</span>
+			<div class="clearfix"></div>
+		  </div> 
+		
+			
+			<!-- ko if: benetype() === 'SMS' -->
+				<div class="info_row odd"> <span class="info_row_left clslineht">Mode of Communication</span> <span class="info_row_right ">
+					SMS
+					</span>
+					<div class="clearfix"></div>
+				  </div>
+				  <div class="info_row even"> <span class="info_row_left clslineht">Communication Details</span> <span class="info_row_right clslineht" data-bind="text:fldmobileemail">
+					
+					</span>
+					<div class="clearfix"></div>
+				  </div>
+				 <!-- /ko -->
+			
+			
+			<!-- ko if: benetype() === 'EML' -->
+				<div class="info_row odd"> <span class="info_row_left clslineht">Mode of Communication</span> <span class="info_row_right clslineht">
+					Email
+					</span>
+					<div class="clearfix"></div>
+				  </div>
+				  <div class="info_row even"> <span class="info_row_left clslineht">Communication Details</span> <span style="word-wrap: break-word; line-height:normal !important;" class="info_row_right clslineht" data-bind="text:fldmobileemail">
+					
+					</span>
+					<div class="clearfix"></div>
+				  </div>
+			<!-- /ko -->				  
+			
+
+		</div>
+		<br/>
+		<div class="info_row alignc"><input type="submit" class="button" value="Submit" id="" />
+			<div class="clearfix"></div>
+		  </div>  
+		  
+		  
+		 
+		<input type="hidden" name="fldRequestId" id="fldRequestId" value="" />
+		<input type="hidden" name="fldScrnSeqNbr" value="03" />
+		<input type="hidden" name="fldTxnId" value="TPN" />
+		<input type="hidden" name="fldOrgTxnId" value="TPN" />
+		
+
+<input type="hidden" name="fldExtSessionId" id="fldExtSessionId" value="" />
+		<input type="hidden" name="fldAcctNo" id="fldAcctNo" value="" />
+		<input type="hidden" name="fldBeneAcctType" id="fldBeneAcctType" value="" />
+		<input type="hidden" name="fldNamBenef" id="fldNamBenef" value="" />
+		<input type="hidden" name="fldIFSCCode" id="fldIFSCCode" value="" />
+		<input type="hidden" name="fldBeneAcct"  id="fldBeneAcct" value="" />
+		<input type="hidden" name="fldBankDesc" id="fldBankDesc" value="" />
+		<input type="hidden" name="fldBranchDesc" id="fldBranchDesc" value="" />
+		<input type="hidden" name="fldTxnAmount" id="fldTxnAmount" value="" />
+		<input type="hidden" name="fldTxnDesc" id="fldTxnDesc" value="" />		
+		<input type="hidden" name="fldComMode" id="fldComMode" value="" />
+		<input type="hidden" name="fldMobileEmail" id="fldMobileEmail" value="" />	
+		<input type="hidden" name="fldUserRefNo" id="fldUserRefNo" value="" />
+		<input type="hidden" name="fldDateTime"	id="fldDateTime" value="" />
+		<input type="hidden" name="fldRsaTxnId" id="fldRsaTxnId" value="" /> 
+		<input type="hidden" name="fldClientSessionId" id="fldClientSessionId" value="" />
+		<input type="hidden" name="fldFcatSessionId" id="fldFcatSessionId" value="" />
+		<input type="hidden" name="fldAcctBal" id="fldAcctBal" value="" />
+		<input type="hidden" name="fldCurr" id="fldCurr" value="" />
+		<input type="hidden" name="fldBenefType" id="fldBenefType" value="NEFT" />
+		<input type="hidden" name="fldActionType" id="fldActionType" value="confirm" />
+		
+		<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+		</form>
+			
+	
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$("#fldrrtpn01").validate({
+	rules: {
+		fldAcctNo: "required",
+		fldChecked: {chkvalid: "#fldChecked"},
+				
+	},
+	messages: {
+		fldAcctNo: "Select From Account",
+				
+	}
+});
+function formSubmit(reqid)
+	{
+		document.getElementById('fldRequestId').value = reqid;
+		
+		var objs = document.getElementById('fldAcctNo');
+		document.getElementById('fldAcctNo_txt').value = objs.options[objs.selectedIndex].innerHTML;
+		
+		document.getElementById("fldBenefType").value = "NEFT";
+		
+		var objs1 = document.getElementById('fldBenefDetail');
+		document.getElementById('fldBenefDetail_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+		document.getElementById("f1").submit();
+	}
+
+	
+	/*function dispConfirm() {
+		var r=confirm("This funds transfer request has been initiated after the RBI cut-off for the day. This request will be presented to RBI on the next working day for further processing. The funds will be debited from the account immediately. Please press OK button to continue or Cancel button to cancel the request");
+		return false;
+		if (r==true) {
+			document.getElementById('fldRequestId').value = 'RRTPN05';
+			document.getElementById("f1").submit();
+		} else {
+			document.getElementById('fldRequestId').value = 'RRTPN01';
+			document.getElementById("f1").submit();
+		}
+	}*/
+
+$(document).ready( function() {
+		$("#confirm_button").click( function() {
+			$('input,select').each(function() {
+				if (!$(this).attr('disabled'))
+					$(this).addClass('dwtd');
+			});
+			$('input,select').attr('disabled', true);
+		
+		
+					jConfirm('This funds transfer request has been initiated after the RBI cut-off for the day. This request will be presented to RBI on the next working day for further processing. The funds will be debited from the account immediately. Please press OK button to continue or Cancel button to cancel the request', '', function(r) {
+						if (r==true) {
+							$('input,select').attr('disabled', false).removeClass('dwtd');
+							document.getElementById('fldRequestId').value = 'RRTPN05';
+							document.getElementById("fldBenefType").value = "NEFT";
+							//document.getElementById("f1").submit();
+						} else {
+							$('input,select').attr('disabled', false).removeClass('dwtd');
+							document.getElementById('fldRequestId').value = 'RRTPN01';
+							//document.getElementById("f1").submit();
+						}
+						//jAlert('Confirmed: ' + r, 'Confirmation Results');
+						//return false;
+					});
+				});
+				$("#confirm_button1").click( function() {
+					document.getElementById('fldRequestId').value = 'RRTPN05';
+					var objs = document.getElementById('fldAcctNo');
+					document.getElementById('fldAcctNo_txt').value = objs.options[objs.selectedIndex].innerHTML;
+					
+					document.getElementById("fldBenefType").value = "NEFT";
+					
+					var objs1 = document.getElementById('fldBenefDetail');
+					document.getElementById('fldBenefDetail_txt').value = objs1.options[objs1.selectedIndex].innerHTML;
+				
+				});//document.getElementById("f1").submit();
+});
+</script>

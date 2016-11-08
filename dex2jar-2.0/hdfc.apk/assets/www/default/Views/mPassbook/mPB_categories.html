@@ -1,0 +1,404 @@
+<style>
+    body .header, body .footer{display:none !important;}
+    .list_box a aside{width:100%;}
+    .list_box a aside:last-child{width:25px;}
+	.right_arrow .ico:before {content: "\e913";}
+	.show_more .right_arrow .ico:before {content: "\e914";}	
+	.link{margin-top:20px;}
+</style>
+
+<section class="mPB">
+    <!-- starts topBar -->	
+    <div class="topBar">
+        <a href="javascript:void(0);" class="hamburger"><span class="ico"></span></a>
+        <span>Categories</span>
+		<a href="javascript:void(0);" class="add_catg" onclick="addCatg();"></a>
+    </div>	
+    <!-- ends topBar -->
+	<div class="content">
+    <!-- categories-->
+    <div class="wrapper ">
+
+        <ul class="mPB_tabs">
+            <li>
+                <a href="#income">Income</a>
+            </li>
+            <li>
+                <a href="#expensed">Expense</a>					
+            </li>
+        </ul>
+
+        <div id="income">
+            <ul class="categories list_box" data-bind="foreach: CategoryList">
+                <li>
+                    <a href="javascript:void(0)" class="head">
+                        <aside data-bind="text:TXN_Category_name" class='edittext'>Salary</aside>
+                        <aside>
+                            <span class="right_arrow">
+                                <span class="ico ico20"></span>
+                                <span class="ico ico21" style="display:none;"></span>
+                            </span>
+                        </aside>
+                    </a>
+                    <div class="toggle_content" style="display:none;">
+                        <div class="content">
+                            <a href="javascript:void(0)"><span data-bind="attr: {id:TXN_Category_name}" class="icon delete" onclick='deletecategory(this.id);'></span></a>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)"><span data-bind="attr: {id:TXN_Category_name}" class="edit ico22" onclick='editcategory(this.id);'></span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>  
+        </div>
+        <div id="expensed">
+            <ul class="categories list_box" data-bind="foreach: CategoryList_expense">
+                <li>
+                    <a href="javascript:void(0)" class="head">
+                        <aside data-bind="text:TXN_Category_name" class='edittext'>Salary</aside>
+                        <aside>
+                            <span class="right_arrow">
+                                <span class="ico"></span>                               
+                            </span>
+                        </aside>
+                    </a>
+                    <div class="toggle_content" style="display:none;">
+                        <div class="content">
+                            <a href="javascript:void(0)"><span data-bind="attr: {id:TXN_Category_name}" class="icon delete" onclick='deletecategory(this.id);'></span></a>
+                        </div>
+                        <div class="content">
+                            <a href="javascript:void(0)"><span data-bind="attr: {id:TXN_Category_name}" class="edit ico22" onclick='editcategory(this.id);'></span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul> 
+        </div>
+	
+			<div class="link left">
+                <a onclick="interactiveClick();">Go Back to Interactive statement<span class="ico23"></span></a>
+            </div>
+    </div>
+	</div>
+    <!-- /categories-->
+
+</section>
+<section class="fixedWrap">
+	<section class="popWrap two" style="height: 175px;">
+		<div class="popHeader">
+			<div class="pageTitle">
+					<h2 class="alignCenter">Edit Category</h2>
+					<!-- <a href="javascript:void(0);" class="closeIcon"><span class="ico ico16"></span></a> -->
+			</div>						
+		</div>
+		
+				<div class="ftConfBox">
+					<div class="content sub_content">	
+						<form>							
+							<div class="info_row">								
+								<input type="text" id='remarkval' class="line" placeholder="Enter Category" style="height: 51px;
+    font-size: 1.5em;" />
+							</div>
+						</form>
+					</div>
+				</div>
+
+		<div class="popFooter twoBtn">
+			<div class="pageTitle">
+				<a href="javascript:void(0);" class="noBorder cancelIcon">Cancel</a>
+				<a href="javascript:void(0);" class="" id='okBtn'>Add</a>
+			</div>						
+		</div>
+				
+	  </section>	
+</section>
+
+<section class="fixedWrap">
+	<section class="popWrap three" style="height: 175px;">
+		<div class="popHeader">
+			<div class="pageTitle">
+					<h2 class="alignCenter">Add Category</h2>
+					<!-- <a href="javascript:void(0);" class="closeIcon"><span class="ico ico16"></span></a> -->
+			</div>						
+		</div>
+		
+		
+		<div class="ftConfBox">
+			<div class="content sub_content">	
+				<form>							
+					<div class="info_row">								
+						<input type="text" id='addcatgval' class="line" placeholder="Enter Category" size="25" maxlength="25" style="height: 47px;font-size: 1.3em;" />
+					</div>
+				</form>
+			</div>
+		</div>
+				
+
+		<div class="popFooter twoBtn">
+			<div class="pageTitle">
+				<a href="javascript:void(0);" class="noBorder cancelIcon">Cancel</a>
+				<a href="javascript:void(0);" class="" id="okBtnadd">Add</a>
+			</div>						
+		</div>
+				
+	  </section>	
+</section>
+
+<script src="js/libs/misc.js" type="text/javascript"></script>
+
+<script>
+function interactiveClick(){
+		financialID1 = $('#acntno').html();
+		if(localStorage.getItem("Demo") == "Done"){
+			window.location.hash = "#interactive";
+		}
+		else{
+			window.location.hash = "#interactiveStatement";
+		}
+	}
+$('input[type=text],input[type=tel],input[type=password]').on('click', function(e){ 
+	e.stopPropagation();
+	$('.popWrap').css('bottom','250px');
+});
+$(document).on('click',  function(e){
+	$('.popWrap').css('bottom','0');
+});
+
+var idtext = '';
+function deletecategory(id){
+		navigator.notification.confirm(
+			"Are you sure, all your assigned transactions will be uncategorzed?",
+			checkButtonpassbook = function(iValue){ if (iValue == 2){var temp1 = $('.mPB_tabs').find('li.active').find('a').html();
+			deletecategories(id,temp1); alert("Category deleted successfully.")}},
+			'Category',
+			['No','Yes']);
+	//deletecategories(id);
+	//alert(id);
+}
+//Addnewcategory
+
+	function addCatg(){
+		$("#addcatgval").val("");
+		//$('#remarkval').val($('#'+id).parent().parent().parent().siblings().find('.edittext').html());
+		$('.popWrap.three').parent().show(0);
+		$('.popWrap.three').parent().addClass('show');
+		$('.popWrap.three').addClass('show');	
+		//$('#Mutual').parent().parent().parent().siblings().find('.edittext').html()
+	}
+
+	function editcategory(id){ //short
+		//alert(id);
+		//alert($('#'+id).parent().parent().parent().siblings().find('.edittext').html());
+		idtext = id;
+		$('#remarkval').val(id);
+		$('.popWrap.two').parent().show(0);
+		$('.popWrap.two').parent().addClass('show');
+		$('.popWrap.two').addClass('show');	
+		//$('#Mutual').parent().parent().parent().siblings().find('.edittext').html()
+	}
+    $(document).ready(function () {
+	
+	$('.closeIcon,#yesBtn,#noBtn,.cancelIcon').on('click',function(event){
+		event.stopPropagation();
+		$('.popWrap').removeClass('show');
+		setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+		event.preventDefault();
+		return false; 
+	});
+	
+	$('#okBtn').on('click',function(event){
+		if($('#remarkval').val() != ""){
+		//CategoryList_expense
+		//alert(idtext);
+		var Newname = $('#remarkval').val();
+			if(Newname.length > 25){alert("Please enter less than 25 characters"); return false;}
+		//alert(Newname);
+		    var shortName = 'DIGI_STATEMENT';
+	        var version = '1.0';
+	        var displayName = 'DIGI_STATEMENT';
+	        var maxSize = 100000; //  bytes
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			var temp1 = $('.mPB_tabs').find('li.active').find('a').html();
+			if(temp1 == "Income"){
+				var incomecat = CategoryList();
+				$(incomecat).each(function(index, obj) {
+					if(obj.TXN_Category_name == Newname){
+						alert("Category Already exist under Income");
+						return false;
+					}
+					if(obj.TXN_Category_short == Newname){
+						alert("Category Already exist under Income");
+						return false;
+					}
+					if(index == (CategoryList().length -1)){
+						DEMODB.transaction(
+						function (transaction) {
+								transaction.executeSql("UPDATE HDFC_categories_income SET TXN_Category_name = '"+Newname+"' WHERE TXN_Category_name = '"+idtext+"' ", [],sucessentry1, errorentry1);
+								transaction.executeSql("UPDATE HDFC_categories_income SET TXN_Category_short = '"+Newname+"' WHERE TXN_Category_name = '"+Newname+"' ", [],sucessentry1, errorentry1);
+								transaction.executeSql("UPDATE DIGI_STATEMENT SET TXN_CATAGORY = '"+Newname+"' WHERE TXN_CATAGORY = '"+idtext+"' ", [],sucessentry1, errorentry1);
+							}
+						);
+						selectcategories();
+						alert("Category Updated successfully");
+						return false;
+					}
+				});
+			}
+			else{
+				var expensecat = CategoryList_expense();
+				$(expensecat).each(function(index, obj) {
+					if(obj.TXN_Category_name == Newname){
+						alert("Category Already exist under Expense");
+						return false;
+					}
+					if(obj.TXN_Category_short == Newname){
+						alert("Category Already exist under Expense");
+						return false;
+					}
+					if(index == (CategoryList_expense().length -1)){
+						DEMODB.transaction(
+							function (transaction) {
+							//transaction.executeSql("UPDATE DIGI_STATEMENT SET TXN_CATAGORY = '"+category+"' WHERE  TXNID = "+id);
+								transaction.executeSql("UPDATE HDFC_categories_expense SET TXN_Category_name = '"+Newname+"' WHERE TXN_Category_name = '"+idtext+"' ", [],sucessentry1, errorentry1);
+								transaction.executeSql("UPDATE HDFC_categories_expense SET TXN_Category_short = '"+Newname+"' WHERE TXN_Category_name = '"+Newname+"' ", [],sucessentry1, errorentry1);
+								transaction.executeSql("UPDATE DIGI_STATEMENT SET TXN_CATAGORY = '"+Newname+"' WHERE TXN_CATAGORY = '"+idtext+"' ", [],sucessentry1, errorentry1);
+							}
+						);
+						selectcategories();
+						alert("Category Updated successfully");
+						return false;
+					}
+				});
+			}
+		
+			event.stopPropagation();
+			//$('#'+idtext).parent().parent().parent().siblings().find('.edittext').html($('#remarkval').val());
+			$('.popWrap').removeClass('show');
+			setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+			event.preventDefault();
+			return false;
+		}
+		else{alert("Enter Category"); return false;}
+	});
+	function sucessentry1(){console.log("sucess");}
+	function errorentry1(){console.log("sucess");}
+	
+	$('#okBtnadd').on('click',function(event){
+		event.stopPropagation();
+		if($('#addcatgval').val() != ""){
+			var temp = $('#addcatgval').val();
+			if(temp.length > 25){alert("Please enter less than 25 characters"); return false;}
+			var temp1 = $('.mPB_tabs').find('li.active').find('a').html();
+			
+			if(temp1 == "Income"){
+				var incomecat = CategoryList();
+				$(incomecat).each(function(index, obj) {
+					if(obj.TXN_Category_name == temp){
+						alert("Category Already exist under Income");
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						return false;
+					}
+					if(obj.TXN_Category_short == temp){
+						alert("Category Already exist under Income");
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						return false;
+					}
+					if(index == (CategoryList().length -1)){
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						Addnewcategory(temp,temp1);
+						alert("New Category Added under Income");
+						return false;
+					}
+				});
+			}
+			else{
+				var expensecat = CategoryList_expense();
+				$(expensecat).each(function(index, obj) {
+					if(obj.TXN_Category_name == temp){
+						alert("Category Already exist under Expense");
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						return false;
+					}
+					if(obj.TXN_Category_short == temp){
+						alert("Category Already exist under Expense");
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						return false;
+					}
+					if(index == (CategoryList_expense().length -1)){
+						$('.popWrap').removeClass('show');
+						setTimeout(function(){$('.popWrap').parent().hide(0);},300);
+						event.preventDefault();
+						Addnewcategory(temp,temp1);
+						alert("New Category Added under Expense");
+						return false;
+					}
+				});
+			}
+			
+			return false;
+		}
+		else{alert("Enter Category"); return false;}
+		
+	});
+
+		
+		/*$(document).on('click', '.head', function(e){			
+			e.preventDefault();
+
+			$('.right_arrow').not($(this).find('.right_arrow')).find('.ico:first-child').show();
+			$('.right_arrow').not($(this).find('.right_arrow')).find('.ico:last-child').hide();
+			$(this).find('.right_arrow .ico').toggle();
+
+			$('.toggle_content').not($(this).next()).slideUp();
+			$(this).next().slideToggle();
+
+		});*/
+		
+		$(document).on('click', '.head', function(){
+			$('.head.show_more').removeClass('show_more');
+			$('.toggle_content').hide();
+			$(this).addClass('show_more');
+			$(this).next().show();
+		});
+		
+		$(document).on('click', '.show_more', function(){
+			$(this).next().hide();			
+			$(this).removeClass('show_more');
+		});
+		
+		
+        $('.mPB_tabs').each(function () {
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+            $active.parent().addClass('active');
+            $content = $($active.attr('href'));
+            $links.not($active).each(function () {
+                $($(this).attr('href')).hide();
+            });
+
+            $(this).off('touchstart click').on('touchstart click', 'a', function (e) {
+                e.stopPropagation();
+                $active.parent().removeClass('active');
+                $content.hide();
+                $active = $(this);
+                $content = $($(this).attr('href'));
+
+                $active.parent().addClass('active');
+                $(window).scrollTop('.wrapper', 0);
+                $content.show();
+                e.preventDefault();
+            });
+        });
+
+    });
+
+</script>

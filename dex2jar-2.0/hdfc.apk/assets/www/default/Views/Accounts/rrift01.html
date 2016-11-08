@@ -1,0 +1,139 @@
+<style>
+	.info_row2, .info_row3  { padding-left:0; padding-right:0;}
+	.info_row p { padding-left:10px; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form name="frmift01" id="frmift01" method="post" data-bind='submit: ift01Pagesubmit'>
+		
+		
+		
+			
+		<div id="refblock" style="display:none;">	
+			<div class="info_row" > <div class="info_row2">Beneficiary Mobile Number</div> <div class="info_row3">
+			<input type="text" name="fldBenefMobNo" id="fldBenefMobNo" value="" size="10"  class="rs_fld"/>
+			   </div>
+			</div>
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			<div class="info_row" > <div class="info_row2">Beneficiary MMID</div> <div class="info_row3">
+			<input type="text" name="fldBenefMMID" id="fldBenefMMID" value="" size="10"  class="rs_fld"/>
+			   </div>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+
+
+			<div class="info_row"><div class="info_row2">From Account</div> 
+		<div class="info_row3">
+			<select name="fldFromAcctNo" id="fldFromAcctNo" data-bind="options: fromAccountList, optionsText: 'displaytxt', optionsValue: 'accountValue', value: fldFromAcctNo, optionsCaption: '-Select-'">
+			</select>	
+		</div>
+	</div>
+
+	  <div class="clearfix"></div>
+	  <div class="linedivider"></div>   
+	  <div class="clearfix"></div>
+	  
+	  <div class="info_row" > <div class="info_row2">Amount</div> <div class="info_row3">
+			<input type="text" name="fldAmtTxn" id="fldAmtTxn" value="" size="10"  class="rs_fld"/>
+			   </div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+		
+		<div class="info_row" > <div class="info_row2">Remark</div> <div class="info_row3">
+			<input type="text" name="fldRmrk" id="fldRmrk" value="" size="10"  class="rs_fld"/>
+			   </div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="clearfix"></div>
+		<div class="linedivider"></div>   
+		<div class="clearfix"></div>
+		
+		<div class="info_row"><div class="info_row2">I Accept Terms and Conditions (Mandatory)</div><div class="info_row3">
+				<select name="fldChecked" id="fldChecked" class="styled">
+					<option value="true" selected="selected" >Accept</option>
+					<option value="false">Decline</option>
+				</select>
+			   </div>
+		  </div>
+		
+    
+
+	<input type="hidden" name="fldFromAcctNo_ix" id="fldFromAcctNo_ix" value="1" />
+	
+	<input type="hidden" id="fldFromAcctNo_txt" name="fldFromAcctNo_txt" value="" />
+	<input type="hidden" id="fldChecked_txt" name="fldChecked_txt" value="" />
+	
+	
+	<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+  
+   <div class="clearfix"></div>
+   <div class="alignc"><input type="submit" class="button" value="Continue" ></div>
+
+		</div>
+		
+		
+
+	
+	
+	<div class="info_row" id="OtherWise">
+		<p>To use the Third Party Transfer facility, you first need to input the account details of the person you would like to transfer funds to.</p>
+	</div>
+	
+	
+	</form>
+	
+		
+		
+			<div class="info_row" id="disclaimer">
+	 			<p><b>Disclaimer:</b></p><br/>
+				<p>- You are about to originate and execute a funds transfer from your account to an IMPS beneficiary as per the details provided by you. Bank takes no responsibilty and shall also not be liable for claims, for any incorrect funds transfer owing to incorrect details / data keyed-in by yourself at the time of this execution. You are authorizing funds transfer instructions, which are irrevocable and will be executed at your risk and responsibility.</p><br/>
+        		<div class="clearfix"></div>
+        		<br/>
+        		<p><b>Note:</b></p><br/>
+        		<p>- Please add country code '91' before the 10 digit mobile number.</p>
+				<p>- The maximum amount of funds that can be transfered per cust id per day is Rs 5000.</p>
+				<p>- Limit of Rs 5000 applies whether as an individual or multiple transactions.</p>
+				<p>- Your account will be debited online, and the funds will be sent to the beneficiery bank instantly using the IMPS system. The beneficiary account would be credited realtime online.</p>
+				<div class="clearfix"></div>
+      		</div>
+      		
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+
+
+$("#frmift01").validate({
+	rules: {
+		fldFromAcctNo: "required",
+		fldAmtTxn: {
+                required: true,
+                min: 1                
+        }
+	},
+	messages: {
+		fldFromAcctNo: "Select From Account",
+		fldAmtTxn: {
+                required: "Enter Amount",
+                min: "Amount should be greater than 0.0"                
+        },
+	}
+});
+
+</script>

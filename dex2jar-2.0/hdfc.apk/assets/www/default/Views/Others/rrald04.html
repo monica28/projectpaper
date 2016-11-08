@@ -1,0 +1,93 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; } 
+</style>
+
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+       <form name="f1" id="f1" action="app://" method="get">
+			
+			
+		        <div class="info_row odd"> <span class="info_row_left clslineht">Selected Account For Alerts</span> 
+		        <span class="info_row_right clslineht" id="acctno">
+					
+				</span>
+				<div class="clearfix"></div>
+		      </div>
+		      
+		      <br/>
+		   
+		      
+		      <div class="summblock" id="alerttyp" data-bind="foreach:regalertList1">
+		      
+		      <div class="info_row dark_header"> <span class="info_row_left">Alert Type</span> 
+		        <span class="info_row_right clslineht" data-bind="text:desc">
+				
+				   </span>
+		        <div class="clearfix"></div>
+		      </div>
+		      
+		       <div class="info_row odd"> <span class="info_row_left">Delivery Channel</span> 
+		        <span class="info_row_right" >
+		                    <!-- ko if: channel === 'E' -->
+									Email
+							  <!-- /ko -->
+							  <!-- ko if: channel === 'S' -->
+									SMS
+							  <!-- /ko -->
+							  <!-- ko if: channel === 'B' -->
+									Both
+							  <!-- /ko -->
+				</span>
+		        <div class="clearfix"></div>
+		      </div>
+		      
+		        <div class="info_row even"> <span class="info_row_left">Other Details</span> 
+		        <span class="info_row_right" data-bind="text:adtnlparam">
+		       	
+							  
+				</span>
+		        <div class="clearfix"></div>
+		      </div>
+		      
+		      
+		      <div class="info_row odd"> <span class="info_row_left">Status</span> 
+		        <span class="info_row_right" >
+				  <!-- ko if: error === '' -->			        
+						Successful
+				   <!-- /ko -->		
+			
+				  <!-- ko ifnot: error === ''-->
+					  <span data-bind="text:error"></span>
+				  <!-- /ko -->
+				</span>
+		        <div class="clearfix"></div>
+		      </div>
+		      
+		      </div>
+		      
+		      		      
+		      <input type="hidden" name="fldRequestId" value="RRALT04" />
+			  <input type="hidden" name="fldScrnSeqNbr" value="04" />
+			  <input type="hidden" name="fldTxnId" value="ALT" />
+			  
+			   <input type="hidden" id="fldAlertString" name="fldAlertString" value="" />
+			   <input type="hidden" id="fldAlertDesc" name="fldAlertDesc" value="" />
+			   <input type="hidden" id="fldAcctNo" name="fldAcctNo" value="" />
+			   <input type="hidden" id="fldCodProd" name="fldCodProd" value="" />
+			   <input type="hidden" id="fldNamBranch" name="fldNamBranch" value="" />
+			  
+			 		 
+			  
+			  <input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+		  
+			   
+	      </form> 
+
+        
+   </div>
+</div>
+  

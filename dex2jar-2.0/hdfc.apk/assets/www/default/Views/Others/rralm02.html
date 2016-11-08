@@ -1,0 +1,174 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2 { padding-left:5px; }
+	.linedivider { margin:0; } 
+</style>
+<script>
+function ALM02formSubmit()
+{
+	
+	otherDetails = ''
+		var fldAlertString = $('#fldAlertString').val();
+		fldAlertString = fldAlertString.split('##');
+			if($('#otherDetails option:selected').val() != undefined){
+					otherDetails = 	$('#otherDetails option:selected').val();
+			}
+			
+		deliveryChannels  = $('#deliveryChannels option:selected').val();
+		$('#fldAlertString').val(fldAlertString[0]+"##"+deliveryChannels+"##"+otherDetails+"~~"); 
+	
+	//document.getElementById("f1").submit();
+
+}
+</script>
+<div id="wrapper" style="top:96px; padding-bottom:110px;">
+  <div class="content">
+    
+	
+		<div id="Alm02Box" style="display:none;">
+		<form name="f1" id="f1" method="post" data-bind='submit: rralm02submit'>
+		<div class="summblock">
+		<div class="info_row dark_header"> <span class="info_row_left clslineht">Edit alerts for account</span> <span class="info_row_right clslineht" id="editacnt">
+			
+			   </span>
+			<div class="clearfix"></div>
+		  </div>
+		
+			
+			  <div class="info_row even"> <span class="info_row_left">Alert Type</span> 
+			  <span class="info_row_right clslineht" id="AlrtTypes">
+				   </span>
+				<div class="clearfix"></div>
+			  </div>
+		</div>
+		
+		
+		
+		<div id="request" data-bind="foreach:dbtAccountList">
+		<!--<span data-bind="text:fldAlertString1()"></span>  -->
+		 <!-- ko if: fldAlertString1() === $data.id -->
+									
+							 
+		
+			
+				<br/>
+				<div class="clearfix"></div>
+				<div class="linedivider"></div>   
+				<div class="clearfix"></div>
+				
+			  <div class="info_row"> <div class="info_row2">Delivery Channel</div> <div class="info_row3">
+				<select name="deliveryChannels" class="styled" id="deliveryChannels">
+				    <!-- ko if: (channelavail === 'E' || channelavail === 'B') && flgemailalert() === 'Y' -->
+							<option value="E">Email</option>
+					<!-- /ko --> 
+					<!-- ko if: (channelavail === 'S' || channelavail === 'B') && flgmobilealert() === 'Y' -->
+							<option value="S">SMS</option>
+					<!-- /ko --> 
+					<!-- ko if: channelavail === 'B' && flgemailalert() === 'Y' && flgmobilealert() === 'Y' -->
+							<option value="B">Both</option>
+					<!-- /ko --> 
+					
+					
+				</select>
+				   </div>
+				<div class="clearfix"></div>
+			  </div>
+			  
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+				
+			
+				<!-- ko if: adtnl_paramtype === 'TB' -->
+					
+					
+					
+					<!-- ko if: id === 'FWBELOW_EOD' || id === 'FWCRL_ONL' ||  id === 'FWDBL_ONL' ||  id === 'CASA-0009'  ||  id === 'CASA-0008'  ||  id === 'CASA-0003'-->
+						 <div class="info_row"> <div class="info_row2">Other Details</div> <div class="info_row3">
+						<select name="otherDetails" class="styled" id="otherDetails">
+						 <option value="5000">5000</option>
+						 <option value="10000">10000</option>
+						 <option value="20000">20000</option>
+						 <option value="50000">50000</option>
+						 </select>
+							   </div>
+							<div class="clearfix"></div>
+						  </div>
+						<!-- /ko --> 
+					
+					<!-- ko ifnot: id === 'FWBELOW_EOD' || id === 'FWCRL_ONL' ||  id === 'FWDBL_ONL' ||  id === 'CASA-0009'  ||  id === 'CASA-0008'  ||  id === 'CASA-0003'-->
+						<div class="info_row"> <div class="info_row2">Other Details</div> <div class="info_row3">-
+							   </div>
+							<div class="clearfix"></div>
+						  </div>
+						  <!-- /ko -->
+					
+					 <!-- /ko -->
+				
+				<!-- ko if: adtnl_paramtype === 'FR' -->
+					<div class="info_row"> <div class="info_row2">Other Details</div> <div class="info_row3">
+					  <select name="otherDetails" class="styled" id="otherDetails">
+					  <!-- ko if: param_additional === '' -->
+							<option data-bind=" optionsText: param_additional,value: param_additional" />
+					  <!-- /ko -->
+					  <!-- ko if: param_additional === 'D' -->
+							<option value="D">Daily</option>
+					  <!-- /ko -->
+					  <!-- ko if: param_additional === 'W' -->
+							<option value="W">Weekly</option>
+					  <!-- /ko -->
+					  <!-- ko if: param_additional === 'F' -->
+							 <option value="F">Fortnightly</option>
+					  <!-- /ko -->
+					  <!-- ko if: param_additional === 'M' -->
+							 <option value="M">Monthly</option>
+					  <!-- /ko -->
+					 
+					  </select>
+						   </div>
+						<div class="clearfix"></div>
+					</div>
+					 <!-- /ko -->
+				
+				<!-- ko ifnot: adtnl_paramtype === 'FR' -->
+				<div class="info_row"> <div class="info_row2">Additional Parameters</div> <div class="info_row3">-
+					   </div>
+					<div class="clearfix"></div>
+				</div>
+				<!-- /ko -->
+				
+			
+			<div class="clearfix"></div>
+			<div class="linedivider"></div>   
+			<div class="clearfix"></div>
+			
+			
+		 <!-- /ko -->
+		</div>
+		<div class="clearfix20"></div>
+		  <div class="alignc">
+			   <input type="submit" class="button"  value="Continue" style="width: 140px;"/>
+				<div class="clearfix"></div>
+			  </div>
+			  
+			<input type="hidden" name="fldRequestId" value="RRALM03" />
+			<input type="hidden" name="fldScrnSeqNbr" value="03" />
+			<input type="hidden" name="fldTxnId" value="ALM" />
+
+			<input type="hidden" name="fldAcctNo"  id="fldAcctNo" value="" />
+			<input type="hidden" name="fldNamBranch"  id="fldNamBranch" value="" />
+			<input type="hidden" name="fldCodProd" id="fldCodProd"  value="" />
+			<input type="hidden" name="fldAlertDesc"  id="fldAlertDesc" value="" />
+			<input type="hidden" name="fldAlertString" id="fldAlertString" value="" />
+			<input type="hidden" name="deliveryChannels_txt" id="deliveryChannels_txt" value="" />
+
+			<input type="hidden" id="fldFCDBRequestId" name="fldFCDBRequestId" />
+			</form>
+			</div>
+	
+	
+        
+   </div>
+</div>

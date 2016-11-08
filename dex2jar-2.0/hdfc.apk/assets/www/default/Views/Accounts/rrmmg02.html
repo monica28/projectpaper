@@ -1,0 +1,60 @@
+<style>
+	.info_row { display:table; width:100%; }
+	.info_row_menu_left { min-height:30px; }
+	.info_row_menu_right { min-height:30px;  }
+	.info_row2, .info_row3  { padding-left:10px; padding-right:10px;}
+	.linedivider { margin:0; }
+	.info_row label { display:table-cell; vertical-align:middle; }
+	.summblock { margin:0 5px !important; }
+	input[type=submit] {display:table-cell; }
+</style>
+<div id="wrapper" style="top:96px;">
+  <div class="content sub_content">
+  
+  <form class="custStyleInput" name="frmfss02" id="frmfss02" method="post" data-bind='submit: rrmmg02Submit'>
+  	
+  	          	          	
+	            
+  		<div class="summblock">
+			<div class="info_row dark_header"><span class="info_row_left">Account Number</span> 
+			<span class="info_row_right clslineht" id="accno"></span>
+				<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left startchqlbl">Mobile Number</span> 
+			<span class="info_row_right" id="mobno">				
+			</span>
+			<div class="clearfix"></div>
+			</div>				
+			
+			<div class="info_row even"><span class="info_row_left startchqlbl">Customer Name</span> 
+			<span class="info_row_right" id="CusTNm">				
+			</span>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="info_row odd"><span class="info_row_left startchqlbl">Customer Type</span> 
+			<span class="info_row_right" id="">Retail			
+			</span>
+			<div class="clearfix"></div>
+			</div>
+		</div>					
+			
+			<div class="clearfix20"></div>
+		   <div class="info_row2">
+		   <input type="hidden" id="emailid" />
+		    <input type="button" class="button" value="Back" style="width:43%;float:left;" onclick="callPrev();" />&#160;
+		    <input class="button" value="Confirm" style="width:43%;float:right;" type="submit">
+		  </div>
+  			
+  			 <input type="hidden" name="fldRequestId" id="fldRequestId" />
+		  					
+	</form>
+  </div>
+</div>
+<script>
+function callPrev(){
+window.location = "#rrmmg01";
+}
+</script>
+
