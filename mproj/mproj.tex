@@ -189,8 +189,45 @@ TODO This might have to move to an appendix.
 
 4) Drozer [[describe the process]]
 
+QARK:
+QARK is an interactive tool developed for Linux systems. The tool can be downloaded from its github page and run using the command \textit{python qarkMain.py}. Upon running the command, QARK provides two choice for analysing the application. Either input the apk file or the Source code. The user is then prompted to enter a choice of path to the apk file or pull an existing apk from a site. Once the apk file is provided, QARK inspects the manifest file. It determines the attack surfaces from the AndroidManifest.xml and notifies the user if any vulnerabilities are found.
 
-The results obtained from these analysis tools can then be organised together in order to compare the types of vulnerabilties most commonly found, level of criticality and security measures employed. 
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | } 
+\hline
+No & Application & Version & Company & Filename & Downloaded \\ [0.5ex] 
+\hline\hline
+1 & Barclays Mobile Banking & 1.37 & Barclays Bank PLC & Barclays.apk \\ 
+
+2 & Bank of Scotland Mobile Bank & 15.0 & Lloyds Bank PLC & BankofScot.apk \\
+
+3 & Lloyds Bank Mobile Banking & 15.0 & Lloyds Bank PLC & LloydsBank.apk \\
+
+4 & Halifax Mobile Banking app & 15.0 & Lloyds Bank PLC & Halifax.apk \\
+
+5 & NatWest & 04.09.0000.52.0 & The Royal Bank of Scotland PLC & Natwest.apk \\  
+
+6 & HSBC Mobile Banking & 1.5.15.0 & HSBC &HSBC.apk \\ 
+
+7 & TSB Mobile Banking & 11.0 & TSB Bank Plc & TSB.apk \\ 
+
+8 & Royal Bank, RBS & 04.10.0000.22.0 & The Royal Bank of Scotland PLC & RBS.apk \\ 
+
+9 & Tesco Bank Mobile Banking &  & Tesco Bank & Tesco.apk \\ 
+
+10 & Mobile Bank UK & 3.15 & Danske Bank & MobileBank.apk \\ 
+
+11 & Personal Banking & 3.9.2 & Santander UK plc & SantanderUK.apk \\ 
+
+12 & Nationwide Banking App & 3.20.28 & Nationwide Building Society &  \\ 
+
+13 & The Co-operative Bank & 2.2.95.64 & CoopBank &  \\ 
+
+14 & J.P. Morgan Mobile & 3.33 & JPMorgan Chase &  \\
+\hline
+\end{tabular}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
