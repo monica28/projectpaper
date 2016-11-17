@@ -1,0 +1,303 @@
+*************************************************************************
+**   AndroBugs Framework - Android App Security Vulnerability Scanner  **
+**                            version: 1.0.0                           **
+**     author: Yu-Cheng Lin (@AndroBugs, http://www.AndroBugs.com)     **
+**               contact: androbugs.framework@gmail.com                **
+*************************************************************************
+Platform: Android
+Package Name: uk.co.northernbank.android.tribank
+Package Version Name: 3.15
+Package Version Code: 12280
+Min Sdk: 15
+Target Sdk: 23
+MD5   : 84eeef2afbc9d24269c257c2fbd890b7
+SHA1  : 43ee5ed2493c8e9c79d0a31f6b6a11a5f9241ba4
+SHA256: d0fbc837fd6636c9155c0c9330dc44ae0f7236e1b89e5a273aa4570f3628a6ee
+SHA512: 6c02ee65a6941fd52936a7081423e8afdcaf69af0c7200ed39c6438f5b3f31199f61bc122c7568fa802505e2bbd76cd4c4f23931117bb17be998260db43c9e0c
+Analyze Signature: d7f69eef89e89ce79cb4384464e5e0eaa47b4b58a82513c930e20e2705720074e87d0408713437cde79ed086bae26b7c274e96ca4e37b9e8d84d4f0dc3c3093f
+------------------------------------------------------------------------------------------------
+[Critical] <Hacker> Base64 String Encryption:
+           Found Base64 encoding "String(s)" (Total: 2). We cannot guarantee all of the Strings are Base64 encoding and also we will not
+           show you the decoded binary file:
+               icon.png
+                   ->Original Encoding String: aWNvbi5wbmc=
+                   ->From class: Lcom/danskebank/core/i/d/g;->a(Landroid/content/Context;)[B
+               RSA/None/PKCS1Padding
+                   ->Original Encoding String: UlNBL05vbmUvUEtDUzFQYWRkaW5n
+                   ->From class: Lcom/danskebank/core/i/c/b;->b(Ljava/lang/String;)Ljava/lang/String;
+                   ->From class: Lcom/trifork/android/a/b/a;->a([B [B)[B
+[Critical]  App Sandbox Permission Checking:
+           Security issues "MODE_WORLD_READABLE" or "MODE_WORLD_WRITEABLE" found (Please check:
+           https://www.owasp.org/index.php/Mobile_Top_10_2014-M2):
+               [getSharedPreferences]
+               => Lcom/google/android/gms/flags/impl/k;->a()Landroid/content/SharedPreferences; (0xa) --->
+                    Landroid/content/Context;->getSharedPreferences(Ljava/lang/String; I)Landroid/content/SharedPreferences;
+               --------------------------------------------------
+[Critical] <SSL_Security> SSL Connection Checking:
+           URLs that are NOT under SSL (Total:6):
+               http://%s/event?
+                   => Lcom/a/a/a/a;->e()Ljava/lang/String;
+               http://javax.xml.XMLConstants/feature/secure-processing
+                   => Lcom/danskebank/core/helpers/XmlViewController;->c(Ljava/lang/String;)Ljava/lang/String;
+               http://maps.google.com/maps?&saddr=
+                   => Lcom/danskebank/core/ui/findus/g;->onClick(Landroid/view/View;)V
+               http://plus.google.com/
+                   => Lcom/google/android/gms/common/internal/an;-><clinit>()V
+               http://www.danskebank.dk/da-dk/eBanking-content/MobileBanking/TestHtml/Documents/page1.htm
+                   => Lcom/trifork/android/tribank/control/z;->onClick(Landroid/view/View;)V
+               http://www.danskebank.dk/da-dk/eBanking-content/MobileBanking/TestHtml/Documents/page2.htm
+                   => Lcom/trifork/android/tribank/control/b;->onClick(Landroid/view/View;)V
+[Critical] <SSL_Security> SSL Implementation Checking (WebViewClient for WebView):
+           DO NOT use "handler.proceed();" inside those methods in extended "WebViewClient", which allows the connection even if the SSL
+           Certificate is invalid (MITM Vulnerability).
+           References:
+           (1)A View To A Kill: WebView Exploitation: https://www.iseclab.org/papers/webview_leet13.pdf
+           (2)OWASP Mobile Top 10 doc: https://www.owasp.org/index.php/Mobile_Top_10_2014-M3
+           (3)https://jira.appcelerator.org/browse/TIMOB-4488
+           Vulnerable codes:
+               Lcom/danskebank/phone/ui/einvoice/g;->onReceivedSslError(Landroid/webkit/WebView; Landroid/webkit/SslErrorHandler;
+                    Landroid/net/http/SslError;)V
+               => Lcom/danskebank/phone/ui/einvoice/EInvoiceInvoiceViewController;->onCreate(Landroid/os/Bundle;)V (0xb8) --->
+                    Landroid/webkit/WebView;->setWebViewClient(Landroid/webkit/WebViewClient;)V
+[Critical] <WebView><Remote Code Execution><#CVE-2013-4710#> WebView RCE Vulnerability Checking:
+           Found a critical WebView "addJavascriptInterface" vulnerability. This method can be used to allow JavaScript to control the host
+           application.
+           This is a powerful feature, but also presents a security risk for applications targeted to API level JELLY_BEAN(4.2) or below,
+           because JavaScript could use reflection to access an injected object's public fields. Use of this method in a WebView containing
+           untrusted content could allow an attacker to manipulate the host application in unintended ways, executing Java code with the
+           permissions of the host application.
+           Reference:
+             1."http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object,
+           java.lang.String) "
+             2.https://labs.mwrinfosecurity.com/blog/2013/09/24/webview-addjavascriptinterface-remote-code-execution/
+             3.http://50.56.33.56/blog/?p=314
+             4.http://blog.trustlook.com/2013/09/04/alert-android-webview-addjavascriptinterface-code-execution-vulnerability/
+           Please modify the below code:
+               => Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView; Lcom/danskebank/core/ui/d/aa;)V (0x4e) --->
+                    Landroid/webkit/WebView;->addJavascriptInterface(Ljava/lang/Object; Ljava/lang/String;)V
+[Warning]  External Storage Accessing:
+           External storage access found (Remember DO NOT write important files to external storages):
+               => Lcom/b/a/c/h;->c(Landroid/content/Context;)Ljava/io/File; (0xa) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/danskebank/core/helpers/v;->f()Ljava/lang/String; (0xa) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/danskebank/core/ui/securemail/SecureMailDetailsFragment;->c()Z (0x0) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/danskebank/core/ui/securemail/SecureMailWriteMessageFragment;->a(Landroid/content/Context;
+                    Landroid/net/Uri;)Ljava/lang/String; (0x60) ---> Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/danskebank/core/ui/securemail/c;->a()Ljava/io/File; (0x0) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/trifork/scanandpay/c/d/c;->a([I I I)V (0x3c) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+               => Lcom/trifork/scanandpay/ui/u;->a(Lcom/trifork/scanandpay/c/n;)V (0x4e) --->
+                    Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+[Warning]  AndroidManifest Exported Components Checking:
+           Found "exported" components(except for Launcher) for receiving outside applications' actions (AndroidManifest.xml).
+           These components can be initilized by other apps. You should add or modify the attribute to [exported="false"] if you don't want
+           to.
+           You can also protect it with a customized permission with "signature" or higher protectionLevel and specify in
+           "android:permission" attribute.
+                 receiver => com.google.android.gms.measurement.AppMeasurementReceiver
+[Warning] <SSL_Security> SSL Certificate Verification Checking:
+           Please make sure this app has the conditions to check the validation of SSL Certificate. If it's not properly checked, it MAY
+           allows self-signed, expired or mismatch CN certificates for SSL connection.
+           This is a critical vulnerability and allows attackers to do MITM attacks without your knowledge.
+           If you are transmitting users' username or password, these sensitive information may be leaking.
+           Reference:
+           (1)OWASP Mobile Top 10 doc: https://www.owasp.org/index.php/Mobile_Top_10_2014-M3
+           (2)Android Security book: http://goo.gl/BFb65r
+           (3)https://www.securecoding.cert.org/confluence/pages/viewpage.action?pageId=134807561
+           This vulnerability is much more severe than Apple's "goto fail" vulnerability: http://goo.gl/eFlovw
+           Please do not try to create a "X509Certificate" and override "checkClientTrusted", "checkServerTrusted", and "getAcceptedIssuers"
+           functions with blank implementation.
+           We strongly suggest you use the existing API instead of creating your own X509Certificate class.
+           Please modify or remove these vulnerable code:
+               --------------------------------------------------
+               [Maybe Vulnerable (Please manually confirm)]
+               => Lcom/trifork/a/a/c/b/a;
+                     -> used by: Lcom/trifork/a/a/c/b/d;->a(I)Lcom/squareup/okhttp/OkHttpClient;
+[Warning] <WebView> WebView Local File Access Attacks Checking:
+           Found "setAllowFileAccess(true)" or not set(enabled by default) in WebView. The attackers could inject malicious script into
+           WebView and exploit the opportunity to access local resources. This can be mitigated or prevented by disabling local file system
+           access. (It is enabled by default)
+           Note that this enables or disables file system access only. Assets and resources are still accessible using file:///android_asset
+           and file:///android_res.
+           The attackers can use "mWebView.loadUrl("file:///data/data/[Your_Package_Name]/[File]");" to access app's local file.
+           Reference: (1)https://labs.mwrinfosecurity.com/blog/2012/04/23/adventures-with-android-webviews/
+                      (2)http://developer.android.com/reference/android/webkit/WebSettings.html#setAllowFileAccess(boolean)
+           Please add or modify "yourWebView.getSettings().setAllowFileAccess(false)" to your WebView:
+               Lcom/danskebank/core/helpers/XmlViewController;->onCreate(Landroid/os/Bundle;)V
+               Lcom/danskebank/core/ui/InformationViewController;->onCreate(Landroid/os/Bundle;)V
+               Lcom/danskebank/core/ui/InlineBrowserActivity;->z()V
+               Lcom/danskebank/core/ui/NewFeaturesFullscreenActivity;->onCreate(Landroid/os/Bundle;)V
+               Lcom/danskebank/core/ui/alerts/OperationalStatusFragment;->onCreateView(Landroid/view/LayoutInflater;
+                    Landroid/view/ViewGroup; Landroid/os/Bundle;)Landroid/view/View;
+               Lcom/danskebank/core/ui/contact/g;->d()V
+               Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView; Lcom/danskebank/core/ui/d/aa; Lcom/danskebank/core/f/i;)V
+               Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView; Lcom/danskebank/core/ui/d/aa;)V
+               Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView;)V
+               Lcom/danskebank/core/ui/documentation/h;->getView(I Landroid/view/View; Landroid/view/ViewGroup;)Landroid/view/View;
+               Lcom/danskebank/core/ui/securemail/SecureMailDetailsFragment;->onCreateView(Landroid/view/LayoutInflater;
+                    Landroid/view/ViewGroup; Landroid/os/Bundle;)Landroid/view/View;
+               Lcom/danskebank/phone/ui/einvoice/EInvoiceInvoiceViewController;->onCreate(Landroid/os/Bundle;)V
+               Lcom/danskebank/phone/ui/realestate/calculator/chooser/m;->a(Lcom/trifork/a/a/d/c;)V
+               Lcom/danskebank/phone/ui/realestate/calculator/homeloan/c;->a(Lcom/trifork/a/a/d/c;)V
+               Lcom/danskebank/phone/ui/realestate/calculator/mortgagetimebased/l;->a(Lcom/trifork/a/a/d/c;)V
+               Lcom/danskebank/phone/ui/realestate/consent/f;->a(Lcom/trifork/a/a/d/c;)V
+               Lcom/danskebank/phone/ui/realestate/document/b;->a(Lcom/trifork/a/a/d/c;)V
+[Warning] <WebView> WebView Potential XSS Attacks Checking:
+           Found "setJavaScriptEnabled(true)" in WebView, which could exposed to potential XSS attacks. Please check the web page code
+           carefully and sanitize the output:
+               => Lcom/danskebank/core/ui/InformationViewController;->onCreate(Landroid/os/Bundle;)V (0x46) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/core/ui/InlineBrowserActivity;->z()V (0x18) ---> Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/core/ui/alerts/OperationalStatusFragment;->onCreateView(Landroid/view/LayoutInflater;
+                    Landroid/view/ViewGroup; Landroid/os/Bundle;)Landroid/view/View; (0x40) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView;)V (0x10) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/core/ui/d/u;->a(Landroid/webkit/WebView; Lcom/danskebank/core/ui/d/aa; Lcom/danskebank/core/f/i;)V (0x2a)
+                    ---> Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/core/ui/securemail/SecureMailDetailsFragment;->onCreateView(Landroid/view/LayoutInflater;
+                    Landroid/view/ViewGroup; Landroid/os/Bundle;)Landroid/view/View; (0xc0) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/phone/ui/einvoice/EInvoiceInvoiceViewController;->onCreate(Landroid/os/Bundle;)V (0x6c) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/phone/ui/einvoice/EInvoiceInvoiceViewController;->onCreate(Landroid/os/Bundle;)V (0x7e) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+               => Lcom/danskebank/phone/ui/realestate/document/b;->a(Lcom/trifork/a/a/d/c;)V (0x18) --->
+                    Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
+[Notice] <Database><#CVE-2011-3901#> Android SQLite Databases Vulnerability Checking:
+           This app is using Android SQLite databases but it's "NOT" suffering from SQLite Journal Information Disclosure Vulnerability.
+[Notice]  File Unsafe Delete Checking:
+           Everything you delete may be recovered by any user or attacker, especially rooted devices.
+           Please make sure do not use "file.delete()" to delete essential files.
+           Check this video: https://www.youtube.com/watch?v=tGw1fxUD-uY
+               => Lcom/a/a/b/q;->a(Ljava/lang/Exception;)V (0x56) ---> Ljava/io/File;->delete()Z
+               => Lcom/a/a/b/q;->c(Ljava/lang/String;)V (0xbe) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a/a;->a(Ljava/io/File; I I J I)Lcom/b/a/a/a/a/a/a; (0x78) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a/a;->a(Ljava/io/File;)V (0xc) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a/a;->e()V (0x1ba) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a/a;->c(Ljava/lang/String;)Z (0x88) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a/k;->a(Ljava/io/File;)V (0x5c) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a;->a(Ljava/lang/String; Landroid/graphics/Bitmap;)Z (0x84) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a;->a(Ljava/lang/String; Landroid/graphics/Bitmap;)Z (0x9a) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a;->a(Ljava/lang/String; Ljava/io/InputStream; Lcom/b/a/c/d;)Z (0x88) ---> Ljava/io/File;->delete()Z
+               => Lcom/b/a/a/a/a/a;->a(Ljava/lang/String; Ljava/io/InputStream; Lcom/b/a/c/d;)Z (0xba) ---> Ljava/io/File;->delete()Z
+               => Lcom/danskebank/core/helpers/v;->c(Ljava/io/File;)V (0x2c) ---> Ljava/io/File;->delete()Z
+               => Lcom/danskebank/core/ui/securemail/c;->a(Ljava/io/File;)V (0x3c) ---> Ljava/io/File;->delete()Z
+               => Lcom/google/android/gms/measurement/internal/an;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase; (0x98)
+                    ---> Ljava/io/File;->delete()Z
+               => Lcom/squareup/okhttp/internal/io/FileSystem$1;->delete(Ljava/io/File;)V (0x0) ---> Ljava/io/File;->delete()Z
+               => Lcom/squareup/okhttp/internal/io/FileSystem$1;->deleteContents(Ljava/io/File;)V (0x5c) ---> Ljava/io/File;->delete()Z
+[Notice] <Debug><Hacker> Codes for Checking Android Debug Mode:
+           Found codes for checking "ApplicationInfo.FLAG_DEBUGGABLE" in AndroidManifest.xml:
+               => Lcom/danskebank/core/i/d/e;->c (Landroid/content/Context;)V
+[Notice] <Hacker> APK Installing Source Checking:
+           This app has code checking APK installer sources(e.g. from Google Play, from Amazon, etc.). It might be used to check for whether
+           the app is hacked by the attackers.
+               => Lcom/google/android/gms/measurement/internal/ba;->a()V (0x2c) --->
+                    Landroid/content/pm/PackageManager;->getInstallerPackageName(Ljava/lang/String;)Ljava/lang/String;
+[Notice] <KeyStore><Hacker> KeyStore Protection Information:
+           The Keystores below are "protected" by password and seem using SSL-pinning (Total: 1). You can use "Portecle" tool to manage the
+           certificates in the KeyStore:
+               => Lcom/trifork/a/a/c/b/d;->a(I)Lcom/squareup/okhttp/OkHttpClient; (0xb6) --->
+                    Ljava/security/KeyStore;->load(Ljava/io/InputStream; [C)V
+[Notice] <Hacker> Code Setting Preventing Screenshot Capturing:
+           This app has code setting the preventing screenshot capturing.
+           Example: getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+           It is used by the developers to protect the app:
+               => Lcom/danskebank/core/base/t;->s()V (0x18) ---> Landroid/view/Window;->setFlags(I I)V
+[Notice] <Signature><Hacker> Getting Signature Code Checking:
+           This app has code checking the package signature in the code. It might be used to check for whether the app is hacked by the
+           attackers.
+               => Lcom/danskebank/core/m/b;->b(Landroid/content/Context;)Z (0x5c) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+               => Lcom/google/android/gms/common/r;->a(Landroid/content/pm/PackageManager;)Z (0x1c) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+               => Lcom/google/android/gms/common/r;->b(Landroid/content/Context; I)Z (0x24) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+               => Lcom/google/android/gms/common/r;->c(Landroid/content/Context;)I (0x54) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+               => Lcom/google/android/gms/measurement/internal/ba;->a()V (0x1f0) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+               => Lcom/google/android/gms/measurement/internal/ba;->z()Z (0x24) --->
+                    Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String; I)Landroid/content/pm/PackageInfo;
+[Notice]  AndroidManifest Exported Components Checking 2:
+           Found "exported" components(except for Launcher) for receiving Google's "Android" actions (AndroidManifest.xml):
+                 activity => com.danskebank.core.ui.securemail.SecureMailAttachmentListener
+[Info]  AndroidManifest Adb Backup Checking:
+           This app has disabled Adb Backup.
+[Info] <Command> Runtime Command Checking:
+           This app is not using critical function 'Runtime.getRuntime().exec("...")'.
+[Info] <Command> Executing "root" or System Privilege Checking:
+           Did not find codes checking "root" permission(su) or getting system permission (It's still possible we did not find out).
+[Info] <Database> SQLiteDatabase Transaction Deprecated Checking:
+           Ignore checking "SQLiteDatabase:beginTransactionNonExclusive" because your set minSdk >= 11.
+[Info] <Database> Android SQLite Databases Encryption (SQLite Encryption Extension (SEE)):
+           This app is "NOT" using SQLite Encryption Extension (SEE) on Android (http://www.sqlite.org/android) to encrypt or decrpyt
+           databases.
+[Info] <Database> Android SQLite Databases Encryption (SQLCipher):
+           This app is "NOT" using SQLCipher(http://sqlcipher.net/) to encrypt or decrpyt databases.
+[Info] <Debug> Android Debug Mode Checking:
+           DEBUG mode is OFF(android:debuggable="false") in AndroidManifest.xml.
+[Info]  Dynamic Code Loading:
+           No dynamic code loading(DexClassLoader) found.
+[Info] <#BID 64208, CVE-2013-6271#> Fragment Vulnerability Checking:
+           Did not detect the vulnerability of "Fragment" dynamically loading into "PreferenceActivity" or "SherlockPreferenceActivity"
+[Info] <Framework> Framework - MonoDroid:
+           This app is NOT using MonoDroid Framework (http://xamarin.com/android).
+[Info] <Database><Hacker> Key for Android SQLite Databases Encryption:
+           Did not find using the symmetric key(PRAGMA key) to encrypt the SQLite databases (It's still possible that it might use but we
+           did not find out).
+[Info] <KeyStore><Hacker> KeyStore File Location:
+           Did not find any possible BKS keystores or certificate keystore file (Notice: It does not mean this app does not use keysotre):
+[Info]  HttpURLConnection Android Bug Checking:
+           Ignore checking "http.keepAlive" because you're not using "HttpURLConnection" and min_Sdk > 8.
+[Info] <KeyStore> KeyStore Type Checking:
+           KeyStore 'BKS' type check OK
+[Info]  Google Cloud Messaging Suggestion:
+           Nothing to suggest.
+[Info] <#CVE-2013-4787#> Master Key Type I Vulnerability:
+           No Master Key Type I Vulnerability in this APK.
+[Info]  Native Library Loading Checking:
+           No native library loaded.
+[Info]  AndroidManifest Dangerous ProtectionLevel of Permission Checking:
+           No "dangerous" protection level customized permission found (AndroidManifest.xml).
+[Info]  AndroidManifest PermissionGroup Checking:
+           PermissionGroup in permission tag of AndroidManifest sets correctly.
+[Info] <Implicit_Intent> Implicit Service Checking:
+           No dangerous implicit service.
+[Info]  AndroidManifest "intent-filter" Settings Checking:
+           "intent-filter" of AndroidManifest.xml check OK.
+[Info]  AndroidManifest Normal ProtectionLevel of Permission Checking:
+           No default or "normal" protection level customized permission found (AndroidManifest.xml).
+[Info] <#CVE-2013-6272#> AndroidManifest Exported Lost Prefix Checking:
+           No exported components that forgot to add "android:" prefix.
+[Info]  AndroidManifest ContentProvider Exported Checking:
+           No exported "ContentProvider" found (AndroidManifest.xml).
+[Info] <Sensitive_Information> Getting IMEI and Device ID:
+           Did not detect this app is getting the "device id(IMEI)" by "TelephonyManager.getDeviceId()" approach.
+[Info] <Sensitive_Information> Getting ANDROID_ID:
+           Did not detect this app is getting the 64-bit number "Settings.Secure.ANDROID_ID".
+[Info]  Codes for Sending SMS:
+           Did not detect this app has code for sending SMS messages (sendDataMessage, sendMultipartTextMessage or sendTextMessage).
+[Info] <System> AndroidManifest sharedUserId Checking:
+           This app does not use "android.uid.system" sharedUserId.
+[Info] <SSL_Security> SSL Implementation Checking (Verifying Host Name in Custom Classes):
+           Self-defined HOSTNAME VERIFIER checking OK.
+[Info] <SSL_Security> SSL Implementation Checking (Verifying Host Name in Fields):
+           Critical vulnerability "ALLOW_ALL_HOSTNAME_VERIFIER" field setting or "AllowAllHostnameVerifier" class instance not found.
+[Info] <SSL_Security> SSL Implementation Checking (Insecure component):
+           Did not detect SSLSocketFactory by insecure method "getInsecure".
+[Info] <SSL_Security> SSL Implementation Checking (HttpHost):
+           DEFAULT_SCHEME_NAME for HttpHost check: OK
+[Info]  Unnecessary Permission Checking:
+           Permission 'android.permission.ACCESS_MOCK_LOCATION' sets correctly.
+[Info]  Accessing the Internet Checking:
+           This app is using the Internet via HTTP protocol.
+[Info]  AndroidManifest System Use Permission Checking:
+           No system-level critical use-permission found.
+------------------------------------------------------------
+AndroBugs analyzing time: 11.61 secs
+Total elapsed time: 44.683 secs

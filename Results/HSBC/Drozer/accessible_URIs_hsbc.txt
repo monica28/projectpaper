@@ -1,0 +1,4 @@
+Unable to Query  content://com.htsu.hsbcpersonalbanking.fileprovider
+Unable to Query  content://com.htsu.hsbcpersonalbanking.fileprovider/
+
+No accessible content URIs found.

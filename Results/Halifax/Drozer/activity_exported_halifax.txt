@@ -1,0 +1,4 @@
+Package: com.grppl.android.shell.halifax
+  com.halifax.halifax.GrappleActivity
+    Permission: null
+

@@ -1,0 +1,9 @@
+Not Vulnerable:
+  content://com.grppl.android.shell.halifax.google_measurement_service/
+  content://com.grppl.android.shell.halifax.google_measurement_service
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.

@@ -1,0 +1,6 @@
+Not Vulnerable:
+  content://com.htsu.hsbcpersonalbanking.fileprovider
+  content://com.htsu.hsbcpersonalbanking.fileprovider/
+
+Vulnerable Providers:
+  No vulnerable providers found.

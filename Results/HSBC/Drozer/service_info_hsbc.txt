@@ -1,0 +1,4 @@
+Package: com.htsu.hsbcpersonalbanking
+  com.hsbc.nfc.hce.service.NfcHostApduService
+    Permission: android.permission.BIND_NFC_SERVICE
+

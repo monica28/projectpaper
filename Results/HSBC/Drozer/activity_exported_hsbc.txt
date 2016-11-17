@@ -1,0 +1,8 @@
+Package: com.htsu.hsbcpersonalbanking
+  com.hsbc.activities.LaunchActivity
+    Permission: null
+  com.hsbc.nfc.sim.activities.NfcSimMainActivity
+    Permission: null
+  com.hsbc.nfc.sim.activities.NfcSimMainMenuActivity
+    Permission: null
+

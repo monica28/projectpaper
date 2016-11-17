@@ -1,0 +1,8 @@
+Not Vulnerable:
+  No non-vulnerable URIs found.
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.

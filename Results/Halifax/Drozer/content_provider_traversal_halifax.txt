@@ -1,0 +1,6 @@
+Not Vulnerable:
+  content://com.grppl.android.shell.halifax.google_measurement_service/
+  content://com.grppl.android.shell.halifax.google_measurement_service
+
+Vulnerable Providers:
+  No vulnerable providers found.

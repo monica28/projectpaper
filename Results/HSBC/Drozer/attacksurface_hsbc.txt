@@ -1,0 +1,5 @@
+Attack Surface:
+  3 activities exported
+  4 broadcast receivers exported
+  0 content providers exported
+  1 services exported

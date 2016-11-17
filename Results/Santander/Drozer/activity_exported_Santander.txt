@@ -1,0 +1,4 @@
+Package: uk.co.santander.santanderUK
+  uk.co.santander.mobile.activities.SplashActivity
+    Permission: null
+
