@@ -1,0 +1,10 @@
+Unable to Query  content://com.jpm.sig.android.statementprovider
+Able to Query    content://settings/system/notification_sound
+Unable to Query  content://com.chase.sig.settings.provider.AppDebugSettings
+Able to Query    content://settings/system/notification_sound/
+Unable to Query  content://com.jpm.sig.android.statementprovider/
+Unable to Query  content://com.chase.sig.settings.provider.AppDebugSettings/
+
+Accessible content URIs:
+  content://settings/system/notification_sound
+  content://settings/system/notification_sound/

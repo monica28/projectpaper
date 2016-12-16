@@ -1,0 +1,4 @@
+Package: com.tescobank.mobile
+  com.tescobank.mobile.ui.auth.PreSplashActivity
+    Permission: null
+

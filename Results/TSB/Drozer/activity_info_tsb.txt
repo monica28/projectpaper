@@ -1,0 +1,4 @@
+Package: uk.co.tsb.mobilebank
+  com.halifax.halifax.GrappleActivity
+    Permission: null
+

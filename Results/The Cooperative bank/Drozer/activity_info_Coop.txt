@@ -1,0 +1,4 @@
+Package: com.monitise.coop
+  com.monitise.cbg.common.activities.SplashScreenActivity
+    Permission: null
+

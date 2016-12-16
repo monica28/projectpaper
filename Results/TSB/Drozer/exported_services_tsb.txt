@@ -1,0 +1,3 @@
+Package: uk.co.tsb.mobilebank
+  No exported services.
+

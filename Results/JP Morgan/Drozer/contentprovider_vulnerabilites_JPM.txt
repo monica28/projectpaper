@@ -1,0 +1,13 @@
+Not Vulnerable:
+  content://com.jpm.sig.android.statementprovider
+  content://settings/system/notification_sound
+  content://com.chase.sig.settings.provider.AppDebugSettings
+  content://settings/system/notification_sound/
+  content://com.jpm.sig.android.statementprovider/
+  content://com.chase.sig.settings.provider.AppDebugSettings/
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.

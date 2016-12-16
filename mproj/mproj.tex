@@ -5,6 +5,8 @@
 \usepackage{fancyvrb}
 \usepackage[final]{pdfpages}
 \usepackage{times}
+\usepackage{verbatim}
+\usepackage{graphicx}
 
 % for alternative page numbering use the following package
 % and see documentation for commands
@@ -149,52 +151,13 @@ The third technique of malware detection is the Application permission Analysis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Experimental Design}
 
-TODO Tables Create two tables.  One listing the applications, when they were downloaded, release or version number, file
-name, owning organisation.  Second table listing the tools used for analysis, analysis approach (static, dynamics etc,
-features tested.), version number and so on.
+The applications used for this research consists of UK mobile banking applications in Android shown in Table 1. The APK files of these applications were obtained by using the application \textit{APK Extract \& Backup} which generates APK files of user installed applictions in a device. The experiment involves two phases - the static analysis phase and the reverse engineering phase. 
 
-TODO Describe method for using AndroidBugs to discover potential vulnerabilities and then manually verify these.
-
-TODO Write up proposed methodology and trial the entire method on one application and show me the results.
-
-TODO Create a script for any automable parts of your analysis. 
-
-TODO State the research questions to be asked and answered about the security of mobile financial applications.
-
-
-
-This research is focused on analysing the security in mobile financial applications. For this study, a total of 20 different banking and payment applications have been selected.  
-The process of this experiment can be described in three steps:
-
-1. Identify the components in each application that perform similar functions. For example, logging in, SSL Implemetation, etc. A list of components to be verified is created to be used across all the applications.
-
-2. A lsit of vulnerabilities and security issues to look for in each app is created. OWASP has provided a list of 10 most common security vulnerabilities usually found in mobile applications [ref]. As part of the experiment, this study will include the "OWASP Top 10" while testing for vulnerabilities.
-
-3. Run the tools for each application and collect the dataset. The analysis should cover testing for all the vulnerabilites in the prepared list.
-
-The dataset can then be used to determine the level of security in the applications and can also be compared with each other.
-
-A number of tools are available for testing mobile applications against security attacks and detecting vulnerabilities. Secuirty analysis tools are of three types - static, dynamic and forensic. Static tools can decompile the java code from the apk and can either check automatically for weak implementations of secuirty or allow manual analysis of the code. For the purpose of this study, four static tools have been chosen, each different from the other in various features. 
-
-TODO This might have to move to an appendix.
-
-1) AndroBugs is an android vulnerability scanner that can be used to find security vulnerabilities in mobile applications. Its features inlcude finding security vulnerabilities in an Android app, checking if the code is missing best practices, checking dangerous shell commands like "su", collecting information from millions of apps and checking an app’s security protection [ref]. This tool can be downloaded from the author's github page [ref] and installed directly into Windows. The analysis is then done by executing the command \textit{androbugs.exe -f [APK file]}. At the end of the execution, a report file is genreated and saved in a "Reports" folder. The report contains basic information of the app like the name and version of the package and then the log containing the various vulnerability checks performed. The level of vulnerability is indicated through tags like "[Critical]", "[Warning]" and "[Notice]".
-
-[[Insert part of the report file here]]
-
-2) FlowDroid is a taint analysis tool which uses a precise model of Android’s lifecycle and handles callbacks invoked by the Android framework [ref]. Financial applications handle a lot of sensitive data like IMEI, location, login information, etc. Android uses the Permissions system to limit the access to sensitive data but are not sufficent to prevent data from leaking. Taint analysis is used to determine whether sensitive data remains within its boundaries and that untrusted data doesnot enter trusted repositiores in the application. \textit{source} is an external resource to an application from which data is read and a \textit{sink} is  an external resource to which data is written. FlowDroid is claimed to have achieved 93\% recall and 86\% precision in DroidBench (test suite to evaluate accuracy and efficiency of taint analysis tools) [ref]. To run FlowDroid, first all the necessary projects should be downloaded from the author's website in a directory. The site also contains the list of sources and sinks necessary to configure FlowDroid. Once this is done, the tool can be run by executing the following command:
-[[Command]]
-
-3) Another method to conduct static analysis is Reverse Engineering. Three tools - dex2jar, JD\_GUI and ApkTools are used for this method. dex2jar is used to convert the apk file of the app to the jar file. JD-GUI is the decompiler that decompiles the jar into the java class files. ApkTools is used to get the manifest file in a readable form. Once the java source code is available, it is then analysed manually to check for weak implementation of code.
-
-4) Drozer [[describe the process]]
-
-QARK:
-QARK is an interactive tool developed for Linux systems. The tool can be downloaded from its github page and run using the command \textit{python qarkMain.py}. Upon running the command, QARK provides two choice for analysing the application. Either input the apk file or the Source code. The user is then prompted to enter a choice of path to the apk file or pull an existing apk from a site. Once the apk file is provided, QARK inspects the manifest file. It determines the attack surfaces from the AndroidManifest.xml and notifies the user if any vulnerabilities are found.
-
-
-\begin{center}
-\begin{tabular}{ | c | c | c | c | c | c | } 
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}
+%\begin{center}
+{\begin{tabular}{ | c | c | c | c | c | c | } 
 \hline
 No & Application & Version & Company & Filename & Downloaded \\ [0.5ex] 
 \hline\hline
@@ -226,8 +189,96 @@ No & Application & Version & Company & Filename & Downloaded \\ [0.5ex]
 
 14 & J.P. Morgan Mobile & 3.33 & JPMorgan Chase &  \\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular}}
+%\end{center}
+\end{table}
+
+\section{Phase 1}
+\subsection{AndroBugs}
+
+AndroBugs is an open source framework written in Python to help find valid security vulnerabilites in Android apps. The tool is designed for massive analysis and it can be extended to include new features or add vulnerability vectors. Some of the vulnerabilities it checks for include checking if the code is missing best practices, checking dangerous shell commands like "su", collecting information from millions of apps and checking an app’s security protection [ref].  The analysis is done by executing the command \textit{androbugs.exe -f [APK file]}. AndroBugs generates a report after each analysis which contains the following information.
+\begin{itemize}
+\item Vector title
+\item Source code paths
+\item Severity level
+\item Vector Category
+\item Detail Explanations (background knowledge of the vulnerability)
+\item Mitigation recommendations
+\item Reference research papers or links
+\end{itemize}
+
+There are four severity levels for the vulnerabilites. 
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}
+%\begin{center}
+{\begin{tabular}{ | c | c | } 
+\hline
+Severity Level & Description \\ [0.5ex] 
+\hline
+Critical & Confirmed security vulnerability that should be solved (except for testing code) \\
+\hline
+Warning & Not sure if this is a security vulnerability. Developers need to manually confirm \\
+\hline
+Notice & Low priority issue or AndroBugs Framework tries to let you know some additional information \\
+\hline
+Info & No security issue detected \\
+\hline
+\end{tabular}}
+%\end{center}
+\end{table}
+
+The AndroBugs framework implements a number of vulnerability vectors which have been decided after research from more than eight Android security books, previously published papers and research, Android Developer Reference Websites, previously published security vulnerabilities and some technical blogs and articles\cite{}. Some of the vulnerabilities discovered are 
+\begin{itemize}
+\item World Readable and World Writable
+\item ContentProvider Vulnerability and Directory Traversal
+\item WebView File Access Vulnerability and Exported Components
+\item SSL Vulnerability
+\item Implicit Broadcast
+\item Dynamically Registered Unprotected BroadcastReceiver
+\item Allow Debuggable
+\end{itemize}
+
+The vulnerability vectors are grouped in categories such as SSL\_Security, Sensitive\_Information, WebView, Command, Database, Debug, Implicit\_Intent, Hacker and System. Once the APK file of the application is run through the tool, the report is generated as a text file in an automatically created 'Reports' folder. If potential security vulnerabilities are found in the report, then the application is manually decompiled to verify if the vulnerability is valid. 
+
+\subsection{Drozer}
+
+Drozer is another open source security assessment platform developed for Android. It works by allowing the user to assume the role of an Android app and interact with other apps by making use of Android’s Inter-Process Communication (IPC) mechanism. Drozer also helps to remotely exploit Android devices, by building malicious files or web pages that exploit known vulnerabilities. Depending on the permissions granted to the vulnerable app, "drozer can install a full agent, inject a limited agent into the process using a novel technique or spawn a reverse shell"\cite{}. Running Drozer requires a PC (Windows in this experiment) and an Android device or emulator. The software requirements inlude JDK 1.6, Python 2.7 and Android SDK. Following steps are involved in using the tool against applications.
+
+1. The drozer installer is downloaded from its site and run which builds a complete python environment with all the required dependencies. 
+
+2. Install the drozer agent using command \textit{adb install agent.apk}. The drozer agent is launched in the emulator.
+
+3. Set up a suitable port forward so that your PC can connect to a TCP socket opened by the Agent inside the emulator, or on the device. By default, drozer uses port 31415. \textit{ adb forward tcp:31415 tcp:31415}
+
+4. Enable the Embedded server to start the server in the emulator.
+
+5. The server is connected to PC using 
+ \begin{Verbatim}[fontsize=\small]
+$ C:\drozer\drozer.bat console connect
+\end{Verbatim}
+
+The drozer console is a command line environment and provides a wide range of modules for interacting with an Android device to assess its security. For example, the command and output for content provider vulnerability check for a specific app is shown below. 
+ \begin{Verbatim}[fontsize=\small]
+dz> run scanner.provider.injection -a co.uk.Nationwide.Mobile
+Scanning co.uk.Nationwide.Mobile...
+Not Vulnerable:
+  content://com.google.android.wearable.provider.calendar
+  content://com.google.android.wearable.provider.calendar/
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.
+\end{Verbatim}
+
+The commands and their description can be found in appendix 2.
+
+\section{Phase 2}
+
+Phase 2 involves manual checking of code through reverse engineering. Since it is difficult to obtain the pure Java code of the application due to code obfuscation, the Dalvik bytecode i.e., the dex file is converted to the Smali format. Converting dex file to smali is called baksmaling and it gives readable code in Smali language. For this experiment, ApkTool is used to retrieve the smali code from the APK file. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

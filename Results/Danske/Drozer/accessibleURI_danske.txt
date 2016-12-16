@@ -1,0 +1,8 @@
+Unable to Query  content://com.android.contacts/
+Unable to Query  content://downloads/public_downloads
+Unable to Query  content://com.android.contacts
+Unable to Query  content://uk.co.northernbank.android.tribank.google_measurement_service
+Unable to Query  content://downloads/public_downloads/
+Unable to Query  content://uk.co.northernbank.android.tribank.google_measurement_service/
+
+No accessible content URIs found.

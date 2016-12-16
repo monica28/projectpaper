@@ -1,0 +1,6 @@
+Package: uk.co.northernbank.android.tribank
+  com.danskebank.core.ui.securemail.SecureMailAttachmentListener
+    Permission: null
+  com.trifork.android.tribank.control.MainViewController
+    Permission: null
+

@@ -1,0 +1,4 @@
+Package: com.jpm.sig.android
+  com.chase.sig.android.activity.HomeActivity
+    Permission: null
+

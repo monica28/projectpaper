@@ -1,0 +1,4 @@
+Package: co.uk.Nationwide.Mobile
+  co.uk.Nationwide.Mobile.wear.WearListenerService
+    Permission: null
+

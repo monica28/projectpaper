@@ -1,0 +1,33 @@
+Package: uk.co.tsb.mobilebank
+  Application Label: TSB
+  Process Name: uk.co.tsb.mobilebank
+  Version: 10.1
+  Data Directory: /data/user/0/uk.co.tsb.mobilebank
+  APK Path: /data/app/uk.co.tsb.mobilebank-1/base.apk
+  UID: 10054
+  GID: [3003]
+  Shared Libraries: null
+  Shared User ID: null
+  Uses Permissions:
+  - com.android.vending.CHECK_LICENSE
+  - android.permission.READ_PHONE_STATE
+  - android.permission.INTERNET
+  - android.permission.ACCESS_NETWORK_STATE
+  - android.permission.ACCESS_WIFI_STATE
+  - android.permission.READ_CONTACTS
+  - android.permission.WRITE_EXTERNAL_STORAGE
+  - android.permission.ACCESS_FINE_LOCATION
+  - android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+  - android.permission.ACCESS_COARSE_LOCATION
+  - com.google.android.providers.gsf.permission.READ_GSERVICES
+  - uk.co.tsb.mobilebank.permission.MAPS_RECEIVE
+  - android.permission.VIBRATE
+  - android.permission.GET_ACCOUNTS
+  - android.permission.WAKE_LOCK
+  - com.google.android.c2dm.permission.RECEIVE
+  - uk.co.tsb.mobilebank.C2D_MESSAGE
+  - android.permission.READ_EXTERNAL_STORAGE
+  Defines Permissions:
+  - uk.co.tsb.mobilebank.permission.MAPS_RECEIVE
+  - uk.co.tsb.mobilebank.C2D_MESSAGE
+

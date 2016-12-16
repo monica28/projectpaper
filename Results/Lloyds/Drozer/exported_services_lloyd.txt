@@ -1,0 +1,3 @@
+Package: com.grppl.android.shell.CMBlloydsTSB73
+  No exported services.
+

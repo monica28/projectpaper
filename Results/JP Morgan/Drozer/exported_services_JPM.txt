@@ -1,0 +1,3 @@
+Package: com.jpm.sig.android
+  No exported services.
+

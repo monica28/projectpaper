@@ -1,0 +1,13 @@
+Not Vulnerable:
+  content://com.android.contacts/
+  content://downloads/public_downloads
+  content://com.android.contacts
+  content://uk.co.northernbank.android.tribank.google_measurement_service
+  content://downloads/public_downloads/
+  content://uk.co.northernbank.android.tribank.google_measurement_service/
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.

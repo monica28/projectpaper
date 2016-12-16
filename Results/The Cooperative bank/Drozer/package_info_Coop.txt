@@ -1,0 +1,17 @@
+Package: com.monitise.coop
+  Application Label: Co-op Bank
+  Process Name: com.monitise.coop
+  Version: 2.2.95.64
+  Data Directory: /data/user/0/com.monitise.coop
+  APK Path: /data/app/com.monitise.coop-1/base.apk
+  UID: 10062
+  GID: [3003]
+  Shared Libraries: null
+  Shared User ID: null
+  Uses Permissions:
+  - android.permission.INTERNET
+  - android.permission.ACCESS_NETWORK_STATE
+  - android.permission.ACCESS_FINE_LOCATION
+  Defines Permissions:
+  - None
+

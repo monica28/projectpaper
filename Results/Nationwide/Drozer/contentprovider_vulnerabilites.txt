@@ -1,0 +1,9 @@
+Not Vulnerable:
+  content://com.google.android.wearable.provider.calendar
+  content://com.google.android.wearable.provider.calendar/
+
+Injection in Projection:
+  No vulnerabilities found.
+
+Injection in Selection:
+  No vulnerabilities found.

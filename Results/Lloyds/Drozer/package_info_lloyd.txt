@@ -1,0 +1,34 @@
+Package: com.grppl.android.shell.CMBlloydsTSB73
+  Application Label: Lloyds Bank
+  Process Name: com.grppl.android.shell.CMBlloydsTSB73
+  Version: 15.0
+  Data Directory: /data/user/0/com.grppl.android.shell.CMBlloydsTSB73
+  APK Path: /data/app/com.grppl.android.shell.CMBlloydsTSB73-1/base.apk
+  UID: 10064
+  GID: [3003]
+  Shared Libraries: null
+  Shared User ID: null
+  Uses Permissions:
+  - com.android.vending.CHECK_LICENSE
+  - android.permission.READ_PHONE_STATE
+  - android.permission.INTERNET
+  - android.permission.ACCESS_NETWORK_STATE
+  - android.permission.ACCESS_WIFI_STATE
+  - android.permission.READ_CONTACTS
+  - android.permission.CALL_PHONE
+  - android.permission.WRITE_EXTERNAL_STORAGE
+  - android.permission.ACCESS_FINE_LOCATION
+  - android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+  - android.permission.ACCESS_COARSE_LOCATION
+  - com.google.android.providers.gsf.permission.READ_GSERVICES
+  - com.grppl.android.shell.CMBlloydsTSB73.permission.MAPS_RECEIVE
+  - android.permission.VIBRATE
+  - android.permission.GET_ACCOUNTS
+  - android.permission.WAKE_LOCK
+  - com.google.android.c2dm.permission.RECEIVE
+  - com.grppl.android.shell.CMBlloydsTSB73.C2D_MESSAGE
+  - android.permission.READ_EXTERNAL_STORAGE
+  Defines Permissions:
+  - com.grppl.android.shell.CMBlloydsTSB73.permission.MAPS_RECEIVE
+  - com.grppl.android.shell.CMBlloydsTSB73.C2D_MESSAGE
+

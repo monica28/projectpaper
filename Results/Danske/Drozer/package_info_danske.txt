@@ -1,0 +1,26 @@
+Package: uk.co.northernbank.android.tribank
+  Application Label: Mobile Bank
+  Process Name: uk.co.northernbank.android.tribank
+  Version: 3.15
+  Data Directory: /data/user/0/uk.co.northernbank.android.tribank
+  APK Path: /data/app/uk.co.northernbank.android.tribank-1/base.apk
+  UID: 10065
+  GID: [3003]
+  Shared Libraries: [/system/framework/android.test.runner.jar]
+  Shared User ID: null
+  Uses Permissions:
+  - android.permission.READ_CONTACTS
+  - android.permission.ACCESS_NETWORK_STATE
+  - android.permission.INTERNET
+  - android.permission.ACCESS_FINE_LOCATION
+  - android.permission.CAMERA
+  - android.permission.WRITE_EXTERNAL_STORAGE
+  - com.google.android.providers.gsf.permission.READ_GSERVICES
+  - android.permission.WAKE_LOCK
+  - com.google.android.c2dm.permission.RECEIVE
+  - uk.co.northernbank.android.tribank.permission.C2D_MESSAGE
+  - android.permission.FLASHLIGHT
+  - android.permission.READ_EXTERNAL_STORAGE
+  Defines Permissions:
+  - uk.co.northernbank.android.tribank.permission.C2D_MESSAGE
+

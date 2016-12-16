@@ -1,0 +1,4 @@
+Package: com.grppl.android.shell.CMBlloydsTSB73
+  com.halifax.halifax.GrappleActivity
+    Permission: null
+
